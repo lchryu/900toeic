@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Lesson 12 - Improved Practice</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
     <style>
         :root {
             --primary: #2c3e50;
@@ -15,43 +17,238 @@
             --warning: #f1c40f;
             --bg-light: #f8f9fa;
         }
-        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: #f4f7f6; color: #333; position: relative; }
-        .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; padding: 3rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 2rem; border-radius: 0 0 20px 20px; }
-        .sidebar { position: sticky; top: 2rem; }
-        .nav-pills .nav-link { color: var(--secondary); font-weight: 500; border-radius: 8px; margin-bottom: 4px; transition: all 0.2s; }
-        .nav-pills .nav-link:hover { background-color: #e9ecef; }
-        .nav-pills .nav-link.active { background-color: var(--accent); color: white; box-shadow: 0 2px 8px rgba(52, 152, 219, 0.4); }
-        .section-card { background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); padding: 2rem; margin-bottom: 2rem; }
-        .section-title { color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-weight: 600; }
-        .transcript-box { background-color: var(--bg-light); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 2rem; }
-        .speaker-badge { font-size: 0.8rem; padding: 0.3rem 0.6rem; border-radius: 4px; margin-right: 10px; display: inline-block; min-width: 65px; text-align: center; font-weight: 600; }
-        .bg-w-am { background-color: #ffeaa7; color: #d35400; }
-        .bg-m-cn { background-color: #dfe6e9; color: #2d3436; }
-        .bg-w-br { background-color: #fab1a0; color: #c0392b; }
-        .bg-m-au { background-color: #81ecec; color: #00cec9; }
-        .question-item { margin-bottom: 2rem; }
-        .question-text { font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; }
-        .option-list { list-style: none; padding: 0; }
-        .option-item { padding: 0.8rem 1rem; margin-bottom: 0.5rem; border: 1px solid #dee2e6; border-radius: 8px; background-color: white; transition: all 0.2s; display: block; cursor: pointer; touch-action: manipulation; position: relative; z-index: 1; }
-        .option-item.correct { background-color: #d1e7dd; border-color: #badbcc; color: #0f5132; font-weight: 500; }
-        .option-item.correct::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; float: right; }
-        .explanation { background-color: #e8f4f8; border-left: 4px solid #17a2b8; padding: 1rem; border-radius: 0 8px 8px 0; margin-top: 1rem; font-size: 0.95rem; }
-        .reading-box { font-family: 'Georgia', serif; font-size: 1.05rem; line-height: 1.8; background-color: #fff; padding: 2rem; border: 1px solid #dee2e6; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: inset 0 0 15px rgba(0,0,0,0.02); }
-        .reading-completed { background-color: #f8f9fa; border-color: #a3cfbb; }
-        .blank-space { display: inline-block; min-width: 120px; border-bottom: 2px solid #333; text-align: center; font-weight: bold; color: #dc3545; margin: 0 5px; padding: 0 5px; }
-        .vocab-list { list-style-type: none; padding: 0; }
-        .vocab-list li { padding: 0.5rem 0; border-bottom: 1px dashed #dee2e6; }
-        .vocab-list li:last-child { border-bottom: none; }
-        .takeaway { background: linear-gradient(to right, #fff3cd, #ffecb3); border-left: 4px solid #ffc107; padding: 1.5rem; border-radius: 8px; }
-        .floating-actions { position: fixed; right: 20px; bottom: 40px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
-        .floating-actions .btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
-        .floating-actions .btn:hover { transform: scale(1.1); }
-        @media (max-width: 768px) {
-            .floating-actions { right: 15px; bottom: 110px; }
-            .floating-actions .btn { width: 45px; height: 45px; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            position: relative;
         }
-        
-        body { padding-bottom: 120px; }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 3rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .nav-pills .nav-link {
+            color: var(--secondary);
+            font-weight: 500;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: #e9ecef;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.4);
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .transcript-box {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+        }
+
+        .speaker-badge {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            margin-right: 10px;
+            display: inline-block;
+            min-width: 65px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .bg-w-am {
+            background-color: #ffeaa7;
+            color: #d35400;
+        }
+
+        .bg-m-cn {
+            background-color: #dfe6e9;
+            color: #2d3436;
+        }
+
+        .bg-w-br {
+            background-color: #fab1a0;
+            color: #c0392b;
+        }
+
+        .bg-m-au {
+            background-color: #81ecec;
+            color: #00cec9;
+        }
+
+        .question-item {
+            margin-bottom: 2rem;
+        }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .option-item {
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            background-color: white;
+            transition: all 0.2s;
+            display: block;
+        }
+
+        .option-item.correct {
+            background-color: #d1e7dd;
+            border-color: #badbcc;
+            color: #0f5132;
+            font-weight: 500;
+        }
+
+        .option-item.correct::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            float: right;
+        }
+
+        .explanation {
+            background-color: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .reading-box {
+            font-family: 'Georgia', serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            background-color: #fff;
+            padding: 2rem;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .reading-completed {
+            background-color: #f8f9fa;
+            border-color: #a3cfbb;
+        }
+
+        .blank-space {
+            display: inline-block;
+            min-width: 120px;
+            border-bottom: 2px solid #333;
+            text-align: center;
+            font-weight: bold;
+            color: #dc3545;
+            margin: 0 5px;
+            padding: 0 5px;
+        }
+
+        .vocab-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .vocab-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #dee2e6;
+        }
+
+        .vocab-list li:last-child {
+            border-bottom: none;
+        }
+
+        .takeaway {
+            background: linear-gradient(to right, #fff3cd, #ffecb3);
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .floating-actions {
+            position: fixed;
+            right: 20px;
+            bottom: 40px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .floating-actions .btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .floating-actions .btn:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .floating-actions {
+                right: 15px;
+                bottom: 110px;
+            }
+
+            .floating-actions .btn {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        body {
+            padding-bottom: 120px;
+        }
 
         /* Audio player fixed at bottom */
         .audio-player-container {
@@ -61,15 +258,10 @@
             width: 100%;
             background-color: white;
             border-top: 1px solid #dee2e6;
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
             padding: 15px;
             z-index: 1000;
             text-align: center;
-            pointer-events: none;
-        }
-        .audio-player-container button,
-        .audio-player-container audio {
-            pointer-events: auto;
         }
 
         /* SPA Practice Mode Overrides */
@@ -80,54 +272,132 @@
         body.practice-mode .explanation {
             display: none !important;
         }
+
         body.practice-mode .option-item.correct {
             background-color: white !important;
             border-color: #dee2e6 !important;
             font-weight: normal !important;
             color: inherit !important;
         }
+
         body.practice-mode .option-item.correct::after {
             content: none !important;
         }
+
         body.practice-mode .option-item.correct:hover {
             background-color: #f1f3f5 !important;
             border-color: #ced4da !important;
         }
-        body.practice-mode .review-title { display: none !important; }
-        body.practice-mode .practice-title { display: block !important; }
-        .practice-title { display: none; }
-        
+
+        body.practice-mode .review-title {
+            display: none !important;
+        }
+
+        body.practice-mode .practice-title {
+            display: block !important;
+        }
+
+        .practice-title {
+            display: none;
+        }
+
         /* Grading styles */
         .option-item.selected {
             border-color: var(--accent) !important;
             background-color: #eef7fc !important;
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
+
         .option-item.wrong-selection {
             background-color: #f8d7da !important;
             border-color: #f5c6cb !important;
             color: #721c24 !important;
         }
-        .practice-only { display: none !important; }
-        body.practice-mode .practice-only { display: block !important; }
-        body.practice-mode .floating-actions .practice-only { display: flex !important; }
-        
+
+        .practice-only {
+            display: none !important;
+        }
+
+        body.practice-mode .practice-only {
+            display: block !important;
+        }
+
+        body.practice-mode .floating-actions .practice-only {
+            display: flex !important;
+        }
+
         /* New Practice Features */
-        #preTestOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: none; align-items: center; justify-content: center; }
-        body.practice-mode:not(.test-started) #preTestOverlay { display: flex; }
-        body.practice-mode:not(.test-started) .test-content-area { filter: blur(8px); pointer-events: none; user-select: none; }
-        
-        #navigator-container { display: none; }
-        body.practice-mode #navigator-container { display: block; }
-        body.practice-mode #toc-sidebar-container { display: none; }
-        
-        .nav-square { width: 35px; height: 35px; padding: 0; line-height: 35px; text-align: center; font-weight: bold; border-radius: 6px; transition: all 0.2s; }
-        .nav-square.answered { background-color: var(--accent); color: white; border-color: var(--accent); }
-        .nav-square.wrong-ans { background-color: #dc3545; color: white; border-color: #dc3545; }
-        .nav-square.correct-ans { background-color: #198754; color: white; border-color: #198754; }
-        
-        #timerDisplay { font-size: 2rem; font-family: monospace; font-weight: bold; color: var(--primary); }
-    
+        #preTestOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.practice-mode:not(.test-started) #preTestOverlay {
+            display: flex;
+        }
+
+        body.practice-mode:not(.test-started) .test-content-area {
+            filter: blur(8px);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        #navigator-container {
+            display: none;
+        }
+
+        body.practice-mode #navigator-container {
+            display: block;
+        }
+
+        body.practice-mode #toc-sidebar-container {
+            display: none;
+        }
+
+        .nav-square {
+            width: 35px;
+            height: 35px;
+            padding: 0;
+            line-height: 35px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-square.answered {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .nav-square.wrong-ans {
+            background-color: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+
+        .nav-square.correct-ans {
+            background-color: #198754;
+            color: white;
+            border-color: #198754;
+        }
+
+        #timerDisplay {
+            font-size: 2rem;
+            font-family: monospace;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
 
         /* AI-style coaching layer */
         .coach-panel {
@@ -138,12 +408,17 @@
             border-radius: 0 10px 10px 0;
             padding: 1rem 1.1rem;
         }
+
         .coach-panel .coach-title {
             font-weight: 700;
             color: var(--primary);
             margin-bottom: .5rem;
         }
-        .coach-panel .coach-line { margin-bottom: .35rem; }
+
+        .coach-panel .coach-line {
+            margin-bottom: .35rem;
+        }
+
         .keyword-chip {
             display: inline-block;
             background: #e8f4ff;
@@ -155,13 +430,18 @@
             margin: .1rem .15rem .1rem 0;
             font-size: .9rem;
         }
-        body.review-checked .coach-panel { display: block; }
+
+        body.review-checked .coach-panel {
+            display: block;
+        }
+
         body.review-checked .transcript-box mark,
         body.review-checked .reading-box mark {
             background: #fff3cd;
             padding: 0 .18rem;
             border-radius: .25rem;
         }
+
         #scoreSummaryCard {
             display: none;
             position: sticky;
@@ -169,7 +449,11 @@
             z-index: 900;
             margin-bottom: 1.25rem;
         }
-        body.review-checked #scoreSummaryCard { display: block; }
+
+        body.review-checked #scoreSummaryCard {
+            display: block;
+        }
+
         .option-item.correct-answer-reveal {
             background-color: #d1e7dd !important;
             border-color: #badbcc !important;
@@ -177,516 +461,1327 @@
             font-weight: 600 !important;
         }
 
+
+
+        /* CLEAN PRACTICE ENGINE v2 */
+        .option-item {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .option-item:hover {
+            background-color: #f1f3f5;
+            border-color: #ced4da;
+        }
+
+        .option-item.selected {
+            border-color: var(--accent) !important;
+            background-color: #eef7fc !important;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        .option-item.reveal-correct {
+            background-color: #d1e7dd !important;
+            border-color: #badbcc !important;
+            color: #0f5132 !important;
+            font-weight: 600 !important;
+        }
+
+        .option-item.reveal-correct::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            float: right;
+        }
+
+        .option-item.wrong-selection {
+            background-color: #f8d7da !important;
+            border-color: #f5c2c7 !important;
+            color: #842029 !important;
+            font-weight: 600 !important;
+        }
+
+        .option-item.wrong-selection::after {
+            content: '\f00d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            float: right;
+        }
+
+        body.practice-mode .explanation,
+        body.practice-mode .transcript-box,
+        body.practice-mode .completed-section,
+        body.practice-mode .vocab-section,
+        body.practice-mode .takeaway,
+        body.practice-mode .coach-panel {
+            display: none !important;
+        }
+
+        body.practice-mode .option-item[data-correct="true"]::after {
+            content: none !important;
+        }
+
+        .score-summary-card {
+            display: none;
+            background: #ffffff;
+            border-left: 5px solid var(--accent);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        body.review-checked .score-summary-card {
+            display: block;
+        }
+
+        .coach-panel {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            border-radius: 0 8px 8px 0;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .coach-title {
+            font-weight: 700;
+            margin-bottom: .35rem;
+            color: #664d03;
+        }
+
+        .keyword-chip {
+            background: #e7f1ff;
+            border: 1px solid #b6d4fe;
+            color: #084298;
+            border-radius: 999px;
+            padding: .1rem .5rem;
+            display: inline-block;
+        }
     </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#toc-sidebar" data-bs-offset="100" tabindex="0">
 
-<div id="preTestOverlay">
-    <div class="text-center p-5 bg-white rounded shadow-lg" style="max-width: 500px;">
-        <h2 class="fw-bold mb-3"><i class="fas fa-stopwatch text-primary me-2"></i>Ready to Start?</h2>
-        <p class="text-muted mb-4">The timer will begin and the audio will play automatically. Good luck!</p>
-        <button class="btn btn-primary btn-lg px-5 rounded-pill shadow" onclick="startTest()">Start Practice Test</button>
+<body class="practice-mode" data-bs-offset="100" data-bs-spy="scroll" data-bs-target="#toc-sidebar" tabindex="0">
+    <div id="preTestOverlay">
+        <div class="text-center p-5 bg-white rounded shadow-lg" style="max-width: 500px;">
+            <h2 class="fw-bold mb-3"><i class="fas fa-stopwatch text-primary me-2"></i>Ready to Start?</h2>
+            <p class="text-muted mb-4">The timer will begin and the audio will play automatically. Good luck!</p>
+            <button class="btn btn-primary btn-lg px-5 rounded-pill shadow" onclick="startTest()">Start Practice
+                Test</button>
+        </div>
     </div>
-</div>
-
-<div class="hero text-center">
-    <div class="container">
-        <h1 class="display-4 fw-bold mb-3 review-title"><i class="fas fa-book-open me-3"></i>Lesson 12 – Review</h1>
-        <h1 class="display-4 fw-bold mb-3 practice-title"><i class="fas fa-edit me-3"></i>Lesson 12 – Practice Test</h1>
-        <p class="lead mb-4 review-title">Listening & Reading Comprehension with Answers</p>
-        <p class="lead mb-4 practice-title">Test your skills without looking at the answers!</p>
+    <div class="hero text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3 review-title"><i class="fas fa-book-open me-3"></i>Lesson 12 – Review</h1>
+            <h1 class="display-4 fw-bold mb-3 practice-title"><i class="fas fa-edit me-3"></i>Lesson 12 – Practice Test
+            </h1>
+            <p class="lead mb-4 review-title">Listening &amp; Reading Comprehension with Answers</p>
+            <p class="lead mb-4 practice-title">Test your skills without looking at the answers!</p>
+        </div>
     </div>
-</div>
-
-<div class="container mb-5">
-    <div class="row">
-        <div class="col-lg-3 d-none d-lg-block">
-            <div class="sidebar">
-                <!-- Regular Review Sidebar -->
-                <div class="card border-0 shadow-sm" id="toc-sidebar-container">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3"><i class="fas fa-list me-2"></i>Contents</h5>
-                        <nav id="toc-sidebar" class="nav nav-pills flex-column">
-                            <a class="nav-link fw-bold" href="#part3"><i class="fas fa-headphones me-2"></i>Part 3: Listening</a>
-                            <nav class="nav nav-pills flex-column">
-                                <a class="nav-link ms-3 my-1" href="#lc-1">Questions 1–3</a>
-                                <a class="nav-link ms-3 my-1" href="#lc-2">Questions 4–6</a>
-                                <a class="nav-link ms-3 my-1" href="#lc-3">Questions 7–9</a>
-                                <a class="nav-link ms-3 my-1" href="#lc-4">Questions 10–12</a>
-                                <a class="nav-link ms-3 my-1" href="#lc-5">Questions 13–15</a>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-3 d-none d-lg-block">
+                <div class="sidebar">
+                    <!-- Regular Review Sidebar -->
+                    <div class="card border-0 shadow-sm" id="toc-sidebar-container">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3"><i class="fas fa-list me-2"></i>Contents</h5>
+                            <nav class="nav nav-pills flex-column" id="toc-sidebar">
+                                <a class="nav-link fw-bold" href="#part3"><i class="fas fa-headphones me-2"></i>Part 3:
+                                    Listening</a>
+                                <nav class="nav nav-pills flex-column">
+                                    <a class="nav-link ms-3 my-1" href="#lc-1">Questions 1–3</a>
+                                    <a class="nav-link ms-3 my-1" href="#lc-2">Questions 4–6</a>
+                                    <a class="nav-link ms-3 my-1" href="#lc-3">Questions 7–9</a>
+                                    <a class="nav-link ms-3 my-1" href="#lc-4">Questions 10–12</a>
+                                    <a class="nav-link ms-3 my-1" href="#lc-5">Questions 13–15</a>
+                                </nav>
+                                <a class="nav-link fw-bold mt-2" href="#part67"><i
+                                        class="fas fa-book-reader me-2"></i>Part 6-7: Reading</a>
+                                <nav class="nav nav-pills flex-column">
+                                    <a class="nav-link ms-3 my-1" href="#rc-1">Questions 131–134</a>
+                                    <a class="nav-link ms-3 my-1" href="#rc-2">Questions 135–138</a>
+                                    <a class="nav-link ms-3 my-1" href="#rc-3">Questions 139–142</a>
+                                    <a class="nav-link ms-3 my-1" href="#rc-4">Questions 143–146</a>
+                                </nav>
                             </nav>
-                            <a class="nav-link fw-bold mt-2" href="#part67"><i class="fas fa-book-reader me-2"></i>Part 6-7: Reading</a>
-                            <nav class="nav nav-pills flex-column">
-                                <a class="nav-link ms-3 my-1" href="#rc-1">Questions 131–134</a>
-                                <a class="nav-link ms-3 my-1" href="#rc-2">Questions 135–138</a>
-                                <a class="nav-link ms-3 my-1" href="#rc-3">Questions 139–142</a>
-                                <a class="nav-link ms-3 my-1" href="#rc-4">Questions 143–146</a>
-                            </nav>
-                        </nav>
-                    </div>
-                </div>
-
-                <!-- Practice Mode Navigator -->
-                <div class="card border-0 shadow-sm" id="navigator-container">
-                    <div class="card-body text-center">
-                        <div class="mb-4">
-                            <div class="text-muted small fw-bold mb-1">TIME ELAPSED</div>
-                            <div id="timerDisplay">00:00</div>
-                        </div>
-                        <hr>
-                        <h6 class="fw-bold mb-3 mt-3 text-start"><i class="fas fa-th me-2"></i>Question Navigator</h6>
-                        <div id="question-navigator" class="d-flex flex-wrap gap-1 justify-content-start">
-                            <!-- Squares generated by JS -->
-                        </div>
-                        <div class="mt-4 text-start small">
-                            <div class="d-flex align-items-center mb-1"><div class="nav-square border me-2" style="width: 15px; height: 15px; line-height: 15px;"></div> Unanswered</div>
-                            <div class="d-flex align-items-center"><div class="nav-square answered me-2" style="width: 15px; height: 15px; line-height: 15px;"></div> Answered</div>
                         </div>
                     </div>
+                    <!-- Practice Mode Navigator -->
+                    <div class="card border-0 shadow-sm" id="navigator-container">
+                        <div class="card-body text-center">
+                            <div class="mb-4">
+                                <div class="text-muted small fw-bold mb-1">TIME ELAPSED</div>
+                                <div id="timerDisplay">00:00</div>
+                            </div>
+                            <hr />
+                            <h6 class="fw-bold mb-3 mt-3 text-start"><i class="fas fa-th me-2"></i>Question Navigator
+                            </h6>
+                            <div class="d-flex flex-wrap gap-1 justify-content-start" id="question-navigator">
+                                <!-- Squares generated by JS -->
+                            </div>
+                            <div class="mt-4 text-start small">
+                                <div class="d-flex align-items-center mb-1">
+                                    <div class="nav-square border me-2"
+                                        style="width: 15px; height: 15px; line-height: 15px;"></div> Unanswered
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="nav-square answered me-2"
+                                        style="width: 15px; height: 15px; line-height: 15px;"></div> Answered
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 test-content-area">
+                <div class="alert alert-info shadow-sm rounded-4 border-0" id="scoreSummaryCard"></div>
+                <div id="part3">
+                    <h2 class="fw-bold text-primary mb-4 border-bottom pb-2"><i class="fas fa-headphones me-3"></i>Part
+                        3: Listening Comprehension</h2>
+                    <div class="section-card" id="lc-1">
+                        <h3 class="section-title"><i class="fas fa-volume-up me-2"></i>Questions 1–3</h3>
+                        <div class="transcript-box">
+                            <h5><i class="fas fa-comments me-2"></i>Transcript</h5>
+                            <div class="mb-2"><span class="speaker-badge bg-w-am">W-Am</span> Have you made your flight
+                                reservations for the National Marketing Conference yet?</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-cn">M-Cn</span> Actually, I just canceled
+                                them. We had to cut part of our travel budget because sales have been down the past
+                                three months.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-w-am">W-Am</span> But I thought you were
+                                going to lead a question and answer session on online marketing.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-cn">M-Cn</span> I've asked Miguel
+                                Fernandez from the local office to go instead. They're close by so he can fill in for
+                                me.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">1. What are the speakers discussing?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> A budget proposal</li>
+                                <li class="option-item" data-correct="true"><b>B.</b> A conference</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> A marketing report</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> A training session</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The speakers are
+                                talking about flight reservations and budget cuts for the <strong>National Marketing
+                                    Conference</strong>.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">2. Why did the man cancel his plans?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> He is sick</li>
+                                <li class="option-item" data-correct="false"><b>B.</b> He has another meeting</li>
+                                <li class="option-item" data-correct="true"><b>C.</b> His budget has been reduced</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> His flight was delayed</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The man mentions
+                                that they had to <strong>cut part of their travel budget</strong> because sales have
+                                been down.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">3. What did the man ask Miguel Fernandez to do?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> Prepare a report</li>
+                                <li class="option-item" data-correct="false"><b>B.</b> Organize a meeting</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> Contact a client</li>
+                                <li class="option-item" data-correct="true"><b>D.</b> Represent the company at an event
+                                </li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The man asked
+                                Miguel to go to the conference <strong>instead of him</strong>, which means representing
+                                the company at the event.</div>
+                        </div>
+                    </div>
+                    <div class="section-card" id="lc-2">
+                        <h3 class="section-title"><i class="fas fa-volume-up me-2"></i>Questions 4–6</h3>
+                        <div class="transcript-box">
+                            <h5><i class="fas fa-comments me-2"></i>Transcript</h5>
+                            <div class="mb-2"><span class="speaker-badge bg-w-br">W-Br</span> Luis, our summer vacation
+                                package sales were low in June.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-au">M-Au</span> Well, we'll start running
+                                a new advertisement soon. We should see more sales in a few weeks.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-w-br">W-Br</span> Yeah, but summer's almost
+                                over.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-au">M-Au</span> You're right. We really
+                                should have more summer vacations booked by now.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-w-br">W-Br</span> I have an idea. Let's talk
+                                to our hotel and transportation vendors about putting together more two- and three-day
+                                package tours. That'll attract people who just want a short getaway.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-au">M-Au</span> That could work! I'll
+                                start calling our vendors right away and see what they can do.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">4. Where do the speakers most likely work?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="true"><b>A.</b> At a travel agency</li>
+                                <li class="option-item" data-correct="false"><b>B.</b> At a hotel</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> At a restaurant</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> At a transportation company</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The speakers are
+                                discussing summer vacation package <strong>sales</strong> and calling
+                                <strong>hotel/transportation vendors</strong>, which are typical tasks at a
+                                <strong>travel agency</strong>.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">5. What does the woman imply when she says "but summer's almost
+                                over"?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> They should cancel the
+                                    advertisement</li>
+                                <li class="option-item" data-correct="false"><b>B.</b> They should extend the summer
+                                    season</li>
+                                <li class="option-item" data-correct="true"><b>C.</b> An advertisement will come out too
+                                    late</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> The weather has been unusual</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The man suggests
+                                running a new ad, but the woman worries it's too late because summer is ending, implying
+                                the <strong>ad will not be effective</strong>.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">6. What will the man do next?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> Review a report</li>
+                                <li class="option-item" data-correct="false"><b>B.</b> Talk to customers</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> Plan a vacation</li>
+                                <li class="option-item" data-correct="true"><b>D.</b> Call some vendors</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The man
+                                explicitly says, "I'll start <strong>calling our vendors</strong> right away."</div>
+                        </div>
+                    </div>
+                    <div class="section-card" id="lc-3">
+                        <h3 class="section-title"><i class="fas fa-volume-up me-2"></i>Questions 7–9</h3>
+                        <div class="transcript-box">
+                            <h5><i class="fas fa-comments me-2"></i>Transcript</h5>
+                            <div class="mb-2"><span class="speaker-badge bg-w-am">W-Am</span> Hi, Jeff, have you
+                                submitted your article on seabirds to any science journals yet?</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-cn">M-Cn</span> Yes, in fact, I just heard
+                                yesterday that Science Monthly will publish my paper in their next issue.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-w-am">W-Am</span> Congratulations! I have a
+                                subscription to that journal—I can't wait to read your article when it comes out. This
+                                must be a big step for your research project.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-cn">M-Cn</span> It's definitely good news.
+                                People will be able to read about my work. Then, when we meet at the summer conference,
+                                we can have some good discussions about the project.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">7. Who most likely is the man?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="true"><b>A.</b> A researcher</li>
+                                <li class="option-item" data-correct="false"><b>B.</b> A journalist</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> A professor</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> A student</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The man mentions
+                                his <strong>article on seabirds</strong> and his <strong>research project</strong>,
+                                indicating he is a <strong>researcher</strong>.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">8. Why does the woman congratulate the man?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> He received a promotion</li>
+                                <li class="option-item" data-correct="true"><b>B.</b> His article will be published</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> He completed a project</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> He won an award</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The woman
+                                congratulates him because <strong>Science Monthly will publish his paper</strong> in
+                                their next issue.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">9. What does the man plan to do this summer?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> Travel abroad</li>
+                                <li class="option-item" data-correct="true"><b>B.</b> Attend a conference</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> Start a new project</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> Teach a class</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The man
+                                mentions, "when we <strong>meet at the summer conference</strong>," indicating his plan.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-card" id="lc-4">
+                        <h3 class="section-title"><i class="fas fa-volume-up me-2"></i>Questions 10–12</h3>
+                        <div class="transcript-box">
+                            <h5><i class="fas fa-comments me-2"></i>Transcript</h5>
+                            <div class="mb-2"><span class="speaker-badge bg-w-am">W-Am</span> Hello. My name is Heidi
+                                Park, and I'm a reporter from Modern Architect Magazine. I'm here to see Mr. Mitra. I'm
+                                supposed to interview him at eleven thirty.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-cn">M-Cn</span> OK. I'll let him know
+                                you're here. In the meantime, can you please sign in? We keep track of all visitors'
+                                appointments.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-w-am">W-Am</span> Sure. No problem.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-cn">M-Cn</span> Mr. Mitra is on his way
+                                down to meet you. Oh, here he is now! Mr. Mitra, this is Heidi Park, your eleven thirty
+                                appointment.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-au">M-Au</span> Hi, Ms. Park. Thanks for
+                                coming. I'm so sorry, but I need a few more minutes before we meet. I have to respond to
+                                an urgent phone call.</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">10. Why is the woman meeting Mr. Mitra?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="true"><b>A.</b> To conduct an interview</li>
+                                <li class="option-item" data-correct="false"><b>B.</b> To attend a meeting</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> To apply for a job</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> To deliver a document</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The woman says
+                                she is a reporter and is "supposed to <strong>interview him</strong> at eleven thirty."
+                            </div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">11. What does the woman agree to do?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> Wait in the lobby</li>
+                                <li class="option-item" data-correct="true"><b>B.</b> Sign in for a visit</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> Call back later</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> Fill out a form</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The man asks her
+                                to <strong>sign in</strong>, and she responds, "Sure. No problem."</div>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">12. Why does Mr. Mitra apologize?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> He forgot about the appointment
+                                </li>
+                                <li class="option-item" data-correct="false"><b>B.</b> He is leaving early</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> He made a mistake</li>
+                                <li class="option-item" data-correct="true"><b>D.</b> He will be late for a meeting</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> Mr. Mitra says,
+                                "I need a few more minutes before we meet," which means he will be <strong>late for
+                                    their meeting</strong>.</div>
+                        </div>
+                    </div>
+                    <div class="section-card" id="lc-5">
+                        <h3 class="section-title"><i class="fas fa-volume-up me-2"></i>Questions 13–15</h3>
+                        <div class="transcript-box">
+                            <h5><i class="fas fa-comments me-2"></i>Transcript</h5>
+                            <div class="mb-2"><span class="speaker-badge bg-w-am">W-Am</span> Hi, Hank. I'm back from
+                                our Product Development Lab. They're wondering how the taste-test surveys for our new
+                                flavors of juice drinks are coming along.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-cn">M-Cn</span> Oh, our market research
+                                firm sent us 30 completed surveys from another supermarket testing site, just this
+                                morning.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-w-am">W-Am</span> Great. Why don't you get
+                                in touch with our advertising agency? If the survey results are positive, they can be
+                                used in our new ads.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-cn">M-Cn</span> Sure—so far the feedback
+                                seems good. These 30 surveys came from the Medford Park Supermarket. So we're just
+                                waiting on one more set of results.</div>
+                            <div class="mb-2"><span class="speaker-badge bg-w-am">W-Am</span> OK. Which supermarket
+                                still hasn't sent us their surveys?</div>
+                            <div class="mb-2"><span class="speaker-badge bg-m-cn">M-Cn</span> That would be Burnside,
+                                but they received their product samples late. They expect to send us all their surveys
+                                tomorrow.</div>
+                        </div>
+                        <div class="text-center my-4"><img alt="Graphic" class="img-fluid rounded shadow-sm"
+                                src="assets/12_15.png" style="max-width: 400px;" /></div>
+                        <div class="question-item">
+                            <div class="question-text">13. Where do the speakers most likely work?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> At a supermarket</li>
+                                <li class="option-item" data-correct="true"><b>B.</b> At a beverage company</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> At a research institute</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> At an advertising agency</li>
+                            </ul>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">14. What does the woman suggest the man do?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="false"><b>A.</b> Contact a supermarket</li>
+                                <li class="option-item" data-correct="false"><b>B.</b> Review survey results</li>
+                                <li class="option-item" data-correct="true"><b>C.</b> Contact an advertising agency</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> Develop a new product</li>
+                            </ul>
+                        </div>
+                        <div class="question-item">
+                            <div class="question-text">15. Look at the graphic. How many surveys are the speakers
+                                waiting to receive?</div>
+                            <ul class="option-list">
+                                <li class="option-item" data-correct="true"><b>A.</b> 15</li>
+                                <li class="option-item" data-correct="false"><b>B.</b> 20</li>
+                                <li class="option-item" data-correct="false"><b>C.</b> 25</li>
+                                <li class="option-item" data-correct="false"><b>D.</b> 30</li>
+                            </ul>
+                            <div class="explanation"><b><i
+                                        class="fas fa-lightbulb text-warning me-2"></i>Explanation:</b> The man mentions
+                                that they are still waiting for surveys from the <strong>Burnside</strong> supermarket.
+                                According to the graphic, the number of surveys for Burnside is <strong>15</strong>.
+                                Therefore, the speakers are waiting to receive 15 surveys.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5" id="part67">
+                    <h2 class="fw-bold text-primary mb-4 border-bottom pb-2"><i class="fas fa-book-reader me-3"></i>Part
+                        6-7: Reading Comprehension</h2>
+                    <div class="section-card" id="rc-1">
+                        <h3 class="section-title"><i class="fas fa-file-alt me-2"></i>Questions 131–134</h3>
+                        <h5 class="mt-4 mb-3"><i class="fas fa-align-left me-2 text-primary"></i>Passage</h5>
+                        <div class="reading-box">**Thank you for shopping with Danforth Fashions online.**
+                            &gt;
+                            Our quality-control team carefully inspects all products <span
+                                class="blank-space">(131)</span> packaging to ensure customer satisfaction. <span
+                                class="blank-space">(132)</span>. If not, we make exchanges or returns easy. Simply
+                            contact us at `service@danforthfashions.com` if you need a different size, a color, or
+                            pattern—or if you are dissatisfied for any reason. Your exchange <span
+                                class="blank-space">(133)</span> right away.
+                            &gt;
+                            To return an item for a refund, use the prepaid return shipping label included with your
+                            order and send it back to us in its original packaging unused and undamaged. We issue
+                            refunds to the original method of payment, <span class="blank-space">(134)</span> the return
+                            shipping fee.</div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 131</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> in case </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> as much as </li>
+                                            <li class="option-item" data-correct="true"><b>C)</b> prior to </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> in keeping with</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 132</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="true"><b>A)</b> We hope you are
+                                                entirely pleased with your purchase. </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> We expect to be
+                                                redesigning our Website this summer. </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> We value all of our
+                                                loyal customers. </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> We noticed that your
+                                                billing address has changed.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 133</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="true"><b>A)</b> will be processed
+                                            </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> was processed </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> is processing </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> to be processing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 134</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> past </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> above </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> aboard </li>
+                                            <li class="option-item" data-correct="true"><b>D)</b> minus</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="completed-section">
+                            <h5 class="mt-4 mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Completed Version
+                            </h5>
+                            <div class="reading-box reading-completed">**Thank you for shopping with Danforth Fashions
+                                online.**
+                                &gt;
+                                Our quality-control team carefully inspects all products <strong
+                                    class="text-success border-bottom border-success pb-1">prior to <small
+                                        class="text-muted">(131)</small></strong> packaging to ensure customer
+                                satisfaction. <strong class="text-success border-bottom border-success pb-1">We hope you
+                                    are entirely pleased with your purchase. <small
+                                        class="text-muted">(132)</small></strong>. If not, we make exchanges or returns
+                                easy. Simply contact us at `service@danforthfashions.com` if you need a different size,
+                                a color, or pattern—or if you are dissatisfied for any reason. Your exchange <strong
+                                    class="text-success border-bottom border-success pb-1">will be processed <small
+                                        class="text-muted">(133)</small></strong> right away.
+                                &gt;
+                                To return an item for a refund, use the prepaid return shipping label included with your
+                                order and send it back to us in its original packaging unused and undamaged. We issue
+                                refunds to the original method of payment, <strong
+                                    class="text-success border-bottom border-success pb-1">minus <small
+                                        class="text-muted">(134)</small></strong> the return shipping fee.</div>
+                        </div>
+                        <div class="vocab-section">
+                            <h5 class="mb-3 text-primary"><i class="fas fa-spell-check me-2"></i>Vocabulary &amp;
+                                Analysis</h5>
+                            <ul class="vocab-list"></ul>
+                        </div>
+                        <div class="takeaway">
+                            <h5 class="mb-3"><i class="fas fa-key me-2"></i>Key Takeaways</h5>
+                            <ul class="mb-0">
+                                <li class="mb-2"><strong>Exchanges</strong> (đổi hàng) are processed immediately for
+                                    size/color issues.</li>
+                                <li class="mb-2"><strong>Refunds</strong> (hoàn tiền) require the item to be unused,
+                                    undamaged, and in original packaging.</li>
+                                <li class="mb-2">The <strong>shipping fee</strong> will be deducted from the total
+                                    refund amount (*minus the return shipping fee*).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section-card" id="rc-2">
+                        <h3 class="section-title"><i class="fas fa-file-alt me-2"></i>Questions 135–138</h3>
+                        <h5 class="mt-4 mb-3"><i class="fas fa-align-left me-2 text-primary"></i>Passage</h5>
+                        <div class="reading-box">**Attention, Alden-Apper Industries Employees!**
+                            &gt;
+                            Please remember that the switch to our new e-mail software will begin at 11:00 P.M. on
+                            Sunday, May 2. All <span class="blank-space">(135)</span> information in your account,
+                            including contacts and calendar events, will be moved to the new system by 4:00 A.M. on
+                            Monday, May 3.
+                            &gt;
+                            Though we are working diligently to anticipate and provide solutions for all potential
+                            issues, some employees may experience difficulty <span class="blank-space">(136)</span>
+                            attempting to log in to their accounts after the switch. In addition, there is a remote
+                            possibility that some information may be lost. <span class="blank-space">(137)</span>, be
+                            sure to back up any critical e-mail files as soon as possible. <span
+                                class="blank-space">(138)</span>.
+                            &gt;
+                            A training session will be scheduled next week to familiarize employees with key functions
+                            of the new software.
+                            &gt;
+                            If you need assistance with this, please contact the IT department.</div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 135</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> existed </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> existence </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> to exist </li>
+                                            <li class="option-item" data-correct="true"><b>D)</b> existing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 136</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="true"><b>A)</b> when </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> plus </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> already </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> whose</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 137</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> Previously </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> Otherwise </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> Even so </li>
+                                            <li class="option-item" data-correct="true"><b>D)</b> For this reason</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 138</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> The new software will
+                                                be ordered this week. </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> The current system
+                                                will be reactivated in June. </li>
+                                            <li class="option-item" data-correct="true"><b>C)</b> If you need assistance
+                                                with this, please contact the IT department. </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> In that case, you
+                                                must complete the installation yourself.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="completed-section">
+                            <h5 class="mt-4 mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Completed Version
+                            </h5>
+                            <div class="reading-box reading-completed">**Attention, Alden-Apper Industries Employees!**
+                                &gt;
+                                Please remember that the switch to our new e-mail software will begin at **11:00 P.M. on
+                                Sunday, May 2**. All <strong
+                                    class="text-success border-bottom border-success pb-1">existing <small
+                                        class="text-muted">(135)</small></strong> information in your account, including
+                                contacts and calendar events, will be moved to the new system by **4:00 A.M. on Monday,
+                                May 3**.
+                                &gt;
+                                Though we are working diligently to anticipate and provide solutions for all potential
+                                issues, some employees may experience difficulty <strong
+                                    class="text-success border-bottom border-success pb-1">when <small
+                                        class="text-muted">(136)</small></strong> attempting to log in to their accounts
+                                after the switch. In addition, there is a remote possibility that some information may
+                                be lost. <strong class="text-success border-bottom border-success pb-1">For this reason
+                                    <small class="text-muted">(137)</small></strong>, be sure to **back up any critical
+                                e-mail files** as soon as possible. <strong
+                                    class="text-success border-bottom border-success pb-1">If you need assistance with
+                                    this, please contact the IT department. <small
+                                        class="text-muted">(138)</small></strong>.
+                                &gt;
+                                A training session will be scheduled next week to familiarize employees with key
+                                functions of the new software.
+                                &gt;
+                                If you need assistance with this, please contact the IT department.</div>
+                        </div>
+                        <div class="vocab-section">
+                            <h5 class="mb-3 text-primary"><i class="fas fa-spell-check me-2"></i>Vocabulary &amp;
+                                Analysis</h5>
+                            <ul class="vocab-list"></ul>
+                        </div>
+                        <div class="takeaway">
+                            <h5 class="mb-3"><i class="fas fa-key me-2"></i>Key Takeaways</h5>
+                            <ul class="mb-0">
+                                <li class="mb-2">The email system migration takes place between <strong>Sunday night and
+                                        Monday morning</strong>.</li>
+                                <li class="mb-2"><strong>Backing up files</strong> is strongly recommended as a
+                                    precaution against data loss.</li>
+                                <li class="mb-2">Training sessions will be provided to help staff use the new software.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section-card" id="rc-3">
+                        <h3 class="section-title"><i class="fas fa-file-alt me-2"></i>Questions 139–142</h3>
+                        <h5 class="mt-4 mb-3"><i class="fas fa-align-left me-2 text-primary"></i>Passage</h5>
+                        <div class="reading-box">**Dear Director Yoshida,**
+                            &gt;
+                            Thank you for your school's interest in visiting our farm next month. Please note that
+                            children must be at least six years old to visit and tour the farm. <span
+                                class="blank-space">(139)</span>. I have enclosed a list of the <span
+                                class="blank-space">(140)</span> activities available for our young visitors. Two of
+                            these <span class="blank-space">(141)</span> must be scheduled in advance. They are a
+                            cheese-making class and an introduction to beekeeping. Both are very popular with our
+                            visitors.
+                            &gt;
+                            Please let <span class="blank-space">(142)</span> know your selection by early next week. I
+                            look forward to welcoming your group soon!
+                            &gt;
+                            Sincerely,
+                            **Annabel Romero**
+                            Coordinator, Merrytree Family Farm</div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 139</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> In the event of bad
+                                                weather, the animals will be inside. </li>
+                                            <li class="option-item" data-correct="true"><b>B)</b> There are no
+                                                exceptions to this policy. </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> Ones younger than
+                                                that can find much to enjoy. </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> This fee includes
+                                                lunch and a small souvenir.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 140</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> legal </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> artistic </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> athletic </li>
+                                            <li class="option-item" data-correct="true"><b>D)</b> educational</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 141</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="true"><b>A)</b> events </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> plays </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> treatments </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> trips</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 142</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> they </li>
+                                            <li class="option-item" data-correct="true"><b>B)</b> me </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> her </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> one</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="completed-section">
+                            <h5 class="mt-4 mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Completed Version
+                            </h5>
+                            <div class="reading-box reading-completed">**To:** Director Yoshida
+                                **From:** Annabel Romero <br /><br />Dear Director Yoshida,
+                                &gt;
+                                Thank you for your school's interest in visiting our farm next month. Please note that
+                                children must be at least six years old to visit and tour the farm. <strong
+                                    class="text-success border-bottom border-success pb-1">There are no exceptions to
+                                    this policy. <small class="text-muted">(139)</small></strong>. I have enclosed a
+                                list of the <strong class="text-success border-bottom border-success pb-1">educational
+                                    <small class="text-muted">(140)</small></strong> activities available for our young
+                                visitors. Two of these <strong
+                                    class="text-success border-bottom border-success pb-1">events <small
+                                        class="text-muted">(141)</small></strong> must be scheduled in advance. They are
+                                a cheese-making class and an introduction to beekeeping. Both are very popular with our
+                                visitors.
+                                &gt;
+                                Please let <strong class="text-success border-bottom border-success pb-1">me <small
+                                        class="text-muted">(142)</small></strong> know your selection by early next
+                                week. I look forward to welcoming your group soon!
+                                &gt;
+                                Sincerely,
+                                **Annabel Romero**
+                                Coordinator, Merrytree Family Farm</div>
+                        </div>
+                        <div class="vocab-section">
+                            <h5 class="mb-3 text-primary"><i class="fas fa-spell-check me-2"></i>Vocabulary &amp;
+                                Analysis</h5>
+                            <ul class="vocab-list"></ul>
+                        </div>
+                        <div class="takeaway">
+                            <h5 class="mb-3"><i class="fas fa-key me-2"></i>Key Takeaways</h5>
+                            <ul class="mb-0">
+                                <li class="mb-2">The farm tour has a <strong>strict age policy</strong> (minimum 6 years
+                                    old).</li>
+                                <li class="mb-2">Special activities like cheese-making and beekeeping require
+                                    <strong>prior booking</strong>.</li>
+                                <li class="mb-2">A list of available educational activities is provided in the letter.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section-card" id="rc-4">
+                        <h3 class="section-title"><i class="fas fa-file-alt me-2"></i>Questions 143–146</h3>
+                        <h5 class="mt-4 mb-3"><i class="fas fa-align-left me-2 text-primary"></i>Passage</h5>
+                        <div class="reading-box">**Jamaica National Tourist Organization Offers Free Cultural Passes**
+                            &gt;
+                            The Jamaica National Tourist Organization (JAMTO) announces an exciting new program that
+                            provides free entry to a variety of cultural attractions. The program is sponsored by the
+                            JAMTO <span class="blank-space">(143)</span> the hotels and businesses listed on the back of
+                            this flyer. Together, we <span class="blank-space">(144)</span> you to take advantage of
+                            some of the finest cultural and educational experiences that Jamaica has to offer. <span
+                                class="blank-space">(145)</span> attractions include the Caribbean National Gardens,
+                            Montego Bay Potters Gallery, Jamaican Music Experience, and many others.
+                            &gt;
+                            To obtain your pass, visit our Web site at
+                            [www.jamto.org/freepass](http://www.jamto.org/freepass) or stop by any JAMTO office. One
+                            pass is valid for up to five people. <span class="blank-space">(146)</span>.</div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 143</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> despite </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> instead of </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> except for </li>
+                                            <li class="option-item" data-correct="true"><b>D)</b> along with</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 144</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="true"><b>A)</b> invite </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> invited </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> may invite </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> were inviting</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 145</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> Early </li>
+                                            <li class="option-item" data-correct="false"><b>B)</b> Past </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> Affordable </li>
+                                            <li class="option-item" data-correct="true"><b>D)</b> Participating</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card h-100 shadow-sm border-0">
+                                    <div class="card-header bg-primary text-white fw-bold">Question 146</div>
+                                    <div class="card-body">
+                                        <ul class="option-list">
+                                            <li class="option-item" data-correct="false"><b>A)</b> Thank you for your
+                                                order. </li>
+                                            <li class="option-item" data-correct="true"><b>B)</b> It can be used for
+                                                three days. </li>
+                                            <li class="option-item" data-correct="false"><b>C)</b> The bus runs only on
+                                                weekdays. </li>
+                                            <li class="option-item" data-correct="false"><b>D)</b> All major credit
+                                                cards are accepted.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="completed-section">
+                            <h5 class="mt-4 mb-3"><i class="fas fa-check-circle me-2 text-success"></i>Completed Version
+                            </h5>
+                            <div class="reading-box reading-completed">**Jamaica National Tourist Organization Offers
+                                Free Cultural Passes**
+                                &gt;
+                                The Jamaica National Tourist Organization (JAMTO) announces an exciting new program that
+                                provides free entry to a variety of cultural attractions. The program is sponsored by
+                                the JAMTO <strong class="text-success border-bottom border-success pb-1">along with
+                                    <small class="text-muted">(143)</small></strong> the hotels and businesses listed on
+                                the back of this flyer.
+                                &gt;
+                                Together, we <strong class="text-success border-bottom border-success pb-1">invite
+                                    <small class="text-muted">(144)</small></strong> you to take advantage of some of
+                                the finest cultural and educational experiences that Jamaica has to offer. <strong
+                                    class="text-success border-bottom border-success pb-1">Participating <small
+                                        class="text-muted">(145)</small></strong> attractions include:
+                                Caribbean National Gardens
+                                Montego Bay Potters Gallery
+                                Jamaican Music Experience
+                                And many others.
+                                &gt;
+                                To obtain your pass, visit our website at
+                                [www.jamto.org/freepass](http://www.jamto.org/freepass) or stop by any JAMTO office. One
+                                pass is valid for up to **five people**. <strong
+                                    class="text-success border-bottom border-success pb-1">It can be used for three
+                                    days. <small class="text-muted">(146)</small></strong>.</div>
+                        </div>
+                        <div class="vocab-section">
+                            <h5 class="mb-3 text-primary"><i class="fas fa-spell-check me-2"></i>Vocabulary &amp;
+                                Analysis</h5>
+                            <ul class="vocab-list"></ul>
+                        </div>
+                        <div class="takeaway">
+                            <h5 class="mb-3"><i class="fas fa-key me-2"></i>Key Takeaways</h5>
+                            <ul class="mb-0">
+                                <li class="mb-2">The program offers <strong>free access</strong> to multiple cultural
+                                    spots in Jamaica.</li>
+                                <li class="mb-2">Passes can be retrieved either <strong>online</strong> or at physical
+                                    offices.</li>
+                                <li class="mb-2">Each pass covers a group of up to <strong>5 people</strong> for a
+                                    duration of <strong>3 days</strong>.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5 mb-5 practice-only"><button
+                        class="btn btn-success btn-lg shadow-sm fw-bold px-5 py-3 rounded-pill"
+                        onclick="checkAnswers()"><i class="fas fa-check-double me-2"></i>Submit &amp; Check
+                        Answers</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="audio-player-container collapse d-md-block" id="audioPlayerContainer">
+        <div class="container d-flex flex-column align-items-center">
+            <div class="text-muted small mb-2 fw-bold"><i class="fas fa-music me-2"></i>Listening Audio</div>
+            <div class="d-flex align-items-center w-100 justify-content-center" style="max-width: 600px; gap: 10px;">
+                <button
+                    class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center"
+                    data-bs-toggle="tooltip" onclick="skipAudio(-5)" style="width: 36px; height: 36px; flex-shrink: 0;"
+                    title="Rewind 5s">
+                    <i class="fas fa-undo"></i>
+                </button>
+                <audio class="flex-grow-1" controls="" id="listeningAudio">
+                    <source src="assets/audio/12.mp4" type="audio/mp4" />
+                    <source src="assets/audio/12.mp3" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
+                <button
+                    class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center"
+                    data-bs-toggle="tooltip" onclick="skipAudio(5)" style="width: 36px; height: 36px; flex-shrink: 0;"
+                    title="Forward 5s">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="floating-actions">
+        <button class="btn btn-warning text-dark" data-bs-placement="left" data-bs-toggle="tooltip"
+            onclick="showHistory()" title="View History">
+            <i class="fas fa-history"></i>
+        </button>
+        <button class="btn btn-success text-white practice-only" data-bs-placement="left" data-bs-toggle="tooltip"
+            onclick="checkAnswers()" title="Submit &amp; Check Answers">
+            <i class="fas fa-check-double"></i>
+        </button>
+        <button aria-controls="audioPlayerContainer" aria-expanded="false" class="btn btn-info text-white d-md-none"
+            data-bs-placement="left" data-bs-target="#audioPlayerContainer" data-bs-toggle="collapse"
+            title="Toggle Audio Player" type="button">
+            <i class="fas fa-music"></i>
+        </button>
+        <button class="btn btn-primary text-white" data-bs-placement="left" data-bs-toggle="tooltip" id="modeToggleBtn"
+            onclick="toggleMode()" title="Switch to Practice Mode">
+            <i class="fas fa-pen"></i>
+        </button>
+        <button class="btn btn-secondary text-white" data-bs-placement="left" data-bs-toggle="tooltip"
+            onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+    <!-- History Modal -->
+    <div aria-hidden="true" aria-labelledby="historyModalLabel" class="modal fade" id="historyModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title fw-bold" id="historyModalLabel"><i class="fas fa-history me-2"></i>Practice
+                        History</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped text-center align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Date &amp; Time</th>
+                                    <th>Score</th>
+                                    <th>Time Taken</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTableBody">
+                                <!-- History populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-danger" onclick="clearHistory()" type="button"><i
+                            class="fas fa-trash me-2"></i>Clear History</button>
+                    <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-9 test-content-area">
-            <div id="scoreSummaryCard" class="alert alert-info shadow-sm rounded-4 border-0"></div>
-            <div id='part3'><h2 class='fw-bold text-primary mb-4 border-bottom pb-2'><i class='fas fa-headphones me-3'></i>Part 3: Listening Comprehension</h2><div id='lc-1' class='section-card'><h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 1–3</h3><div class='transcript-box'><h5><i class='fas fa-comments me-2'></i>Transcript</h5><div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Have you made your flight reservations for the National Marketing Conference yet?</div><div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> Actually, I just canceled them. We had to cut part of our travel budget because sales have been down the past three months.</div><div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> But I thought you were going to lead a question and answer session on online marketing.</div><div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> I've asked Miguel Fernandez from the local office to go instead. They're close by so he can fill in for me.</div></div><div class='question-item'><div class='question-text'>1. What are the speakers discussing?</div><ul class='option-list'><li class='option-item '><b>A.</b> A budget proposal</li><li class='option-item correct'><b>B.</b> A conference</li><li class='option-item '><b>C.</b> A marketing report</li><li class='option-item '><b>D.</b> A training session</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The speakers are talking about flight reservations and budget cuts for the <strong>National Marketing Conference</strong>.</div></div><div class='question-item'><div class='question-text'>2. Why did the man cancel his plans?</div><ul class='option-list'><li class='option-item '><b>A.</b> He is sick</li><li class='option-item '><b>B.</b> He has another meeting</li><li class='option-item correct'><b>C.</b> His budget has been reduced</li><li class='option-item '><b>D.</b> His flight was delayed</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man mentions that they had to <strong>cut part of their travel budget</strong> because sales have been down.</div></div><div class='question-item'><div class='question-text'>3. What did the man ask Miguel Fernandez to do?</div><ul class='option-list'><li class='option-item '><b>A.</b> Prepare a report</li><li class='option-item '><b>B.</b> Organize a meeting</li><li class='option-item '><b>C.</b> Contact a client</li><li class='option-item correct'><b>D.</b> Represent the company at an event</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man asked Miguel to go to the conference <strong>instead of him</strong>, which means representing the company at the event.</div></div></div><div id='lc-2' class='section-card'><h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 4–6</h3><div class='transcript-box'><h5><i class='fas fa-comments me-2'></i>Transcript</h5><div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> Luis, our summer vacation package sales were low in June.</div><div class='mb-2'><span class='speaker-badge bg-m-au'>M-Au</span> Well, we'll start running a new advertisement soon. We should see more sales in a few weeks.</div><div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> Yeah, but summer's almost over.</div><div class='mb-2'><span class='speaker-badge bg-m-au'>M-Au</span> You're right. We really should have more summer vacations booked by now.</div><div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> I have an idea. Let's talk to our hotel and transportation vendors about putting together more two- and three-day package tours. That'll attract people who just want a short getaway.</div><div class='mb-2'><span class='speaker-badge bg-m-au'>M-Au</span> That could work! I'll start calling our vendors right away and see what they can do.</div></div><div class='question-item'><div class='question-text'>4. Where do the speakers most likely work?</div><ul class='option-list'><li class='option-item correct'><b>A.</b> At a travel agency</li><li class='option-item '><b>B.</b> At a hotel</li><li class='option-item '><b>C.</b> At a restaurant</li><li class='option-item '><b>D.</b> At a transportation company</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The speakers are discussing summer vacation package <strong>sales</strong> and calling <strong>hotel/transportation vendors</strong>, which are typical tasks at a <strong>travel agency</strong>.</div></div><div class='question-item'><div class='question-text'>5. What does the woman imply when she says "but summer's almost over"?</div><ul class='option-list'><li class='option-item '><b>A.</b> They should cancel the advertisement</li><li class='option-item '><b>B.</b> They should extend the summer season</li><li class='option-item correct'><b>C.</b> An advertisement will come out too late</li><li class='option-item '><b>D.</b> The weather has been unusual</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man suggests running a new ad, but the woman worries it's too late because summer is ending, implying the <strong>ad will not be effective</strong>.</div></div><div class='question-item'><div class='question-text'>6. What will the man do next?</div><ul class='option-list'><li class='option-item '><b>A.</b> Review a report</li><li class='option-item '><b>B.</b> Talk to customers</li><li class='option-item '><b>C.</b> Plan a vacation</li><li class='option-item correct'><b>D.</b> Call some vendors</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man explicitly says, "I'll start <strong>calling our vendors</strong> right away."</div></div></div><div id='lc-3' class='section-card'><h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 7–9</h3><div class='transcript-box'><h5><i class='fas fa-comments me-2'></i>Transcript</h5><div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Hi, Jeff, have you submitted your article on seabirds to any science journals yet?</div><div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> Yes, in fact, I just heard yesterday that Science Monthly will publish my paper in their next issue.</div><div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Congratulations! I have a subscription to that journal—I can't wait to read your article when it comes out. This must be a big step for your research project.</div><div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> It's definitely good news. People will be able to read about my work. Then, when we meet at the summer conference, we can have some good discussions about the project.</div></div><div class='question-item'><div class='question-text'>7. Who most likely is the man?</div><ul class='option-list'><li class='option-item correct'><b>A.</b> A researcher</li><li class='option-item '><b>B.</b> A journalist</li><li class='option-item '><b>C.</b> A professor</li><li class='option-item '><b>D.</b> A student</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man mentions his <strong>article on seabirds</strong> and his <strong>research project</strong>, indicating he is a <strong>researcher</strong>.</div></div><div class='question-item'><div class='question-text'>8. Why does the woman congratulate the man?</div><ul class='option-list'><li class='option-item '><b>A.</b> He received a promotion</li><li class='option-item correct'><b>B.</b> His article will be published</li><li class='option-item '><b>C.</b> He completed a project</li><li class='option-item '><b>D.</b> He won an award</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The woman congratulates him because <strong>Science Monthly will publish his paper</strong> in their next issue.</div></div><div class='question-item'><div class='question-text'>9. What does the man plan to do this summer?</div><ul class='option-list'><li class='option-item '><b>A.</b> Travel abroad</li><li class='option-item correct'><b>B.</b> Attend a conference</li><li class='option-item '><b>C.</b> Start a new project</li><li class='option-item '><b>D.</b> Teach a class</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man mentions, "when we <strong>meet at the summer conference</strong>," indicating his plan.</div></div></div><div id='lc-4' class='section-card'><h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 10–12</h3><div class='transcript-box'><h5><i class='fas fa-comments me-2'></i>Transcript</h5><div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Hello. My name is Heidi Park, and I'm a reporter from Modern Architect Magazine. I'm here to see Mr. Mitra. I'm supposed to interview him at eleven thirty.</div><div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> OK. I'll let him know you're here. In the meantime, can you please sign in? We keep track of all visitors' appointments.</div><div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Sure. No problem.</div><div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> Mr. Mitra is on his way down to meet you. Oh, here he is now! Mr. Mitra, this is Heidi Park, your eleven thirty appointment.</div><div class='mb-2'><span class='speaker-badge bg-m-au'>M-Au</span> Hi, Ms. Park. Thanks for coming. I'm so sorry, but I need a few more minutes before we meet. I have to respond to an urgent phone call.</div></div><div class='question-item'><div class='question-text'>10. Why is the woman meeting Mr. Mitra?</div><ul class='option-list'><li class='option-item correct'><b>A.</b> To conduct an interview</li><li class='option-item '><b>B.</b> To attend a meeting</li><li class='option-item '><b>C.</b> To apply for a job</li><li class='option-item '><b>D.</b> To deliver a document</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The woman says she is a reporter and is "supposed to <strong>interview him</strong> at eleven thirty."</div></div><div class='question-item'><div class='question-text'>11. What does the woman agree to do?</div><ul class='option-list'><li class='option-item '><b>A.</b> Wait in the lobby</li><li class='option-item correct'><b>B.</b> Sign in for a visit</li><li class='option-item '><b>C.</b> Call back later</li><li class='option-item '><b>D.</b> Fill out a form</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man asks her to <strong>sign in</strong>, and she responds, "Sure. No problem."</div></div><div class='question-item'><div class='question-text'>12. Why does Mr. Mitra apologize?</div><ul class='option-list'><li class='option-item '><b>A.</b> He forgot about the appointment</li><li class='option-item '><b>B.</b> He is leaving early</li><li class='option-item '><b>C.</b> He made a mistake</li><li class='option-item correct'><b>D.</b> He will be late for a meeting</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> Mr. Mitra says, "I need a few more minutes before we meet," which means he will be <strong>late for their meeting</strong>.</div></div></div><div id='lc-5' class='section-card'><h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 13–15</h3><div class='transcript-box'><h5><i class='fas fa-comments me-2'></i>Transcript</h5><div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Hi, Hank. I'm back from our Product Development Lab. They're wondering how the taste-test surveys for our new flavors of juice drinks are coming along.</div><div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> Oh, our market research firm sent us 30 completed surveys from another supermarket testing site, just this morning.</div><div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Great. Why don't you get in touch with our advertising agency? If the survey results are positive, they can be used in our new ads.</div><div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> Sure—so far the feedback seems good. These 30 surveys came from the Medford Park Supermarket. So we're just waiting on one more set of results.</div><div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> OK. Which supermarket still hasn't sent us their surveys?</div><div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> That would be Burnside, but they received their product samples late. They expect to send us all their surveys tomorrow.</div></div><div class='text-center my-4'><img src='assets/12_15.png' class='img-fluid rounded shadow-sm' alt='Graphic' style='max-width: 400px;'></div><div class='question-item'><div class='question-text'>13. Where do the speakers most likely work?</div><ul class='option-list'><li class='option-item '><b>A.</b> At a supermarket</li><li class='option-item correct'><b>B.</b> At a beverage company</li><li class='option-item '><b>C.</b> At a research institute</li><li class='option-item '><b>D.</b> At an advertising agency</li></ul></div><div class='question-item'><div class='question-text'>14. What does the woman suggest the man do?</div><ul class='option-list'><li class='option-item '><b>A.</b> Contact a supermarket</li><li class='option-item '><b>B.</b> Review survey results</li><li class='option-item correct'><b>C.</b> Contact an advertising agency</li><li class='option-item '><b>D.</b> Develop a new product</li></ul></div><div class='question-item'><div class='question-text'>15. Look at the graphic. How many surveys are the speakers waiting to receive?</div><ul class='option-list'><li class='option-item correct'><b>A.</b> 15</li><li class='option-item '><b>B.</b> 20</li><li class='option-item '><b>C.</b> 25</li><li class='option-item '><b>D.</b> 30</li></ul><div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man mentions that they are still waiting for surveys from the <strong>Burnside</strong> supermarket. According to the graphic, the number of surveys for Burnside is <strong>15</strong>. Therefore, the speakers are waiting to receive 15 surveys.</div></div></div></div><div id='part67' class='mt-5'><h2 class='fw-bold text-primary mb-4 border-bottom pb-2'><i class='fas fa-book-reader me-3'></i>Part 6-7: Reading Comprehension</h2><div id='rc-1' class='section-card'><h3 class='section-title'><i class='fas fa-file-alt me-2'></i>Questions 131–134</h3><h5 class='mt-4 mb-3'><i class='fas fa-align-left me-2 text-primary'></i>Passage</h5><div class='reading-box'>**Thank you for shopping with Danforth Fashions online.**
->
-Our quality-control team carefully inspects all products <span class="blank-space">(131)</span> packaging to ensure customer satisfaction. <span class="blank-space">(132)</span>. If not, we make exchanges or returns easy. Simply contact us at `service@danforthfashions.com` if you need a different size, a color, or pattern—or if you are dissatisfied for any reason. Your exchange <span class="blank-space">(133)</span> right away.
->
-To return an item for a refund, use the prepaid return shipping label included with your order and send it back to us in its original packaging unused and undamaged. We issue refunds to the original method of payment, <span class="blank-space">(134)</span> the return shipping fee.</div><div class='row'><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 131</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> in case  </li><li class='option-item '><b>B)</b> as much as  </li><li class='option-item correct'><b>C)</b> prior to  </li><li class='option-item '><b>D)</b> in keeping with</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 132</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> We hope you are entirely pleased with your purchase.  </li><li class='option-item '><b>B)</b> We expect to be redesigning our Website this summer.  </li><li class='option-item '><b>C)</b> We value all of our loyal customers.  </li><li class='option-item '><b>D)</b> We noticed that your billing address has changed.</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 133</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> will be processed  </li><li class='option-item '><b>B)</b> was processed  </li><li class='option-item '><b>C)</b> is processing  </li><li class='option-item '><b>D)</b> to be processing</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 134</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> past  </li><li class='option-item '><b>B)</b> above  </li><li class='option-item '><b>C)</b> aboard  </li><li class='option-item correct'><b>D)</b> minus</li></ul></div></div></div></div><div class='completed-section'><h5 class='mt-4 mb-3'><i class='fas fa-check-circle me-2 text-success'></i>Completed Version</h5><div class='reading-box reading-completed'>**Thank you for shopping with Danforth Fashions online.**
->
-Our quality-control team carefully inspects all products <strong class="text-success border-bottom border-success pb-1">prior to <small class="text-muted">(131)</small></strong> packaging to ensure customer satisfaction. <strong class="text-success border-bottom border-success pb-1">We hope you are entirely pleased with your purchase. <small class="text-muted">(132)</small></strong>. If not, we make exchanges or returns easy. Simply contact us at `service@danforthfashions.com` if you need a different size, a color, or pattern—or if you are dissatisfied for any reason. Your exchange <strong class="text-success border-bottom border-success pb-1">will be processed <small class="text-muted">(133)</small></strong> right away.
->
-To return an item for a refund, use the prepaid return shipping label included with your order and send it back to us in its original packaging unused and undamaged. We issue refunds to the original method of payment, <strong class="text-success border-bottom border-success pb-1">minus <small class="text-muted">(134)</small></strong> the return shipping fee.</div></div><div class='vocab-section'><h5 class='mb-3 text-primary'><i class='fas fa-spell-check me-2'></i>Vocabulary & Analysis</h5><ul class='vocab-list'></ul></div><div class='takeaway'><h5 class='mb-3'><i class='fas fa-key me-2'></i>Key Takeaways</h5><ul class='mb-0'><li class='mb-2'><strong>Exchanges</strong> (đổi hàng) are processed immediately for size/color issues.</li><li class='mb-2'><strong>Refunds</strong> (hoàn tiền) require the item to be unused, undamaged, and in original packaging.</li><li class='mb-2'>The <strong>shipping fee</strong> will be deducted from the total refund amount (*minus the return shipping fee*).</li></ul></div></div><div id='rc-2' class='section-card'><h3 class='section-title'><i class='fas fa-file-alt me-2'></i>Questions 135–138</h3><h5 class='mt-4 mb-3'><i class='fas fa-align-left me-2 text-primary'></i>Passage</h5><div class='reading-box'>**Attention, Alden-Apper Industries Employees!**
->
-Please remember that the switch to our new e-mail software will begin at 11:00 P.M. on Sunday, May 2. All <span class="blank-space">(135)</span> information in your account, including contacts and calendar events, will be moved to the new system by 4:00 A.M. on Monday, May 3.
->
-Though we are working diligently to anticipate and provide solutions for all potential issues, some employees may experience difficulty <span class="blank-space">(136)</span> attempting to log in to their accounts after the switch. In addition, there is a remote possibility that some information may be lost. <span class="blank-space">(137)</span>, be sure to back up any critical e-mail files as soon as possible. <span class="blank-space">(138)</span>.
->
-A training session will be scheduled next week to familiarize employees with key functions of the new software.
->
-If you need assistance with this, please contact the IT department.</div><div class='row'><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 135</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> existed  </li><li class='option-item '><b>B)</b> existence  </li><li class='option-item '><b>C)</b> to exist  </li><li class='option-item correct'><b>D)</b> existing</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 136</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> when  </li><li class='option-item '><b>B)</b> plus  </li><li class='option-item '><b>C)</b> already  </li><li class='option-item '><b>D)</b> whose</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 137</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> Previously  </li><li class='option-item '><b>B)</b> Otherwise  </li><li class='option-item '><b>C)</b> Even so  </li><li class='option-item correct'><b>D)</b> For this reason</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 138</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> The new software will be ordered this week.  </li><li class='option-item '><b>B)</b> The current system will be reactivated in June.  </li><li class='option-item correct'><b>C)</b> If you need assistance with this, please contact the IT department.  </li><li class='option-item '><b>D)</b> In that case, you must complete the installation yourself.</li></ul></div></div></div></div><div class='completed-section'><h5 class='mt-4 mb-3'><i class='fas fa-check-circle me-2 text-success'></i>Completed Version</h5><div class='reading-box reading-completed'>**Attention, Alden-Apper Industries Employees!**
->
-Please remember that the switch to our new e-mail software will begin at **11:00 P.M. on Sunday, May 2**. All <strong class="text-success border-bottom border-success pb-1">existing <small class="text-muted">(135)</small></strong> information in your account, including contacts and calendar events, will be moved to the new system by **4:00 A.M. on Monday, May 3**.
->
-Though we are working diligently to anticipate and provide solutions for all potential issues, some employees may experience difficulty <strong class="text-success border-bottom border-success pb-1">when <small class="text-muted">(136)</small></strong> attempting to log in to their accounts after the switch. In addition, there is a remote possibility that some information may be lost. <strong class="text-success border-bottom border-success pb-1">For this reason <small class="text-muted">(137)</small></strong>, be sure to **back up any critical e-mail files** as soon as possible. <strong class="text-success border-bottom border-success pb-1">If you need assistance with this, please contact the IT department. <small class="text-muted">(138)</small></strong>.
->
-A training session will be scheduled next week to familiarize employees with key functions of the new software.
->
-If you need assistance with this, please contact the IT department.</div></div><div class='vocab-section'><h5 class='mb-3 text-primary'><i class='fas fa-spell-check me-2'></i>Vocabulary & Analysis</h5><ul class='vocab-list'></ul></div><div class='takeaway'><h5 class='mb-3'><i class='fas fa-key me-2'></i>Key Takeaways</h5><ul class='mb-0'><li class='mb-2'>The email system migration takes place between <strong>Sunday night and Monday morning</strong>.</li><li class='mb-2'><strong>Backing up files</strong> is strongly recommended as a precaution against data loss.</li><li class='mb-2'>Training sessions will be provided to help staff use the new software.</li></ul></div></div><div id='rc-3' class='section-card'><h3 class='section-title'><i class='fas fa-file-alt me-2'></i>Questions 139–142</h3><h5 class='mt-4 mb-3'><i class='fas fa-align-left me-2 text-primary'></i>Passage</h5><div class='reading-box'>**Dear Director Yoshida,**
->
-Thank you for your school's interest in visiting our farm next month. Please note that children must be at least six years old to visit and tour the farm. <span class="blank-space">(139)</span>. I have enclosed a list of the <span class="blank-space">(140)</span> activities available for our young visitors. Two of these <span class="blank-space">(141)</span> must be scheduled in advance. They are a cheese-making class and an introduction to beekeeping. Both are very popular with our visitors.
->
-Please let <span class="blank-space">(142)</span> know your selection by early next week. I look forward to welcoming your group soon!
->
-Sincerely,
-**Annabel Romero**
-Coordinator, Merrytree Family Farm</div><div class='row'><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 139</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> In the event of bad weather, the animals will be inside.  </li><li class='option-item correct'><b>B)</b> There are no exceptions to this policy.  </li><li class='option-item '><b>C)</b> Ones younger than that can find much to enjoy.  </li><li class='option-item '><b>D)</b> This fee includes lunch and a small souvenir.</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 140</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> legal  </li><li class='option-item '><b>B)</b> artistic  </li><li class='option-item '><b>C)</b> athletic  </li><li class='option-item correct'><b>D)</b> educational</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 141</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> events  </li><li class='option-item '><b>B)</b> plays  </li><li class='option-item '><b>C)</b> treatments  </li><li class='option-item '><b>D)</b> trips</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 142</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> they  </li><li class='option-item correct'><b>B)</b> me  </li><li class='option-item '><b>C)</b> her  </li><li class='option-item '><b>D)</b> one</li></ul></div></div></div></div><div class='completed-section'><h5 class='mt-4 mb-3'><i class='fas fa-check-circle me-2 text-success'></i>Completed Version</h5><div class='reading-box reading-completed'>**To:** Director Yoshida  
-**From:** Annabel Romero  <br><br>Dear Director Yoshida,
->
-Thank you for your school's interest in visiting our farm next month. Please note that children must be at least six years old to visit and tour the farm. <strong class="text-success border-bottom border-success pb-1">There are no exceptions to this policy. <small class="text-muted">(139)</small></strong>. I have enclosed a list of the <strong class="text-success border-bottom border-success pb-1">educational <small class="text-muted">(140)</small></strong> activities available for our young visitors. Two of these <strong class="text-success border-bottom border-success pb-1">events <small class="text-muted">(141)</small></strong> must be scheduled in advance. They are a cheese-making class and an introduction to beekeeping. Both are very popular with our visitors.
->
-Please let <strong class="text-success border-bottom border-success pb-1">me <small class="text-muted">(142)</small></strong> know your selection by early next week. I look forward to welcoming your group soon!
->
-Sincerely,
-**Annabel Romero**
-Coordinator, Merrytree Family Farm</div></div><div class='vocab-section'><h5 class='mb-3 text-primary'><i class='fas fa-spell-check me-2'></i>Vocabulary & Analysis</h5><ul class='vocab-list'></ul></div><div class='takeaway'><h5 class='mb-3'><i class='fas fa-key me-2'></i>Key Takeaways</h5><ul class='mb-0'><li class='mb-2'>The farm tour has a <strong>strict age policy</strong> (minimum 6 years old).</li><li class='mb-2'>Special activities like cheese-making and beekeeping require <strong>prior booking</strong>.</li><li class='mb-2'>A list of available educational activities is provided in the letter.</li></ul></div></div><div id='rc-4' class='section-card'><h3 class='section-title'><i class='fas fa-file-alt me-2'></i>Questions 143–146</h3><h5 class='mt-4 mb-3'><i class='fas fa-align-left me-2 text-primary'></i>Passage</h5><div class='reading-box'>**Jamaica National Tourist Organization Offers Free Cultural Passes**
->
-The Jamaica National Tourist Organization (JAMTO) announces an exciting new program that provides free entry to a variety of cultural attractions. The program is sponsored by the JAMTO <span class="blank-space">(143)</span> the hotels and businesses listed on the back of this flyer. Together, we <span class="blank-space">(144)</span> you to take advantage of some of the finest cultural and educational experiences that Jamaica has to offer. <span class="blank-space">(145)</span> attractions include the Caribbean National Gardens, Montego Bay Potters Gallery, Jamaican Music Experience, and many others.
->
-To obtain your pass, visit our Web site at [www.jamto.org/freepass](http://www.jamto.org/freepass) or stop by any JAMTO office. One pass is valid for up to five people. <span class="blank-space">(146)</span>.</div><div class='row'><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 143</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> despite  </li><li class='option-item '><b>B)</b> instead of  </li><li class='option-item '><b>C)</b> except for  </li><li class='option-item correct'><b>D)</b> along with</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 144</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> invite  </li><li class='option-item '><b>B)</b> invited  </li><li class='option-item '><b>C)</b> may invite  </li><li class='option-item '><b>D)</b> were inviting</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 145</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> Early  </li><li class='option-item '><b>B)</b> Past  </li><li class='option-item '><b>C)</b> Affordable  </li><li class='option-item correct'><b>D)</b> Participating</li></ul></div></div></div><div class='col-md-6 mb-4'><div class='card h-100 shadow-sm border-0'><div class='card-header bg-primary text-white fw-bold'>Question 146</div><div class='card-body'><ul class='option-list'><li class='option-item '><b>A)</b> Thank you for your order.  </li><li class='option-item correct'><b>B)</b> It can be used for three days.  </li><li class='option-item '><b>C)</b> The bus runs only on weekdays.  </li><li class='option-item '><b>D)</b> All major credit cards are accepted.</li></ul></div></div></div></div><div class='completed-section'><h5 class='mt-4 mb-3'><i class='fas fa-check-circle me-2 text-success'></i>Completed Version</h5><div class='reading-box reading-completed'>**Jamaica National Tourist Organization Offers Free Cultural Passes**
->
-The Jamaica National Tourist Organization (JAMTO) announces an exciting new program that provides free entry to a variety of cultural attractions. The program is sponsored by the JAMTO <strong class="text-success border-bottom border-success pb-1">along with <small class="text-muted">(143)</small></strong> the hotels and businesses listed on the back of this flyer.
->
-Together, we <strong class="text-success border-bottom border-success pb-1">invite <small class="text-muted">(144)</small></strong> you to take advantage of some of the finest cultural and educational experiences that Jamaica has to offer. <strong class="text-success border-bottom border-success pb-1">Participating <small class="text-muted">(145)</small></strong> attractions include:
-Caribbean National Gardens  
-Montego Bay Potters Gallery  
-Jamaican Music Experience  
-And many others.  
->
-To obtain your pass, visit our website at [www.jamto.org/freepass](http://www.jamto.org/freepass) or stop by any JAMTO office. One pass is valid for up to **five people**. <strong class="text-success border-bottom border-success pb-1">It can be used for three days. <small class="text-muted">(146)</small></strong>.</div></div><div class='vocab-section'><h5 class='mb-3 text-primary'><i class='fas fa-spell-check me-2'></i>Vocabulary & Analysis</h5><ul class='vocab-list'></ul></div><div class='takeaway'><h5 class='mb-3'><i class='fas fa-key me-2'></i>Key Takeaways</h5><ul class='mb-0'><li class='mb-2'>The program offers <strong>free access</strong> to multiple cultural spots in Jamaica.</li><li class='mb-2'>Passes can be retrieved either <strong>online</strong> or at physical offices.</li><li class='mb-2'>Each pass covers a group of up to <strong>5 people</strong> for a duration of <strong>3 days</strong>.</li></ul></div></div></div><div class='text-center mt-5 mb-5 practice-only'><button onclick='checkAnswers()' class='btn btn-success btn-lg shadow-sm fw-bold px-5 py-3 rounded-pill'><i class='fas fa-check-double me-2'></i>Submit & Check Answers</button></div>
-        </div>
     </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let timerInterval = null;
+        let secondsElapsed = 0;
+        const HISTORY_KEY = 'lesson12_practice_history_v2';
 
-<div class="audio-player-container collapse d-md-block" id="audioPlayerContainer">
-    <div class="container d-flex flex-column align-items-center">
-        <div class="text-muted small mb-2 fw-bold"><i class="fas fa-music me-2"></i>Listening Audio</div>
-        <div class="d-flex align-items-center w-100 justify-content-center" style="max-width: 600px; gap: 10px;">
-            <button class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; flex-shrink: 0;" onclick="skipAudio(-5)" data-bs-toggle="tooltip" title="Rewind 5s">
-                <i class="fas fa-undo"></i>
-            </button>
-            <audio id="listeningAudio" controls class="flex-grow-1">
-                <source src="assets/audio/12.mp4" type="audio/mp4">
-                <source src="assets/audio/12.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <button class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; flex-shrink: 0;" onclick="skipAudio(5)" data-bs-toggle="tooltip" title="Forward 5s">
-                <i class="fas fa-redo"></i>
-            </button>
-        </div>
-    </div>
-</div>
-
-<div class="floating-actions">
-    <button class="btn btn-warning text-dark" onclick="showHistory()" data-bs-toggle="tooltip" data-bs-placement="left" title="View History">
-        <i class="fas fa-history"></i>
-    </button>
-    <button class="btn btn-success text-white practice-only" onclick="checkAnswers()" data-bs-toggle="tooltip" data-bs-placement="left" title="Submit & Check Answers">
-        <i class="fas fa-check-double"></i>
-    </button>
-    <button class="btn btn-info text-white d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#audioPlayerContainer" aria-expanded="false" aria-controls="audioPlayerContainer" data-bs-placement="left" title="Toggle Audio Player">
-        <i class="fas fa-music"></i>
-    </button>
-    <button id="modeToggleBtn" onclick="toggleMode()" class="btn btn-primary text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Switch to Practice Mode">
-        <i class="fas fa-pen"></i>
-    </button>
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn btn-secondary text-white" data-bs-toggle="tooltip" data-bs-placement="left" title="Back to Top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-</div>
-
-<!-- History Modal -->
-<div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-warning text-dark">
-                <h5 class="modal-title fw-bold" id="historyModalLabel"><i class="fas fa-history me-2"></i>Practice History</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="table-responsive">
-                    <table class="table table-hover table-striped text-center align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th>#</th>
-                                <th>Date & Time</th>
-                                <th>Score</th>
-                                <th>Time Taken</th>
-                            </tr>
-                        </thead>
-                        <tbody id="historyTableBody">
-                            <!-- History populated by JS -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" onclick="clearHistory()"><i class="fas fa-trash me-2"></i>Clear History</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // State Variables
-    let timerInterval = null;
-    let secondsElapsed = 0;
-    const HISTORY_KEY = 'toeic_lesson12_history';
-
-    // Timer & Test Flow
-    function startTest() {
-        document.body.classList.add('test-started');
-        document.body.classList.add('practice-mode');
-        
-        // Start Timer
-        secondsElapsed = 0;
-        updateTimerDisplay();
-        timerInterval = setInterval(() => {
-            secondsElapsed++;
-            updateTimerDisplay();
-        }, 1000);
-        
-        // Auto-play audio
-        const audio = document.getElementById('listeningAudio');
-        if (audio) { audio.play().catch(e => console.log('Autoplay prevented by browser')); }
-        
-        // Scroll to top
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-    
-    function updateTimerDisplay() {
-        const m = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
-        const s = (secondsElapsed % 60).toString().padStart(2, '0');
-        document.getElementById('timerDisplay').innerText = `${m}:${s}`;
-    }
-    
-    function formatTime(totalSeconds) {
-        const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
-        const s = (totalSeconds % 60).toString().padStart(2, '0');
-        return `${m}:${s}`;
-    }
-
-    // Audio Skip Function
-    function skipAudio(seconds) {
-        const audio = document.getElementById('listeningAudio');
-        if (audio) {
-            audio.currentTime += seconds;
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+            const secs = (seconds % 60).toString().padStart(2, '0');
+            return `${mins}:${secs}`;
         }
-    }
 
-    // Toggle Mode Function
-    function toggleMode() {
-        document.body.classList.toggle('practice-mode');
-        const isPractice = document.body.classList.contains('practice-mode');
-        const btn = document.getElementById('modeToggleBtn');
-        btn.innerHTML = isPractice ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-pen"></i>';
-        
-        // If switching to practice mode, they need to click start test
-        if (isPractice) {
-            document.body.classList.remove('test-started');
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                secondsElapsed++;
+                const timer = document.getElementById('timerDisplay');
+                if (timer) timer.innerText = formatTime(secondsElapsed);
+            }, 1000);
+        }
+
+        function startTest() {
+            document.body.classList.add('test-started', 'practice-mode');
             document.body.classList.remove('review-checked');
-            if(timerInterval) clearInterval(timerInterval);
-            document.getElementById('timerDisplay').innerText = '00:00';
-            
-            // Reset navigator
+            resetTest(false);
+            startTimer();
+
+            const audio = document.querySelector('audio');
+            if (audio) audio.play().catch(() => { });
+        }
+
+        function resetTest(resetTimer = true) {
+            document.querySelectorAll('.option-item').forEach(opt => {
+                opt.classList.remove('selected', 'wrong-selection', 'reveal-correct');
+            });
             document.querySelectorAll('.nav-square').forEach(sq => {
                 sq.classList.remove('answered', 'wrong-ans', 'correct-ans');
             });
-            // Reset options
-            document.querySelectorAll('.option-item').forEach(opt => {
-                opt.classList.remove('selected', 'wrong-selection', 'bg-danger', 'text-white', 'border-danger', 'bg-success', 'border-success');
-            });
+            document.querySelectorAll('.coach-panel').forEach(p => p.remove());
+            const summary = document.getElementById('scoreSummaryCard');
+            if (summary) summary.innerHTML = '';
+            if (resetTimer) {
+                clearInterval(timerInterval);
+                secondsElapsed = 0;
+                const timer = document.getElementById('timerDisplay');
+                if (timer) timer.innerText = '00:00';
+            }
         }
-        
-        const tooltip = bootstrap.Tooltip.getInstance(btn);
-        if (tooltip) {
-            btn.setAttribute('data-bs-original-title', isPractice ? 'Switch to Review Mode' : 'Switch to Practice Mode');
-            tooltip.hide();
+
+        function toggleMode() {
+            const isPractice = document.body.classList.contains('practice-mode');
+            if (isPractice) {
+                document.body.classList.remove('practice-mode');
+                document.body.classList.add('test-started');
+                revealAllAnswers();
+            } else {
+                document.body.classList.add('practice-mode', 'test-started');
+                document.body.classList.remove('review-checked');
+                resetTest();
+            }
         }
-    }
 
+        const COACH_DATA = {
+            "1": { type: "Main idea", keyword: "National Marketing Conference", trap: "Đáp án hay bẫy là budget/marketing report, nhưng chủ đề chính vẫn là conference.", tip: "Nghe câu mở đầu để bắt topic." },
+            "2": { type: "Reason", keyword: "cut part of our travel budget", trap: "Không phải flight delayed hay sick; lý do nằm ngay sau because.", tip: "Từ khóa 'because' thường kéo đáp án WHY." },
+            "3": { type: "Next/Role", keyword: "go instead / fill in for me", trap: "Represent the company không nói y nguyên, phải suy luận từ 'go instead'.", tip: "TOEIC thích paraphrase: fill in = represent/replace." },
+            "4": { type: "Workplace", keyword: "vacation package sales / hotel and transportation vendors", trap: "Có hotel/transportation nhưng họ bán package, nên là travel agency.", tip: "Đừng chọn từ nghe thấy; chọn nơi bao trùm hoạt động." },
+            "5": { type: "Implied meaning", keyword: "summer's almost over", trap: "Không phải hủy quảng cáo; ý là quảng cáo ra quá muộn.", tip: "Câu imply thường cần hiểu thái độ/chê nhẹ." },
+            "6": { type: "Next action", keyword: "I'll start calling our vendors right away", trap: "Câu cuối thường chứa hành động tiếp theo.", tip: "Nghe cuối đoạn để bắt 'will do next'." },
+            "7": { type: "Identity", keyword: "my paper / research project", trap: "Journalist viết bài báo, nhưng 'research project' nghiêng về researcher.", tip: "Nhìn vai trò qua việc người đó làm, không chỉ qua object." },
+            "8": { type: "Reason", keyword: "will publish my paper", trap: "Không phải won award/promotion; congratulations vì bài được publish.", tip: "Congratulations thường đi ngay sau tin tốt." },
+            "9": { type: "Future plan", keyword: "meet at the summer conference", trap: "Không có travel abroad/teach class.", tip: "Cụm thời gian + sự kiện = plan." },
+            "10": { type: "Purpose", keyword: "supposed to interview him", trap: "Reporter gặp để interview, không phải apply/deliver.", tip: "Purpose thường nằm trong self-introduction." },
+            "11": { type: "Agreement", keyword: "please sign in / Sure", trap: "Fill out form gần nghĩa nhưng text nói rõ sign in.", tip: "Nghe request + response đồng ý." },
+            "12": { type: "Reason", keyword: "need a few more minutes", trap: "Không phải quên lịch; chỉ bị trễ vì urgent call.", tip: "Apologize + but = lý do thật." },
+            "13": { type: "Workplace", keyword: "new flavors of juice drinks / Product Development Lab", trap: "Có supermarket nhưng họ chỉ là testing site.", tip: "Phân biệt nơi test và công ty chủ quản." },
+            "14": { type: "Suggestion", keyword: "get in touch with our advertising agency", trap: "Không phải review survey; cô ấy bảo contact agency.", tip: "Why don't you... = suggestion." },
+            "15": { type: "Graphic", keyword: "Burnside / 15", trap: "30 là đã nhận từ Medford, không phải đang chờ.", tip: "Kết hợp audio + graphic, đừng lấy số nghe được đầu tiên." },
+            "131": { type: "Grammar", keyword: "prior to packaging", trap: "prior to = before. Các đáp án khác không khớp nghĩa.", tip: "Sau giới từ/cụm giới từ có thể là danh từ/V-ing." },
+            "132": { type: "Sentence insertion", keyword: "If not", trap: "Câu trước phải tạo đối lập với 'If not'. Pleased ↔ dissatisfied.", tip: "Nhìn câu trước/sau chỗ trống." },
+            "133": { type: "Passive tense", keyword: "will be processed", trap: "Exchange không tự process; nó được xử lý = passive.", tip: "Object + will be + V3." },
+            "134": { type: "Preposition", keyword: "minus the return shipping fee", trap: "Refund minus fee = hoàn tiền trừ phí ship.", tip: "minus = subtract/deduct." },
+            "135": { type: "Word form", keyword: "existing information", trap: "Cần adjective bổ nghĩa cho information.", tip: "Danh từ phía sau thường cần adjective phía trước." },
+            "136": { type: "Connector", keyword: "difficulty when attempting", trap: "when nối thời điểm xảy ra khó khăn.", tip: "difficulty + when + V-ing clause." },
+            "137": { type: "Logic", keyword: "For this reason", trap: "Có risk mất dữ liệu → vì lý do đó hãy backup.", tip: "Chọn transition theo logic nguyên nhân-kết quả." },
+            "138": { type: "Sentence insertion", keyword: "If you need assistance", trap: "Câu này nối tự nhiên với việc backup critical files.", tip: "Câu thêm vào phải khớp cả ý trước lẫn sau." },
+            "139": { type: "Policy", keyword: "at least six years old / no exceptions", trap: "Younger ones contradict policy.", tip: "Policy strict thường đi với no exceptions." },
+            "140": { type: "Word choice", keyword: "educational activities", trap: "Farm tour cho học sinh → educational hợp ngữ cảnh.", tip: "Chọn adjective theo context tổng thể." },
+            "141": { type: "Reference", keyword: "Two of these events", trap: "These = activities/classes listed; events gần nghĩa nhất.", tip: "Xem đại từ/cụm these đang thay cho cái gì." },
+            "142": { type: "Pronoun", keyword: "Please let me know", trap: "Người viết là Annabel nên dùng me.", tip: "Xác định người nói/người viết." },
+            "143": { type: "Preposition", keyword: "along with", trap: "JAMTO cùng các hotel/business sponsor chương trình.", tip: "along with = together with." },
+            "144": { type: "Verb form", keyword: "we invite you", trap: "Subject 'we' + hiện tại đơn → invite.", tip: "Đừng chọn quá phức tạp khi câu cần simple verb." },
+            "145": { type: "Word choice", keyword: "Participating attractions", trap: "Attractions tham gia chương trình, không phải affordable/past.", tip: "Danh từ sau quyết định adjective trước." },
+            "146": { type: "Detail", keyword: "valid for up to five people / used for three days", trap: "Câu sau phải bổ sung thông tin pass, không phải order/credit card.", tip: "Sentence completion cần cùng chủ thể: pass." }
+        };
 
-    const COACH_DATA = {
-        "1": {type:"Main idea", keyword:"National Marketing Conference", trap:"Đáp án hay bẫy là budget/marketing report, nhưng chủ đề chính vẫn là conference.", tip:"Nghe câu mở đầu để bắt topic."},
-        "2": {type:"Reason", keyword:"cut part of our travel budget", trap:"Không phải flight delayed hay sick; lý do nằm ngay sau because.", tip:"Từ khóa 'because' thường kéo đáp án WHY."},
-        "3": {type:"Next/Role", keyword:"go instead / fill in for me", trap:"Represent the company không nói y nguyên, phải suy luận từ 'go instead'.", tip:"TOEIC thích paraphrase: fill in = represent/replace."},
-        "4": {type:"Workplace", keyword:"vacation package sales / hotel and transportation vendors", trap:"Có hotel/transportation nhưng họ bán package, nên là travel agency.", tip:"Đừng chọn từ nghe thấy; chọn nơi bao trùm hoạt động."},
-        "5": {type:"Implied meaning", keyword:"summer's almost over", trap:"Không phải hủy quảng cáo; ý là quảng cáo ra quá muộn.", tip:"Câu imply thường cần hiểu thái độ/chê nhẹ."},
-        "6": {type:"Next action", keyword:"I'll start calling our vendors right away", trap:"Câu cuối thường chứa hành động tiếp theo.", tip:"Nghe cuối đoạn để bắt 'will do next'."},
-        "7": {type:"Identity", keyword:"my paper / research project", trap:"Journalist viết bài báo, nhưng 'research project' nghiêng về researcher.", tip:"Nhìn vai trò qua việc người đó làm, không chỉ qua object."},
-        "8": {type:"Reason", keyword:"will publish my paper", trap:"Không phải won award/promotion; congratulations vì bài được publish.", tip:"Congratulations thường đi ngay sau tin tốt."},
-        "9": {type:"Future plan", keyword:"meet at the summer conference", trap:"Không có travel abroad/teach class.", tip:"Cụm thời gian + sự kiện = plan."},
-        "10": {type:"Purpose", keyword:"supposed to interview him", trap:"Reporter gặp để interview, không phải apply/deliver.", tip:"Purpose thường nằm trong self-introduction."},
-        "11": {type:"Agreement", keyword:"please sign in / Sure", trap:"Fill out form gần nghĩa nhưng text nói rõ sign in.", tip:"Nghe request + response đồng ý."},
-        "12": {type:"Reason", keyword:"need a few more minutes", trap:"Không phải quên lịch; chỉ bị trễ vì urgent call.", tip:"Apologize + but = lý do thật."},
-        "13": {type:"Workplace", keyword:"new flavors of juice drinks / Product Development Lab", trap:"Có supermarket nhưng họ chỉ là testing site.", tip:"Phân biệt nơi test và công ty chủ quản."},
-        "14": {type:"Suggestion", keyword:"get in touch with our advertising agency", trap:"Không phải review survey; cô ấy bảo contact agency.", tip:"Why don't you... = suggestion."},
-        "15": {type:"Graphic", keyword:"Burnside / 15", trap:"30 là đã nhận từ Medford, không phải đang chờ.", tip:"Kết hợp audio + graphic, đừng lấy số nghe được đầu tiên."},
-        "131": {type:"Grammar", keyword:"prior to packaging", trap:"prior to = before. Các đáp án khác không khớp nghĩa.", tip:"Sau giới từ/cụm giới từ có thể là danh từ/V-ing."},
-        "132": {type:"Sentence insertion", keyword:"If not", trap:"Câu trước phải tạo đối lập với 'If not'. Pleased ↔ dissatisfied.", tip:"Nhìn câu trước/sau chỗ trống."},
-        "133": {type:"Passive tense", keyword:"will be processed", trap:"Exchange không tự process; nó được xử lý = passive.", tip:"Object + will be + V3."},
-        "134": {type:"Preposition", keyword:"minus the return shipping fee", trap:"Refund minus fee = hoàn tiền trừ phí ship.", tip:"minus = subtract/deduct."},
-        "135": {type:"Word form", keyword:"existing information", trap:"Cần adjective bổ nghĩa cho information.", tip:"Danh từ phía sau thường cần adjective phía trước."},
-        "136": {type:"Connector", keyword:"difficulty when attempting", trap:"when nối thời điểm xảy ra khó khăn.", tip:"difficulty + when + V-ing clause."},
-        "137": {type:"Logic", keyword:"For this reason", trap:"Có risk mất dữ liệu → vì lý do đó hãy backup.", tip:"Chọn transition theo logic nguyên nhân-kết quả."},
-        "138": {type:"Sentence insertion", keyword:"If you need assistance", trap:"Câu này nối tự nhiên với việc backup critical files.", tip:"Câu thêm vào phải khớp cả ý trước lẫn sau."},
-        "139": {type:"Policy", keyword:"at least six years old / no exceptions", trap:"Younger ones contradict policy.", tip:"Policy strict thường đi với no exceptions."},
-        "140": {type:"Word choice", keyword:"educational activities", trap:"Farm tour cho học sinh → educational hợp ngữ cảnh.", tip:"Chọn adjective theo context tổng thể."},
-        "141": {type:"Reference", keyword:"Two of these events", trap:"These = activities/classes listed; events gần nghĩa nhất.", tip:"Xem đại từ/cụm these đang thay cho cái gì."},
-        "142": {type:"Pronoun", keyword:"Please let me know", trap:"Người viết là Annabel nên dùng me.", tip:"Xác định người nói/người viết."},
-        "143": {type:"Preposition", keyword:"along with", trap:"JAMTO cùng các hotel/business sponsor chương trình.", tip:"along with = together with."},
-        "144": {type:"Verb form", keyword:"we invite you", trap:"Subject 'we' + hiện tại đơn → invite.", tip:"Đừng chọn quá phức tạp khi câu cần simple verb."},
-        "145": {type:"Word choice", keyword:"Participating attractions", trap:"Attractions tham gia chương trình, không phải affordable/past.", tip:"Danh từ sau quyết định adjective trước."},
-        "146": {type:"Detail", keyword:"valid for up to five people / used for three days", trap:"Câu sau phải bổ sung thông tin pass, không phải order/credit card.", tip:"Sentence completion cần cùng chủ thể: pass."}
-    };
-
-    function createCoachPanel(qBlock, qNum) {
-        if (!COACH_DATA[qNum] || qBlock.querySelector('.coach-panel')) return;
-        const data = COACH_DATA[qNum];
-        const panel = document.createElement('div');
-        panel.className = 'coach-panel';
-        panel.innerHTML = `
+        function createCoachPanel(qBlock, qNum) {
+            if (!qNum || !COACH_DATA[qNum] || qBlock.querySelector('.coach-panel')) return;
+            const data = COACH_DATA[qNum];
+            const panel = document.createElement('div');
+            panel.className = 'coach-panel';
+            panel.innerHTML = `
             <div class="coach-title"><i class="fas fa-robot me-2"></i>Coach note — ${data.type}</div>
             <div class="coach-line"><b>Keyword:</b> <span class="keyword-chip">${data.keyword}</span></div>
             <div class="coach-line"><b>Bẫy:</b> ${data.trap}</div>
             <div class="coach-line"><b>Mẹo:</b> ${data.tip}</div>
         `;
-        qBlock.appendChild(panel);
-    }
+            qBlock.appendChild(panel);
+        }
 
-    function highlightKeywordsAfterSubmit() {
-        Object.entries(COACH_DATA).forEach(([qNum, data]) => {
-            const block = document.getElementById(`question-block-${qNum}`);
-            if (!block) return;
-            createCoachPanel(block, qNum);
-            block.querySelectorAll('.option-item.correct').forEach(opt => opt.classList.add('correct-answer-reveal'));
-        });
-    }
+        function getQuestionNumber(qBlock) {
+            if (qBlock.dataset.qnum) return qBlock.dataset.qnum;
+            let qTextEl = qBlock.querySelector('.question-text');
+            if (!qTextEl) {
+                const card = qBlock.closest('.card');
+                qTextEl = card ? card.querySelector('.card-header') : null;
+            }
+            const text = qTextEl ? qTextEl.innerText : '';
+            const match = text.match(/(\d+)/);
+            return match ? match[1] : null;
+        }
 
-    function updateScoreSummary(score, total) {
-        const percent = total ? Math.round(score / total * 100) : 0;
-        const summary = document.getElementById('scoreSummaryCard');
-        let level = percent >= 85 ? 'Ổn áp đó bro 🔥' : percent >= 65 ? 'Có nền rồi, nhưng còn trap khá nhiều 😅' : 'Cần drill lại keyword + paraphrase nha 💀';
-        summary.innerHTML = `
+        function updateScoreSummary(score, total, unanswered) {
+            const percent = total ? Math.round(score / total * 100) : 0;
+            const summary = document.getElementById('scoreSummaryCard');
+            const level = percent >= 85 ? 'Ổn áp đó bro 🔥' : percent >= 65 ? 'Có nền rồi, nhưng còn trap khá nhiều 😅' : 'Cần drill lại keyword + paraphrase nha 💀';
+            if (!summary) return;
+            summary.innerHTML = `
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
                 <div>
                     <h5 class="fw-bold mb-1"><i class="fas fa-chart-line me-2"></i>Result: ${score}/${total} — ${percent}%</h5>
                     <div>${level}</div>
                 </div>
-                <div class="text-md-end"><b>Time:</b> ${formatTime(secondsElapsed)}</div>
+                <div class="text-md-end"><b>Time:</b> ${formatTime(secondsElapsed)}<br><b>Unanswered:</b> ${unanswered}</div>
             </div>
             <hr>
-            <div class="mb-0"><b>Cách review:</b> nhìn câu sai màu đỏ → đọc Coach note → nghe/đọc lại đúng keyword. Đừng chỉ xem đáp án rồi lướt, thế là não AFK.</div>
+            <div><b>Cách review:</b> nhìn câu sai màu đỏ → đọc Coach note → nghe/đọc lại keyword. Đừng chỉ xem đáp án rồi lướt, thế là não AFK.</div>
         `;
-    }
+            summary.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
-    // Check Answers Function
-    function checkAnswers() {
-        if (!document.body.classList.contains('test-started')) return;
-        
-        // Stop timer
-        clearInterval(timerInterval);
-        
-        let score = 0;
-        let total = 0;
-        document.querySelectorAll('.question-item, .card-body').forEach(qBlock => {
-            const options = qBlock.querySelectorAll('.option-item');
-            if (options.length === 0) return;
-            total++;
-            
-            const qNum = qBlock.dataset.qnum;
-            let isCorrect = false;
-            let isAnswered = false;
-            
-            options.forEach(opt => {
-                opt.classList.remove('wrong-selection'); // Reset
-                if (opt.classList.contains('selected')) {
-                    isAnswered = true;
-                    if (opt.classList.contains('correct')) {
-                        score++;
-                        isCorrect = true;
-                    } else {
-                        opt.classList.add('wrong-selection');
+        function revealAllAnswers() {
+            document.querySelectorAll('.question-item, .card-body').forEach(qBlock => {
+                const options = qBlock.querySelectorAll('.option-item');
+                if (!options.length) return;
+                const qNum = getQuestionNumber(qBlock);
+                options.forEach(opt => {
+                    if (opt.dataset.correct === 'true') opt.classList.add('reveal-correct');
+                });
+                createCoachPanel(qBlock, qNum);
+            });
+        }
+
+        function checkAnswers() {
+            if (!document.body.classList.contains('test-started')) {
+                document.body.classList.add('test-started');
+            }
+            clearInterval(timerInterval);
+
+            let score = 0;
+            let total = 0;
+            let unanswered = 0;
+
+            document.querySelectorAll('.question-item, .card-body').forEach(qBlock => {
+                const options = qBlock.querySelectorAll('.option-item');
+                if (!options.length) return;
+
+                total++;
+                const qNum = getQuestionNumber(qBlock);
+                const selected = qBlock.querySelector('.option-item.selected');
+                const correct = qBlock.querySelector('.option-item[data-correct="true"]');
+                const sq = qNum ? document.getElementById(`nav-sq-${qNum}`) : null;
+
+                options.forEach(opt => opt.classList.remove('wrong-selection', 'reveal-correct'));
+
+                if (!selected) {
+                    unanswered++;
+                    if (correct) correct.classList.add('reveal-correct');
+                    if (sq) sq.classList.remove('answered');
+                } else if (selected === correct) {
+                    score++;
+                    selected.classList.add('reveal-correct');
+                    if (sq) {
+                        sq.classList.remove('answered', 'wrong-ans');
+                        sq.classList.add('correct-ans');
+                    }
+                } else {
+                    selected.classList.add('wrong-selection');
+                    if (correct) correct.classList.add('reveal-correct');
+                    if (sq) {
+                        sq.classList.remove('answered', 'correct-ans');
+                        sq.classList.add('wrong-ans');
                     }
                 }
-            });
-            
-            // Update Navigator Square
-            if (qNum) {
-                const sq = document.getElementById(`nav-sq-${qNum}`);
-                if (sq) {
-                    sq.classList.remove('answered');
-                    if (isCorrect) sq.classList.add('correct-ans');
-                    else if (isAnswered) sq.classList.add('wrong-ans');
-                }
-            }
-        });
-        
-        // Save History
-        saveHistory(score, total, secondsElapsed);
-        highlightKeywordsAfterSubmit();
-        updateScoreSummary(score, total);
-        
-        // Switch to review mode to show explanations and default correct colors
-        document.body.classList.remove('practice-mode');
-        document.body.classList.add('review-checked');
-        const btn = document.getElementById('modeToggleBtn');
-        btn.innerHTML = '<i class="fas fa-pen"></i>';
-        btn.setAttribute('data-bs-original-title', 'Switch to Practice Mode');
-        
-        // Show score alert
-        setTimeout(() => alert(`Test Complete!
-You scored ${score} out of ${total}.
-Time: ${formatTime(secondsElapsed)}`), 100);
-    }
 
-    // History Functions
-    function saveHistory(score, total, time) {
-        let history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
-        const date = new Date().toLocaleString();
-        history.push({ date, score, total, time });
-        localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
-    }
-    
-    function showHistory() {
-        const tbody = document.getElementById('historyTableBody');
-        tbody.innerHTML = '';
-        let history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
-        
-        if (history.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" class="text-muted">No history found. Take a practice test!</td></tr>';
-        } else {
-            history.forEach((record, index) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
+                createCoachPanel(qBlock, qNum);
+            });
+
+            saveHistory(score, total, secondsElapsed);
+            updateScoreSummary(score, total, unanswered);
+            document.body.classList.remove('practice-mode');
+            document.body.classList.add('review-checked');
+        }
+
+        function saveHistory(score, total, time) {
+            const history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+            history.push({ date: new Date().toLocaleString(), score, total, time });
+            localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+        }
+
+        function showHistory() {
+            const tbody = document.getElementById('historyTableBody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            const history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+            if (!history.length) {
+                tbody.innerHTML = '<tr><td colspan="4" class="text-muted">No history found. Take a practice test!</td></tr>';
+            } else {
+                history.forEach((record, index) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
                     <td>${index + 1}</td>
                     <td>${record.date}</td>
                     <td><span class="badge bg-primary fs-6">${record.score} / ${record.total}</span></td>
                     <td>${formatTime(record.time)}</td>
                 `;
-                tbody.appendChild(tr);
-            });
+                    tbody.appendChild(tr);
+                });
+            }
+            new bootstrap.Modal(document.getElementById('historyModal')).show();
         }
-        
-        new bootstrap.Modal(document.getElementById('historyModal')).show();
-    }
-    
-    function clearHistory() {
-        if (confirm("Are you sure you want to clear your practice history?")) {
-            localStorage.removeItem(HISTORY_KEY);
-            showHistory();
-        }
-    }
 
-    // Initialize Navigator and Option Selection
-    document.addEventListener("DOMContentLoaded", function() {
-        const navContainer = document.getElementById('question-navigator');
-        
-        document.querySelectorAll('.question-item, .card-body').forEach((qBlock) => {
-            const options = qBlock.querySelectorAll('.option-item');
-            if (options.length === 0) return;
-            
-            // Extract question number from preceding header or text
-            let qTextEl = qBlock.querySelector('.question-text');
-            if (!qTextEl) qTextEl = qBlock.parentElement.querySelector('.card-header');
-            
-            if (qTextEl) {
-                const match = qTextEl.innerText.match(/(\d+)/);
-                if (match) {
-                    const qNum = match[1];
-                    qBlock.dataset.qnum = qNum;
-                    qBlock.id = `question-block-${qNum}`;
-                    
+        function clearHistory() {
+            if (confirm('Clear practice history?')) {
+                localStorage.removeItem(HISTORY_KEY);
+                showHistory();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const navContainer = document.getElementById('question-navigator');
+            if (navContainer) navContainer.innerHTML = '';
+
+            document.querySelectorAll('.question-item, .card-body').forEach(qBlock => {
+                const options = qBlock.querySelectorAll('.option-item');
+                if (!options.length) return;
+
+                const qNum = getQuestionNumber(qBlock);
+                if (!qNum) return;
+                qBlock.dataset.qnum = qNum;
+                qBlock.id = `question-block-${qNum}`;
+
+                if (navContainer && !document.getElementById(`nav-sq-${qNum}`)) {
                     const btn = document.createElement('button');
+                    btn.type = 'button';
                     btn.className = 'btn btn-outline-secondary m-1 nav-square border';
                     btn.innerText = qNum;
                     btn.id = `nav-sq-${qNum}`;
-                    btn.onclick = () => {
+                    btn.addEventListener('click', () => {
                         const target = document.getElementById(`question-block-${qNum}`);
-                        // Calculate offset for fixed elements
+                        if (!target) return;
                         const y = target.getBoundingClientRect().top + window.scrollY - 150;
-                        window.scrollTo({top: y, behavior: 'smooth'});
-                    };
-                    navContainer.appendChild(btn);
-                    
-                    options.forEach(item => {
-                        item.dataset.qnum = qNum;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
                     });
+                    navContainer.appendChild(btn);
                 }
-            }
+
+                options.forEach(item => {
+                    item.addEventListener('click', function () {
+                        if (!document.body.classList.contains('practice-mode')) return;
+                        options.forEach(sib => sib.classList.remove('selected'));
+                        this.classList.add('selected');
+                        const sq = document.getElementById(`nav-sq-${qNum}`);
+                        if (sq) sq.classList.add('answered');
+                    });
+                });
+            });
+
+            document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
         });
-
-        document.addEventListener('click', function(e) {
-            const item = e.target.closest('.option-item');
-            if (!item || !document.body.classList.contains('practice-mode')) return;
-
-            const siblings = item.parentElement.querySelectorAll('.option-item');
-            siblings.forEach(sib => sib.classList.remove('selected'));
-            item.classList.add('selected');
-
-            const sq = document.getElementById(`nav-sq-${item.dataset.qnum}`);
-            if (sq) sq.classList.add('answered');
-        });
-    });
-
-    // Initialize tooltips
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
-</script>
+    </script>
 </body>
+
 </html>
