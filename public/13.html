@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 13 - Practice</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --success: #27ae60;
+            --warning: #f1c40f;
+            --bg-light: #f8f9fa;
+        }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: #f4f7f6; color: #333; position: relative; }
+        .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; padding: 3rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 2rem; border-radius: 0 0 20px 20px; }
+        .sidebar { position: sticky; top: 2rem; }
+        .nav-pills .nav-link { color: var(--secondary); font-weight: 500; border-radius: 8px; margin-bottom: 4px; transition: all 0.2s; }
+        .nav-pills .nav-link:hover { background-color: #e9ecef; }
+        .nav-pills .nav-link.active { background-color: var(--accent); color: white; box-shadow: 0 2px 8px rgba(52, 152, 219, 0.4); }
+        .section-card { background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); padding: 2rem; margin-bottom: 2rem; }
+        .section-title { color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-weight: 600; }
+        .transcript-box { background-color: var(--bg-light); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 2rem; }
+        .speaker-badge { font-size: 0.8rem; padding: 0.3rem 0.6rem; border-radius: 4px; margin-right: 10px; display: inline-block; min-width: 65px; text-align: center; font-weight: 600; }
+        .bg-w-am { background-color: #ffeaa7; color: #d35400; }
+        .bg-m-cn { background-color: #dfe6e9; color: #2d3436; }
+        .bg-w-br { background-color: #fab1a0; color: #c0392b; }
+        .bg-m-au { background-color: #81ecec; color: #00cec9; }
+        .question-item { margin-bottom: 2rem; }
+        .question-text { font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; }
+        .option-list { list-style: none; padding: 0; }
+        .option-item { padding: 0.8rem 1rem; margin-bottom: 0.5rem; border: 1px solid #dee2e6; border-radius: 8px; background-color: white; transition: all 0.2s; display: block; cursor: pointer; }
+        .option-item.correct { background-color: #d1e7dd; border-color: #badbcc; color: #0f5132; font-weight: 500; }
+        .option-item.correct::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; float: right; }
+        .explanation { background-color: #e8f4f8; border-left: 4px solid #17a2b8; padding: 1rem; border-radius: 0 8px 8px 0; margin-top: 1rem; font-size: 0.95rem; }
+        .reading-box { font-family: 'Georgia', serif; font-size: 1.05rem; line-height: 1.8; background-color: #fff; padding: 2rem; border: 1px solid #dee2e6; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: inset 0 0 15px rgba(0,0,0,0.02); }
+        .blank-space { display: inline-block; min-width: 100px; border-bottom: 2px solid #333; text-align: center; font-weight: bold; color: #dc3545; margin: 0 5px; padding: 0 5px; }
+        .vocab-list { list-style-type: none; padding: 0; }
+        .vocab-list li { padding: 0.5rem 0; border-bottom: 1px dashed #dee2e6; }
+        .vocab-list li:last-child { border-bottom: none; }
+        .takeaway { background: linear-gradient(to right, #fff3cd, #ffecb3); border-left: 4px solid #ffc107; padding: 1.5rem; border-radius: 8px; }
+        .floating-actions { position: fixed; right: 20px; bottom: 40px; z-index: 1000; display: flex; flex-direction: column; gap: 10px; }
+        .floating-actions .btn { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
+        .floating-actions .btn:hover { transform: scale(1.1); }
+        
+        /* Audio player fixed at bottom */
+        .audio-player-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            border-top: 1px solid #dee2e6;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+            padding: 15px;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        /* SPA Practice Mode Overrides */
+        body.practice-mode .transcript-box,
+        body.practice-mode .completed-section,
+        body.practice-mode .vocab-section,
+        body.practice-mode .takeaway,
+        body.practice-mode .explanation {
+            display: none !important;
+        }
+        body.practice-mode .option-item.correct {
+            background-color: white !important;
+            border-color: #dee2e6 !important;
+            font-weight: normal !important;
+            color: inherit !important;
+        }
+        body.practice-mode .option-item.correct::after {
+            content: none !important;
+        }
+        body.practice-mode .review-title { display: none !important; }
+        body.practice-mode .practice-title { display: block !important; }
+        .practice-title { display: none; }
+        
+        /* Grading styles */
+        .option-item.selected {
+            border-color: var(--accent) !important;
+            background-color: #eef7fc !important;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        .option-item.wrong-selection {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+            color: #721c24 !important;
+        }
+        .practice-only { display: none !important; }
+        body.practice-mode .practice-only { display: block !important; }
+        
+        #preTestOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: none; align-items: center; justify-content: center; }
+        body.practice-mode:not(.test-started) #preTestOverlay { display: flex; }
+        body.practice-mode:not(.test-started) .test-content-area { filter: blur(8px); pointer-events: none; user-select: none; }
+        
+        #navigator-container { display: none; }
+        body.practice-mode #navigator-container { display: block; }
+        body.practice-mode #toc-sidebar-container { display: none; }
+        
+        .nav-square { width: 35px; height: 35px; padding: 0; line-height: 35px; text-align: center; font-weight: bold; border-radius: 6px; transition: all 0.2s; }
+        .nav-square.answered { background-color: var(--accent); color: white; border-color: var(--accent); }
+        .nav-square.wrong-ans { background-color: #dc3545; color: white; border-color: #dc3545; }
+        .nav-square.correct-ans { background-color: #198754; color: white; border-color: #198754; }
+        
+        #timerDisplay { font-size: 2rem; font-family: monospace; font-weight: bold; color: var(--primary); }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#toc-sidebar" data-bs-offset="100" tabindex="0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="fas fa-graduation-cap me-2"></i>TOEIC Practice</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Lesson 12</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="13.html">Lesson 13</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div id="preTestOverlay">
+    <div class="text-center p-5 bg-white rounded shadow-lg" style="max-width: 500px;">
+        <h2 class="fw-bold mb-3"><i class="fas fa-stopwatch text-primary me-2"></i>Ready to Start?</h2>
+        <p class="text-muted mb-4">The timer will begin and the audio will play automatically. Good luck!</p>
+        <button class="btn btn-primary btn-lg px-5 rounded-pill shadow" onclick="startTest()">Start Practice Test</button>
+    </div>
+</div>
+
+<div class="hero text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold mb-3 review-title"><i class="fas fa-book-open me-3"></i>Lesson 13 – Review</h1>
+        <h1 class="display-4 fw-bold mb-3 practice-title"><i class="fas fa-edit me-3"></i>Lesson 13 – Practice Test</h1>
+        <p class="lead mb-4 review-title">Listening & Reading Comprehension with Answers</p>
+        <p class="lead mb-4 practice-title">Test your skills without looking at the answers!</p>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-3 d-none d-lg-block">
+            <div class="sidebar">
+                <div class="card border-0 shadow-sm" id="toc-sidebar-container">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3"><i class="fas fa-list me-2"></i>Contents</h5>
+                        <nav id="toc-sidebar" class="nav nav-pills flex-column">
+                            <a class="nav-link fw-bold" href="#part3"><i class="fas fa-headphones me-2"></i>Part 3: Listening</a>
+                            <nav class="nav nav-pills flex-column">
+                                <a class="nav-link ms-3 my-1" href="#lc-1">Questions 1–3</a>
+                                <a class="nav-link ms-3 my-1" href="#lc-2">Questions 4–6</a>
+                                <a class="nav-link ms-3 my-1" href="#lc-3">Questions 7–9</a>
+                                <a class="nav-link ms-3 my-1" href="#lc-4">Questions 10–12</a>
+                                <a class="nav-link ms-3 my-1" href="#lc-5">Questions 13–15</a>
+                            </nav>
+                            <a class="nav-link fw-bold mt-2" href="#part67"><i class="fas fa-book-reader me-2"></i>Part 6-7: Reading</a>
+                            <nav class="nav nav-pills flex-column">
+                                <a class="nav-link ms-3 my-1" href="#rc-1">Questions 131–134</a>
+                                <a class="nav-link ms-3 my-1" href="#rc-2">Questions 135–138</a>
+                                <a class="nav-link ms-3 my-1" href="#rc-3">Questions 139–142</a>
+                                <a class="nav-link ms-3 my-1" href="#rc-4">Questions 143–146</a>
+                            </nav>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm" id="navigator-container">
+                    <div class="card-body text-center">
+                        <div class="mb-4">
+                            <div class="text-muted small fw-bold mb-1">TIME ELAPSED</div>
+                            <div id="timerDisplay">00:00</div>
+                        </div>
+                        <hr>
+                        <h6 class="fw-bold mb-3 mt-3 text-start"><i class="fas fa-th me-2"></i>Question Navigator</h6>
+                        <div id="question-navigator" class="d-flex flex-wrap gap-1 justify-content-start"></div>
+                        <div class="mt-4 text-start small">
+                            <div class="d-flex align-items-center mb-1"><div class="nav-square border me-2" style="width: 15px; height: 15px; line-height: 15px;"></div> Unanswered</div>
+                            <div class="d-flex align-items-center"><div class="nav-square answered me-2" style="width: 15px; height: 15px; line-height: 15px;"></div> Answered</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 test-content-area">
+            <div id='part3'>
+                <h2 class='fw-bold text-primary mb-4 border-bottom pb-2'><i class='fas fa-headphones me-3'></i>Part 3: Listening Comprehension</h2>
+                
+                <!-- Questions 1-3 -->
+                <div id='lc-1' class='section-card'>
+                    <h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 1–3</h3>
+                    <div class='transcript-box'>
+                        <h5><i class='fas fa-comments me-2'></i>Transcript</h5>
+                        <div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Great news! Last month we sold over 10,000 units of our new C-12 mobile phone model.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> That's wonderful! I guess the consumers like the new features, like the digital camera and Internet access on their phones.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Actually, our survey indicates that it's the phone's new slim design they like. It's really attractive.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> I heard Sarah Luzon is getting a nice bonus. That whole design was her idea.</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>1. What are the speakers discussing?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> A digital camera</li>
+                            <li class='option-item'><b>B.</b> A laptop computer</li>
+                            <li class='option-item correct'><b>C.</b> A mobile phone</li>
+                            <li class='option-item'><b>D.</b> A compact stereo</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The woman explicitly mentions selling "over 10,000 units of our new <strong>C-12 mobile phone model</strong>."</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>2. According to the survey, what led to an increase in sales?</div>
+                        <ul class='option-list'>
+                            <li class='option-item correct'><b>A.</b> An attractive design</li>
+                            <li class='option-item'><b>B.</b> A reduced price</li>
+                            <li class='option-item'><b>C.</b> Good advertising</li>
+                            <li class='option-item'><b>D.</b> New product capabilities</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The woman states that "our survey indicates that it's the phone's <strong>new slim design</strong> they like. It's really attractive."</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>3. What will Sarah Luzon receive?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> A pay raise</li>
+                            <li class='option-item'><b>B.</b> An award</li>
+                            <li class='option-item'><b>C.</b> A promotion</li>
+                            <li class='option-item correct'><b>D.</b> A bonus</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man mentions, "I heard Sarah Luzon is getting a <strong>nice bonus</strong>."</div>
+                    </div>
+                </div>
+
+                <!-- Questions 4-6 -->
+                <div id='lc-2' class='section-card'>
+                    <h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 4–6</h3>
+                    <div class='transcript-box'>
+                        <h5><i class='fas fa-comments me-2'></i>Transcript</h5>
+                        <div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> Hi, Julia — could you let all employees know that IT is doing maintenance on our servers the last weekend in March?</div>
+                        <div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> Sure. Which computer applications will be affected?</div>
+                        <div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> This time the whole system will be affected. So, it's really important to remind everyone that they won't be able to work from Friday night to Sunday morning on that weekend.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> OK, I'll emphasize that point in an e-mail and send it out to all employees right away.</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>4. What will take place at the end of March?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> A holiday closing</li>
+                            <li class='option-item'><b>B.</b> A client visit</li>
+                            <li class='option-item correct'><b>C.</b> Computer maintenance</li>
+                            <li class='option-item'><b>D.</b> Building construction</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man says that "<strong>IT is doing maintenance on our servers</strong> the last weekend in March."</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>5. What do employees need to be reminded about?</div>
+                        <ul class='option-list'>
+                            <li class='option-item correct'><b>A.</b> They will not be able to work on a weekend</li>
+                            <li class='option-item'><b>B.</b> They should power off their computers</li>
+                            <li class='option-item'><b>C.</b> They have to lock their file drawers</li>
+                            <li class='option-item'><b>D.</b> They have to participate in a company reception</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man emphasizes that "they <strong>won't be able to work from Friday night to Sunday morning</strong> on that weekend."</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>6. What does the woman say she will do?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> Restart her computer</li>
+                            <li class='option-item'><b>B.</b> Book a trip</li>
+                            <li class='option-item'><b>C.</b> Review an agenda</li>
+                            <li class='option-item correct'><b>D.</b> Write an e-mail</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The woman says, "I'll emphasize that point in an <strong>e-mail</strong> and send it out."</div>
+                    </div>
+                </div>
+
+                <!-- Questions 7-9 -->
+                <div id='lc-3' class='section-card'>
+                    <h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 7–9</h3>
+                    <div class='transcript-box'>
+                        <h5><i class='fas fa-comments me-2'></i>Transcript</h5>
+                        <div class='mb-2'><span class='speaker-badge bg-m-au'>M-Au</span> Angela, have you had a chance to look at the cost estimate for the repairs on the warehouse roof? There are several leaks, so the project will start as soon as the budget is approved.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> Uhm... I've been in meetings all morning... Actually, since you met with the contractor, could you just stop by my office at two o'clock and tell me what he said about the roof?</div>
+                        <div class='mb-2'><span class='speaker-badge bg-m-au'>M-Au</span> Well, I'm leaving early this afternoon for an appointment at my bank. But Maria also spoke with the contractor. I'll tell her now that you'd like to talk with her at two.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> OK. Thank you.</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>7. What is the main topic of the conversation?</div>
+                        <ul class='option-list'>
+                            <li class='option-item correct'><b>A.</b> Building repairs</li>
+                            <li class='option-item'><b>B.</b> Staff assignments</li>
+                            <li class='option-item'><b>C.</b> Safety reports</li>
+                            <li class='option-item'><b>D.</b> Health benefits</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The speakers are discussing the "<strong>repairs on the warehouse roof</strong>."</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>8. Why does the woman say, "I've been in meetings all morning"?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> She wants the man to change a deadline</li>
+                            <li class='option-item'><b>B.</b> She is unhappy about her schedule today</li>
+                            <li class='option-item'><b>C.</b> She has already been updated about a project</li>
+                            <li class='option-item correct'><b>D.</b> She did not have time to look at a document</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> She uses this phrase to explain why she <strong>hasn't looked at the cost estimate</strong> document yet.</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>9. What does the man say he will do this afternoon?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> Meet with a contractor</li>
+                            <li class='option-item correct'><b>B.</b> Go to the bank</li>
+                            <li class='option-item'><b>C.</b> Join a conference call</li>
+                            <li class='option-item'><b>D.</b> Prepare a budget</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man mentions he is "<strong>leaving early this afternoon for an appointment at my bank</strong>."</div>
+                    </div>
+                </div>
+
+                <!-- Questions 10-12 -->
+                <div id='lc-4' class='section-card'>
+                    <h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 10–12</h3>
+                    <div class='transcript-box'>
+                        <h5><i class='fas fa-comments me-2'></i>Transcript</h5>
+                        <div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> Hi, I'm registered to attend the Technology Innovation Conference for the full five days. Unfortunately, I lost my entry badge. Can I get back into the conference without it?</div>
+                        <div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> Unfortunately, no. You'll need to get a new one.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> I thought as much. How do I get a new one? Will it cost me anything?</div>
+                        <div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> No, there's no fee for a new badge. And I can actually issue one for you now, if you'd like.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-w-am'>W-Am</span> That's great! Thanks so much.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> I'll just need to see some photo ID to verify your registration.</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>10. What event is the woman attending?</div>
+                        <ul class='option-list'>
+                            <li class='option-item correct'><b>A.</b> A professional conference</li>
+                            <li class='option-item'><b>B.</b> A bookstore opening</li>
+                            <li class='option-item'><b>C.</b> A fashion show</li>
+                            <li class='option-item'><b>D.</b> A sports competition</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> She mentions attending the "<strong>Technology Innovation Conference</strong>."</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>11. What does the man offer to do for the woman?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> Process a refund</li>
+                            <li class='option-item'><b>B.</b> Give her a tour</li>
+                            <li class='option-item'><b>C.</b> Arrange some transportation</li>
+                            <li class='option-item correct'><b>D.</b> Replace a lost item</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man offers to "<strong>issue one [a new badge] for you now</strong>" to replace the lost one.</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>12. What will the woman most likely do next?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> Sign a document</li>
+                            <li class='option-item correct'><b>B.</b> Show some identification</li>
+                            <li class='option-item'><b>C.</b> Purchase a souvenir</li>
+                            <li class='option-item'><b>D.</b> Reserve some seating</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man says he needs to "<strong>see some photo ID</strong>," so she will provide it next.</div>
+                    </div>
+                </div>
+
+                <!-- Questions 13-15 -->
+                <div id='lc-5' class='section-card'>
+                    <h3 class='section-title'><i class='fas fa-volume-up me-2'></i>Questions 13–15</h3>
+                    <div class='transcript-box'>
+                        <h5><i class='fas fa-comments me-2'></i>Transcript</h5>
+                        <div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> Hi Akira, our company's Fitness Week is coming up, so I'm handing out these flyers.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> Thanks. I heard the company's giving away fitness watches this year. When you wear the watch, it monitors how much you exercise. We didn't get any gifts last year.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> Yes, they're great. So, which event do you want to attend?</div>
+                        <div class='mb-2'><span class='speaker-badge bg-m-cn'>M-Cn</span> Let's see... I'm interested in meditation, but I'll be out of the office that day. But the event on Thursday also sounds interesting, and I usually have free time on Thursdays.</div>
+                        <div class='mb-2'><span class='speaker-badge bg-w-br'>W-Br</span> Great. Could you distribute these flyers to your colleagues in the accounting department? I'd like all company employees to get a copy, but I need to visit several departments.</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>13. What is being handed out?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> Fitness watches</li>
+                            <li class='option-item'><b>B.</b> Health surveys</li>
+                            <li class='option-item correct'><b>C.</b> Event flyers</li>
+                            <li class='option-item'><b>D.</b> Member IDs</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The woman says she is "<strong>handing out these flyers</strong>."</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>14. What gift is mentioned as being new this year?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> Meditation classes</li>
+                            <li class='option-item correct'><b>B.</b> Fitness watches</li>
+                            <li class='option-item'><b>C.</b> Healthy snacks</li>
+                            <li class='option-item'><b>D.</b> Gym memberships</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> The man mentions hearing that "the company's <strong>giving away fitness watches</strong> this year."</div>
+                    </div>
+                    <div class='question-item'>
+                        <div class='question-text'>15. What does the woman ask the man to do?</div>
+                        <ul class='option-list'>
+                            <li class='option-item'><b>A.</b> Lead a meditation session</li>
+                            <li class='option-item'><b>B.</b> Attend an event on Thursday</li>
+                            <li class='option-item'><b>C.</b> Visit the accounting department</li>
+                            <li class='option-item correct'><b>D.</b> Distribute some materials</li>
+                        </ul>
+                        <div class='explanation'><b><i class='fas fa-lightbulb text-warning me-2'></i>Explanation:</b> She asks, "Could you <strong>distribute these flyers</strong> to your colleagues?"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id='part67'>
+                <h2 class='fw-bold text-primary mb-4 border-bottom pb-2'><i class='fas fa-book-reader me-3'></i>Part 6-7: Reading Comprehension</h2>
+                
+                <!-- RC 1 -->
+                <div id='rc-1' class='section-card'>
+                    <h3 class='section-title'><i class='fas fa-file-alt me-2'></i>Questions 131–134</h3>
+                    <h5 class='mt-4 mb-3'><i class='fas fa-align-left me-2 text-primary'></i>Passage</h5>
+                    <div class='reading-box'>
+                        <strong>From:</strong> Gold Star Bank<br>
+                        <strong>Subject:</strong> Gold Star Bank App<br>
+                        <strong>Date:</strong> 15 July<br><br>
+                        Dear Customer:<br><br>
+                        Here at Gold Star Bank, we take our customers and their needs <span class="blank-space">(131)</span>. As some of you know, we are experiencing technical difficulties with our mobile app. Our engineers <span class="blank-space">(132)</span> on this problem now.<br><br>
+                        The trouble started on 14 July when our system went down because of a software bug. We expect the app to be up and running <span class="blank-space">(133)</span> the next twenty-four hours. In the meantime, banking transactions can be done at <span class="blank-space">(134)</span> of our branch locations, and our automated cash machines are also working.<br><br>
+                        We apologize for any inconvenience.<br><br>
+                        Sincerely,<br>
+                        Ravi Chadda<br>
+                        Vice President of Customer Relations
+                    </div>
+                    <div class='row'>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>131</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> serious</li><li class='option-item correct'><b>B)</b> seriously</li><li class='option-item'><b>C)</b> seriousness</li><li class='option-item'><b>D)</b> more serious</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>132</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> are working</li><li class='option-item'><b>B)</b> have worked</li><li class='option-item'><b>C)</b> were working</li><li class='option-item'><b>D)</b> to work</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>133</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> following</li><li class='option-item'><b>B)</b> since</li><li class='option-item'><b>C)</b> at</li><li class='option-item correct'><b>D)</b> within</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>134</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> every</li><li class='option-item'><b>B)</b> each</li><li class='option-item correct'><b>C)</b> any</li><li class='option-item'><b>D)</b> whole</li></ul></div></div></div>
+                    </div>
+                    <div class='completed-section'>
+                        <h5 class='mt-4 mb-3 text-success'><i class='fas fa-check-circle me-2'></i>Completed Version</h5>
+                        <div class='reading-box'>
+                            Here at Gold Star Bank, we take our customers and their needs <strong class='text-success'>seriously (131)</strong>. As some of you know, we are experiencing technical difficulties with our mobile app. Our engineers <strong class='text-success'>are working (132)</strong> on this problem now. The app is expected to be up and running <strong class='text-success'>within (133)</strong> the next twenty-four hours. In the meantime, banking transactions can be done at <strong class='text-success'>any (134)</strong> of our branch locations.
+                        </div>
+                    </div>
+                    <div class='vocab-section'>
+                        <h5 class='mb-3 text-primary'><i class='fas fa-spell-check me-2'></i>Vocabulary & Analysis</h5>
+                        <ul class='vocab-list'>
+                            <li><strong>Take someone/something seriously:</strong> Coi trọng ai đó/vấn đề gì đó.</li>
+                            <li><strong>Technical difficulties:</strong> Khó khăn/sự cố kỹ thuật.</li>
+                            <li><strong>Software bug:</strong> Lỗi phần mềm.</li>
+                            <li><strong>Up and running:</strong> Hoạt động trở lại.</li>
+                            <li><strong>Branch locations:</strong> Các chi nhánh.</li>
+                        </ul>
+                    </div>
+                    <div class='takeaway'>
+                        <h5 class='mb-3'><i class='fas fa-key me-2'></i>Key Takeaways</h5>
+                        <ul class='mb-0'>
+                            <li>The mobile app is <strong>currently down</strong> due to a software bug.</li>
+                            <li>The bank expects a resolution <strong>within 24 hours</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RC 2 -->
+                <div id='rc-2' class='section-card'>
+                    <h3 class='section-title'><i class='fas fa-file-alt me-2'></i>Questions 135–138</h3>
+                    <h5 class='mt-4 mb-3'><i class='fas fa-align-left me-2 text-primary'></i>Passage</h5>
+                    <div class='reading-box'>
+                        Bethenie Industries guarantees that its products will function as <span class="blank-space">(135)</span> for at least one year from date of purchase. For certain products this period may be extended.<br><br>
+                        This warranty applies only to products sold at Bethenie Industries stores and other licensed distributors. Products <span class="blank-space">(136)</span> are found to be defective may be shipped to our address for repair or exchange. Please note that products that are being returned because of damage should be shipped back to us, whenever <span class="blank-space">(137)</span>, <span class="blank-space">(138)</span> their original packaging.
+                    </div>
+                    <div class='row'>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>135</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> advertise</li><li class='option-item'><b>B)</b> advertising</li><li class='option-item correct'><b>C)</b> advertised</li><li class='option-item'><b>D)</b> advertisement</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>136</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> who</li><li class='option-item correct'><b>B)</b> that</li><li class='option-item'><b>C)</b> whose</li><li class='option-item'><b>D)</b> what</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>137</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> possible</li><li class='option-item'><b>B)</b> possibly</li><li class='option-item'><b>C)</b> possibility</li><li class='option-item'><b>D)</b> possibilities</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>138</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> at</li><li class='option-item'><b>B)</b> by</li><li class='option-item'><b>C)</b> to</li><li class='option-item correct'><b>D)</b> in</li></ul></div></div></div>
+                    </div>
+                    <div class='completed-section'>
+                        <h5 class='mt-4 mb-3 text-success'><i class='fas fa-check-circle me-2'></i>Completed Version</h5>
+                        <div class='reading-box'>
+                            Bethenie Industries guarantees that its products will function as <strong class='text-success'>advertised (135)</strong> for at least one year. Products <strong class='text-success'>that (136)</strong> are found to be defective may be shipped to our address. Please note that products should be shipped back to us, whenever <strong class='text-success'>possible (137)</strong>, <strong class='text-success'>in (138)</strong> their original packaging.
+                        </div>
+                    </div>
+                    <div class='vocab-section'>
+                        <h5 class='mb-3 text-primary'><i class='fas fa-spell-check me-2'></i>Vocabulary & Analysis</h5>
+                        <ul class='vocab-list'>
+                            <li><strong>Guarantee:</strong> Bảo đảm, cam kết.</li>
+                            <li><strong>Defective:</strong> Bị lỗi, hỏng.</li>
+                            <li><strong>Original packaging:</strong> Bao bì gốc.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- RC 3 -->
+                <div id='rc-3' class='section-card'>
+                    <h3 class='section-title'><i class='fas fa-file-alt me-2'></i>Questions 139–142</h3>
+                    <h5 class='mt-4 mb-3'><i class='fas fa-align-left me-2 text-primary'></i>Passage</h5>
+                    <div class='reading-box'>
+                        <strong>Healthy Foods Market</strong> has planned some exciting renovations in the coming weeks.<br><br>
+                        During this time the store will remain open, but certain departments will be temporarily unavailable. Beginning on August 3, the refrigerated and frozen-food sections of the store <span class="blank-space">(139)</span> to be under construction. <span class="blank-space">(140)</span>, food from these areas will be unavailable while work is being completed. Remodeling should be finished by August 9. Store managers are confident that the <span class="blank-space">(141)</span> days of inconvenience will be well worth it. <span class="blank-space">(142)</span>. At this event, there will be complimentary samples of some new food choices, including an expanded selection of nutritious, ready-to-eat meals.
+                    </div>
+                    <div class='row'>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>139</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> schedules</li><li class='option-item'><b>B)</b> to be scheduled</li><li class='option-item'><b>C)</b> scheduling</li><li class='option-item correct'><b>D)</b> are scheduled</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>140</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> However</li><li class='option-item correct'><b>B)</b> Therefore</li><li class='option-item'><b>C)</b> Besides</li><li class='option-item'><b>D)</b> Likewise</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>141</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> few</li><li class='option-item'><b>B)</b> no</li><li class='option-item'><b>C)</b> many</li><li class='option-item'><b>D)</b> any</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>142</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> The store must close for three days.</li><li class='option-item'><b>B)</b> Customers must park in the recently added area.</li><li class='option-item'><b>C)</b> These products will be available during the remodeling.</li><li class='option-item correct'><b>D)</b> A special celebration will take place on August 12.</li></ul></div></div></div>
+                    </div>
+                    <div class='completed-section'>
+                        <h5 class='mt-4 mb-3 text-success'><i class='fas fa-check-circle me-2'></i>Completed Version</h5>
+                        <div class='reading-box'>
+                            Beginning on August 3, the refrigerated and frozen-food sections of the store <strong class='text-success'>are scheduled (139)</strong> to be under construction. <strong class='text-success'>Therefore (140)</strong>, food from these areas will be unavailable. Store managers are confident that the <strong class='text-success'>few (141)</strong> days of inconvenience will be well worth it. <strong class='text-success'>A special celebration will take place on August 12. (142)</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RC 4 -->
+                <div id='rc-4' class='section-card'>
+                    <h3 class='section-title'><i class='fas fa-file-alt me-2'></i>Questions 143–146</h3>
+                    <h5 class='mt-4 mb-3'><i class='fas fa-align-left me-2 text-primary'></i>Passage</h5>
+                    <div class='reading-box'>
+                        <strong>VANCOUVER (3 February)</strong> — Poalesco unveiled its annual Plant Showcase today. According to Poalesco spokesman Nacio Roja, this <span class="blank-space">(143)</span> offering highlights the company's latest efforts in botanical research. Many of these efforts result from customer surveys designed to gain an understanding of common challenges. <span class="blank-space">(144)</span>.<br><br>
+                        This year, the company's specialized nurseries have turned out drought-hardy breeds, such as the Goldtone Apple Tree. These varietals can withstand extended dry conditions without sustaining damage. "Gardeners in desert <span class="blank-space">(145)</span> will appreciate the Goldtones in particular," noted Roja. "And <span class="blank-space">(146)</span> might also be interested in our new Q7 rose bushes, which thrive in a similar climate."
+                    </div>
+                    <div class='row'>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>143</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> prouder</li><li class='option-item'><b>B)</b> proudly</li><li class='option-item'><b>C)</b> pride</li><li class='option-item correct'><b>D)</b> proud</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>144</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> Then, the R&D team works to develop variants...</li><li class='option-item'><b>B)</b> The company is looking for profitable areas...</li><li class='option-item'><b>C)</b> The surveys are conducted every three years.</li><li class='option-item'><b>D)</b> Most customers prefer to shop online.</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>145</div><div class='card-body'><ul class='option-list'><li class='option-item'><b>A)</b> region</li><li class='option-item correct'><b>B)</b> regions</li><li class='option-item'><b>C)</b> regional</li><li class='option-item'><b>D)</b> regionally</li></ul></div></div></div>
+                        <div class='col-md-6 mb-3'><div class='card border-0 shadow-sm'><div class='card-header bg-primary text-white'>146</div><div class='card-body'><ul class='option-list'><li class='option-item correct'><b>A)</b> they</li><li class='option-item'><b>B)</b> them</li><li class='option-item'><b>C)</b> their</li><li class='option-item'><b>D)</b> theirs</li></ul></div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='text-center mt-5 mb-5 practice-only'>
+                <button onclick='checkAnswers()' class='btn btn-success btn-lg shadow-sm fw-bold px-5 py-3 rounded-pill'><i class='fas fa-check-double me-2'></i>Submit & Check Answers</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="audio-player-container collapse d-md-block" id="audioPlayerContainer">
+    <div class="container d-flex flex-column align-items-center">
+        <div class="text-muted small mb-2 fw-bold"><i class="fas fa-music me-2"></i>Listening Audio</div>
+        <div class="d-flex align-items-center w-100 justify-content-center" style="max-width: 600px; gap: 10px;">
+            <button class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;" onclick="skipAudio(-5)"><i class="fas fa-undo"></i></button>
+            <audio id="listeningAudio" controls class="flex-grow-1">
+                <source src="audio/lesson12.mp3" type="audio/mpeg"> <!-- Note: Update to lesson13.mp3 if available -->
+                Your browser does not support the audio element.
+            </audio>
+            <button class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;" onclick="skipAudio(5)"><i class="fas fa-redo"></i></button>
+        </div>
+    </div>
+</div>
+
+<div class="floating-actions">
+    <button class="btn btn-warning text-dark" onclick="showHistory()" title="History"><i class="fas fa-history"></i></button>
+    <button class="btn btn-success text-white practice-only" onclick="checkAnswers()" title="Submit"><i class="fas fa-check-double"></i></button>
+    <button id="modeToggleBtn" onclick="toggleMode()" class="btn btn-primary text-white" title="Practice Mode"><i class="fas fa-pen"></i></button>
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn btn-secondary text-white"><i class="fas fa-arrow-up"></i></button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    let timerInterval = null;
+    let secondsElapsed = 0;
+    const HISTORY_KEY = 'toeic_lesson13_history';
+
+    function startTest() {
+        document.body.classList.add('test-started', 'practice-mode');
+        secondsElapsed = 0;
+        updateTimerDisplay();
+        timerInterval = setInterval(() => { secondsElapsed++; updateTimerDisplay(); }, 1000);
+        const audio = document.getElementById('listeningAudio');
+        if (audio) { audio.play().catch(e => console.log('Autoplay prevented')); }
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+    
+    function updateTimerDisplay() {
+        const m = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
+        const s = (secondsElapsed % 60).toString().padStart(2, '0');
+        document.getElementById('timerDisplay').innerText = `${m}:${s}`;
+    }
+
+    function formatTime(totalSeconds) {
+        const m = Math.floor(totalSeconds / 60).toString().padStart(2, '0');
+        const s = (totalSeconds % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+    }
+
+    function skipAudio(seconds) {
+        const audio = document.getElementById('listeningAudio');
+        if (audio) audio.currentTime += seconds;
+    }
+
+    function toggleMode() {
+        document.body.classList.toggle('practice-mode');
+        const isPractice = document.body.classList.contains('practice-mode');
+        document.getElementById('modeToggleBtn').innerHTML = isPractice ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-pen"></i>';
+        if (isPractice) {
+            document.body.classList.remove('test-started');
+            if(timerInterval) clearInterval(timerInterval);
+            document.getElementById('timerDisplay').innerText = '00:00';
+            document.querySelectorAll('.nav-square').forEach(sq => sq.classList.remove('answered', 'wrong-ans', 'correct-ans'));
+            document.querySelectorAll('.option-item').forEach(opt => opt.classList.remove('selected', 'wrong-selection'));
+        }
+    }
+
+    function checkAnswers() {
+        if (!document.body.classList.contains('test-started')) return;
+        clearInterval(timerInterval);
+        let score = 0, total = 0;
+        document.querySelectorAll('.question-item, .card-body').forEach(qBlock => {
+            const options = qBlock.querySelectorAll('.option-item');
+            if (options.length === 0) return;
+            total++;
+            const qNum = qBlock.dataset.qnum;
+            let isCorrect = false, isAnswered = false;
+            options.forEach(opt => {
+                if (opt.classList.contains('selected')) {
+                    isAnswered = true;
+                    if (opt.classList.contains('correct')) { score++; isCorrect = true; }
+                    else opt.classList.add('wrong-selection');
+                }
+            });
+            if (qNum) {
+                const sq = document.getElementById(`nav-sq-${qNum}`);
+                if (sq) {
+                    sq.classList.remove('answered');
+                    if (isCorrect) sq.classList.add('correct-ans');
+                    else if (isAnswered) sq.classList.add('wrong-ans');
+                }
+            }
+        });
+        saveHistory(score, total, secondsElapsed);
+        document.body.classList.remove('practice-mode');
+        document.getElementById('modeToggleBtn').innerHTML = '<i class="fas fa-pen"></i>';
+        setTimeout(() => alert(`Test Complete!\nScore: ${score} / ${total}\nTime: ${formatTime(secondsElapsed)}`), 100);
+    }
+
+    function saveHistory(score, total, time) {
+        let history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+        history.push({ date: new Date().toLocaleString(), score, total, time });
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+    }
+    
+    function showHistory() {
+        let history = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+        alert("Practice History:\n" + history.map(h => `${h.date}: ${h.score}/${h.total} (${formatTime(h.time)})`).join('\n'));
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const navContainer = document.getElementById('question-navigator');
+        let counter = 1;
+        document.querySelectorAll('.question-item, .card-body').forEach((qBlock) => {
+            const options = qBlock.querySelectorAll('.option-item');
+            if (options.length === 0) return;
+            
+            const qNum = counter++;
+            qBlock.dataset.qnum = qNum;
+            qBlock.id = `q-${qNum}`;
+            
+            const btn = document.createElement('button');
+            btn.className = 'btn btn-outline-secondary m-1 nav-square border';
+            btn.innerText = qNum;
+            btn.id = `nav-sq-${qNum}`;
+            btn.onclick = () => {
+                const target = document.getElementById(`q-${qNum}`);
+                const y = target.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            };
+            navContainer.appendChild(btn);
+            
+            options.forEach(item => {
+                item.onclick = function() {
+                    if (!document.body.classList.contains('practice-mode')) return;
+                    this.parentElement.querySelectorAll('.option-item').forEach(sib => sib.classList.remove('selected'));
+                    this.classList.add('selected');
+                    document.getElementById(`nav-sq-${qNum}`).classList.add('answered');
+                };
+            });
+        });
+    });
+</script>
+</body>
+</html>
