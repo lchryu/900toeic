@@ -5,8 +5,53 @@ import { LessonWorkspace } from './components/LessonWorkspace';
 import { LessonData, LessonProgress } from './types';
 import { Menu } from 'lucide-react';
 import lessonsData from './data/lessons.json';
+import {
+  isFirebaseConfigured,
+  loadCloudProgress,
+  saveCloudProgress,
+  signInWithGoogle,
+  signOutGoogle,
+  subscribeToAuth,
+  type AuthUser
+} from './services/firebase';
 
 const LOCAL_STORAGE_KEY = 'toeic_practice_progress';
+
+const mergeProgress = (
+  localProgress: { [lessonId: string]: LessonProgress },
+  cloudProgress: { [lessonId: string]: LessonProgress }
+) => {
+  const merged = { ...cloudProgress };
+  const lessonIds = new Set([...Object.keys(localProgress), ...Object.keys(cloudProgress)]);
+
+  lessonIds.forEach((lessonId) => {
+    const localItem = localProgress[lessonId];
+    const cloudItem = cloudProgress[lessonId];
+
+    if (!cloudItem && localItem) {
+      merged[lessonId] = localItem;
+      return;
+    }
+
+    if (!localItem || !cloudItem) return;
+
+    const localDate = localItem.completedDate ? new Date(localItem.completedDate).getTime() : 0;
+    const cloudDate = cloudItem.completedDate ? new Date(cloudItem.completedDate).getTime() : 0;
+
+    if (localDate > cloudDate) {
+      merged[lessonId] = localItem;
+    } else if (localDate === cloudDate) {
+      const localAnswered = Object.keys(localItem.answers || {}).length;
+      const cloudAnswered = Object.keys(cloudItem.answers || {}).length;
+      merged[lessonId] =
+        localAnswered > cloudAnswered || localItem.timeSpent > cloudItem.timeSpent
+          ? localItem
+          : cloudItem;
+    }
+  });
+
+  return merged;
+};
 
 const App: React.FC = () => {
   const lessons = lessonsData as LessonData[];
@@ -19,6 +64,9 @@ const App: React.FC = () => {
   
   // Progress state
   const [progress, setProgress] = useState<{ [lessonId: string]: LessonProgress }>({});
+  const [authUser, setAuthUser] = useState<AuthUser | null>(null);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncMessage, setSyncMessage] = useState<string | null>(null);
 
   // Question Navigator config state (managed by active LessonWorkspace)
   const [navConfig, setNavConfig] = useState<{
@@ -49,6 +97,53 @@ const App: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    return subscribeToAuth(async (user) => {
+      setAuthUser(user);
+      setSyncMessage(null);
+
+      if (!user) return;
+
+      setIsSyncing(true);
+      try {
+        const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+        const localProgress = stored ? JSON.parse(stored) : {};
+        const cloudProgress = (await loadCloudProgress(user.uid)) || {};
+        const mergedProgress = mergeProgress(localProgress, cloudProgress);
+
+        setProgress(mergedProgress);
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(mergedProgress));
+        await saveCloudProgress(user.uid, mergedProgress);
+        setSyncMessage('Synced with Google account');
+      } catch (e) {
+        console.error('Failed to sync cloud progress:', e);
+        setSyncMessage('Could not sync Google progress');
+      } finally {
+        setIsSyncing(false);
+      }
+    });
+  }, []);
+
+  const handleSignIn = async () => {
+    setSyncMessage(null);
+    try {
+      await signInWithGoogle();
+    } catch (e) {
+      console.error('Failed to sign in with Google:', e);
+      setSyncMessage('Google sign-in failed');
+    }
+  };
+
+  const handleSignOut = async () => {
+    setSyncMessage(null);
+    try {
+      await signOutGoogle();
+    } catch (e) {
+      console.error('Failed to sign out:', e);
+      setSyncMessage('Could not sign out');
+    }
+  };
+
   const handleNavigate = (view: 'dashboard' | 'lesson', lessonId: string | null) => {
     setActiveView(view);
     setCurrentLessonId(lessonId);
@@ -70,7 +165,8 @@ const App: React.FC = () => {
     answers: { [qNum: number]: string },
     timeSpent: number,
     score: number,
-    totalQuestions: number
+    totalQuestions: number,
+    isSubmitted = true
   ) => {
     const updatedProgress = {
       ...progress,
@@ -80,12 +176,20 @@ const App: React.FC = () => {
         timeSpent,
         score,
         totalQuestions,
-        completedDate: new Date().toISOString()
+        isSubmitted,
+        completedDate: isSubmitted ? new Date().toISOString() : progress[lessonId]?.completedDate
       }
     };
     
     setProgress(updatedProgress);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedProgress));
+
+    if (authUser) {
+      saveCloudProgress(authUser.uid, updatedProgress).catch((e) => {
+        console.error('Failed to save cloud progress:', e);
+        setSyncMessage('Could not save to Google account');
+      });
+    }
   };
 
   const handleQuestionNavConfig = (
@@ -163,6 +267,12 @@ const App: React.FC = () => {
           <Dashboard
             lessons={lessons}
             progress={progress}
+            authUser={authUser}
+            isAuthConfigured={isFirebaseConfigured}
+            isSyncing={isSyncing}
+            syncMessage={syncMessage}
+            onSignIn={handleSignIn}
+            onSignOut={handleSignOut}
             onStartLesson={(id) => handleNavigate('lesson', id)}
           />
         ) : activeLesson ? (

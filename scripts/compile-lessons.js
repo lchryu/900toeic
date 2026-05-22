@@ -371,7 +371,7 @@ function parseLesson(filePath) {
   return {
     id: lessonId,
     title,
-    audio: `audio/lesson${lessonId}.mp3`,
+    audio: `audio/${lessonId}.mp3`,
     listening: listeningGroups,
     reading: readingGroups
   };

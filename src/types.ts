@@ -56,5 +56,6 @@ export interface LessonProgress {
   timeSpent: number; // in seconds
   score: number;
   totalQuestions: number;
+  isSubmitted?: boolean;
   completedDate?: string;
 }

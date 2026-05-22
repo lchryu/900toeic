@@ -1,16 +1,33 @@
 import React from 'react';
-import { Award, BookOpen, Clock, Play } from 'lucide-react';
+import { Award, BookOpen, Cloud, CloudOff, Clock, LogIn, LogOut, Play } from 'lucide-react';
 import { LessonData, LessonProgress } from '../types';
+import type { AuthUser } from '../services/firebase';
 
 interface DashboardProps {
   lessons: LessonData[];
   progress: { [lessonId: string]: LessonProgress };
+  authUser: AuthUser | null;
+  isAuthConfigured: boolean;
+  isSyncing: boolean;
+  syncMessage: string | null;
+  onSignIn: () => void;
+  onSignOut: () => void;
   onStartLesson: (lessonId: string) => void;
 }
 
-export const Dashboard: React.FC<DashboardProps> = ({ lessons, progress, onStartLesson }) => {
+export const Dashboard: React.FC<DashboardProps> = ({
+  lessons,
+  progress,
+  authUser,
+  isAuthConfigured,
+  isSyncing,
+  syncMessage,
+  onSignIn,
+  onSignOut,
+  onStartLesson
+}) => {
   const completedLessons = Object.values(progress).filter(
-    (p) => p.answers && Object.keys(p.answers).length > 0
+    (p) => p.isSubmitted ?? (p.answers && Object.keys(p.answers).length > 0)
   );
 
   const totalLessonsCount = lessons.length;
@@ -37,7 +54,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ lessons, progress, onStart
   };
 
   // Find next lesson to do
-  const nextLesson = lessons.find((l) => !progress[l.id] || Object.keys(progress[l.id].answers).length === 0) || lessons[0];
+  const nextLesson = lessons.find((l) => !(progress[l.id]?.isSubmitted ?? Object.keys(progress[l.id]?.answers || {}).length > 0)) || lessons[0];
 
   return (
     <div style={{ padding: '32px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
@@ -49,6 +66,50 @@ export const Dashboard: React.FC<DashboardProps> = ({ lessons, progress, onStart
           Track your progress, view test scores, and continue your TOEIC listening and reading practice.
         </p>
       </header>
+
+      <div className="glass-panel google-sync-panel">
+        <div className="google-sync-main">
+          <div className="google-sync-icon">
+            {isAuthConfigured ? <Cloud size={22} /> : <CloudOff size={22} />}
+          </div>
+          <div>
+            <h3>Google progress sync</h3>
+            <p>
+              {isAuthConfigured
+                ? authUser
+                  ? `Signed in as ${authUser.email || authUser.displayName || 'Google user'}`
+                  : 'Sign in to save practice history to your Google account.'
+                : 'Add Firebase config in .env to enable Google sign-in and cloud progress.'}
+            </p>
+            {(isSyncing || syncMessage) && (
+              <span className="sync-status">
+                {isSyncing ? 'Syncing progress...' : syncMessage}
+              </span>
+            )}
+          </div>
+        </div>
+
+        {authUser ? (
+          <div className="google-account-actions">
+            {authUser.photoURL && (
+              <img
+                src={authUser.photoURL}
+                alt={authUser.displayName || authUser.email || 'Google account'}
+                className="google-avatar"
+              />
+            )}
+            <button className="secondary-btn" onClick={onSignOut}>
+              <LogOut size={16} />
+              <span>Sign out</span>
+            </button>
+          </div>
+        ) : (
+          <button className="primary-btn google-login-btn" onClick={onSignIn} disabled={!isAuthConfigured}>
+            <LogIn size={16} />
+            <span>Login with Google</span>
+          </button>
+        )}
+      </div>
 
       {/* Stats Grid */}
       <div className="dashboard-grid" style={{ padding: 0, marginBottom: '40px' }}>

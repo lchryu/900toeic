@@ -66,7 +66,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {lessons.map((lesson) => {
           const lessonProg = progress[lesson.id];
-          const isCompleted = lessonProg && lessonProg.answers && Object.keys(lessonProg.answers).length > 0;
+          const isCompleted = lessonProg && (lessonProg.isSubmitted ?? Object.keys(lessonProg.answers || {}).length > 0);
           const score = lessonProg ? lessonProg.score : 0;
           const totalQ = lessonProg ? lessonProg.totalQuestions : 0;
 

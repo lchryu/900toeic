@@ -9,7 +9,7 @@ import { Headphones, BookOpen, Clock, Award, RotateCcw, AlertTriangle } from 'lu
 interface LessonWorkspaceProps {
   lesson: LessonData;
   progress: LessonProgress | undefined;
-  onSaveProgress: (lessonId: string, answers: { [qNum: number]: string }, timeSpent: number, score: number, totalQuestions: number) => void;
+  onSaveProgress: (lessonId: string, answers: { [qNum: number]: string }, timeSpent: number, score: number, totalQuestions: number, isSubmitted?: boolean) => void;
   onQuestionNavConfig: (qNums: number[], answered: number[], flagged: number[], isGraded: boolean, results: { [qNum: number]: boolean }, scrollCallback: (num: number) => void) => void;
 }
 
@@ -25,20 +25,25 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   );
   const [questionStates, setQuestionStates] = useState<{ [qNum: number]: QuestionState }>({});
   const [isGraded, setIsGraded] = useState<boolean>(
-    !!(progress && progress.answers && Object.keys(progress.answers).length > 0)
+    !!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0))
   );
   
   // Timer state
   const [elapsedTime, setElapsedTime] = useState<number>(progress?.timeSpent || 0);
   const timerRef = useRef<any | null>(null);
+  const elapsedTimeRef = useRef(elapsedTime);
+
+  useEffect(() => {
+    elapsedTimeRef.current = elapsedTime;
+  }, [elapsedTime]);
 
   // Sync state when lesson changes
   useEffect(() => {
     setSelectedAnswers(progress?.answers || {});
-    setIsGraded(!!(progress && progress.answers && Object.keys(progress.answers).length > 0));
+    setIsGraded(!!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0)));
     setElapsedTime(progress?.timeSpent || 0);
     setQuestionStates({});
-  }, [lesson.id, progress]);
+  }, [lesson.id]);
 
   // Start timer if not graded
   useEffect(() => {
@@ -88,6 +93,26 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   const gradedResults = getGradedResults();
   const score = Object.values(gradedResults).filter(Boolean).length;
+
+  useEffect(() => {
+    if (isGraded) return;
+
+    const saveDraftTimer = window.setTimeout(() => {
+      onSaveProgress(lesson.id, selectedAnswers, elapsedTime, 0, totalQuestions, false);
+    }, 500);
+
+    return () => window.clearTimeout(saveDraftTimer);
+  }, [lesson.id, selectedAnswers, isGraded, totalQuestions]);
+
+  useEffect(() => {
+    if (isGraded) return;
+
+    const saveTimeTimer = window.setInterval(() => {
+      onSaveProgress(lesson.id, selectedAnswers, elapsedTimeRef.current, 0, totalQuestions, false);
+    }, 10000);
+
+    return () => window.clearInterval(saveTimeTimer);
+  }, [lesson.id, selectedAnswers, isGraded, totalQuestions]);
 
   const handleSelectOption = (qNum: number, label: string) => {
     if (isGraded) return;
@@ -164,7 +189,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     const results = getGradedResults();
     const finalScore = Object.values(results).filter(Boolean).length;
     
-    onSaveProgress(lesson.id, selectedAnswers, elapsedTime, finalScore, totalQuestions);
+    onSaveProgress(lesson.id, selectedAnswers, elapsedTime, finalScore, totalQuestions, true);
   };
 
   const handleResetTest = () => {
@@ -173,7 +198,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       setQuestionStates({});
       setIsGraded(false);
       setElapsedTime(0);
-      onSaveProgress(lesson.id, {}, 0, 0, totalQuestions);
+      onSaveProgress(lesson.id, {}, 0, 0, totalQuestions, false);
     }
   };
 
@@ -187,7 +212,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
       {/* Sticky Audio Player for Listening sections */}
-      <AudioPlayer src={`/audio/lesson${lesson.id}.mp3`} />
+      <AudioPlayer src={`/${lesson.audio}`} />
 
       {/* Lesson Heading and Tab Swtiching */}
       <div style={{ padding: '24px 24px 0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>

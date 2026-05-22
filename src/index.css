@@ -500,6 +500,72 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Dashboard view */
+.google-sync-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+
+.google-sync-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.google-sync-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  flex: 0 0 auto;
+}
+
+.google-sync-panel h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.google-sync-panel p {
+  color: hsl(var(--text-secondary));
+  font-size: 0.9rem;
+}
+
+.sync-status {
+  display: inline-block;
+  margin-top: 8px;
+  color: hsl(var(--primary));
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.google-login-btn,
+.google-account-actions .secondary-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.google-account-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.google-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--panel-border));
+}
+
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -625,6 +691,18 @@ h1, h2, h3, h4, h5 {
     gap: 16px !important;
   }
 
+  .google-sync-panel {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 20px;
+  }
+
+  .google-login-btn,
+  .google-account-actions .secondary-btn {
+    justify-content: center;
+    width: 100%;
+  }
+
   .dashboard-main-layout {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
@@ -635,4 +713,3 @@ h1, h2, h3, h4, h5 {
     font-size: 0.95rem;
   }
 }
-

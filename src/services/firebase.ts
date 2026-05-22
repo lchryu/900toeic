@@ -1,0 +1,112 @@
+import { initializeApp, type FirebaseApp } from 'firebase/app';
+import {
+  getAuth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+  signOut,
+  type Auth,
+  type User
+} from 'firebase/auth';
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  serverTimestamp,
+  setDoc,
+  type Firestore
+} from 'firebase/firestore';
+import { LessonProgress } from '../types';
+
+export interface AuthUser {
+  uid: string;
+  displayName: string | null;
+  email: string | null;
+  photoURL: string | null;
+}
+
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
+};
+
+export const isFirebaseConfigured = Boolean(
+  firebaseConfig.apiKey &&
+    firebaseConfig.authDomain &&
+    firebaseConfig.projectId &&
+    firebaseConfig.appId
+);
+
+let app: FirebaseApp | null = null;
+let auth: Auth | null = null;
+let db: Firestore | null = null;
+
+if (isFirebaseConfigured) {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+}
+
+const toAuthUser = (user: User): AuthUser => ({
+  uid: user.uid,
+  displayName: user.displayName,
+  email: user.email,
+  photoURL: user.photoURL
+});
+
+export const subscribeToAuth = (callback: (user: AuthUser | null) => void) => {
+  if (!auth) {
+    callback(null);
+    return () => undefined;
+  }
+
+  return onAuthStateChanged(auth, (user) => {
+    callback(user ? toAuthUser(user) : null);
+  });
+};
+
+export const signInWithGoogle = async () => {
+  if (!auth) {
+    throw new Error('Firebase is not configured.');
+  }
+
+  const provider = new GoogleAuthProvider();
+  const result = await signInWithPopup(auth, provider);
+  return toAuthUser(result.user);
+};
+
+export const signOutGoogle = async () => {
+  if (!auth) return;
+  await signOut(auth);
+};
+
+export const loadCloudProgress = async (uid: string) => {
+  if (!db) return null;
+
+  const snapshot = await getDoc(doc(db, 'toeicProgress', uid));
+  if (!snapshot.exists()) return null;
+
+  const data = snapshot.data();
+  return (data.progress || null) as { [lessonId: string]: LessonProgress } | null;
+};
+
+export const saveCloudProgress = async (
+  uid: string,
+  progress: { [lessonId: string]: LessonProgress }
+) => {
+  if (!db) return;
+
+  await setDoc(
+    doc(db, 'toeicProgress', uid),
+    {
+      progress,
+      updatedAt: serverTimestamp()
+    },
+    { merge: true }
+  );
+};
+
