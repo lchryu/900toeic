@@ -14,15 +14,18 @@ interface ListeningWorkspaceProps {
 }
 
 const GraphicImage: React.FC<{ lessonId: string; qNum: number }> = ({ lessonId, qNum }) => {
-  const [hasError, setHasError] = useState(false);
-  if (hasError) return null;
+  const [formatIndex, setFormatIndex] = useState(0);
+  const formats = ['png', 'svg'];
+  const format = formats[formatIndex];
+
+  if (!format) return null;
   
   return (
     <div style={{ margin: '20px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <img
-        src={`/assets/${lessonId}_${qNum}.png`}
+        src={`/assets/${lessonId}_${qNum}.${format}`}
         alt={`Graphic for Question ${qNum}`}
-        onError={() => setHasError(true)}
+        onError={() => setFormatIndex((current) => current + 1)}
         style={{
           maxWidth: '100%',
           maxHeight: '300px',

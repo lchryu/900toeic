@@ -19,6 +19,13 @@ function cleanMarkdown(text) {
     .trim();
 }
 
+function findFirstIndex(text, needles) {
+  const indexes = needles
+    .map((needle) => text.indexOf(needle))
+    .filter((index) => index !== -1);
+  return indexes.length > 0 ? Math.min(...indexes) : -1;
+}
+
 function parseLesson(filePath) {
   const content = fs.readFileSync(filePath, 'utf-8');
   const filename = path.basename(filePath);
@@ -33,21 +40,28 @@ function parseLesson(filePath) {
   console.log(`Parsing ${filename} (Lesson ID: ${lessonId}, Title: "${title}")...`);
   
   // Split into Listening and Reading sections
-  const listeningStart = content.indexOf('## 🎧 Part 3: Listening Comprehension');
-  const readingStart = content.indexOf('## 📖 Part 6-7: Reading Comprehension');
+  const listeningStart = findFirstIndex(content, [
+    '## 🎧 Part 3: Listening Comprehension',
+    '## Listening Comprehension'
+  ]);
+  const readingStart = findFirstIndex(content, [
+    '## 📖 Part 6-7: Reading Comprehension',
+    '## Reading Comprehension'
+  ]);
   
-  if (listeningStart === -1 || readingStart === -1) {
+  if (listeningStart === -1) {
     console.warn(`Warning: Missing core sections in ${filename}`);
     return null;
   }
   
-  const listeningSection = content.substring(listeningStart, readingStart);
-  const readingSection = content.substring(readingStart);
+  const listeningEnd = readingStart === -1 ? content.length : readingStart;
+  const listeningSection = content.substring(listeningStart, listeningEnd);
+  const readingSection = readingStart === -1 ? '' : content.substring(readingStart);
   
   // 1. Parse Listening Comprehension
   const listeningGroups = [];
   // Use multiline ^ to only match Level 3 headers starting at line boundaries
-  const listeningBlocks = listeningSection.split(/^### \S+ Questions /m);
+  const listeningBlocks = listeningSection.split(/^### (?:\S+\s+)?Questions /m);
   
   // Skip the first block (it is the section header)
   for (let i = 1; i < listeningBlocks.length; i++) {
@@ -61,7 +75,10 @@ function parseLesson(filePath) {
     const endQ = parseInt(rangeMatch[2]);
     const key = `lc-${startQ}`;
     
-    const transcriptIndex = block.indexOf('#### 📝 Questions & Answers');
+    const transcriptIndex = findFirstIndex(block, [
+      '#### 📝 Questions & Answers',
+      '#### Questions & Answers'
+    ]);
     if (transcriptIndex === -1) continue;
     
     // Parse Transcript
@@ -127,7 +144,7 @@ function parseLesson(filePath) {
       }
       
       // Parse Correct Answer
-      const answerMatch = qSplit.match(/👉\s*\*\*Answer:\s*([A-D])\*\*/i);
+      const answerMatch = qSplit.match(/(?:👉\s*)?\*\*Answer:\s*([A-D])\*\*/i);
       const correctAnswer = answerMatch ? answerMatch[1].toUpperCase() : '';
       options.forEach(opt => {
         if (opt.label === correctAnswer) {
