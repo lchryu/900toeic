@@ -190,6 +190,7 @@ h1, h2, h3, h4, h5 {
   color: #fff;
   margin-right: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
 }
 
 .bg-w-am { background-color: hsl(var(--color-w-am)); }

@@ -24,7 +24,7 @@
         .section-card { background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); padding: 2rem; margin-bottom: 2rem; }
         .section-title { color: var(--primary); border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-weight: 600; }
         .transcript-box { background-color: var(--bg-light); border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-bottom: 2rem; }
-        .speaker-badge { font-size: 0.8rem; padding: 0.3rem 0.6rem; border-radius: 4px; margin-right: 10px; display: inline-block; min-width: 65px; text-align: center; font-weight: 600; }
+        .speaker-badge { font-size: 0.8rem; padding: 0.3rem 0.6rem; border-radius: 4px; margin-right: 10px; display: inline-block; min-width: 65px; text-align: center; font-weight: 600; white-space: nowrap; }
         .bg-w-am { background-color: #ffeaa7; color: #d35400; }
         .bg-m-cn { background-color: #dfe6e9; color: #2d3436; }
         .bg-w-br { background-color: #fab1a0; color: #c0392b; }
@@ -261,7 +261,8 @@ To obtain your pass, visit our website at [www.jamto.org/freepass](http://www.ja
                 <i class="fas fa-undo"></i>
             </button>
             <audio id="listeningAudio" controls class="flex-grow-1">
-                <source src="assets/audio/12.MP3" type="audio/mpeg">
+                <source src="assets/audio/12.mp4" type="audio/mp4">
+                <source src="assets/audio/12.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
             <button class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px; flex-shrink: 0;" onclick="skipAudio(5)" data-bs-toggle="tooltip" title="Forward 5s">
