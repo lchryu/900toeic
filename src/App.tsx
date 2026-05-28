@@ -16,6 +16,7 @@ import {
 } from './services/firebase';
 
 const LOCAL_STORAGE_KEY = 'toeic_practice_progress';
+const THEME_STORAGE_KEY = 'toeic_practice_theme';
 
 const mergeProgress = (
   localProgress: { [lessonId: string]: LessonProgress },
@@ -67,6 +68,13 @@ const App: React.FC = () => {
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    try {
+      return localStorage.getItem(THEME_STORAGE_KEY) === 'light' ? 'light' : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
 
   // Question Navigator config state (managed by active LessonWorkspace)
   const [navConfig, setNavConfig] = useState<{
@@ -96,6 +104,11 @@ const App: React.FC = () => {
       console.error('Failed to load progress from localStorage:', e);
     }
   }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }, [theme]);
 
   useEffect(() => {
     return subscribeToAuth(async (user) => {
@@ -166,18 +179,22 @@ const App: React.FC = () => {
     timeSpent: number,
     score: number,
     totalQuestions: number,
-    isSubmitted = true
+    isSubmitted = true,
+    metadata: Partial<Pick<LessonProgress, 'flaggedQuestions' | 'lastTab' | 'mode'>> = {}
   ) => {
+    const previousProgress = progress[lessonId];
     const updatedProgress = {
       ...progress,
       [lessonId]: {
+        ...previousProgress,
         lessonId,
         answers,
         timeSpent,
         score,
         totalQuestions,
         isSubmitted,
-        completedDate: isSubmitted ? new Date().toISOString() : progress[lessonId]?.completedDate
+        completedDate: isSubmitted ? new Date().toISOString() : previousProgress?.completedDate,
+        ...metadata
       }
     };
     
@@ -232,6 +249,8 @@ const App: React.FC = () => {
         }}
         isMobileOpen={isMobileSidebarOpen}
         onCloseMobileSidebar={() => setIsMobileSidebarOpen(false)}
+        theme={theme}
+        onToggleTheme={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}
       />
 
       {/* Sidebar Overlay on mobile */}
@@ -246,7 +265,7 @@ const App: React.FC = () => {
           style={{
             background: 'transparent',
             border: 'none',
-            color: 'white',
+            color: 'hsl(var(--text-primary))',
             cursor: 'pointer',
             padding: '8px',
             display: 'flex',

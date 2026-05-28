@@ -87,7 +87,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       />
 
       <button className="audio-btn" onClick={togglePlay} title={isPlaying ? 'Pause' : 'Play'}>
-        {isPlaying ? <Pause size={20} fill="#000" /> : <Play size={20} fill="#000" style={{ marginLeft: '2px' }} />}
+        {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" style={{ marginLeft: '2px' }} />}
       </button>
 
       <div className="audio-progress-container">

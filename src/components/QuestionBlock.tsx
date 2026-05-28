@@ -43,7 +43,7 @@ export const QuestionBlock: React.FC<QuestionBlockProps> = ({
             : '4px solid hsl(var(--error))'
           : isFlagged
           ? '4px solid hsl(var(--warning))'
-          : '1px solid rgba(255, 255, 255, 0.05)',
+          : '1px solid var(--border-subtle)',
         scrollMarginTop: '100px'
       }}
     >

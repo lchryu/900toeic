@@ -162,7 +162,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px' }}
               onClick={() => onStartLesson(nextLesson.id)}
             >
-              <Play size={18} fill="#000" />
+              <Play size={18} fill="currentColor" />
               Start Lesson
             </button>
           )}
@@ -192,7 +192,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                       justifyContent: 'space-between',
                       padding: '12px',
                       borderRadius: '8px',
-                      background: 'rgba(255, 255, 255, 0.02)',
+                      background: 'hsl(var(--panel-bg) / 0.45)',
                       border: '1px solid hsl(var(--panel-border))'
                     }}
                   >

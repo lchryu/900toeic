@@ -7,6 +7,7 @@ interface ReadingPassageProps {
   questions: Question[];
   selectedAnswers: { [qNum: number]: string };
   isGraded: boolean;
+  mode?: 'study' | 'practice' | 'review';
   onBlankClick?: (qNum: number) => void;
 }
 
@@ -41,11 +42,12 @@ export const ReadingPassage: React.FC<ReadingPassageProps> = ({
   questions,
   selectedAnswers,
   isGraded,
+  mode = 'practice',
   onBlankClick
 }) => {
   
   const renderInteractivePassage = () => {
-    if (isGraded) {
+    if (isGraded || mode === 'study') {
       // Split completed passage by the underline answers: e.g. <u>seriously</u> (131)
       // Matches: **<u>are working</u>** (132) or <u>seriously</u> (131)
       const parts = completedPassage.split(/((?:\*\*|)?<u>.*?<\/u>(?:\*\*|)?\s*\(\d+\))/gi);
@@ -58,15 +60,15 @@ export const ReadingPassage: React.FC<ReadingPassageProps> = ({
           const selected = selectedAnswers[qNum];
           const qData = questions.find(q => q.num === qNum);
           const correctOpt = qData?.options.find(o => o.correct);
-          const isCorrect = selected === correctOpt?.label;
+          const isCorrect = mode === 'study' || selected === correctOpt?.label;
           
           return (
             <span
               key={index}
-              className={`blank-space ${isCorrect ? 'correct-fill' : 'incorrect-fill'}`}
+              className={`blank-space ${mode === 'study' ? 'filled' : isCorrect ? 'correct-fill' : 'incorrect-fill'}`}
               onClick={() => onBlankClick?.(qNum)}
               style={{ cursor: 'pointer' }}
-              title={isCorrect ? 'Correct!' : `Your answer: ${selected || 'None'}. Correct: ${correctOpt?.label}`}
+              title={mode === 'study' || isCorrect ? 'Correct answer' : `Your answer: ${selected || 'None'}. Correct: ${correctOpt?.label}`}
             >
               {answerText} ({qNum})
             </span>

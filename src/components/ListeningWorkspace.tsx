@@ -1,31 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ListeningGroup, QuestionState } from '../types';
 import { QuestionBlock } from './QuestionBlock';
 import { Headphones, Lock, Unlock } from 'lucide-react';
 
 interface ListeningWorkspaceProps {
-  lessonId: string;
   listeningGroups: ListeningGroup[];
+  graphics?: { [qNum: number]: string };
   selectedAnswers: { [qNum: number]: string };
   questionStates: { [qNum: number]: QuestionState };
   isGraded: boolean;
+  mode: 'study' | 'practice' | 'review';
   onSelectOption: (qNum: number, label: string) => void;
   onToggleFlag: (qNum: number) => void;
 }
 
-const GraphicImage: React.FC<{ lessonId: string; qNum: number }> = ({ lessonId, qNum }) => {
-  const [formatIndex, setFormatIndex] = useState(0);
-  const formats = ['png', 'svg'];
-  const format = formats[formatIndex];
-
-  if (!format) return null;
-  
+const GraphicImage: React.FC<{ src: string; qNum: number }> = ({ src, qNum }) => {
   return (
     <div style={{ margin: '20px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <img
-        src={`/assets/${lessonId}_${qNum}.${format}`}
+        src={`/${src}`}
         alt={`Graphic for Question ${qNum}`}
-        onError={() => setFormatIndex((current) => current + 1)}
         style={{
           maxWidth: '100%',
           maxHeight: '300px',
@@ -42,14 +36,17 @@ const GraphicImage: React.FC<{ lessonId: string; qNum: number }> = ({ lessonId, 
 };
 
 export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
-  lessonId,
   listeningGroups,
+  graphics = {},
   selectedAnswers,
   questionStates,
   isGraded,
+  mode,
   onSelectOption,
   onToggleFlag
 }) => {
+  const showTranscript = isGraded || mode === 'study';
+
   return (
     <div style={{ padding: '24px', maxWidth: '850px', margin: '0 auto', width: '100%' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
@@ -93,15 +90,15 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
             style={{
               padding: '24px',
               marginBottom: '24px',
-              background: isGraded ? 'rgba(15, 23, 42, 0.4)' : 'rgba(15, 23, 42, 0.25)',
-              borderStyle: isGraded ? 'solid' : 'dashed'
+              background: showTranscript ? 'hsl(var(--panel-bg) / 0.5)' : 'hsl(var(--panel-bg) / 0.25)',
+              borderStyle: showTranscript ? 'solid' : 'dashed'
             }}
           >
-            {isGraded ? (
+            {showTranscript ? (
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'hsl(var(--success))', marginBottom: '16px', fontWeight: 600, fontSize: '0.9rem' }}>
                   <Unlock size={16} />
-                  <span>Audio Transcript unlocked</span>
+                  <span>{mode === 'study' ? 'Study transcript' : 'Audio Transcript unlocked'}</span>
                 </div>
                 
                 {group.transcript.map((line, idx) => (
@@ -109,7 +106,12 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
                     <span className={`speaker-badge bg-${line.speaker.toLowerCase()}`}>
                       {line.speaker}
                     </span>
-                    <p className="dialogue-text">{line.text}</p>
+                    <div className="dialogue-copy">
+                      <p className="dialogue-text">{line.text}</p>
+                      {line.translation && (
+                        <p className="dialogue-translation">{line.translation}</p>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -130,8 +132,7 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {group.questions.map((q) => (
               <div key={q.num}>
-                {/* Dynamically try to load a graphic image if there is one for this question */}
-                <GraphicImage lessonId={lessonId} qNum={q.num} />
+                {graphics[q.num] && <GraphicImage src={graphics[q.num]} qNum={q.num} />}
                 
                 <QuestionBlock
                   num={q.num}
@@ -140,7 +141,7 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
                   explanation={q.explanation}
                   selectedOption={selectedAnswers[q.num] || ''}
                   isFlagged={!!questionStates[q.num]?.isFlagged}
-                  isGraded={isGraded}
+                  isGraded={isGraded || mode === 'study'}
                   onSelect={(label) => onSelectOption(q.num, label)}
                   onToggleFlag={() => onToggleFlag(q.num)}
                 />

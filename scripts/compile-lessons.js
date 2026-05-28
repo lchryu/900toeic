@@ -2,6 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 const LESSONS_DIR = './lessons';
+const PUBLIC_DIR = './public';
+const AUDIO_DIR = path.join(PUBLIC_DIR, 'audio');
+const ASSETS_DIR = path.join(PUBLIC_DIR, 'assets');
 const OUTPUT_DIR = './src/data';
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'lessons.json');
 
@@ -24,6 +27,88 @@ function findFirstIndex(text, needles) {
     .map((needle) => text.indexOf(needle))
     .filter((index) => index !== -1);
   return indexes.length > 0 ? Math.min(...indexes) : -1;
+}
+
+function findLessonAudio(lessonId) {
+  if (!fs.existsSync(AUDIO_DIR)) return `audio/${lessonId}.mp3`;
+
+  const audioFile = fs.readdirSync(AUDIO_DIR)
+    .find((file) => {
+      const parsed = path.parse(file);
+      return parsed.name === lessonId && ['.mp3', '.m4a', '.wav', '.ogg'].includes(parsed.ext.toLowerCase());
+    });
+
+  return audioFile ? `audio/${audioFile}` : `audio/${lessonId}.mp3`;
+}
+
+function findLessonGraphics(lessonId) {
+  if (!fs.existsSync(ASSETS_DIR)) return {};
+
+  return fs.readdirSync(ASSETS_DIR).reduce((graphics, file) => {
+    const parsed = path.parse(file);
+    const match = parsed.name.match(new RegExp(`^${lessonId}_(\\d+)$`));
+    if (!match || !['.png', '.jpg', '.jpeg', '.webp', '.svg'].includes(parsed.ext.toLowerCase())) {
+      return graphics;
+    }
+
+    graphics[parseInt(match[1], 10)] = `assets/${file}`;
+    return graphics;
+  }, {});
+}
+
+function validateQuestion(question, context, errors) {
+  if (!question.num) {
+    errors.push(`${context}: missing question number`);
+  }
+
+  if (!Array.isArray(question.options) || question.options.length !== 4) {
+    errors.push(`${context} question ${question.num}: expected 4 options, found ${question.options?.length || 0}`);
+    return;
+  }
+
+  const correctCount = question.options.filter((option) => option.correct).length;
+  if (correctCount !== 1) {
+    errors.push(`${context} question ${question.num}: expected 1 correct answer, found ${correctCount}`);
+  }
+}
+
+function validateLesson(lesson) {
+  const errors = [];
+
+  if (!lesson.listening.length && !lesson.reading.length) {
+    errors.push(`Lesson ${lesson.id}: no parsed listening or reading groups`);
+  }
+
+  lesson.listening.forEach((group) => {
+    if (!group.transcript.length) {
+      errors.push(`Lesson ${lesson.id} ${group.id}: missing transcript`);
+    }
+
+    const expectedCount = group.endQ - group.startQ + 1;
+    if (group.questions.length !== expectedCount) {
+      errors.push(`Lesson ${lesson.id} ${group.id}: expected ${expectedCount} questions, found ${group.questions.length}`);
+    }
+
+    group.questions.forEach((question) => validateQuestion(question, `Lesson ${lesson.id} ${group.id}`, errors));
+  });
+
+  lesson.reading.forEach((group) => {
+    if (!group.originalPassage) {
+      errors.push(`Lesson ${lesson.id} ${group.id}: missing original passage`);
+    }
+    if (!group.completedPassage) {
+      errors.push(`Lesson ${lesson.id} ${group.id}: missing completed passage`);
+    }
+
+    const expectedCount = group.endQ - group.startQ + 1;
+    if (group.questions.length !== expectedCount) {
+      errors.push(`Lesson ${lesson.id} ${group.id}: expected ${expectedCount} questions, found ${group.questions.length}`);
+    }
+
+    group.questions.forEach((question) => validateQuestion(question, `Lesson ${lesson.id} ${group.id}`, errors));
+  });
+
+  return errors;
 }
 
 function parseLesson(filePath) {
@@ -87,29 +172,42 @@ function parseLesson(filePath) {
     const transcript = [];
     let currentSpeaker = null;
     let currentText = [];
+    let currentTranslation = [];
+
+    const flushTranscriptLine = () => {
+      if (!currentSpeaker) return;
+      const transcriptLine = {
+        speaker: currentSpeaker,
+        text: currentText.join(' ').replace(/\s+/g, ' ').trim()
+      };
+      const translation = currentTranslation.join(' ').replace(/\s+/g, ' ').trim();
+      if (translation) {
+        transcriptLine.translation = translation;
+      }
+      transcript.push(transcriptLine);
+    };
     
     for (const line of transcriptLines) {
       const trimmed = line.replace(/\r/g, '').trim();
       const speakerMatch = trimmed.match(/^\*\*\[(.*?)\]\*\*/);
       if (speakerMatch) {
-        if (currentSpeaker) {
-          transcript.push({
-            speaker: currentSpeaker,
-            text: currentText.join(' ').replace(/\s+/g, ' ').trim()
-          });
-        }
+        flushTranscriptLine();
         currentSpeaker = speakerMatch[1];
         currentText = [trimmed.replace(/^\*\*\[.*?\]\*\*\s*/, '')];
+        currentTranslation = [];
+      } else if (currentSpeaker && trimmed.startsWith('>')) {
+        currentTranslation.push(
+          trimmed
+            .replace(/^>\s*/, '')
+            .replace(/^\*\*?Dịch:\*\*?\s*/i, '')
+            .replace(/^Dịch:\s*/i, '')
+            .trim()
+        );
       } else if (currentSpeaker && trimmed !== '') {
         currentText.push(trimmed);
       }
     }
-    if (currentSpeaker) {
-      transcript.push({
-        speaker: currentSpeaker,
-        text: currentText.join(' ').replace(/\s+/g, ' ').trim()
-      });
-    }
+    flushTranscriptLine();
     
     // Parse Questions
     const questionsBlock = block.substring(transcriptIndex);
@@ -384,11 +482,14 @@ function parseLesson(filePath) {
       takeaways: group.takeaways
     };
   }).sort((a, b) => a.startQ - b.startQ);
+
+  const graphics = findLessonGraphics(lessonId);
   
   return {
     id: lessonId,
     title,
-    audio: `audio/${lessonId}.mp3`,
+    audio: findLessonAudio(lessonId),
+    graphics,
     listening: listeningGroups,
     reading: readingGroups
   };
@@ -416,6 +517,10 @@ function main() {
     try {
       const parsed = parseLesson(filePath);
       if (parsed) {
+        const validationErrors = validateLesson(parsed);
+        if (validationErrors.length > 0) {
+          throw new Error(`Validation failed:\n${validationErrors.map((error) => `  - ${error}`).join('\n')}`);
+        }
         lessons.push(parsed);
       }
     } catch (err) {

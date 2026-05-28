@@ -4,12 +4,23 @@ import { AudioPlayer } from './AudioPlayer';
 import { ListeningWorkspace } from './ListeningWorkspace';
 import { ReadingPassage } from './ReadingPassage';
 import { QuestionBlock } from './QuestionBlock';
-import { Headphones, BookOpen, Clock, Award, RotateCcw, AlertTriangle } from 'lucide-react';
+import { Headphones, BookOpen, Clock, Award, RotateCcw, AlertTriangle, GraduationCap, Pencil, Eye } from 'lucide-react';
+
+type LessonTab = 'listening' | 'reading';
+type LessonMode = 'study' | 'practice' | 'review';
 
 interface LessonWorkspaceProps {
   lesson: LessonData;
   progress: LessonProgress | undefined;
-  onSaveProgress: (lessonId: string, answers: { [qNum: number]: string }, timeSpent: number, score: number, totalQuestions: number, isSubmitted?: boolean) => void;
+  onSaveProgress: (
+    lessonId: string,
+    answers: { [qNum: number]: string },
+    timeSpent: number,
+    score: number,
+    totalQuestions: number,
+    isSubmitted?: boolean,
+    metadata?: Partial<Pick<LessonProgress, 'flaggedQuestions' | 'lastTab' | 'mode'>>
+  ) => void;
   onQuestionNavConfig: (qNums: number[], answered: number[], flagged: number[], isGraded: boolean, results: { [qNum: number]: boolean }, scrollCallback: (num: number) => void) => void;
 }
 
@@ -19,11 +30,17 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   onSaveProgress,
   onQuestionNavConfig
 }) => {
-  const [activeTab, setActiveTab] = useState<'listening' | 'reading'>('listening');
+  const [activeTab, setActiveTab] = useState<LessonTab>(progress?.lastTab || 'listening');
+  const [mode, setMode] = useState<LessonMode>(
+    progress?.mode || (progress?.isSubmitted ? 'review' : 'practice')
+  );
   const [selectedAnswers, setSelectedAnswers] = useState<{ [qNum: number]: string }>(
     progress?.answers || {}
   );
-  const [questionStates, setQuestionStates] = useState<{ [qNum: number]: QuestionState }>({});
+  const [questionStates, setQuestionStates] = useState<{ [qNum: number]: QuestionState }>(() => {
+    const flags = progress?.flaggedQuestions || [];
+    return Object.fromEntries(flags.map((num) => [num, { selectedOption: progress?.answers?.[num] || '', isFlagged: true }]));
+  });
   const [isGraded, setIsGraded] = useState<boolean>(
     !!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0))
   );
@@ -40,14 +57,17 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   // Sync state when lesson changes
   useEffect(() => {
     setSelectedAnswers(progress?.answers || {});
+    setActiveTab(progress?.lastTab || 'listening');
+    setMode(progress?.mode || (progress?.isSubmitted ? 'review' : 'practice'));
     setIsGraded(!!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0)));
     setElapsedTime(progress?.timeSpent || 0);
-    setQuestionStates({});
+    const flags = progress?.flaggedQuestions || [];
+    setQuestionStates(Object.fromEntries(flags.map((num) => [num, { selectedOption: progress?.answers?.[num] || '', isFlagged: true }])));
   }, [lesson.id]);
 
   // Start timer if not graded
   useEffect(() => {
-    if (!isGraded) {
+    if (!isGraded && mode === 'practice') {
       timerRef.current = setInterval(() => {
         setElapsedTime((prev) => prev + 1);
       }, 1000);
@@ -62,7 +82,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         clearInterval(timerRef.current);
       }
     };
-  }, [isGraded, lesson.id]);
+  }, [isGraded, mode, lesson.id]);
 
   // Calculate score and total questions
   const totalQuestions =
@@ -95,42 +115,98 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const score = Object.values(gradedResults).filter(Boolean).length;
 
   useEffect(() => {
-    if (isGraded) return;
+    if (isGraded || mode !== 'practice') return;
 
     const saveDraftTimer = window.setTimeout(() => {
-      onSaveProgress(lesson.id, selectedAnswers, elapsedTime, 0, totalQuestions, false);
+      persistProgressSnapshot(selectedAnswers, elapsedTime);
     }, 500);
 
     return () => window.clearTimeout(saveDraftTimer);
-  }, [lesson.id, selectedAnswers, isGraded, totalQuestions]);
+  }, [lesson.id, selectedAnswers, elapsedTime, isGraded, mode, totalQuestions]);
 
   useEffect(() => {
-    if (isGraded) return;
+    if (isGraded || mode !== 'practice') return;
 
     const saveTimeTimer = window.setInterval(() => {
-      onSaveProgress(lesson.id, selectedAnswers, elapsedTimeRef.current, 0, totalQuestions, false);
+      persistProgressSnapshot(selectedAnswers, elapsedTimeRef.current);
     }, 10000);
 
     return () => window.clearInterval(saveTimeTimer);
-  }, [lesson.id, selectedAnswers, isGraded, totalQuestions]);
+  }, [lesson.id, selectedAnswers, isGraded, mode, totalQuestions]);
+
+  const correctAnswers = [...lesson.listening, ...lesson.reading].reduce<{ [qNum: number]: string }>((acc, group) => {
+    group.questions.forEach((q) => {
+      const correctOpt = q.options.find((o) => o.correct);
+      if (correctOpt) acc[q.num] = correctOpt.label;
+    });
+    return acc;
+  }, {});
+
+  const displayAnswers = mode === 'study' ? { ...selectedAnswers, ...correctAnswers } : selectedAnswers;
+  const isPracticeActive = mode === 'practice' && !isGraded;
+
+  const getFlaggedQuestions = (states = questionStates) =>
+    Object.keys(states)
+      .map(Number)
+      .filter((num) => states[num]?.isFlagged);
+
+  const persistProgressSnapshot = (
+    nextAnswers = selectedAnswers,
+    nextTime = elapsedTimeRef.current,
+    nextMode = mode,
+    nextTab = activeTab,
+    nextFlags = getFlaggedQuestions()
+  ) => {
+    onSaveProgress(lesson.id, nextAnswers, nextTime, isGraded ? score : 0, totalQuestions, isGraded, {
+      flaggedQuestions: nextFlags,
+      lastTab: nextTab,
+      mode: nextMode
+    });
+  };
 
   const handleSelectOption = (qNum: number, label: string) => {
-    if (isGraded) return;
-    setSelectedAnswers((prev) => ({
-      ...prev,
-      [qNum]: label
-    }));
+    if (!isPracticeActive) return;
+    setSelectedAnswers((prev) => {
+      const nextAnswers = {
+        ...prev,
+        [qNum]: label
+      };
+      setQuestionStates((states) => ({
+        ...states,
+        [qNum]: {
+          ...states[qNum],
+          selectedOption: label,
+          isFlagged: !!states[qNum]?.isFlagged
+        }
+      }));
+      return nextAnswers;
+    });
   };
 
   const handleToggleFlag = (qNum: number) => {
-    if (isGraded) return;
-    setQuestionStates((prev) => ({
-      ...prev,
-      [qNum]: {
-        selectedOption: selectedAnswers[qNum] || '',
-        isFlagged: !prev[qNum]?.isFlagged
-      }
-    }));
+    if (!isPracticeActive) return;
+    setQuestionStates((prev) => {
+      const nextStates = {
+        ...prev,
+        [qNum]: {
+          selectedOption: selectedAnswers[qNum] || '',
+          isFlagged: !prev[qNum]?.isFlagged
+        }
+      };
+      persistProgressSnapshot(selectedAnswers, elapsedTimeRef.current, mode, activeTab, getFlaggedQuestions(nextStates));
+      return nextStates;
+    });
+  };
+
+  const handleModeChange = (nextMode: LessonMode) => {
+    if (nextMode === 'review' && !isGraded) return;
+    setMode(nextMode);
+    persistProgressSnapshot(selectedAnswers, elapsedTimeRef.current, nextMode, activeTab);
+  };
+
+  const handleTabChange = (nextTab: LessonTab) => {
+    setActiveTab(nextTab);
+    persistProgressSnapshot(selectedAnswers, elapsedTimeRef.current, mode, nextTab);
   };
 
   // Click to scroll to blank card
@@ -140,9 +216,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     const isReadingQ = lesson.reading.some((g) => g.questions.some((q) => q.num === qNum));
 
     if (isListeningQ && activeTab !== 'listening') {
-      setActiveTab('listening');
+      handleTabChange('listening');
     } else if (isReadingQ && activeTab !== 'reading') {
-      setActiveTab('reading');
+      handleTabChange('reading');
     }
 
     // Scroll to the card after tab switch
@@ -167,9 +243,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     const allQNums = [...listeningQNums, ...readingQNums].sort((a, b) => a - b);
 
     const answered = Object.keys(selectedAnswers).map(Number);
-    const flagged = Object.keys(questionStates)
-      .map(Number)
-      .filter((num) => questionStates[num]?.isFlagged);
+    const flagged = getFlaggedQuestions();
 
     onQuestionNavConfig(
       allQNums,
@@ -179,17 +253,22 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       gradedResults,
       handleScrollToQuestion
     );
-  }, [lesson.id, selectedAnswers, questionStates, isGraded, activeTab]);
+  }, [lesson.id, selectedAnswers, questionStates, isGraded, activeTab, mode]);
 
   const handleGradeTest = () => {
     if (isGraded) return;
     setIsGraded(true);
+    setMode('review');
     
     // Calculate stats
     const results = getGradedResults();
     const finalScore = Object.values(results).filter(Boolean).length;
     
-    onSaveProgress(lesson.id, selectedAnswers, elapsedTime, finalScore, totalQuestions, true);
+    onSaveProgress(lesson.id, selectedAnswers, elapsedTime, finalScore, totalQuestions, true, {
+      flaggedQuestions: getFlaggedQuestions(),
+      lastTab: activeTab,
+      mode: 'review'
+    });
   };
 
   const handleResetTest = () => {
@@ -197,8 +276,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       setSelectedAnswers({});
       setQuestionStates({});
       setIsGraded(false);
+      setMode('practice');
       setElapsedTime(0);
-      onSaveProgress(lesson.id, {}, 0, 0, totalQuestions, false);
+      onSaveProgress(lesson.id, {}, 0, 0, totalQuestions, false, {
+        flaggedQuestions: [],
+        lastTab: activeTab,
+        mode: 'practice'
+      });
     }
   };
 
@@ -208,6 +292,14 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     const secs = seconds % 60;
     return `${hrs > 0 ? hrs + ':' : ''}${mins < 10 && hrs > 0 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
+
+  const listeningQuestionCount = lesson.listening.reduce((sum, g) => sum + g.questions.length, 0);
+  const readingQuestionCount = lesson.reading.reduce((sum, g) => sum + g.questions.length, 0);
+  const modeOptions: Array<{ id: LessonMode; label: string; icon: React.ElementType; disabled?: boolean }> = [
+    { id: 'study', label: 'Study', icon: GraduationCap },
+    { id: 'practice', label: 'Practice', icon: Pencil, disabled: isGraded },
+    { id: 'review', label: 'Review', icon: Eye, disabled: !isGraded }
+  ];
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
@@ -221,46 +313,43 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
             {lesson.title}
           </h1>
           <span style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))' }}>
-            Practicing 15 Listening questions & 16 Reading questions
+            {mode === 'study' ? 'Studying' : mode === 'review' ? 'Reviewing' : 'Practicing'} {listeningQuestionCount} Listening questions & {readingQuestionCount} Reading questions
           </span>
         </div>
 
-        {/* Tab switch bar */}
-        <div style={{ display: 'flex', border: '1px solid hsl(var(--panel-border))', borderRadius: '8px', padding: '4px', background: 'hsl(var(--panel-bg) / 0.3)' }}>
-          <button
-            className="secondary-btn"
-            style={{
-              padding: '8px 16px',
-              border: 'none',
-              borderRadius: '6px',
-              background: activeTab === 'listening' ? 'hsl(var(--primary))' : 'transparent',
-              color: activeTab === 'listening' ? '#000' : 'hsl(var(--text-secondary))',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}
-            onClick={() => setActiveTab('listening')}
-          >
-            <Headphones size={16} />
-            <span>Listening</span>
-          </button>
-          <button
-            className="secondary-btn"
-            style={{
-              padding: '8px 16px',
-              border: 'none',
-              borderRadius: '6px',
-              background: activeTab === 'reading' ? 'hsl(var(--primary))' : 'transparent',
-              color: activeTab === 'reading' ? '#000' : 'hsl(var(--text-secondary))',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}
-            onClick={() => setActiveTab('reading')}
-          >
-            <BookOpen size={16} />
-            <span>Reading</span>
-          </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+          <div className="segmented-control">
+            {modeOptions.map(({ id, label, icon: Icon, disabled }) => (
+              <button
+                key={id}
+                className={`segmented-btn ${mode === id ? 'active' : ''}`}
+                onClick={() => handleModeChange(id)}
+                disabled={disabled}
+                title={disabled && id === 'review' ? 'Submit the practice first to review results' : `${label} mode`}
+              >
+                <Icon size={16} />
+                <span>{label}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Tab switch bar */}
+          <div className="segmented-control">
+            <button
+              className={`segmented-btn ${activeTab === 'listening' ? 'active' : ''}`}
+              onClick={() => handleTabChange('listening')}
+            >
+              <Headphones size={16} />
+              <span>Listening</span>
+            </button>
+            <button
+              className={`segmented-btn ${activeTab === 'reading' ? 'active' : ''}`}
+              onClick={() => handleTabChange('reading')}
+            >
+              <BookOpen size={16} />
+              <span>Reading</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -268,11 +357,12 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       <div style={{ flex: 1, padding: '24px', overflowY: 'auto' }}>
         {activeTab === 'listening' ? (
           <ListeningWorkspace
-            lessonId={lesson.id}
             listeningGroups={lesson.listening}
-            selectedAnswers={selectedAnswers}
+            graphics={lesson.graphics}
+            selectedAnswers={displayAnswers}
             questionStates={questionStates}
             isGraded={isGraded}
+            mode={mode}
             onSelectOption={handleSelectOption}
             onToggleFlag={handleToggleFlag}
           />
@@ -293,8 +383,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                     originalPassage={group.originalPassage}
                     completedPassage={group.completedPassage}
                     questions={group.questions}
-                    selectedAnswers={selectedAnswers}
+                    selectedAnswers={displayAnswers}
                     isGraded={isGraded}
+                    mode={mode}
                     onBlankClick={handleScrollToQuestion}
                   />
 
@@ -339,9 +430,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                       num={q.num}
                       options={q.options}
                       explanation={q.explanation || 'Refer to the vocabulary notes for translations.'}
-                      selectedOption={selectedAnswers[q.num] || ''}
+                      selectedOption={displayAnswers[q.num] || ''}
                       isFlagged={!!questionStates[q.num]?.isFlagged}
-                      isGraded={isGraded}
+                      isGraded={isGraded || mode === 'study'}
                       onSelect={(label) => handleSelectOption(q.num, label)}
                       onToggleFlag={() => handleToggleFlag(q.num)}
                     />
@@ -373,7 +464,12 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         </div>
 
         <div style={{ display: 'flex', gap: '12px' }}>
-          {isGraded ? (
+          {mode === 'study' && !isGraded ? (
+            <button className="primary-btn" style={{ display: 'flex', alignItems: 'center', gap: '8px' }} onClick={() => handleModeChange('practice')}>
+              <Pencil size={16} />
+              <span>Start Practice</span>
+            </button>
+          ) : isGraded ? (
             <button className="secondary-btn" style={{ display: 'flex', alignItems: 'center', gap: '8px' }} onClick={handleResetTest}>
               <RotateCcw size={16} />
               <span>Reset & Retake</span>

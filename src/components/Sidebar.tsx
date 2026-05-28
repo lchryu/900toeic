@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, BarChart2, CheckCircle2, Bookmark } from 'lucide-react';
+import { BookOpen, BarChart2, CheckCircle2, Bookmark, Moon, Sun } from 'lucide-react';
 import { LessonData, LessonProgress } from '../types';
 
 interface SidebarProps {
@@ -17,6 +17,8 @@ interface SidebarProps {
   onQuestionClick?: (qNum: number) => void;
   isMobileOpen?: boolean;
   onCloseMobileSidebar?: () => void;
+  theme: 'dark' | 'light';
+  onToggleTheme: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -32,7 +34,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
   gradedResults,
   onQuestionClick,
   isMobileOpen,
-  onCloseMobileSidebar
+  onCloseMobileSidebar,
+  theme,
+  onToggleTheme
 }) => {
   const handleNavClick = (view: 'dashboard' | 'lesson', lessonId: string | null) => {
     onNavigate(view, lessonId);
@@ -47,6 +51,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <h2 style={{ fontSize: '1.1rem', fontWeight: 700 }}>TOEIC Practice</h2>
           <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>v1.0.0</span>
         </div>
+        <button
+          className="theme-toggle-btn"
+          onClick={onToggleTheme}
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
       </div>
 
       <nav className="sidebar-nav">

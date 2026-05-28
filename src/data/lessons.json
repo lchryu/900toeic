@@ -3,6 +3,9 @@
     "id": "11",
     "title": "Lesson 11 - Homework",
     "audio": "audio/11.mp3",
+    "graphics": {
+      "20": "assets/11_20.svg"
+    },
     "listening": [
       {
         "id": "lc-1",
@@ -12,19 +15,23 @@
         "transcript": [
           {
             "speaker": "W-Br",
-            "text": "Hi, is this the Help Desk? This is Miranda Shin in Room 252B. I'm calling about a problem I'm having with my computer. I hear a loud whistling sound, like from a fan blowing."
+            "text": "Hi, is this the Help Desk? This is Miranda Shin in Room 252B. I'm calling about a problem I'm having with my computer. I hear a loud whistling sound, like from a fan blowing.",
+            "translation": "Xin chào, đây có phải là bộ phận hỗ trợ không? Tôi là Miranda Shin ở phòng 252B. Tôi gọi về một vấn đề với máy tính của mình. Tôi nghe thấy tiếng huýt lớn, giống như tiếng quạt đang thổi."
           },
           {
             "speaker": "M-Au",
-            "text": "OK, let's see if I can help you with that. I'd like you to shut the computer off and then turn it back on."
+            "text": "OK, let's see if I can help you with that. I'd like you to shut the computer off and then turn it back on.",
+            "translation": "Được rồi, để xem tôi có thể giúp gì không. Tôi muốn cô tắt máy tính rồi bật lại."
           },
           {
             "speaker": "W-Br",
-            "text": "Actually, I've done that three times already. Unfortunately, it didn't help."
+            "text": "Actually, I've done that three times already. Unfortunately, it didn't help.",
+            "translation": "Thực ra tôi đã làm vậy ba lần rồi. Tiếc là việc đó không giúp được gì."
           },
           {
             "speaker": "M-Au",
-            "text": "All right then. I have some time now, so I can come over to your office and try to figure this out."
+            "text": "All right then. I have some time now, so I can come over to your office and try to figure this out.",
+            "translation": "Vậy được rồi. Bây giờ tôi có chút thời gian, nên tôi có thể qua văn phòng của cô và thử tìm nguyên nhân."
           }
         ],
         "questions": [
@@ -119,31 +126,38 @@
         "transcript": [
           {
             "speaker": "W-Br",
-            "text": "Hello, Selwin Office Manufacturers. You've reached customer service. How may I help you today?"
+            "text": "Hello, Selwin Office Manufacturers. You've reached customer service. How may I help you today?",
+            "translation": "Xin chào, đây là Selwin Office Manufacturers. Bạn đã liên hệ tới bộ phận chăm sóc khách hàng. Hôm nay tôi có thể giúp gì cho bạn?"
           },
           {
             "speaker": "M-Au",
-            "text": "Yes, hello. I recently bought a used Selwin 6 label maker. The person I got it from no longer had the instructions, though, and I'm not sure how the machine works."
+            "text": "Yes, hello. I recently bought a used Selwin 6 label maker. The person I got it from no longer had the instructions, though, and I'm not sure how the machine works.",
+            "translation": "Vâng, xin chào. Gần đây tôi mua một máy in nhãn Selwin 6 đã qua sử dụng. Tuy nhiên, người bán cho tôi không còn giữ hướng dẫn sử dụng, nên tôi không chắc máy hoạt động như thế nào."
           },
           {
             "speaker": "W-Br",
-            "text": "Unfortunately, that's an earlier model that we no longer produce."
+            "text": "Unfortunately, that's an earlier model that we no longer produce.",
+            "translation": "Rất tiếc, đó là mẫu đời cũ mà chúng tôi không còn sản xuất nữa."
           },
           {
             "speaker": "M-Au",
-            "text": "Oh, no. That's a problem."
+            "text": "Oh, no. That's a problem.",
+            "translation": "Ôi không. Vậy thì phiền thật."
           },
           {
             "speaker": "W-Br",
-            "text": "No, it's OK, because the Selwin 10 has a similar design, and the instructions should be nearly the same."
+            "text": "No, it's OK, because the Selwin 10 has a similar design, and the instructions should be nearly the same.",
+            "translation": "Không sao đâu, vì Selwin 10 có thiết kế tương tự, nên hướng dẫn sử dụng gần như giống nhau."
           },
           {
             "speaker": "M-Au",
-            "text": "Great! Could you send me the instructions? My address is..."
+            "text": "Great! Could you send me the instructions? My address is...",
+            "translation": "Tuyệt quá! Bạn có thể gửi hướng dẫn cho tôi không? Địa chỉ của tôi là..."
           },
           {
             "speaker": "W-Br",
-            "text": "Actually, the manual for Selwin 10 is on our Web site. I can send you the link so you can download it."
+            "text": "Actually, the manual for Selwin 10 is on our Web site. I can send you the link so you can download it.",
+            "translation": "Thực ra, sách hướng dẫn của Selwin 10 có trên trang web của chúng tôi. Tôi có thể gửi cho bạn đường liên kết để bạn tải xuống."
           }
         ],
         "questions": [
@@ -238,27 +252,33 @@
         "transcript": [
           {
             "speaker": "M-Au",
-            "text": "Hi, I'm calling from Skiller Building Repair Company. I got your message about the damaged wall in your store."
+            "text": "Hi, I'm calling from Skiller Building Repair Company. I got your message about the damaged wall in your store.",
+            "translation": "Xin chào, tôi gọi từ Công ty Sửa chữa Tòa nhà Skiller. Tôi đã nhận được tin nhắn của cô về bức tường bị hư hỏng trong cửa hàng."
           },
           {
             "speaker": "W-Am",
-            "text": "Yes. The damage was from a leaking water line. The leak's been repaired, but the wall behind the cash register has several cracks."
+            "text": "Yes. The damage was from a leaking water line. The leak's been repaired, but the wall behind the cash register has several cracks.",
+            "translation": "Vâng. Hư hỏng là do một đường ống nước bị rò rỉ. Chỗ rò rỉ đã được sửa rồi, nhưng bức tường phía sau quầy thu ngân có vài vết nứt."
           },
           {
             "speaker": "M-Au",
-            "text": "We can fix that for you."
+            "text": "We can fix that for you.",
+            "translation": "Chúng tôi có thể sửa chỗ đó cho cô."
           },
           {
             "speaker": "W-Am",
-            "text": "Oh good! But I'd like to avoid closing the store early. Could you do the work in the evening?"
+            "text": "Oh good! But I'd like to avoid closing the store early. Could you do the work in the evening?",
+            "translation": "Ồ, tốt quá! Nhưng tôi muốn tránh việc phải đóng cửa hàng sớm. Anh có thể làm việc đó vào buổi tối không?"
           },
           {
             "speaker": "M-Au",
-            "text": "Well, if you don't mind paying a slightly higher rate, I can get a crew in there after your regular hours."
+            "text": "Well, if you don't mind paying a slightly higher rate, I can get a crew in there after your regular hours.",
+            "translation": "Nếu cô không ngại trả mức phí cao hơn một chút, tôi có thể sắp xếp một đội đến đó sau giờ làm việc thường lệ của cô."
           },
           {
             "speaker": "W-Am",
-            "text": "OK, that'd be fine. Thanks!"
+            "text": "OK, that'd be fine. Thanks!",
+            "translation": "Được, như vậy cũng ổn. Cảm ơn!"
           }
         ],
         "questions": [
@@ -353,27 +373,33 @@
         "transcript": [
           {
             "speaker": "M-Cn",
-            "text": "Hi, Gabriella. I wanted to talk to you about using the new online time reporting system. A lot of people have been asking about it."
+            "text": "Hi, Gabriella. I wanted to talk to you about using the new online time reporting system. A lot of people have been asking about it.",
+            "translation": "Chào Gabriella. Tôi muốn trao đổi với cô về việc sử dụng hệ thống báo cáo thời gian trực tuyến mới. Rất nhiều người đã hỏi về hệ thống đó."
           },
           {
             "speaker": "W-Br",
-            "text": "Yes, well, I've been very busy. But I am planning the training session for early next week. That should make it quite clear to everyone."
+            "text": "Yes, well, I've been very busy. But I am planning the training session for early next week. That should make it quite clear to everyone.",
+            "translation": "Vâng, dạo này tôi rất bận. Nhưng tôi đang lên kế hoạch cho buổi đào tạo vào đầu tuần sau. Việc đó sẽ giúp mọi người hiểu rõ hơn."
           },
           {
             "speaker": "M-Cn",
-            "text": "OK. But isn't there any written documentation?"
+            "text": "OK. But isn't there any written documentation?",
+            "translation": "Được thôi. Nhưng không có tài liệu hướng dẫn bằng văn bản à?"
           },
           {
             "speaker": "W-Br",
-            "text": "What do you mean?"
+            "text": "What do you mean?",
+            "translation": "Ý anh là sao?"
           },
           {
             "speaker": "M-Cn",
-            "text": "You know, a guide that staff can follow in the meantime?"
+            "text": "You know, a guide that staff can follow in the meantime?",
+            "translation": "Ý tôi là một bản hướng dẫn để nhân viên có thể làm theo trong lúc chờ ấy."
           },
           {
             "speaker": "W-Br",
-            "text": "I don't think that's necessary. I'll have everyone go through the steps with me in the computer lab. Then they'll know exactly what to do. It's very simple."
+            "text": "I don't think that's necessary. I'll have everyone go through the steps with me in the computer lab. Then they'll know exactly what to do. It's very simple.",
+            "translation": "Tôi không nghĩ điều đó cần thiết. Tôi sẽ cho mọi người làm từng bước cùng tôi trong phòng máy tính. Sau đó họ sẽ biết chính xác cần làm gì. Nó rất đơn giản."
           }
         ],
         "questions": [
@@ -468,27 +494,33 @@
         "transcript": [
           {
             "speaker": "W-Br",
-            "text": "Hi, I bought an electric piano from your store several months ago. It came with a one-year warranty. One of the keys on the keyboard isn't working now. Can you fix it for me?"
+            "text": "Hi, I bought an electric piano from your store several months ago. It came with a one-year warranty. One of the keys on the keyboard isn't working now. Can you fix it for me?",
+            "translation": "Xin chào, tôi đã mua một cây đàn piano điện từ cửa hàng của anh vài tháng trước. Nó đi kèm bảo hành một năm. Bây giờ một phím trên bàn phím không hoạt động. Anh có thể sửa giúp tôi không?"
           },
           {
             "speaker": "M-Cn",
-            "text": "Of course! Do you have your original receipt? I'll need that to confirm that the piano's still under warranty."
+            "text": "Of course! Do you have your original receipt? I'll need that to confirm that the piano's still under warranty.",
+            "translation": "Tất nhiên rồi! Cô có còn hóa đơn gốc không? Tôi cần nó để xác nhận rằng cây đàn vẫn còn trong thời hạn bảo hành."
           },
           {
             "speaker": "W-Br",
-            "text": "Yes, here it is."
+            "text": "Yes, here it is.",
+            "translation": "Vâng, đây ạ."
           },
           {
             "speaker": "M-Cn",
-            "text": "Thanks! My colleague Ayako does all our keyboard repairs, but she's left for the day. When she comes back tomorrow, she'll be able to work on it."
+            "text": "Thanks! My colleague Ayako does all our keyboard repairs, but she's left for the day. When she comes back tomorrow, she'll be able to work on it.",
+            "translation": "Cảm ơn! Đồng nghiệp Ayako của tôi phụ trách tất cả việc sửa đàn phím, nhưng hôm nay cô ấy đã về rồi. Khi cô ấy quay lại vào ngày mai, cô ấy sẽ có thể sửa nó."
           },
           {
             "speaker": "W-Br",
-            "text": "OK. Umm ... I'm performing in a concert on Saturday. Do you think it'll be ready before then?"
+            "text": "OK. Umm ... I'm performing in a concert on Saturday. Do you think it'll be ready before then?",
+            "translation": "Được rồi. Ừm... tôi sẽ biểu diễn trong một buổi hòa nhạc vào thứ Bảy. Anh nghĩ nó sẽ được sửa xong trước lúc đó chứ?"
           },
           {
             "speaker": "M-Cn",
-            "text": "Oh, definitely! These sorts of repairs take no more than a couple of hours."
+            "text": "Oh, definitely! These sorts of repairs take no more than a couple of hours.",
+            "translation": "Ồ, chắc chắn rồi! Những kiểu sửa chữa như thế này chỉ mất nhiều nhất vài tiếng thôi."
           }
         ],
         "questions": [
@@ -583,19 +615,23 @@
         "transcript": [
           {
             "speaker": "M-Au",
-            "text": "Are you going to the conference in London next month?"
+            "text": "Are you going to the conference in London next month?",
+            "translation": "Cô có đi dự hội nghị ở London vào tháng tới không?"
           },
           {
             "speaker": "W-Br",
-            "text": "Yes, they asked me to give a presentation about my last project."
+            "text": "Yes, they asked me to give a presentation about my last project.",
+            "translation": "Có, họ đã mời tôi thuyết trình về dự án gần đây nhất của tôi."
           },
           {
             "speaker": "M-Au",
-            "text": "That's great. Do you know if the company will pay for your travel expenses?"
+            "text": "That's great. Do you know if the company will pay for your travel expenses?",
+            "translation": "Tuyệt quá. Cô có biết công ty có chi trả chi phí đi lại cho cô không?"
           },
           {
             "speaker": "W-Br",
-            "text": "They'll pay for the registration fee, but I have to cover the airfare myself. The company paid for my plane tickets to the conferences in January and March, and they only cover airfare for two conferences per year."
+            "text": "They'll pay for the registration fee, but I have to cover the airfare myself. The company paid for my plane tickets to the conferences in January and March, and they only cover airfare for two conferences per year.",
+            "translation": "Họ sẽ trả phí đăng ký, nhưng tôi phải tự chi trả tiền vé máy bay. Công ty đã trả tiền vé máy bay cho tôi tới các hội nghị vào tháng Một và tháng Ba, và họ chỉ chi trả vé máy bay cho hai hội nghị mỗi năm."
           }
         ],
         "questions": [
@@ -690,23 +726,28 @@
         "transcript": [
           {
             "speaker": "W-Am",
-            "text": "Hi, Mr. Olson? I'm Eun-hee Sohn from Circle Optical Supplies. I'm calling about the order you placed yesterday."
+            "text": "Hi, Mr. Olson? I'm Eun-hee Sohn from Circle Optical Supplies. I'm calling about the order you placed yesterday.",
+            "translation": "Xin chào, ông Olson phải không ạ? Tôi là Eun-hee Sohn từ Circle Optical Supplies. Tôi gọi về đơn hàng ông đã đặt hôm qua."
           },
           {
             "speaker": "M-Cn",
-            "text": "Oh, yes - I ordered supplies for my eyeglass store. Is there an issue?"
+            "text": "Oh, yes - I ordered supplies for my eyeglass store. Is there an issue?",
+            "translation": "À vâng, tôi đã đặt vật tư cho cửa hàng kính mắt của mình. Có vấn đề gì sao?"
           },
           {
             "speaker": "W-Am",
-            "text": "Well, we only have 25 of the eyeglass cases you ordered. Unfortunately, we won't have any more in stock for another two weeks."
+            "text": "Well, we only have 25 of the eyeglass cases you ordered. Unfortunately, we won't have any more in stock for another two weeks.",
+            "translation": "Chúng tôi chỉ còn 25 hộp đựng kính mà ông đã đặt. Rất tiếc, chúng tôi sẽ không có thêm hàng trong kho trong hai tuần nữa."
           },
           {
             "speaker": "M-Cn",
-            "text": "Oh, no - we have a promotional event starting next Friday, and we usually provide a case with each pair of eyeglasses our customers purchase. Hmmm ... I guess I'll take the 25 cases you have, but I'll have to order the rest from another company."
+            "text": "Oh, no - we have a promotional event starting next Friday, and we usually provide a case with each pair of eyeglasses our customers purchase. Hmmm ... I guess I'll take the 25 cases you have, but I'll have to order the rest from another company.",
+            "translation": "Ôi không, chúng tôi có một sự kiện khuyến mãi bắt đầu vào thứ Sáu tuần tới, và chúng tôi thường tặng một hộp đựng cho mỗi cặp kính khách hàng mua. Hừm... Tôi nghĩ tôi sẽ lấy 25 hộp các bạn đang có, nhưng tôi sẽ phải đặt phần còn lại từ công ty khác."
           },
           {
             "speaker": "W-Am",
-            "text": "OK, I'll update your order. And as an apology, my manager told me to waive your delivery charge. So, we'll cover the twenty-dollar shipping fee."
+            "text": "OK, I'll update your order. And as an apology, my manager told me to waive your delivery charge. So, we'll cover the twenty-dollar shipping fee.",
+            "translation": "Được, tôi sẽ cập nhật đơn hàng của ông. Và để xin lỗi, quản lý của tôi đã bảo tôi miễn phí giao hàng cho ông. Vì vậy, chúng tôi sẽ chi trả phí vận chuyển hai mươi đô la."
           }
         ],
         "questions": [
@@ -800,6 +841,9 @@
     "id": "12",
     "title": "📘 Lesson 12 – Practice",
     "audio": "audio/12.mp3",
+    "graphics": {
+      "15": "assets/12_15.png"
+    },
     "listening": [
       {
         "id": "lc-1",
@@ -1867,6 +1911,7 @@
     "id": "13",
     "title": "📘 Lesson 13 – Practice",
     "audio": "audio/13.mp3",
+    "graphics": {},
     "listening": [
       {
         "id": "lc-1",
