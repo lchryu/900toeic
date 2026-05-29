@@ -770,6 +770,10 @@ h1, h2, h3, h4, h5 {
   color: hsl(var(--text-muted));
 }
 
+.reading-mobile-layout {
+  display: none;
+}
+
 /* Mobile Responsive Overlays and Adjustments */
 .sidebar-overlay {
   position: fixed;
@@ -826,6 +830,47 @@ h1, h2, h3, h4, h5 {
 
   .mobile-header {
     display: flex;
+  }
+
+  .reading-desktop-layout {
+    display: none !important;
+  }
+
+  .reading-mobile-layout {
+    display: block;
+    max-width: 100%;
+  }
+
+  .reading-mobile-group {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid hsl(var(--panel-border));
+  }
+
+  .reading-mobile-passage {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    background: hsl(var(--bg-app));
+  }
+
+  .reading-mobile-passage .passage-card {
+    max-height: min(24vh, 180px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    margin-bottom: 0 !important;
+  }
+
+  .reading-mobile-questions .glass-panel {
+    padding: 18px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .reading-mobile-notes {
+    display: grid;
+    gap: 12px;
   }
 
   .audio-player-bar {

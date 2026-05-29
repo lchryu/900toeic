@@ -367,7 +367,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
             onToggleFlag={handleToggleFlag}
           />
         ) : (
-          <div className="reading-grid-layout" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '32px', maxWidth: '1400px', margin: '0 auto', width: '100%', alignItems: 'start' }}>
+          <>
+          <div className="reading-grid-layout reading-desktop-layout" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '32px', maxWidth: '1400px', margin: '0 auto', width: '100%', alignItems: 'start' }}>
             {/* Left side: Reading Passages */}
             <div className="reading-passage-sticky" style={{ position: 'sticky', top: '0', maxHeight: 'calc(100vh - 200px)', overflowY: 'auto', paddingRight: '8px' }}>
               <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -441,6 +442,75 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
               ))}
             </div>
           </div>
+          <div className="reading-mobile-layout">
+            <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <BookOpen className="text-sky-400" size={22} />
+              Part 6-7: Reading Comprehension
+            </h2>
+
+            {lesson.reading.map((group) => (
+              <section key={group.id} className="reading-mobile-group">
+                <div className="reading-mobile-passage">
+                  <div style={{ fontSize: '0.9rem', color: 'hsl(var(--text-muted))', marginBottom: '8px', fontWeight: 600 }}>
+                    Passage for Questions {group.range}
+                  </div>
+                  <ReadingPassage
+                    originalPassage={group.originalPassage}
+                    completedPassage={group.completedPassage}
+                    questions={group.questions}
+                    selectedAnswers={displayAnswers}
+                    isGraded={isGraded}
+                    mode={mode}
+                    onBlankClick={handleScrollToQuestion}
+                  />
+                </div>
+
+                <div className="reading-mobile-questions">
+                  <div style={{ fontSize: '0.9rem', color: 'hsl(var(--text-muted))', marginBottom: '12px', fontWeight: 600 }}>
+                    Answer Sheet {group.range}
+                  </div>
+                  {group.questions.map((q) => (
+                    <QuestionBlock
+                      key={q.num}
+                      num={q.num}
+                      options={q.options}
+                      explanation={q.explanation || 'Refer to the vocabulary notes for translations.'}
+                      selectedOption={displayAnswers[q.num] || ''}
+                      isFlagged={!!questionStates[q.num]?.isFlagged}
+                      isGraded={isGraded || mode === 'study'}
+                      onSelect={(label) => handleSelectOption(q.num, label)}
+                      onToggleFlag={() => handleToggleFlag(q.num)}
+                    />
+                  ))}
+                </div>
+
+                {isGraded && (
+                  <div className="reading-mobile-notes">
+                    <div className="glass-panel" style={{ padding: '16px', fontSize: '0.85rem' }}>
+                      <h4 style={{ color: 'hsl(var(--primary))', marginBottom: '10px', fontWeight: 600 }}>Key Takeaways</h4>
+                      <ul style={{ paddingLeft: '16px', color: 'hsl(var(--text-secondary))' }}>
+                        {group.takeaways.map((takeaway, idx) => (
+                          <li key={idx} style={{ marginBottom: '6px' }}>{takeaway}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="glass-panel" style={{ padding: '16px', fontSize: '0.85rem' }}>
+                      <h4 style={{ color: 'hsl(var(--primary))', marginBottom: '10px', fontWeight: 600 }}>Vocabulary & Analysis</h4>
+                      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px', color: 'hsl(var(--text-secondary))' }}>
+                        {group.vocabulary.map((vocab, idx) => (
+                          <li key={idx} style={{ borderBottom: '1px solid hsl(var(--panel-border) / 0.3)', paddingBottom: '4px' }}>
+                            {vocab}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </section>
+            ))}
+          </div>
+          </>
         )}
       </div>
 
