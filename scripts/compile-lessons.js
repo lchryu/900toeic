@@ -9,7 +9,8 @@ const ASSETS_DIR = path.join(PUBLIC_DIR, 'assets');
 const YOUTUBE_AUDIO_BY_LESSON = {
   '11': 'https://www.youtube.com/watch?v=BKSLF-FVcwE&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=11',
   '12-homework': 'https://www.youtube.com/watch?v=-qarDF0Fhf4&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=12',
-  '13-homework': 'https://www.youtube.com/watch?v=CI2p8-b1nao&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=13'
+  '13-homework': 'https://www.youtube.com/watch?v=CI2p8-b1nao&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=13',
+  '14-homework': 'https://www.youtube.com/watch?v=lKoMVgLFXbg&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=14'
 };
 const OUTPUT_DIR = './src/data';
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'lessons.json');

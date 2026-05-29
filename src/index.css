@@ -290,6 +290,7 @@ h1, h2, h3, h4, h5 {
 .bg-m-cn { background-color: hsl(var(--color-m-cn)); }
 .bg-w-br { background-color: hsl(var(--color-w-br)); }
 .bg-m-au { background-color: hsl(var(--color-m-au)); }
+.bg-auto { background-color: hsl(var(--text-muted)); }
 
 /* Dialogue Lines */
 .dialogue-item {
