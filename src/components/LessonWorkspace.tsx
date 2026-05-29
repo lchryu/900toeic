@@ -4,7 +4,7 @@ import { AudioPlayer } from './AudioPlayer';
 import { ListeningWorkspace } from './ListeningWorkspace';
 import { ReadingPassage } from './ReadingPassage';
 import { QuestionBlock } from './QuestionBlock';
-import { Headphones, BookOpen, Clock, Award, RotateCcw, AlertTriangle, GraduationCap, Pencil, Eye } from 'lucide-react';
+import { Headphones, BookOpen, Clock, Award, RotateCcw, AlertTriangle, GraduationCap, Pencil, Eye, X } from 'lucide-react';
 
 type LessonTab = 'listening' | 'reading';
 type LessonMode = 'study' | 'practice' | 'review';
@@ -44,6 +44,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const [isGraded, setIsGraded] = useState<boolean>(
     !!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0))
   );
+  const [isReadingMode, setIsReadingMode] = useState(false);
   
   // Timer state
   const [elapsedTime, setElapsedTime] = useState<number>(progress?.timeSpent || 0);
@@ -54,6 +55,11 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     elapsedTimeRef.current = elapsedTime;
   }, [elapsedTime]);
 
+  useEffect(() => {
+    document.body.classList.toggle('reading-mode-active', isReadingMode);
+    return () => document.body.classList.remove('reading-mode-active');
+  }, [isReadingMode]);
+
   // Sync state when lesson changes
   useEffect(() => {
     setSelectedAnswers(progress?.answers || {});
@@ -61,6 +67,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     setMode(progress?.mode || (progress?.isSubmitted ? 'review' : 'practice'));
     setIsGraded(!!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0)));
     setElapsedTime(progress?.timeSpent || 0);
+    setIsReadingMode(false);
     const flags = progress?.flaggedQuestions || [];
     setQuestionStates(Object.fromEntries(flags.map((num) => [num, { selectedOption: progress?.answers?.[num] || '', isFlagged: true }])));
   }, [lesson.id]);
@@ -200,6 +207,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   const handleModeChange = (nextMode: LessonMode) => {
     if (nextMode === 'review' && !isGraded) return;
+    setIsReadingMode(false);
     setMode(nextMode);
     persistProgressSnapshot(selectedAnswers, elapsedTimeRef.current, nextMode, activeTab);
   };
@@ -302,9 +310,29 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+    <div className={`lesson-workspace-shell ${isReadingMode ? 'reading-mode' : ''} ${mode === 'practice' && !isGraded ? 'practice-mode' : ''}`} style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
       {/* Sticky Audio Player for Listening sections */}
       <AudioPlayer src={lesson.audio ? `/${lesson.audio}` : undefined} youtubeUrl={lesson.youtubeUrl} />
+
+      <button
+        className="reading-mode-fab"
+        type="button"
+        aria-label="Enter reading mode"
+        title="Reading mode"
+        onClick={() => setIsReadingMode(true)}
+      >
+        <BookOpen size={22} />
+      </button>
+
+      <button
+        className="reading-mode-exit"
+        type="button"
+        aria-label="Exit reading mode"
+        onClick={() => setIsReadingMode(false)}
+      >
+        <X size={16} />
+        <span>Done</span>
+      </button>
 
       {/* Lesson Heading and Tab Swtiching */}
       <div className="lesson-heading-panel" style={{ padding: '24px 24px 0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
@@ -354,7 +382,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       </div>
 
       {/* Main Workspace content */}
-      <div style={{ flex: 1, padding: '24px', overflowY: 'auto' }}>
+      <div className="lesson-main-scroll" style={{ flex: 1, padding: '24px', overflowY: 'auto' }}>
         {activeTab === 'listening' ? (
           <ListeningWorkspace
             listeningGroups={lesson.listening}

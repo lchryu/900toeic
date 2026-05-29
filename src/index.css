@@ -775,6 +775,11 @@ h1, h2, h3, h4, h5 {
   display: none;
 }
 
+.reading-mode-fab,
+.reading-mode-exit {
+  display: none;
+}
+
 /* Mobile Responsive Overlays and Adjustments */
 .sidebar-overlay {
   position: fixed;
@@ -831,6 +836,129 @@ h1, h2, h3, h4, h5 {
 
   .mobile-header {
     display: flex;
+  }
+
+  body.reading-mode-active .mobile-header {
+    display: none;
+  }
+
+  .lesson-workspace-shell {
+    position: relative;
+  }
+
+  .reading-mode-fab {
+    position: fixed;
+    right: 14px;
+    bottom: calc(156px + env(safe-area-inset-bottom));
+    z-index: 90;
+    width: 52px;
+    height: 52px;
+    border: 1px solid hsl(var(--primary) / 0.45);
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    color: var(--button-contrast);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.38);
+  }
+
+  .reading-mode-exit {
+    position: fixed;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    z-index: 120;
+    min-width: 82px;
+    height: 44px;
+    border: 1px solid hsl(var(--primary) / 0.45);
+    border-radius: 999px;
+    background: hsl(var(--primary));
+    color: var(--button-contrast);
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 800;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.38);
+  }
+
+  .lesson-workspace-shell.reading-mode .reading-mode-fab {
+    display: none;
+  }
+
+  .lesson-workspace-shell.reading-mode .reading-mode-exit {
+    display: flex;
+  }
+
+  .lesson-workspace-shell.reading-mode .audio-player-shell,
+  .lesson-workspace-shell.reading-mode .lesson-heading-panel,
+  .lesson-workspace-shell.reading-mode .control-banner {
+    display: none !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .lesson-main-scroll {
+    padding: 8px 8px calc(80px + env(safe-area-inset-bottom)) 8px !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .listening-workspace-root {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .listening-section-title,
+  .lesson-workspace-shell.reading-mode .listening-group-header,
+  .lesson-workspace-shell.reading-mode .reading-mobile-layout > h2 {
+    display: none !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .glass-panel {
+    border-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent !important;
+    padding: 12px 8px !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .dialogue-text {
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+
+  .lesson-workspace-shell.reading-mode .dialogue-translation {
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .lesson-workspace-shell.reading-mode .reading-mobile-passage {
+    position: relative;
+    top: auto;
+    padding-bottom: 0;
+    background: transparent;
+  }
+
+  .lesson-workspace-shell.reading-mode .reading-mobile-passage .passage-card {
+    max-height: none;
+    overflow: visible;
+    border-color: transparent;
+    box-shadow: none;
+    background: transparent;
+    padding: 12px 8px !important;
+  }
+
+  .lesson-workspace-shell.practice-mode .lesson-heading-panel {
+    padding: 8px 12px 0 12px !important;
+    justify-content: center !important;
+  }
+
+  .lesson-workspace-shell.practice-mode .lesson-heading-copy {
+    display: none;
+  }
+
+  .lesson-workspace-shell.practice-mode .lesson-mode-tabs {
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .lesson-workspace-shell.practice-mode .lesson-main-scroll {
+    padding-top: 12px !important;
   }
 
   .lesson-heading-panel {

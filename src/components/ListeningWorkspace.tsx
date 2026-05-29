@@ -48,8 +48,8 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
   const showTranscript = isGraded || mode === 'study';
 
   return (
-    <div style={{ padding: '24px', maxWidth: '850px', margin: '0 auto', width: '100%' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+    <div className="listening-workspace-root" style={{ padding: '24px', maxWidth: '850px', margin: '0 auto', width: '100%' }}>
+      <div className="listening-section-title" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
         <Headphones className="text-sky-400" size={24} />
         <h2 style={{ fontSize: '1.5rem', fontWeight: 700 }}>Part 3: Listening Comprehension</h2>
       </div>
