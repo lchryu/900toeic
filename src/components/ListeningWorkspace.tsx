@@ -65,6 +65,7 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
         >
           {/* Group Header */}
           <div
+            className="listening-group-header"
             style={{
               display: 'flex',
               alignItems: 'center',

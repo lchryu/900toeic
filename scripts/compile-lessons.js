@@ -7,7 +7,9 @@ const AUDIO_DIR = path.join(PUBLIC_DIR, 'audio');
 const ASSETS_DIR = path.join(PUBLIC_DIR, 'assets');
 
 const YOUTUBE_AUDIO_BY_LESSON = {
-  '11': 'https://www.youtube.com/watch?v=BKSLF-FVcwE&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=11'
+  '11': 'https://www.youtube.com/watch?v=BKSLF-FVcwE&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=11',
+  '12-homework': 'https://www.youtube.com/watch?v=-qarDF0Fhf4&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=12',
+  '13-homework': 'https://www.youtube.com/watch?v=CI2p8-b1nao&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=13'
 };
 const OUTPUT_DIR = './src/data';
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'lessons.json');
@@ -43,6 +45,16 @@ function findLessonAudio(lessonId) {
     });
 
   return audioFile ? `audio/${audioFile}` : `audio/${lessonId}.mp3`;
+}
+
+function hasLessonAudio(lessonId) {
+  if (!fs.existsSync(AUDIO_DIR)) return false;
+
+  return fs.readdirSync(AUDIO_DIR)
+    .some((file) => {
+      const parsed = path.parse(file);
+      return parsed.name === lessonId && ['.mp3', '.m4a', '.wav', '.ogg'].includes(parsed.ext.toLowerCase());
+    });
 }
 
 function findLessonGraphics(lessonId) {
@@ -123,8 +135,9 @@ function parseLesson(filePath) {
   const titleMatch = content.match(/^#\s*(.*?)\s*$/m);
   const title = titleMatch ? titleMatch[1] : 'TOEIC Practice';
   
+  const homeworkIdMatch = title.match(/^(\d+)\s+Homework/i) || title.match(/^Homework\s*(\d+)/i) || filename.match(/^(\d+)-homework/i) || filename.match(/^homework(\d+)/i);
   const lessonIdMatch = title.match(/Lesson\s*(\d+)/i) || filename.match(/(\d+)/);
-  const lessonId = lessonIdMatch ? lessonIdMatch[1] : '12';
+  const lessonId = homeworkIdMatch ? `${homeworkIdMatch[1]}-homework` : lessonIdMatch ? lessonIdMatch[1] : '12';
   
   console.log(`Parsing ${filename} (Lesson ID: ${lessonId}, Title: "${title}")...`);
   
@@ -488,12 +501,13 @@ function parseLesson(filePath) {
   }).sort((a, b) => a.startQ - b.startQ);
 
   const graphics = findLessonGraphics(lessonId);
+  const youtubeUrl = YOUTUBE_AUDIO_BY_LESSON[lessonId];
   
   return {
     id: lessonId,
     title,
-    audio: findLessonAudio(lessonId),
-    youtubeUrl: YOUTUBE_AUDIO_BY_LESSON[lessonId],
+    audio: hasLessonAudio(lessonId) || !youtubeUrl ? findLessonAudio(lessonId) : '',
+    youtubeUrl,
     graphics,
     listening: listeningGroups,
     reading: readingGroups

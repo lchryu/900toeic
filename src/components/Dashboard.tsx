@@ -55,6 +55,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
   // Find next lesson to do
   const nextLesson = lessons.find((l) => !(progress[l.id]?.isSubmitted ?? Object.keys(progress[l.id]?.answers || {}).length > 0)) || lessons[0];
+  const getLessonQuestionCounts = (lesson: LessonData | undefined) => {
+    if (!lesson) return { listening: 0, reading: 0, total: 0 };
+
+    const listening = lesson.listening.reduce((sum, group) => sum + group.questions.length, 0);
+    const reading = lesson.reading.reduce((sum, group) => sum + group.questions.length, 0);
+    return { listening, reading, total: listening + reading };
+  };
+  const nextLessonCounts = getLessonQuestionCounts(nextLesson);
 
   return (
     <div style={{ padding: '32px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
@@ -118,7 +126,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <span className="stat-title">Lessons Completed</span>
           <span className="stat-val">{completedCount} / {totalLessonsCount}</span>
           <p style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))' }}>
-            Expandable to 21 practice lessons
+            {totalLessonsCount} practice sets available
           </p>
         </div>
 
@@ -153,7 +161,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               {nextLesson?.title || 'TOEIC Practice'}
             </h3>
             <p style={{ color: 'hsl(var(--text-secondary))', lineHeight: 1.6, marginBottom: '24px' }}>
-              Test your skills on this lesson with 15 listening comprehension questions and 16 reading comprehension questions. Practice under time constraints and get instant feedback.
+              Practice {nextLessonCounts.total} questions: {nextLessonCounts.listening} listening and {nextLessonCounts.reading} reading. Work under time constraints and get instant feedback.
             </p>
           </div>
           {nextLesson && (

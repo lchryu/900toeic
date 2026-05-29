@@ -168,6 +168,13 @@ h1, h2, h3, h4, h5 {
   flex-shrink: 0;
 }
 
+.audio-transport-controls,
+.audio-extra-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .audio-btn {
   background: hsl(var(--primary));
   color: var(--button-contrast);
@@ -186,6 +193,32 @@ h1, h2, h3, h4, h5 {
 .audio-btn:hover {
   transform: scale(1.05);
   background: hsl(var(--primary-hover));
+}
+
+.audio-btn:disabled,
+.audio-icon-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
+}
+
+.audio-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--panel-border));
+  background: hsl(var(--panel-bg) / 0.3);
+  color: hsl(var(--text-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.audio-icon-btn:hover:not(:disabled) {
+  background: hsl(var(--panel-hover));
+  color: hsl(var(--primary));
 }
 
 .audio-progress-container {
@@ -219,36 +252,24 @@ h1, h2, h3, h4, h5 {
   left: 0;
 }
 
-.youtube-source-actions {
-  flex: 1;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: hsl(var(--text-primary));
-  font-weight: 700;
-}
-
 .youtube-open-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 6px 10px;
   font-size: 0.8rem;
   text-decoration: none;
 }
 
-.youtube-audio-panel {
-  padding: 0 24px 16px;
-}
-
-.youtube-audio-panel iframe {
-  display: block;
-  width: min(420px, 100%);
-  aspect-ratio: 16 / 9;
-  border: 1px solid hsl(var(--panel-border));
-  border-radius: 8px;
-  background: hsl(var(--panel-bg));
+.youtube-hidden-player {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  left: -9999px;
+  top: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 /* Speaker Badges */
@@ -815,8 +836,18 @@ h1, h2, h3, h4, h5 {
 
   .audio-source-control,
   .audio-progress-container,
-  .youtube-source-actions {
+  .audio-extra-controls {
     width: 100%;
+  }
+
+  .listening-group-header {
+    align-items: flex-start !important;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .audio-extra-controls {
+    justify-content: space-between;
   }
   
   .audio-btn {
