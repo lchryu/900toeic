@@ -307,17 +307,17 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       <AudioPlayer src={lesson.audio ? `/${lesson.audio}` : undefined} youtubeUrl={lesson.youtubeUrl} />
 
       {/* Lesson Heading and Tab Swtiching */}
-      <div style={{ padding: '24px 24px 0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
-        <div>
-          <h1 style={{ fontSize: '1.8rem', fontWeight: 800, fontFamily: 'var(--font-title)' }}>
+      <div className="lesson-heading-panel" style={{ padding: '24px 24px 0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+        <div className="lesson-heading-copy">
+          <h1 className="lesson-title" style={{ fontSize: '1.8rem', fontWeight: 800, fontFamily: 'var(--font-title)' }}>
             {lesson.title}
           </h1>
-          <span style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))' }}>
+          <span className="lesson-meta" style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))' }}>
             {mode === 'study' ? 'Studying' : mode === 'review' ? 'Reviewing' : 'Practicing'} {listeningQuestionCount} Listening questions & {readingQuestionCount} Reading questions
           </span>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+        <div className="lesson-mode-tabs" style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           <div className="segmented-control">
             {modeOptions.map(({ id, label, icon: Icon, disabled }) => (
               <button
