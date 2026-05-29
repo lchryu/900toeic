@@ -1,16 +1,35 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Play, Pause, Volume2, FastForward } from 'lucide-react';
+import { Play, Pause, Volume2, FastForward, Youtube, ExternalLink } from 'lucide-react';
 
 interface AudioPlayerProps {
   src: string;
+  youtubeUrl?: string;
 }
 
-export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
+type AudioSource = 'local' | 'youtube';
+
+const getYoutubeEmbedUrl = (url: string) => {
+  try {
+    const parsed = new URL(url);
+    const videoId = parsed.hostname.includes('youtu.be')
+      ? parsed.pathname.slice(1)
+      : parsed.searchParams.get('v');
+
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : '';
+  } catch {
+    return '';
+  }
+};
+
+export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [playbackRate, setPlaybackRate] = useState(1.0);
+  const [source, setSource] = useState<AudioSource>('local');
+
+  const youtubeEmbedUrl = youtubeUrl ? getYoutubeEmbedUrl(youtubeUrl) : '';
 
   useEffect(() => {
     // Reset player states when src changes
@@ -22,6 +41,20 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       audioRef.current.load();
     }
   }, [src]);
+
+  useEffect(() => {
+    if (!youtubeUrl && source === 'youtube') {
+      setSource('local');
+    }
+  }, [youtubeUrl, source]);
+
+  const handleSourceChange = (nextSource: AudioSource) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+    setIsPlaying(false);
+    setSource(nextSource);
+  };
 
   const togglePlay = () => {
     if (!audioRef.current) return;
@@ -77,50 +110,99 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
   const progressPct = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="audio-player-bar">
-      <audio
-        ref={audioRef}
-        src={src}
-        onTimeUpdate={handleTimeUpdate}
-        onLoadedMetadata={handleLoadedMetadata}
-        onEnded={() => setIsPlaying(false)}
-      />
+    <div className="audio-player-shell">
+      <div className="audio-player-bar">
+        <audio
+          ref={audioRef}
+          src={src}
+          onTimeUpdate={handleTimeUpdate}
+          onLoadedMetadata={handleLoadedMetadata}
+          onEnded={() => setIsPlaying(false)}
+        />
 
-      <button className="audio-btn" onClick={togglePlay} title={isPlaying ? 'Pause' : 'Play'}>
-        {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" style={{ marginLeft: '2px' }} />}
-      </button>
+        {youtubeUrl && (
+          <div className="segmented-control audio-source-control">
+            <button
+              className={`segmented-btn ${source === 'local' ? 'active' : ''}`}
+              onClick={() => handleSourceChange('local')}
+              title="Use local audio"
+            >
+              <Volume2 size={15} />
+              <span>Local</span>
+            </button>
+            <button
+              className={`segmented-btn ${source === 'youtube' ? 'active' : ''}`}
+              onClick={() => handleSourceChange('youtube')}
+              title="Use YouTube"
+            >
+              <Youtube size={15} />
+              <span>YouTube</span>
+            </button>
+          </div>
+        )}
 
-      <div className="audio-progress-container">
-        <span className="time-label">{formatTime(currentTime)}</span>
-        <div className="progress-track" onClick={handleSeek}>
-          <div className="progress-fill" style={{ width: `${progressPct}%` }} />
+        {source === 'local' ? (
+          <>
+            <button className="audio-btn" onClick={togglePlay} title={isPlaying ? 'Pause' : 'Play'}>
+              {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" style={{ marginLeft: '2px' }} />}
+            </button>
+
+            <div className="audio-progress-container">
+              <span className="time-label">{formatTime(currentTime)}</span>
+              <div className="progress-track" onClick={handleSeek}>
+                <div className="progress-fill" style={{ width: `${progressPct}%` }} />
+              </div>
+              <span className="time-label">{formatTime(duration)}</span>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              {/* Playback speed toggle */}
+              <button
+                className="secondary-btn"
+                style={{
+                  padding: '6px 12px',
+                  fontSize: '0.8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  background: playbackRate > 1.0 ? 'rgba(14, 165, 233, 0.1)' : 'transparent',
+                  borderColor: playbackRate > 1.0 ? 'hsl(var(--primary))' : 'hsl(var(--panel-border))',
+                  color: playbackRate > 1.0 ? 'hsl(var(--primary))' : 'hsl(var(--text-primary))'
+                }}
+                onClick={handleSpeedChange}
+                title="Toggle speed: 1.0x -> 1.2x -> 1.5x"
+              >
+                <FastForward size={14} />
+                <span>{playbackRate.toFixed(1)}x</span>
+              </button>
+
+              <Volume2 size={18} className="text-slate-400" />
+            </div>
+          </>
+        ) : (
+          <div className="youtube-source-actions">
+            <Youtube size={20} />
+            <span>A Homework 11</span>
+            {youtubeUrl && (
+              <a className="secondary-btn youtube-open-link" href={youtubeUrl} target="_blank" rel="noreferrer">
+                <ExternalLink size={14} />
+                <span>Open</span>
+              </a>
+            )}
+          </div>
+        )}
+      </div>
+
+      {source === 'youtube' && youtubeEmbedUrl && (
+        <div className="youtube-audio-panel">
+          <iframe
+            src={youtubeEmbedUrl}
+            title="YouTube audio source"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
         </div>
-        <span className="time-label">{formatTime(duration)}</span>
-      </div>
-
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        {/* Playback speed toggle */}
-        <button
-          className="secondary-btn"
-          style={{
-            padding: '6px 12px',
-            fontSize: '0.8rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '4px',
-            background: playbackRate > 1.0 ? 'rgba(14, 165, 233, 0.1)' : 'transparent',
-            borderColor: playbackRate > 1.0 ? 'hsl(var(--primary))' : 'hsl(var(--panel-border))',
-            color: playbackRate > 1.0 ? 'hsl(var(--primary))' : 'hsl(var(--text-primary))'
-          }}
-          onClick={handleSpeedChange}
-          title="Toggle speed: 1.0x -> 1.2x -> 1.5x"
-        >
-          <FastForward size={14} />
-          <span>{playbackRate.toFixed(1)}x</span>
-        </button>
-
-        <Volume2 size={18} className="text-slate-400" />
-      </div>
+      )}
     </div>
   );
 };

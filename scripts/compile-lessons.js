@@ -5,6 +5,10 @@ const LESSONS_DIR = './lessons';
 const PUBLIC_DIR = './public';
 const AUDIO_DIR = path.join(PUBLIC_DIR, 'audio');
 const ASSETS_DIR = path.join(PUBLIC_DIR, 'assets');
+
+const YOUTUBE_AUDIO_BY_LESSON = {
+  '11': 'https://www.youtube.com/watch?v=BKSLF-FVcwE&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=11'
+};
 const OUTPUT_DIR = './src/data';
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'lessons.json');
 
@@ -489,6 +493,7 @@ function parseLesson(filePath) {
     id: lessonId,
     title,
     audio: findLessonAudio(lessonId),
+    youtubeUrl: YOUTUBE_AUDIO_BY_LESSON[lessonId],
     graphics,
     listening: listeningGroups,
     reading: readingGroups

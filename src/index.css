@@ -145,19 +145,27 @@ h1, h2, h3, h4, h5 {
 }
 
 /* Custom Audio Player styles */
-.audio-player-bar {
+.audio-player-shell {
   position: sticky;
   top: 0;
   z-index: 50;
   width: 100%;
-  padding: 16px 24px;
   background: var(--surface-sticky);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.audio-player-bar {
+  width: 100%;
+  padding: 16px 24px;
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.audio-source-control {
+  flex-shrink: 0;
 }
 
 .audio-btn {
@@ -209,6 +217,38 @@ h1, h2, h3, h4, h5 {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.youtube-source-actions {
+  flex: 1;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: hsl(var(--text-primary));
+  font-weight: 700;
+}
+
+.youtube-open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.youtube-audio-panel {
+  padding: 0 24px 16px;
+}
+
+.youtube-audio-panel iframe {
+  display: block;
+  width: min(420px, 100%);
+  aspect-ratio: 16 / 9;
+  border: 1px solid hsl(var(--panel-border));
+  border-radius: 8px;
+  background: hsl(var(--panel-bg));
 }
 
 /* Speaker Badges */
@@ -770,6 +810,13 @@ h1, h2, h3, h4, h5 {
   .audio-player-bar {
     padding: 12px 16px;
     gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .audio-source-control,
+  .audio-progress-container,
+  .youtube-source-actions {
+    width: 100%;
   }
   
   .audio-btn {

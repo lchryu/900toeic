@@ -42,6 +42,7 @@ export interface LessonData {
   id: string;
   title: string;
   audio: string;
+  youtubeUrl?: string;
   graphics?: { [qNum: number]: string };
   listening: ListeningGroup[];
   reading: ReadingGroup[];
