@@ -303,6 +303,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   const listeningQuestionCount = lesson.listening.reduce((sum, g) => sum + g.questions.length, 0);
   const readingQuestionCount = lesson.reading.reduce((sum, g) => sum + g.questions.length, 0);
+  const answeredQuestionCount = Object.keys(selectedAnswers).length;
+  const isReaderOnlyMode = isReadingMode && !isPracticeActive;
+  const isPracticeFocusMode = isReadingMode && isPracticeActive;
   const modeOptions: Array<{ id: LessonMode; label: string; icon: React.ElementType; disabled?: boolean }> = [
     { id: 'study', label: 'Study', icon: GraduationCap },
     { id: 'practice', label: 'Practice', icon: Pencil, disabled: isGraded },
@@ -310,18 +313,19 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   ];
 
   return (
-    <div className={`lesson-workspace-shell ${isReadingMode ? 'reading-mode' : ''} ${mode === 'practice' && !isGraded ? 'practice-mode' : ''}`} style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+    <div className={`lesson-workspace-shell ${isReaderOnlyMode ? 'reading-mode' : ''} ${isPracticeFocusMode ? 'practice-focus-mode' : ''} ${isPracticeActive ? 'practice-mode' : ''}`} style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
       {/* Sticky Audio Player for Listening sections */}
       <AudioPlayer src={lesson.audio ? `/${lesson.audio}` : undefined} youtubeUrl={lesson.youtubeUrl} />
 
       <button
-        className="reading-mode-fab"
+        className={`reading-mode-fab ${isPracticeActive ? 'practice-focus-fab' : ''}`}
         type="button"
-        aria-label="Enter reading mode"
-        title="Reading mode"
+        aria-label={isPracticeActive ? 'Enter practice focus mode' : 'Enter reading mode'}
+        title={isPracticeActive ? 'Practice focus' : 'Reading mode'}
         onClick={() => setIsReadingMode(true)}
       >
         <BookOpen size={22} />
+        {isPracticeActive ? <span>Focus</span> : null}
       </button>
 
       <button
@@ -549,6 +553,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
             <div className={isGraded ? '' : 'timer-pulse'} />
             <Clock size={16} />
             <span>Time: {formatTime(elapsedTime)}</span>
+            {isPracticeActive ? (
+              <span className="practice-progress-pill">{answeredQuestionCount}/{totalQuestions}</span>
+            ) : null}
           </div>
 
           {isGraded && (
@@ -585,10 +592,14 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                 {Object.keys(selectedAnswers).length < totalQuestions ? (
                   <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <AlertTriangle size={16} />
-                    <span>Grade Test ({Object.keys(selectedAnswers).length}/{totalQuestions} Done)</span>
+                    <span className="desktop-grade-label">Grade Test ({answeredQuestionCount}/{totalQuestions} Done)</span>
+                    <span className="mobile-grade-label">Grade {answeredQuestionCount}/{totalQuestions}</span>
                   </span>
                 ) : (
-                  <span>Grade & Submit Test</span>
+                  <>
+                    <span className="desktop-grade-label">Grade & Submit Test</span>
+                    <span className="mobile-grade-label">Grade</span>
+                  </>
                 )}
               </button>
             </>

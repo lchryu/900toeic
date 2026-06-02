@@ -43,13 +43,43 @@ export const Sidebar: React.FC<SidebarProps> = ({
     onCloseMobileSidebar?.();
   };
 
+  const appVersion = typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '1.0.0';
+  const buildTimestamp = typeof __APP_BUILD_TIMESTAMP__ !== 'undefined' ? __APP_BUILD_TIMESTAMP__ : '';
+  const commitHash = typeof __APP_COMMIT_HASH__ !== 'undefined' ? __APP_COMMIT_HASH__ : '';
+  const branchName = typeof __APP_BRANCH__ !== 'undefined' ? __APP_BRANCH__ : '';
+  const buildTarget = typeof __APP_BUILD_TARGET__ !== 'undefined' ? __APP_BUILD_TARGET__ : '';
+  const buildDate = buildTimestamp ? new Date(buildTimestamp) : null;
+  const buildDateText = buildDate && !Number.isNaN(buildDate.getTime())
+    ? buildDate.toLocaleString('vi-VN', {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    })
+    : '';
+  const buildDetails = [
+    commitHash ? `Build ${commitHash}` : '',
+    branchName && branchName !== 'HEAD' ? branchName : '',
+    buildTarget
+  ].filter(Boolean).join(' - ');
+
   return (
     <aside className={`sidebar-panel glass-panel ${isMobileOpen ? 'mobile-open' : ''}`}>
       <div className="sidebar-header">
         <BookOpen className="text-sky-400" size={24} />
         <div>
           <h2 style={{ fontSize: '1.1rem', fontWeight: 700 }}>TOEIC Practice</h2>
-          <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>v1.0.0</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+            <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>v{appVersion}</span>
+            {buildDateText ? (
+              <span style={{ fontSize: '0.7rem', color: 'hsl(var(--text-muted))' }}>
+                Updated {buildDateText}
+              </span>
+            ) : null}
+            {buildDetails ? (
+              <span style={{ fontSize: '0.7rem', color: 'hsl(var(--text-muted))' }}>
+                {buildDetails}
+              </span>
+            ) : null}
+          </div>
         </div>
         <button
           className="theme-toggle-btn"
