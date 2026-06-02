@@ -51,12 +51,15 @@ if (isFirebaseConfigured) {
   db = getFirestore(app);
 }
 
-const toAuthUser = (user: User): AuthUser => ({
-  uid: user.uid,
-  displayName: user.displayName,
-  email: user.email,
-  photoURL: user.photoURL
-});
+const toAuthUser = (user: User): AuthUser => {
+  const provider = user.providerData?.find((entry) => entry.photoURL || entry.displayName || entry.email);
+  return {
+    uid: user.uid,
+    displayName: user.displayName || provider?.displayName || null,
+    email: user.email || provider?.email || null,
+    photoURL: user.photoURL || provider?.photoURL || null
+  };
+};
 
 export const subscribeToAuth = (callback: (user: AuthUser | null) => void) => {
   if (!auth) {

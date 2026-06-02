@@ -731,6 +731,17 @@ h1, h2, h3, h4, h5 {
   height: 36px;
   border-radius: 50%;
   border: 1px solid hsl(var(--panel-border));
+  object-fit: cover;
+}
+
+.google-avatar-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  font-weight: 700;
+  font-size: 0.85rem;
 }
 
 .dashboard-grid {

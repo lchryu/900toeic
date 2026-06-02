@@ -64,6 +64,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
   };
   const nextLessonCounts = getLessonQuestionCounts(nextLesson);
 
+  const getUserInitials = (user: AuthUser) => {
+    const name = user.displayName || user.email || '';
+    const words = name.trim().split(/\s+/);
+    return words.length >= 2
+      ? `${words[0][0] || ''}${words[words.length - 1][0] || ''}`.toUpperCase()
+      : (name[0] || '').toUpperCase();
+  };
+
   return (
     <div style={{ padding: '32px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
       <header style={{ marginBottom: '40px' }}>
@@ -99,12 +107,16 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
         {authUser ? (
           <div className="google-account-actions">
-            {authUser.photoURL && (
+            {authUser.photoURL ? (
               <img
                 src={authUser.photoURL}
                 alt={authUser.displayName || authUser.email || 'Google account'}
                 className="google-avatar"
               />
+            ) : (
+              <div className="google-avatar google-avatar-fallback" aria-label="User initials">
+                {getUserInitials(authUser)}
+              </div>
             )}
             <button className="secondary-btn" onClick={onSignOut}>
               <LogOut size={16} />
