@@ -26,12 +26,12 @@ export interface AuthUser {
 }
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || (window as any).__FIREBASE_CONFIG__?.apiKey,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || (window as any).__FIREBASE_CONFIG__?.authDomain,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || (window as any).__FIREBASE_CONFIG__?.projectId,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || (window as any).__FIREBASE_CONFIG__?.storageBucket,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || (window as any).__FIREBASE_CONFIG__?.messagingSenderId,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || (window as any).__FIREBASE_CONFIG__?.appId
 };
 
 export const isFirebaseConfigured = Boolean(
