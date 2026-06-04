@@ -2,6 +2,7 @@ import React from 'react';
 import { Award, BookOpen, Cloud, CloudOff, Clock, LogIn, LogOut, Play } from 'lucide-react';
 import { LessonData, LessonProgress } from '../types';
 import type { AuthUser } from '../services/firebase';
+import { formatLessonTitle } from '../utils/lessonTitle';
 
 interface DashboardProps {
   lessons: LessonData[];
@@ -170,7 +171,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               Recommend for you
             </span>
             <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginTop: '8px', marginBottom: '12px' }}>
-              {nextLesson?.title || 'TOEIC Practice'}
+              {nextLesson ? formatLessonTitle(nextLesson.title) : 'TOEIC Practice'}
             </h3>
             <p style={{ color: 'hsl(var(--text-secondary))', lineHeight: 1.6, marginBottom: '24px' }}>
               Practice {nextLessonCounts.total} questions: {nextLessonCounts.listening} listening and {nextLessonCounts.reading} reading. Work under time constraints and get instant feedback.
@@ -218,7 +219,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   >
                     <div>
                       <h4 style={{ fontSize: '0.9rem', fontWeight: 600 }}>
-                        {lesson?.title.replace(/📘|Lesson\s*/g, '').trim() || `Lesson ${p.lessonId}`}
+                        {lesson ? formatLessonTitle(lesson.title) : `Lesson ${p.lessonId}`}
                       </h4>
                       <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>
                         Accuracy: {scorePct}%

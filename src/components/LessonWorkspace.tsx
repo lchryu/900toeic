@@ -5,6 +5,7 @@ import { ListeningWorkspace } from './ListeningWorkspace';
 import { ReadingPassage } from './ReadingPassage';
 import { QuestionBlock } from './QuestionBlock';
 import { Headphones, BookOpen, Clock, Award, RotateCcw, AlertTriangle, GraduationCap, Pencil, Eye, X } from 'lucide-react';
+import { formatLessonTitle } from '../utils/lessonTitle';
 
 type LessonTab = 'listening' | 'reading';
 type LessonMode = 'study' | 'practice' | 'review';
@@ -342,7 +343,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       <div className="lesson-heading-panel" style={{ padding: '24px 24px 0 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
         <div className="lesson-heading-copy">
           <h1 className="lesson-title" style={{ fontSize: '1.8rem', fontWeight: 800, fontFamily: 'var(--font-title)' }}>
-            {lesson.title}
+            {formatLessonTitle(lesson.title)}
           </h1>
           <span className="lesson-meta" style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))' }}>
             {mode === 'study' ? 'Studying' : mode === 'review' ? 'Reviewing' : 'Practicing'} {listeningQuestionCount} Listening questions & {readingQuestionCount} Reading questions

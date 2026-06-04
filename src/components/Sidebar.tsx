@@ -1,6 +1,7 @@
 import React from 'react';
 import { BookOpen, BarChart2, CheckCircle2, Bookmark, Moon, Sun } from 'lucide-react';
 import { LessonData, LessonProgress } from '../types';
+import { formatLessonTitle } from '../utils/lessonTitle';
 
 interface SidebarProps {
   lessons: LessonData[];
@@ -119,7 +120,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               onClick={() => handleNavClick('lesson', lesson.id)}
             >
               <BookOpen size={16} />
-              <span style={{ flex: 1 }}>{lesson.title.replace(/📘|Lesson\s*/g, '').trim()}</span>
+              <span style={{ flex: 1 }}>{formatLessonTitle(lesson.title)}</span>
               {isCompleted && (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                   <span style={{ fontSize: '0.75rem', padding: '2px 6px', borderRadius: '4px', background: 'rgba(16, 185, 129, 0.1)', color: 'hsl(var(--success))' }}>
