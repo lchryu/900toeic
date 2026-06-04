@@ -1,0 +1,271 @@
+.reading-mode-fab,
+.reading-mode-exit {
+  display: none;
+}
+
+.practice-progress-pill,
+.mobile-grade-label {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body.reading-mode-active .mobile-header {
+    display: none;
+  }
+
+  .lesson-workspace-shell {
+    position: relative;
+  }
+
+  .reading-mode-fab {
+    position: fixed;
+    right: 14px;
+    bottom: calc(156px + env(safe-area-inset-bottom));
+    z-index: 90;
+    width: 52px;
+    height: 52px;
+    border: 1px solid hsl(var(--primary) / 0.45);
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    color: var(--button-contrast);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.38);
+  }
+
+  .reading-mode-fab span {
+    display: none;
+  }
+
+  .reading-mode-fab.practice-focus-fab {
+    width: auto;
+    min-width: 78px;
+    height: 44px;
+    border-radius: 999px;
+    display: flex;
+    gap: 7px;
+    padding: 0 13px;
+    font-size: 0.78rem;
+    font-weight: 900;
+  }
+
+  .reading-mode-fab.practice-focus-fab span {
+    display: inline;
+  }
+
+  .reading-mode-exit {
+    position: fixed;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    z-index: 120;
+    min-width: 82px;
+    height: 44px;
+    border: 1px solid hsl(var(--primary) / 0.45);
+    border-radius: 999px;
+    background: hsl(var(--primary));
+    color: var(--button-contrast);
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 800;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.38);
+  }
+
+  .lesson-workspace-shell.reading-mode .reading-mode-fab {
+    display: none;
+  }
+
+  .lesson-workspace-shell.reading-mode .reading-mode-exit {
+    display: flex;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .reading-mode-fab {
+    display: none;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .reading-mode-exit {
+    display: flex;
+  }
+
+  .lesson-workspace-shell.reading-mode .audio-player-shell,
+  .lesson-workspace-shell.reading-mode .lesson-heading-panel,
+  .lesson-workspace-shell.reading-mode .control-banner {
+    display: none !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .lesson-main-scroll {
+    padding: 8px 8px calc(80px + env(safe-area-inset-bottom)) 8px !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .listening-workspace-root {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .listening-section-title,
+  .lesson-workspace-shell.reading-mode .listening-group-header,
+  .lesson-workspace-shell.reading-mode .reading-mobile-layout > h2 {
+    display: none !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .glass-panel {
+    border-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent !important;
+    padding: 12px 8px !important;
+  }
+
+  .lesson-workspace-shell.reading-mode .dialogue-text {
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+
+  .lesson-workspace-shell.reading-mode .dialogue-translation {
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .lesson-workspace-shell.reading-mode .reading-mobile-passage {
+    position: relative;
+    top: auto;
+    padding-bottom: 0;
+    background: transparent;
+  }
+
+  .lesson-workspace-shell.reading-mode .reading-mobile-passage .passage-card {
+    max-height: none;
+    overflow: visible;
+    border-color: transparent;
+    box-shadow: none;
+    background: transparent;
+    padding: 12px 8px !important;
+  }
+
+  .lesson-workspace-shell.practice-mode .lesson-heading-panel {
+    display: none !important;
+  }
+
+  .lesson-workspace-shell.practice-mode .lesson-main-scroll {
+    padding: 10px 12px 164px 12px !important;
+  }
+
+  .lesson-workspace-shell.practice-mode .listening-workspace-root {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  .lesson-workspace-shell.practice-mode .listening-section-title,
+  .lesson-workspace-shell.practice-mode .listening-group-header,
+  .lesson-workspace-shell.practice-mode .reading-mobile-layout > h2,
+  .lesson-workspace-shell.practice-mode .reading-mobile-passage > div:first-child,
+  .lesson-workspace-shell.practice-mode .reading-mobile-questions > div:first-child {
+    display: none !important;
+  }
+
+  .lesson-workspace-shell.practice-mode .reading-mobile-group {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+  }
+
+  .lesson-workspace-shell.practice-mode .reading-mobile-passage {
+    top: 0;
+  }
+
+  .lesson-workspace-shell.practice-mode .question-card,
+  .lesson-workspace-shell.practice-mode .glass-panel {
+    scroll-margin-top: 12px;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .lesson-main-scroll {
+    padding-bottom: 164px !important;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .control-banner {
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .control-banner > div {
+    width: auto;
+    min-width: 0;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .timer-box {
+    font-size: 0.84rem;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .timer-box > span:first-of-type {
+    max-width: 74px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .practice-progress-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    height: 24px;
+    padding: 0 8px;
+    border: 1px solid hsl(var(--panel-border));
+    border-radius: 999px;
+    color: hsl(var(--text-primary));
+    background: hsl(var(--panel-bg) / 0.7);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .control-banner .primary-btn {
+    min-height: 34px;
+    padding: 8px 10px !important;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .desktop-grade-label {
+    display: none;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .mobile-grade-label {
+    display: inline;
+  }
+}
+
+@media (max-width: 390px) {
+  .reading-mode-fab.practice-focus-fab {
+    right: 10px;
+    min-width: 44px;
+    width: 44px;
+    padding: 0;
+  }
+
+  .reading-mode-fab.practice-focus-fab span {
+    display: none;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .control-banner {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .timer-box {
+    font-size: 0.78rem;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .practice-progress-pill {
+    min-width: 38px;
+    padding: 0 6px;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .control-banner .primary-btn {
+    padding: 8px 9px !important;
+    font-size: 0.74rem;
+  }
+}
