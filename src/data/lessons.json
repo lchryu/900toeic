@@ -6568,6 +6568,492 @@
     "reading": []
   },
   {
+    "id": "15",
+    "title": "Lesson 15 - Practice",
+    "audio": "audio/15.mp3",
+    "graphics": {
+      "14": "assets/15_14.png"
+    },
+    "listening": [
+      {
+        "id": "lc-1",
+        "range": "1–3",
+        "startQ": 1,
+        "endQ": 3,
+        "transcript": [
+          {
+            "speaker": "Airport announcement",
+            "text": "Attention all passengers waiting to board Oceana Air flight 502 to Hong Kong. Due to current weather conditions, all outgoing flights after 9 P.M. have been canceled, including the 9:30 P.M. flight to Hong Kong. The next available flight to Hong Kong will be tomorrow morning at 8:20 A.M. We will be providing hotel accommodations and shuttle bus service to those in need. Please speak to a customer service representative at the re-booking desk for further assistance. Thank you for your understanding. We sincerely apologize for this inconvenience."
+          }
+        ],
+        "questions": [
+          {
+            "num": 1,
+            "text": "Where is this announcement most likely being made?",
+            "options": [
+              {
+                "label": "A",
+                "text": "In a travel agency",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "At an airport",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "At a bus station",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "In a hotel lobby",
+                "correct": false
+              }
+            ],
+            "explanation": "The speaker mentions passengers, boarding, flights, and Hong Kong."
+          },
+          {
+            "num": 2,
+            "text": "What is the cause of the problem?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Weather conditions",
+                "correct": true
+              },
+              {
+                "label": "B",
+                "text": "Mechanical problems",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "Heavy traffic",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Absent employees",
+                "correct": false
+              }
+            ],
+            "explanation": "The flights were canceled because of current weather conditions."
+          },
+          {
+            "num": 3,
+            "text": "What will be provided for these customers?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Complimentary beverages",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "A partial refund",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "A seating upgrade",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Hotel accommodations",
+                "correct": true
+              }
+            ],
+            "explanation": "The announcement says hotel accommodations and shuttle bus service will be provided."
+          }
+        ]
+      },
+      {
+        "id": "lc-4",
+        "range": "4–6",
+        "startQ": 4,
+        "endQ": 6,
+        "transcript": [
+          {
+            "speaker": "Bookshop announcement",
+            "text": "Attention Caleb's Books shoppers. It's 9:30 P.M. We ask that you bring your final selections to the cashier counters at this time. If you are having trouble finding a specific item, please do not hesitate to ask an employee. Remember all our members receive a ten percent discount on all purchases, not just books, so sign up for the program today. The store will open again at eight o'clock tomorrow morning. Thank you for shopping at Caleb's Books, and have a great evening."
+          }
+        ],
+        "questions": [
+          {
+            "num": 4,
+            "text": "Where most likely is the announcement being made?",
+            "options": [
+              {
+                "label": "A",
+                "text": "At a library",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "At a bookshop",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "At a gift shop",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "At a department store",
+                "correct": false
+              }
+            ],
+            "explanation": "The announcement is for Caleb's Books shoppers."
+          },
+          {
+            "num": 5,
+            "text": "Why does the speaker say, \"It's 9:30 P.M.\"?",
+            "options": [
+              {
+                "label": "A",
+                "text": "To announce an event will begin",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "To decline an invitation",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "To suggest changing locations",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "To remind listeners of a closing time",
+                "correct": true
+              }
+            ],
+            "explanation": "Shoppers are asked to bring their final selections to the cashier counters."
+          },
+          {
+            "num": 6,
+            "text": "What does the speaker encourage the listeners to do?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Purchase a promotional item",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "Enroll in a program",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "Attend a book reading",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Apply for a job",
+                "correct": false
+              }
+            ],
+            "explanation": "The speaker says members get a discount and tells shoppers to sign up for the program."
+          }
+        ]
+      },
+      {
+        "id": "lc-7",
+        "range": "7–9",
+        "startQ": 7,
+        "endQ": 9,
+        "transcript": [
+          {
+            "speaker": "Supermarket announcement",
+            "text": "Attention, Hendrix Supermarket customers, this is the manager. Right now, we're giving away free muffins but only to the next 50 customers. You can pick up your free sample at the bakery counter in back, right next to the fruit and vegetable department. At the front entrance, Andy Ramos, our store chef, will be signing copies of his new cookbook, which includes the recipe for these fabulous muffins. We hope you'll stop by to meet Chef Ramos, and consider purchasing a copy of the book."
+          }
+        ],
+        "questions": [
+          {
+            "num": 7,
+            "text": "What is the bakery counter near?",
+            "options": [
+              {
+                "label": "A",
+                "text": "The books and magazines",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "The manager's office",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "The fruits and vegetables",
+                "correct": true
+              },
+              {
+                "label": "D",
+                "text": "The main entrance",
+                "correct": false
+              }
+            ],
+            "explanation": "The bakery counter is right next to the fruit and vegetable department."
+          },
+          {
+            "num": 8,
+            "text": "What is being offered only to the next 50 customers?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Food samples",
+                "correct": true
+              },
+              {
+                "label": "B",
+                "text": "Reduced prices",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "Autographed books",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Copies of recipes",
+                "correct": false
+              }
+            ],
+            "explanation": "The store is giving away free muffins to the next 50 customers."
+          },
+          {
+            "num": 9,
+            "text": "Who is Andy Ramos?",
+            "options": [
+              {
+                "label": "A",
+                "text": "The president of a company",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "The manager of a store",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "A clerk",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "A chef",
+                "correct": true
+              }
+            ],
+            "explanation": "Andy Ramos is described as the store chef."
+          }
+        ]
+      },
+      {
+        "id": "lc-10",
+        "range": "10–12",
+        "startQ": 10,
+        "endQ": 12,
+        "transcript": [
+          {
+            "speaker": "Workplace announcement",
+            "text": "The first item on the agenda of this morning's meeting is the company's new travel policy. We have made two major policy changes. The first regards currency exchange. You will no longer be issued traveler's checks for international trips. We have found that the best exchange rates are at automatic banking machines, so you will be issued new company bank cards by the end of the month. The other major change regards hotels. From now on, you may stay only at company-approved hotels in each city. You will find a list of these hotels in the folder you received when you came in today."
+          }
+        ],
+        "questions": [
+          {
+            "num": 10,
+            "text": "What is being announced?",
+            "options": [
+              {
+                "label": "A",
+                "text": "A merger of two banks",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "A new travel policy",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "The opening of a hotel",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "The hiring of new staff",
+                "correct": false
+              }
+            ],
+            "explanation": "The first item on the agenda is the company's new travel policy."
+          },
+          {
+            "num": 11,
+            "text": "What will the employees receive?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Traveler's checks",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "Company identification badges",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "Planning calendars",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Automatic banking cards",
+                "correct": true
+              }
+            ],
+            "explanation": "Employees will be issued new company bank cards."
+          },
+          {
+            "num": 12,
+            "text": "What were employees given a list of?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Company policies",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "Bank machine locations",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "Hotel names",
+                "correct": true
+              },
+              {
+                "label": "D",
+                "text": "Currency exchange rates",
+                "correct": false
+              }
+            ],
+            "explanation": "The folder includes a list of company-approved hotels."
+          }
+        ]
+      },
+      {
+        "id": "lc-13",
+        "range": "13–15",
+        "startQ": 13,
+        "endQ": 15,
+        "transcript": [
+          {
+            "speaker": "Printing service announcement",
+            "text": "Hi everyone. Unfortunately, the Harrington Charity has returned the invitations we printed for their upcoming fundraiser. This year the fundraiser is intended to help pay for repairs to the historic River Bridge, which is a change from last year's recipient. It looks like someone used an old order sheet when setting up the printing job. So I'm afraid we're going to have to absorb the cost of reprinting. I've promised Harrington Charity that we'd ship the order by tomorrow. So let's get to work."
+          }
+        ],
+        "questions": [
+          {
+            "num": 13,
+            "text": "What type of business does the speaker mostly likely work for?",
+            "options": [
+              {
+                "label": "A",
+                "text": "A newspaper publisher",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "A hotel chain",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "A printing service",
+                "correct": true
+              },
+              {
+                "label": "D",
+                "text": "A construction company",
+                "correct": false
+              }
+            ],
+            "explanation": "The speaker talks about printed invitations and reprinting an order."
+          },
+          {
+            "num": 14,
+            "text": "Look at the graphic. What information needs to be changed?",
+            "options": [
+              {
+                "label": "A",
+                "text": "The event",
+                "correct": true
+              },
+              {
+                "label": "B",
+                "text": "The location",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "The dress code",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "The cost",
+                "correct": false
+              }
+            ],
+            "explanation": "The graphic says the event benefits the Children's Library, but this year's fundraiser is for repairs to the historic River Bridge."
+          },
+          {
+            "num": 15,
+            "text": "What will happen tomorrow?",
+            "options": [
+              {
+                "label": "A",
+                "text": "A charity dinner will take place.",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "An order will be shipped.",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "A payment will be refunded.",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "A bridge will be repaired.",
+                "correct": false
+              }
+            ],
+            "explanation": "The speaker promised that the order would be shipped by tomorrow."
+          }
+        ]
+      }
+    ],
+    "reading": []
+  },
+  {
     "id": "16-homework",
     "title": "16 Homework",
     "audio": "",
@@ -7298,6 +7784,492 @@
               }
             ],
             "explanation": "The speaker says the pro shop has been newly expanded."
+          }
+        ]
+      }
+    ],
+    "reading": []
+  },
+  {
+    "id": "16",
+    "title": "Lesson 16 - Practice",
+    "audio": "audio/16.mp3",
+    "graphics": {
+      "14": "assets/16_14.png"
+    },
+    "listening": [
+      {
+        "id": "lc-1",
+        "range": "1–3",
+        "startQ": 1,
+        "endQ": 3,
+        "transcript": [
+          {
+            "speaker": "Radio advertisement",
+            "text": "Do you like to learn about unusual vacation destinations? Then don't miss Radio Explorers with host Bruce Mac Williams. Each week Bruce Mac Williams gives detailed information about exotic locations, interviews leading environmentalists, and offers special tips from experienced tour guides. Radio Explorers is broadcast every Tuesday at 3 P.M., with a repeat show at 9 P.M. on Wednesday. For a complete schedule of upcoming destinations that will be discussed, visit our Website at radioexplorers.org."
+          }
+        ],
+        "questions": [
+          {
+            "num": 1,
+            "text": "What is being advertised?",
+            "options": [
+              {
+                "label": "A",
+                "text": "A travel agency",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "A radio show",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "A holiday tour",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "A nature course",
+                "correct": false
+              }
+            ],
+            "explanation": "The advertisement promotes Radio Explorers, a weekly broadcast."
+          },
+          {
+            "num": 2,
+            "text": "Who is Bruce Mac Williams?",
+            "options": [
+              {
+                "label": "A",
+                "text": "A professor",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "A tour guide",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "An environmentalist",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "A radio host",
+                "correct": true
+              }
+            ],
+            "explanation": "Bruce Mac Williams is introduced as the host of Radio Explorers."
+          },
+          {
+            "num": 3,
+            "text": "What can be found on the Web site?",
+            "options": [
+              {
+                "label": "A",
+                "text": "An address",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "A schedule",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "A price list",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "An application form",
+                "correct": false
+              }
+            ],
+            "explanation": "The speaker tells listeners to visit the Web site for a complete schedule."
+          }
+        ]
+      },
+      {
+        "id": "lc-4",
+        "range": "4–6",
+        "startQ": 4,
+        "endQ": 6,
+        "transcript": [
+          {
+            "speaker": "Hotel advertisement",
+            "text": "Do you look forward to long business trips? Vella customers do, because they know they'll find a Vella hotel wherever they go. With locations in more than 100 countries, Vella hotels offer their customers the very best service. We provide computers in every room, free Internet service, and a choice of conference rooms. Not only that, but our friendly staff is trained to help plan your conference so you can relax knowing that everything is taken care of. So next time you're traveling on business, make sure you book a room at a Vella hotel."
+          }
+        ],
+        "questions": [
+          {
+            "num": 4,
+            "text": "What kind of business is being advertised?",
+            "options": [
+              {
+                "label": "A",
+                "text": "A shipping company",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "An Internet service",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "A hotel chain",
+                "correct": true
+              },
+              {
+                "label": "D",
+                "text": "A design firm",
+                "correct": false
+              }
+            ],
+            "explanation": "The speaker advertises Vella hotels."
+          },
+          {
+            "num": 5,
+            "text": "According to the speaker, what advantage does the business have?",
+            "options": [
+              {
+                "label": "A",
+                "text": "It provides the fastest service.",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "It provides the latest software.",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "It is in many countries.",
+                "correct": true
+              },
+              {
+                "label": "D",
+                "text": "It has competitive prices.",
+                "correct": false
+              }
+            ],
+            "explanation": "Vella has locations in more than 100 countries."
+          },
+          {
+            "num": 6,
+            "text": "According to the speaker, what is the company's staff trained to help with?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Installing computers",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "Planning conferences",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "Packaging products",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Marketing tours",
+                "correct": false
+              }
+            ],
+            "explanation": "The staff is trained to help plan conferences."
+          }
+        ]
+      },
+      {
+        "id": "lc-7",
+        "range": "7–9",
+        "startQ": 7,
+        "endQ": 9,
+        "transcript": [
+          {
+            "speaker": "Automotive product advertisement",
+            "text": "People might love summer, but cars don't. During the summer, an annoying yellow dust called pollen begins appearing in the air, and everywhere else. Everyone is familiar with the thick layers of pollen that cover streets, buildings, and cars in the summer. However, many people don't realize that pollen can damage your vehicle's paint. If pollen is left on a car's paint for too long, it will leave a permanent stain. Sure, rain will wash the pollen off of a car, but you can't count on that. Use Wilkinson Brand Wax Sealer to reliably protect your car's paint from pollen. Stop by your automotive supply dealer today and ask for the brand America trusts, Wilkinson."
+          }
+        ],
+        "questions": [
+          {
+            "num": 7,
+            "text": "What does the speaker suggest about pollen?",
+            "options": [
+              {
+                "label": "A",
+                "text": "It is a common problem.",
+                "correct": true
+              },
+              {
+                "label": "B",
+                "text": "It is unaffected by rain.",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "It is unhealthy to breathe in.",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "It is plentiful throughout the year.",
+                "correct": false
+              }
+            ],
+            "explanation": "The speaker says everyone is familiar with pollen during the summer."
+          },
+          {
+            "num": 8,
+            "text": "According to the advertisement, how can pollen be harmful?",
+            "options": [
+              {
+                "label": "A",
+                "text": "By blocking an air vent",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "By reducing driver visibility",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "By damaging car paint",
+                "correct": true
+              },
+              {
+                "label": "D",
+                "text": "By making tires slip",
+                "correct": false
+              }
+            ],
+            "explanation": "Pollen can damage a vehicle's paint and leave a permanent stain."
+          },
+          {
+            "num": 9,
+            "text": "What does the speaker imply when he says, \"You can't count on that\"?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Listeners should not change vacation plans.",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "Listeners should not rely on the weather.",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "Listeners should not trust advertisements.",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Listeners should not drive during a storm.",
+                "correct": false
+              }
+            ],
+            "explanation": "Rain may wash pollen away, but listeners should not rely on rain to protect their cars."
+          }
+        ]
+      },
+      {
+        "id": "lc-10",
+        "range": "10–12",
+        "startQ": 10,
+        "endQ": 12,
+        "transcript": [
+          {
+            "speaker": "Fitness drink advertisement",
+            "text": "Do you like to exercise and need a quick, healthy way to get energy? If you want more power for your fitness routine, try drinking Rita's Shakes. Our delicious beverages provide all the nutrients you need. And if you're used to paying a lot for fitness drinks, you'll be pleasantly surprised at our affordable price. Rita's is the economical choice. Plus, if you go to our Website, you can sign up for exclusive access to exercise videos led by famous fitness instructors. So, next time you need a boost, reach for Rita's Shakes."
+          }
+        ],
+        "questions": [
+          {
+            "num": 10,
+            "text": "What is being advertised?",
+            "options": [
+              {
+                "label": "A",
+                "text": "A recipe book",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "A fitness drink",
+                "correct": true
+              },
+              {
+                "label": "C",
+                "text": "Some exercise clothing",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Some athletic equipment",
+                "correct": false
+              }
+            ],
+            "explanation": "The speaker advertises Rita's Shakes, a fitness drink."
+          },
+          {
+            "num": 11,
+            "text": "What does the speaker say is surprising about the product?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Its money-back guarantee",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "Its simple instructions",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "Its affordable price",
+                "correct": true
+              },
+              {
+                "label": "D",
+                "text": "Its wide availability",
+                "correct": false
+              }
+            ],
+            "explanation": "The speaker says listeners will be pleasantly surprised by the affordable price."
+          },
+          {
+            "num": 12,
+            "text": "What can the listeners do on a Web site?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Subscribe to a podcast",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "Receive discount coupons",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "Chat with personal trainers",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Access some videos",
+                "correct": true
+              }
+            ],
+            "explanation": "Visitors can get exclusive access to exercise videos."
+          }
+        ]
+      },
+      {
+        "id": "lc-13",
+        "range": "13–15",
+        "startQ": 13,
+        "endQ": 15,
+        "transcript": [
+          {
+            "speaker": "E-reader advertisement",
+            "text": "Buy a Mishu E-reader today and discover the reading revolution. Mishu E-readers are famous for the number of books they can store. Mishu customers can carry more than three thousand books on one device! Users can easily transfer books onto their devices when they connect to their computer or move books wirelessly onto their device. The model with the largest display size even has an application installed for video chatting. Visit the Mishu Website's Customer Feedback section to read for yourself what our customers are saying about their devices."
+          }
+        ],
+        "questions": [
+          {
+            "num": 13,
+            "text": "What is mentioned as a notable feature of Mishu E-readers?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Their light weight",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "Their long battery life",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "Their large storage capacity",
+                "correct": true
+              },
+              {
+                "label": "D",
+                "text": "Their low price",
+                "correct": false
+              }
+            ],
+            "explanation": "The advertisement says the e-readers can store more than three thousand books."
+          },
+          {
+            "num": 14,
+            "text": "Look at the graphic. Which e-reader has an app for video chatting?",
+            "options": [
+              {
+                "label": "A",
+                "text": "PT-250",
+                "correct": false
+              },
+              {
+                "label": "B",
+                "text": "DX-16",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "DX-32",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "DX-64",
+                "correct": true
+              }
+            ],
+            "explanation": "The speaker says the model with the largest display size has the video-chatting app, and the graphic shows DX-64 has the largest display."
+          },
+          {
+            "num": 15,
+            "text": "What does the speaker say visitors to the Mishu Web site can do?",
+            "options": [
+              {
+                "label": "A",
+                "text": "Read customer reviews",
+                "correct": true
+              },
+              {
+                "label": "B",
+                "text": "Purchase a product",
+                "correct": false
+              },
+              {
+                "label": "C",
+                "text": "Receive a discount",
+                "correct": false
+              },
+              {
+                "label": "D",
+                "text": "Enter a contest for prizes",
+                "correct": false
+              }
+            ],
+            "explanation": "Visitors can read the Customer Feedback section."
           }
         ]
       }
