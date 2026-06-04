@@ -1,0 +1,327 @@
+1
+00:00:03,101 --> 00:00:08,667
+Question 1-3
+
+2
+00:00:08,667 --> 00:00:11,639
+Attention, Food Market shoppers.
+
+3
+00:00:11,639 --> 00:00:15,792
+2 This is your Food Market manager, Lisa Stanley,
+
+4
+00:00:15,792 --> 00:00:21,500
+1 alerting you to some fantastic deals we have for you this afternoon.
+
+5
+00:00:21,500 --> 00:00:23,223
+In our fruit section,
+
+6
+00:00:23,223 --> 00:00:27,456
+delicious red apples are just a dollar a kilogram!
+
+7
+00:00:27,456 --> 00:00:31,667
+Also, customers with a Food Market shopper's card
+
+8
+00:00:31,667 --> 00:00:36,616
+can purchase Oat Crunch breakfast cereal at half price.
+
+9
+00:00:36,616 --> 00:00:40,305
+Don't miss out on the savings in our drinks aisle,
+
+10
+00:00:40,305 --> 00:00:43,802
+where we are offering all customers a discount
+
+11
+00:00:43,802 --> 00:00:47,619
+on six-packs of Springvale Mineral Water.
+
+12
+00:00:47,619 --> 00:00:53,000
+And 3 remember to pick up your complimentary shopping bag before you leave.
+
+13
+00:00:53,000 --> 00:00:58,076
+It's our way of thanking you for shopping with us!
+
+14
+00:01:46,526 --> 00:01:52,167
+Question 4-6
+
+15
+00:01:52,167 --> 00:01:54,667
+Attention, passengers.
+
+16
+00:01:54,667 --> 00:01:58,334
+4,5 Because of track work north of Boston,
+
+17
+00:01:58,334 --> 00:02:02,285
+all arriving trains that pass through that region
+
+18
+00:02:02,285 --> 00:02:05,334
+are operating at slower speeds
+
+19
+00:02:05,334 --> 00:02:10,774
+and experiencing delays of approximately 45 minutes.
+
+20
+00:02:10,774 --> 00:02:15,279
+At present, the Montreal trains are not affected.
+
+21
+00:02:15,279 --> 00:02:20,167
+Please check the status of your train on the arrivals board,
+
+22
+00:02:20,167 --> 00:02:23,167
+which is updated every ten minutes.
+
+23
+00:02:23,167 --> 00:02:27,500
+Also, please be advised that due to engine trouble,
+
+24
+00:02:27,500 --> 00:02:34,667
+departing Train 55 to Vermont is not yet ready to receive passengers.
+
+25
+00:02:34,667 --> 00:02:40,000
+6 Wait for the boarding announcement before proceeding to the track.
+
+26
+00:03:31,344 --> 00:03:36,761
+Question 7-9
+
+27
+00:03:36,761 --> 00:03:40,030
+7 Ladies and gentlemen, thank you for joining us
+
+28
+00:03:40,030 --> 00:03:43,500
+at tonight's performance of Geraldine Ephart's new play,
+
+29
+00:03:43,500 --> 00:03:45,667
+"The Lion's Tale.”
+
+30
+00:03:45,667 --> 00:03:49,334
+7,8 Due to a minor difficulty with the sound system,
+
+31
+00:03:49,334 --> 00:03:51,834
+we ask that you remain here in the lobby
+
+32
+00:03:51,834 --> 00:03:54,444
+until we've fixed the problem.
+
+33
+00:03:54,444 --> 00:03:58,667
+9 Please visit the snack bar, which has coffee, tea,
+
+34
+00:03:58,667 --> 00:04:03,254
+soft drinks, and light snacks available for purchase.
+
+35
+00:04:03,254 --> 00:04:09,042
+We expect that you'll be able to take your seats in the theater in about fifteen minutes.
+
+36
+00:04:09,042 --> 00:04:12,830
+Again, we apologize for the delay.
+
+37
+00:05:01,520 --> 00:05:07,167
+Question 10-12
+
+38
+00:05:07,167 --> 00:05:10,334
+10 Attention Hamilton Grocery Shoppers!
+
+39
+00:05:10,334 --> 00:05:13,334
+Thank you for shopping with us today.
+
+40
+00:05:13,334 --> 00:05:17,834
+11 We would appreciate it if you would ﬁll out our customer survey.
+
+41
+00:05:17,834 --> 00:05:21,334
+We have two tables set up for your convenience
+
+42
+00:05:21,334 --> 00:05:24,834
+staffed by our customer service representatives
+
+43
+00:05:24,834 --> 00:05:29,080
+- one in the fruit section and one in front of the bakery.
+
+44
+00:05:29,080 --> 00:05:32,921
+It'll only take a minute, and will help us find out
+
+45
+00:05:32,921 --> 00:05:37,784
+how we can better serve our customers to the best of our abilities.
+
+46
+00:05:37,784 --> 00:05:41,225
+12 Those who complete the survey will receive a voucher
+
+47
+00:05:41,225 --> 00:05:45,122
+for 5 percent off all your purchases today.
+
+48
+00:05:45,122 --> 00:05:48,400
+Thank you, and have a great day!
+
+49
+00:06:36,624 --> 00:06:42,619
+Question 13-15
+
+50
+00:06:42,619 --> 00:06:50,237
+13 The city of Dover would like to inform residents of the following upcoming construction work.
+
+51
+00:06:50,237 --> 00:06:53,334
+14 Beginning Monday, August 8,
+
+52
+00:06:53,334 --> 00:06:57,796
+Main Street will be closed for water pipe installation.
+
+53
+00:06:57,796 --> 00:07:05,667
+Automobile traffic will not be allowed on Main Street between Sixteenth Street and Twentieth Street.
+
+54
+00:07:05,667 --> 00:07:10,334
+Pedestrians will be able to access all stores in the area
+
+55
+00:07:10,334 --> 00:07:13,000
+while the work is being completed.
+
+56
+00:07:13,000 --> 00:07:17,667
+We expect to reopen Main Street by August 11.
+
+57
+00:07:17,667 --> 00:07:22,609
+We apologize for any inconvenience this closure may cause.
+
+58
+00:07:22,609 --> 00:07:27,167
+15 If you have any questions regarding the construction on Main Street,
+
+59
+00:07:27,167 --> 00:07:34,674
+please call the City Planning Office at 555-3701.
+
+60
+00:08:26,430 --> 00:08:32,234
+Question 16-18
+
+61
+00:08:32,234 --> 00:08:37,789
+Attention shoppers: 16 Our store will be closing in fifteen minutes.
+
+62
+00:08:37,789 --> 00:08:42,667
+Please make your final selections and proceed to the checkout line.
+
+63
+00:08:42,667 --> 00:08:47,167
+Don't forget today's specials in the fruits and vegetables section:
+
+64
+00:08:47,167 --> 00:08:52,334
+all Florida oranges and grapefruit, just two dollars a kilo
+
+65
+00:08:52,334 --> 00:08:54,834
+- but only for a few more minutes!
+
+66
+00:08:54,834 --> 00:08:58,667
+17 The customer service counter is now closed;
+
+67
+00:08:58,667 --> 00:09:02,648
+please direct all questions to the manager on duty.
+
+68
+00:09:02,648 --> 00:09:09,500
+18 We're proud to announce that we've extended our hours of operation in order to serve you better.
+
+69
+00:09:09,500 --> 00:09:17,297
+Starting next week, our new hours will be from seven A.M. to nine P.M., seven days a week.
+
+70
+00:09:17,297 --> 00:09:22,621
+Thank you for shopping with us, and we look forward to seeing you again.
+
+71
+00:10:13,537 --> 00:10:20,272
+Question 19-21
+
+72
+00:10:20,272 --> 00:10:22,492
+Attention, passengers.
+
+73
+00:10:22,492 --> 00:10:29,334
+Welcome aboard Trilsen Airways flight 209 with nonstop service to Seattle.
+
+74
+00:10:29,334 --> 00:10:34,635
+19 At this time, please make sure your bags and personal items are properly stowed
+
+75
+00:10:34,635 --> 00:10:38,320
+in the overhead bins or under the seat ahead of you.
+
+76
+00:10:38,320 --> 00:10:41,667
+20 Our flight today will be about six hours long,
+
+77
+00:10:41,667 --> 00:10:44,667
+and we expect an on-time arrival.
+
+78
+00:10:44,667 --> 00:10:47,476
+We'll be taking off in just a few minutes,
+
+79
+00:10:47,476 --> 00:10:53,323
+so I'd like to remind you that wireless Internet access is available on this flight.
+
+80
+00:10:53,323 --> 00:10:58,331
+You can refer to the brochure in your seat-back pocket for pricing options.
+
+81
+00:10:58,331 --> 00:11:01,334
+21 Once our cruising altitude has been reached,
+
+82
+00:11:01,334 --> 00:11:06,824
+flight attendants will come around with our complimentary beverage service.
