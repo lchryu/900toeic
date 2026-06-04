@@ -4,10 +4,12 @@ import { AudioPlayer } from './AudioPlayer';
 import { ListeningWorkspace } from './ListeningWorkspace';
 import { ReadingPassage } from './ReadingPassage';
 import { QuestionBlock } from './QuestionBlock';
-import { Headphones, BookOpen, Clock, Award, RotateCcw, AlertTriangle, GraduationCap, Pencil, Eye, X } from 'lucide-react';
+import { PracticeActionBar } from './PracticeActionBar';
+import { Headphones, BookOpen, GraduationCap, Pencil, Eye, X } from 'lucide-react';
 
 type LessonTab = 'listening' | 'reading';
 type LessonMode = 'study' | 'practice' | 'review';
+type MobileViewMode = 'normal' | 'reading' | 'practice-focus';
 
 interface LessonWorkspaceProps {
   lesson: LessonData;
@@ -44,7 +46,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const [isGraded, setIsGraded] = useState<boolean>(
     !!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0))
   );
-  const [isReadingMode, setIsReadingMode] = useState(false);
+  const [mobileViewMode, setMobileViewMode] = useState<MobileViewMode>('normal');
   
   // Timer state
   const [elapsedTime, setElapsedTime] = useState<number>(progress?.timeSpent || 0);
@@ -56,9 +58,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   }, [elapsedTime]);
 
   useEffect(() => {
-    document.body.classList.toggle('reading-mode-active', isReadingMode);
+    document.body.classList.toggle('reading-mode-active', mobileViewMode !== 'normal');
     return () => document.body.classList.remove('reading-mode-active');
-  }, [isReadingMode]);
+  }, [mobileViewMode]);
 
   // Sync state when lesson changes
   useEffect(() => {
@@ -67,7 +69,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     setMode(progress?.mode || (progress?.isSubmitted ? 'review' : 'practice'));
     setIsGraded(!!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0)));
     setElapsedTime(progress?.timeSpent || 0);
-    setIsReadingMode(false);
+    setMobileViewMode('normal');
     const flags = progress?.flaggedQuestions || [];
     setQuestionStates(Object.fromEntries(flags.map((num) => [num, { selectedOption: progress?.answers?.[num] || '', isFlagged: true }])));
   }, [lesson.id]);
@@ -207,7 +209,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   const handleModeChange = (nextMode: LessonMode) => {
     if (nextMode === 'review' && !isGraded) return;
-    setIsReadingMode(false);
+    setMobileViewMode('normal');
     setMode(nextMode);
     persistProgressSnapshot(selectedAnswers, elapsedTimeRef.current, nextMode, activeTab);
   };
@@ -294,18 +296,23 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     }
   };
 
-  const formatTime = (seconds: number) => {
-    const hrs = Math.floor(seconds / 3600);
-    const mins = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-    return `${hrs > 0 ? hrs + ':' : ''}${mins < 10 && hrs > 0 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
-  };
-
   const listeningQuestionCount = lesson.listening.reduce((sum, g) => sum + g.questions.length, 0);
   const readingQuestionCount = lesson.reading.reduce((sum, g) => sum + g.questions.length, 0);
   const answeredQuestionCount = Object.keys(selectedAnswers).length;
-  const isReaderOnlyMode = isReadingMode && !isPracticeActive;
-  const isPracticeFocusMode = isReadingMode && isPracticeActive;
+  const isReaderOnlyMode = mobileViewMode === 'reading';
+  const isPracticeFocusMode = mobileViewMode === 'practice-focus';
+  const lessonWorkspaceClassName = [
+    'lesson-workspace-shell',
+    isReaderOnlyMode ? 'reading-mode' : '',
+    isPracticeFocusMode ? 'practice-focus-mode' : '',
+    isPracticeActive ? 'practice-mode' : ''
+  ].filter(Boolean).join(' ');
+  const handleEnterMobileViewMode = () => {
+    setMobileViewMode(isPracticeActive ? 'practice-focus' : 'reading');
+  };
+  const handleExitMobileViewMode = () => {
+    setMobileViewMode('normal');
+  };
   const modeOptions: Array<{ id: LessonMode; label: string; icon: React.ElementType; disabled?: boolean }> = [
     { id: 'study', label: 'Study', icon: GraduationCap },
     { id: 'practice', label: 'Practice', icon: Pencil, disabled: isGraded },
@@ -313,7 +320,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   ];
 
   return (
-    <div className={`lesson-workspace-shell ${isReaderOnlyMode ? 'reading-mode' : ''} ${isPracticeFocusMode ? 'practice-focus-mode' : ''} ${isPracticeActive ? 'practice-mode' : ''}`} style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
+    <div className={lessonWorkspaceClassName} style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
       {/* Sticky Audio Player for Listening sections */}
       <AudioPlayer src={lesson.audio ? `/${lesson.audio}` : undefined} youtubeUrl={lesson.youtubeUrl} />
 
@@ -322,7 +329,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         type="button"
         aria-label={isPracticeActive ? 'Enter practice focus mode' : 'Enter reading mode'}
         title={isPracticeActive ? 'Practice focus' : 'Reading mode'}
-        onClick={() => setIsReadingMode(true)}
+        onClick={handleEnterMobileViewMode}
       >
         <BookOpen size={22} />
         {isPracticeActive ? <span>Focus</span> : null}
@@ -332,7 +339,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         className="reading-mode-exit"
         type="button"
         aria-label="Exit reading mode"
-        onClick={() => setIsReadingMode(false)}
+        onClick={handleExitMobileViewMode}
       >
         <X size={16} />
         <span>Done</span>
@@ -546,66 +553,18 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         )}
       </div>
 
-      {/* Control Banner */}
-      <div className="control-banner">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-          <div className="timer-box">
-            <div className={isGraded ? '' : 'timer-pulse'} />
-            <Clock size={16} />
-            <span>Time: {formatTime(elapsedTime)}</span>
-            {isPracticeActive ? (
-              <span className="practice-progress-pill">{answeredQuestionCount}/{totalQuestions}</span>
-            ) : null}
-          </div>
-
-          {isGraded && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(16, 185, 129, 0.1)', padding: '6px 12px', borderRadius: '6px', border: '1px solid hsl(var(--success) / 0.2)' }}>
-              <Award size={16} className="text-emerald-500" />
-              <span style={{ fontWeight: 600, color: 'hsl(var(--success))' }}>
-                Score: {score} / {totalQuestions} ({Math.round((score / totalQuestions) * 100)}%)
-              </span>
-            </div>
-          )}
-        </div>
-
-        <div style={{ display: 'flex', gap: '12px' }}>
-          {mode === 'study' && !isGraded ? (
-            <button className="primary-btn" style={{ display: 'flex', alignItems: 'center', gap: '8px' }} onClick={() => handleModeChange('practice')}>
-              <Pencil size={16} />
-              <span>Start Practice</span>
-            </button>
-          ) : isGraded ? (
-            <button className="secondary-btn" style={{ display: 'flex', alignItems: 'center', gap: '8px' }} onClick={handleResetTest}>
-              <RotateCcw size={16} />
-              <span>Reset & Retake</span>
-            </button>
-          ) : (
-            <>
-              {/* Check if not all questions answered to alert user */}
-              <button
-                className="primary-btn"
-                style={{
-                  background: Object.keys(selectedAnswers).length < totalQuestions ? 'hsl(var(--warning))' : 'hsl(var(--primary))'
-                }}
-                onClick={handleGradeTest}
-              >
-                {Object.keys(selectedAnswers).length < totalQuestions ? (
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <AlertTriangle size={16} />
-                    <span className="desktop-grade-label">Grade Test ({answeredQuestionCount}/{totalQuestions} Done)</span>
-                    <span className="mobile-grade-label">Grade {answeredQuestionCount}/{totalQuestions}</span>
-                  </span>
-                ) : (
-                  <>
-                    <span className="desktop-grade-label">Grade & Submit Test</span>
-                    <span className="mobile-grade-label">Grade</span>
-                  </>
-                )}
-              </button>
-            </>
-          )}
-        </div>
-      </div>
+      <PracticeActionBar
+        elapsedTime={elapsedTime}
+        answeredQuestionCount={answeredQuestionCount}
+        totalQuestions={totalQuestions}
+        score={score}
+        isGraded={isGraded}
+        isPracticeActive={isPracticeActive}
+        isStudyMode={mode === 'study'}
+        onStartPractice={() => handleModeChange('practice')}
+        onGradeTest={handleGradeTest}
+        onResetTest={handleResetTest}
+      />
     </div>
   );
 };
