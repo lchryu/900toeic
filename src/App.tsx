@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Dashboard } from './components/Dashboard';
 import { LessonWorkspace } from './components/LessonWorkspace';
-import { LessonData, LessonProgress } from './types';
+import { LessonData, LessonProgress, PracticeHistoryEntry } from './types';
 import { Menu } from 'lucide-react';
 import lessonsData from './data/lessons.json';
 import {
@@ -16,7 +16,9 @@ import {
 } from './services/firebase';
 
 const LOCAL_STORAGE_KEY = 'toeic_practice_progress';
+const HISTORY_STORAGE_KEY = 'toeic_practice_history';
 const THEME_STORAGE_KEY = 'toeic_practice_theme';
+const MAX_HISTORY_ITEMS = 150;
 
 const mergeProgress = (
   localProgress: { [lessonId: string]: LessonProgress },
@@ -65,6 +67,7 @@ const App: React.FC = () => {
   
   // Progress state
   const [progress, setProgress] = useState<{ [lessonId: string]: LessonProgress }>({});
+  const [history, setHistory] = useState<PracticeHistoryEntry[]>([]);
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
@@ -100,8 +103,13 @@ const App: React.FC = () => {
       if (stored) {
         setProgress(JSON.parse(stored));
       }
+
+      const storedHistory = localStorage.getItem(HISTORY_STORAGE_KEY);
+      if (storedHistory) {
+        setHistory(JSON.parse(storedHistory));
+      }
     } catch (e) {
-      console.error('Failed to load progress from localStorage:', e);
+      console.error('Failed to load local learning state:', e);
     }
   }, []);
 
@@ -180,9 +188,18 @@ const App: React.FC = () => {
     score: number,
     totalQuestions: number,
     isSubmitted = true,
-    metadata: Partial<Pick<LessonProgress, 'flaggedQuestions' | 'lastTab' | 'mode'>> = {}
+    metadata: Partial<Omit<LessonProgress, 'lessonId' | 'answers' | 'timeSpent' | 'score' | 'totalQuestions' | 'isSubmitted' | 'completedDate'>> = {}
   ) => {
+    const now = new Date().toISOString();
     const previousProgress = progress[lessonId];
+    const nextMode = metadata.mode || previousProgress?.mode;
+    const nextBestScore = isSubmitted
+      ? Math.max(previousProgress?.bestScore || 0, score)
+      : previousProgress?.bestScore;
+    const nextAttemptCount = isSubmitted
+      ? (previousProgress?.attemptCount || 0) + 1
+      : previousProgress?.attemptCount;
+
     const updatedProgress = {
       ...progress,
       [lessonId]: {
@@ -193,7 +210,12 @@ const App: React.FC = () => {
         score,
         totalQuestions,
         isSubmitted,
-        completedDate: isSubmitted ? new Date().toISOString() : previousProgress?.completedDate,
+        bestScore: nextBestScore,
+        attemptCount: nextAttemptCount,
+        completedDate: isSubmitted ? now : previousProgress?.completedDate,
+        updatedAt: now,
+        lastStudiedAt: nextMode === 'study' ? now : previousProgress?.lastStudiedAt,
+        lastPracticedAt: nextMode === 'practice' ? now : previousProgress?.lastPracticedAt,
         ...metadata
       }
     };
@@ -207,6 +229,32 @@ const App: React.FC = () => {
         setSyncMessage('Could not save to Google account');
       });
     }
+  };
+
+  const handleRecordHistory = (entry: Omit<PracticeHistoryEntry, 'id' | 'timestamp'>) => {
+    const now = new Date().toISOString();
+    const newEntry: PracticeHistoryEntry = {
+      ...entry,
+      id: `${entry.lessonId}-${entry.activity}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      timestamp: now
+    };
+
+    setHistory((previousHistory) => {
+      const lastEntry = previousHistory[0];
+      const isDuplicateOpen =
+        lastEntry &&
+        entry.activity === 'opened' &&
+        lastEntry.activity === 'opened' &&
+        lastEntry.lessonId === entry.lessonId &&
+        lastEntry.mode === entry.mode &&
+        Date.now() - new Date(lastEntry.timestamp).getTime() < 30000;
+
+      if (isDuplicateOpen) return previousHistory;
+
+      const nextHistory = [newEntry, ...previousHistory].slice(0, MAX_HISTORY_ITEMS);
+      localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(nextHistory));
+      return nextHistory;
+    });
   };
 
   const handleQuestionNavConfig = (
@@ -286,6 +334,7 @@ const App: React.FC = () => {
           <Dashboard
             lessons={lessons}
             progress={progress}
+            history={history}
             authUser={authUser}
             isAuthConfigured={isFirebaseConfigured}
             isSyncing={isSyncing}
@@ -300,6 +349,7 @@ const App: React.FC = () => {
             lesson={activeLesson}
             progress={progress[activeLesson.id]}
             onSaveProgress={handleSaveProgress}
+            onRecordHistory={handleRecordHistory}
             onQuestionNavConfig={handleQuestionNavConfig}
           />
         ) : (

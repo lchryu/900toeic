@@ -60,8 +60,32 @@ export interface LessonProgress {
   lastTab?: 'listening' | 'reading';
   mode?: 'study' | 'practice' | 'review';
   timeSpent: number; // in seconds
+  studyTimeSpent?: number; // in seconds
   score: number;
+  bestScore?: number;
   totalQuestions: number;
+  attemptCount?: number;
   isSubmitted?: boolean;
   completedDate?: string;
+  updatedAt?: string;
+  lastStudiedAt?: string;
+  lastPracticedAt?: string;
+}
+
+export type PracticeHistoryMode = 'study' | 'practice' | 'review';
+export type PracticeHistoryActivity = 'opened' | 'mode_changed' | 'submitted' | 'reset';
+
+export interface PracticeHistoryEntry {
+  id: string;
+  lessonId: string;
+  lessonTitle: string;
+  mode: PracticeHistoryMode;
+  activity: PracticeHistoryActivity;
+  timestamp: string;
+  answeredCount: number;
+  totalQuestions: number;
+  score?: number;
+  timeSpent?: number;
+  studyTimeSpent?: number;
+  fromMode?: PracticeHistoryMode;
 }

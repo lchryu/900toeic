@@ -1,11 +1,12 @@
-import React from 'react';
-import { Award, BookOpen, Cloud, CloudOff, Clock, LogIn, LogOut, Play } from 'lucide-react';
-import { LessonData, LessonProgress } from '../types';
+﻿import React from 'react';
+import { Award, BookOpen, CheckCircle2, Cloud, CloudOff, Clock, GraduationCap, History, LogIn, LogOut, Pencil, Play, RotateCcw } from 'lucide-react';
+import { LessonData, LessonProgress, PracticeHistoryEntry } from '../types';
 import type { AuthUser } from '../services/firebase';
 
 interface DashboardProps {
   lessons: LessonData[];
   progress: { [lessonId: string]: LessonProgress };
+  history: PracticeHistoryEntry[];
   authUser: AuthUser | null;
   isAuthConfigured: boolean;
   isSyncing: boolean;
@@ -18,6 +19,7 @@ interface DashboardProps {
 export const Dashboard: React.FC<DashboardProps> = ({
   lessons,
   progress,
+  history,
   authUser,
   isAuthConfigured,
   isSyncing,
@@ -44,6 +46,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
   // Calculate total time spent
   const totalTimeSeconds = Object.values(progress).reduce((acc, curr) => acc + (curr.timeSpent || 0), 0);
+  const totalStudyTimeSeconds = Object.values(progress).reduce((acc, curr) => acc + (curr.studyTimeSpent || 0), 0);
   const formatTotalTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const hrs = Math.floor(mins / 60);
@@ -72,6 +75,32 @@ export const Dashboard: React.FC<DashboardProps> = ({
       : (name[0] || '').toUpperCase();
   };
 
+  const formatDateTime = (timestamp: string) => {
+    const date = new Date(timestamp);
+    if (Number.isNaN(date.getTime())) return '';
+    return date.toLocaleString('vi-VN', {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    });
+  };
+
+  const getHistoryCopy = (entry: PracticeHistoryEntry) => {
+    if (entry.activity === 'submitted') return 'Submitted practice';
+    if (entry.activity === 'reset') return 'Reset practice';
+    if (entry.activity === 'mode_changed') {
+      return `${entry.fromMode || 'mode'} -> ${entry.mode}`;
+    }
+    return entry.mode === 'study' ? 'Opened study mode' : entry.mode === 'review' ? 'Opened review mode' : 'Opened practice mode';
+  };
+
+  const getHistoryIcon = (entry: PracticeHistoryEntry) => {
+    if (entry.activity === 'submitted') return CheckCircle2;
+    if (entry.activity === 'reset') return RotateCcw;
+    if (entry.mode === 'study') return GraduationCap;
+    if (entry.mode === 'practice') return Pencil;
+    return History;
+  };
+
   return (
     <div style={{ padding: '32px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
       <header style={{ marginBottom: '40px' }}>
@@ -94,7 +123,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               {isAuthConfigured
                 ? authUser
                   ? `Signed in as ${authUser.email || authUser.displayName || 'Google user'}`
-                  : 'Sign in to save practice history to your Google account.'
+                  : 'Sign in to save lesson progress to your Google account.'
                 : 'Add Firebase config in .env to enable Google sign-in and cloud progress.'}
             </p>
             {(isSyncing || syncMessage) && (
@@ -159,6 +188,15 @@ export const Dashboard: React.FC<DashboardProps> = ({
             Total active practice time
           </p>
         </div>
+
+        <div className="glass-panel stat-card">
+          <GraduationCap className="stat-icon text-emerald-400" />
+          <span className="stat-title">Study Time</span>
+          <span className="stat-val">{formatTotalTime(totalStudyTimeSeconds)}</span>
+          <p style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))' }}>
+            Time spent in study mode
+          </p>
+        </div>
       </div>
 
       {/* Main Panel */}
@@ -191,51 +229,66 @@ export const Dashboard: React.FC<DashboardProps> = ({
         {/* Recent Activity */}
         <div className="glass-panel" style={{ padding: '24px' }}>
           <h3 style={{ fontSize: '1.2rem', marginBottom: '16px', borderBottom: '1px solid hsl(var(--panel-border))', paddingBottom: '12px' }}>
-            Recent Practice
+            History
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {completedLessons.length === 0 ? (
+            {history.length === 0 ? (
               <p style={{ color: 'hsl(var(--text-muted))', fontSize: '0.9rem', textAlign: 'center', padding: '20px 0' }}>
-                No practice data yet. Start your first lesson to see scores here!
+                No history yet. Open study or practice mode to start tracking.
               </p>
             ) : (
-              completedLessons.map((p) => {
-                const lesson = lessons.find((l) => l.id === p.lessonId);
-                const scorePct = Math.round((p.score / (p.totalQuestions || 1)) * 100);
-                
+              history.slice(0, 8).map((entry) => {
+                const Icon = getHistoryIcon(entry);
+                const scorePct = entry.score !== undefined
+                  ? Math.round((entry.score / (entry.totalQuestions || 1)) * 100)
+                  : null;
+
                 return (
                   <div
-                    key={p.lessonId}
+                    key={entry.id}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'space-between',
+                      gap: '12px',
                       padding: '12px',
                       borderRadius: '8px',
                       background: 'hsl(var(--panel-bg) / 0.45)',
                       border: '1px solid hsl(var(--panel-border))'
                     }}
                   >
-                    <div>
+                    <div className="history-icon">
+                      <Icon size={16} />
+                    </div>
+                    <div style={{ minWidth: 0, flex: 1 }}>
                       <h4 style={{ fontSize: '0.9rem', fontWeight: 600 }}>
-                        {lesson?.title.replace(/📘|Lesson\s*/g, '').trim() || `Lesson ${p.lessonId}`}
+                        {entry.lessonTitle.replace(/ðŸ“˜|Lesson\s*/g, '').trim() || `Lesson ${entry.lessonId}`}
                       </h4>
                       <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>
-                        Accuracy: {scorePct}%
+                        {getHistoryCopy(entry)} · {formatDateTime(entry.timestamp)}
                       </span>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'hsl(var(--primary))' }}>
-                        {p.score}/{p.totalQuestions}
-                      </span>
+                      {entry.activity === 'submitted' && entry.score !== undefined ? (
+                        <>
+                          <span style={{ fontSize: '1.05rem', fontWeight: 700, color: 'hsl(var(--primary))' }}>
+                            {entry.score}/{entry.totalQuestions}
+                          </span>
+                          <div style={{ fontSize: '0.72rem', color: 'hsl(var(--text-muted))' }}>{scorePct}%</div>
+                        </>
+                      ) : (
+                        <span style={{ fontSize: '0.8rem', color: 'hsl(var(--text-muted))' }}>
+                          {entry.answeredCount}/{entry.totalQuestions}
+                        </span>
+                      )}
                     </div>
                   </div>
                 );
               })
             )}
           </div>
-        </div>
-      </div>
+        </div>      </div>
     </div>
   );
 };
+
+

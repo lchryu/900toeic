@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { LessonData, QuestionState, LessonProgress } from '../types';
+import { LessonData, QuestionState, LessonProgress, PracticeHistoryEntry } from '../types';
 import { AudioPlayer } from './AudioPlayer';
 import { ListeningWorkspace } from './ListeningWorkspace';
 import { ReadingPassage } from './ReadingPassage';
@@ -19,8 +19,9 @@ interface LessonWorkspaceProps {
     score: number,
     totalQuestions: number,
     isSubmitted?: boolean,
-    metadata?: Partial<Pick<LessonProgress, 'flaggedQuestions' | 'lastTab' | 'mode'>>
+    metadata?: Partial<Omit<LessonProgress, 'lessonId' | 'answers' | 'timeSpent' | 'score' | 'totalQuestions' | 'isSubmitted' | 'completedDate'>>
   ) => void;
+  onRecordHistory: (entry: Omit<PracticeHistoryEntry, 'id' | 'timestamp'>) => void;
   onQuestionNavConfig: (qNums: number[], answered: number[], flagged: number[], isGraded: boolean, results: { [qNum: number]: boolean }, scrollCallback: (num: number) => void) => void;
 }
 
@@ -28,6 +29,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   lesson,
   progress,
   onSaveProgress,
+  onRecordHistory,
   onQuestionNavConfig
 }) => {
   const [activeTab, setActiveTab] = useState<LessonTab>(progress?.lastTab || 'listening');
@@ -48,12 +50,20 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   
   // Timer state
   const [elapsedTime, setElapsedTime] = useState<number>(progress?.timeSpent || 0);
+  const [studyElapsedTime, setStudyElapsedTime] = useState<number>(progress?.studyTimeSpent || 0);
   const timerRef = useRef<any | null>(null);
+  const studyTimerRef = useRef<any | null>(null);
   const elapsedTimeRef = useRef(elapsedTime);
+  const studyElapsedTimeRef = useRef(studyElapsedTime);
+  const hasRecordedOpenRef = useRef(false);
 
   useEffect(() => {
     elapsedTimeRef.current = elapsedTime;
   }, [elapsedTime]);
+
+  useEffect(() => {
+    studyElapsedTimeRef.current = studyElapsedTime;
+  }, [studyElapsedTime]);
 
   useEffect(() => {
     document.body.classList.toggle('reading-mode-active', isReadingMode);
@@ -67,7 +77,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     setMode(progress?.mode || (progress?.isSubmitted ? 'review' : 'practice'));
     setIsGraded(!!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0)));
     setElapsedTime(progress?.timeSpent || 0);
+    setStudyElapsedTime(progress?.studyTimeSpent || 0);
     setIsReadingMode(false);
+    hasRecordedOpenRef.current = false;
     const flags = progress?.flaggedQuestions || [];
     setQuestionStates(Object.fromEntries(flags.map((num) => [num, { selectedOption: progress?.answers?.[num] || '', isFlagged: true }])));
   }, [lesson.id]);
@@ -90,6 +102,22 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       }
     };
   }, [isGraded, mode, lesson.id]);
+
+  useEffect(() => {
+    if (mode === 'study') {
+      studyTimerRef.current = setInterval(() => {
+        setStudyElapsedTime((prev) => prev + 1);
+      }, 1000);
+    } else if (studyTimerRef.current) {
+      clearInterval(studyTimerRef.current);
+    }
+
+    return () => {
+      if (studyTimerRef.current) {
+        clearInterval(studyTimerRef.current);
+      }
+    };
+  }, [mode, lesson.id]);
 
   // Calculate score and total questions
   const totalQuestions =
@@ -121,6 +149,33 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const gradedResults = getGradedResults();
   const score = Object.values(gradedResults).filter(Boolean).length;
 
+  const getAnsweredCount = (answers = selectedAnswers) => Object.keys(answers).length;
+
+  const recordHistory = (
+    activity: PracticeHistoryEntry['activity'],
+    nextMode = mode,
+    extras: Partial<Omit<PracticeHistoryEntry, 'id' | 'timestamp' | 'lessonId' | 'lessonTitle' | 'mode' | 'activity'>> = {}
+  ) => {
+    onRecordHistory({
+      lessonId: lesson.id,
+      lessonTitle: lesson.title,
+      mode: nextMode,
+      activity,
+      answeredCount: getAnsweredCount(),
+      totalQuestions,
+      score: isGraded ? score : undefined,
+      timeSpent: elapsedTimeRef.current,
+      studyTimeSpent: studyElapsedTimeRef.current,
+      ...extras
+    });
+  };
+
+  useEffect(() => {
+    if (hasRecordedOpenRef.current || totalQuestions === 0) return;
+    hasRecordedOpenRef.current = true;
+    recordHistory('opened');
+  }, [lesson.id, totalQuestions]);
+
   useEffect(() => {
     if (isGraded || mode !== 'practice') return;
 
@@ -132,7 +187,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   }, [lesson.id, selectedAnswers, elapsedTime, isGraded, mode, totalQuestions]);
 
   useEffect(() => {
-    if (isGraded || mode !== 'practice') return;
+    if (isGraded || !['practice', 'study'].includes(mode)) return;
 
     const saveTimeTimer = window.setInterval(() => {
       persistProgressSnapshot(selectedAnswers, elapsedTimeRef.current);
@@ -162,12 +217,14 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     nextTime = elapsedTimeRef.current,
     nextMode = mode,
     nextTab = activeTab,
-    nextFlags = getFlaggedQuestions()
+    nextFlags = getFlaggedQuestions(),
+    nextStudyTime = studyElapsedTimeRef.current
   ) => {
     onSaveProgress(lesson.id, nextAnswers, nextTime, isGraded ? score : 0, totalQuestions, isGraded, {
       flaggedQuestions: nextFlags,
       lastTab: nextTab,
-      mode: nextMode
+      mode: nextMode,
+      studyTimeSpent: nextStudyTime
     });
   };
 
@@ -207,9 +264,11 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   const handleModeChange = (nextMode: LessonMode) => {
     if (nextMode === 'review' && !isGraded) return;
+    const previousMode = mode;
     setIsReadingMode(false);
     setMode(nextMode);
     persistProgressSnapshot(selectedAnswers, elapsedTimeRef.current, nextMode, activeTab);
+    recordHistory('mode_changed', nextMode, { fromMode: previousMode });
   };
 
   const handleTabChange = (nextTab: LessonTab) => {
@@ -275,7 +334,14 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     onSaveProgress(lesson.id, selectedAnswers, elapsedTime, finalScore, totalQuestions, true, {
       flaggedQuestions: getFlaggedQuestions(),
       lastTab: activeTab,
-      mode: 'review'
+      mode: 'review',
+      studyTimeSpent: studyElapsedTimeRef.current
+    });
+    recordHistory('submitted', 'review', {
+      answeredCount: getAnsweredCount(),
+      score: finalScore,
+      timeSpent: elapsedTime,
+      studyTimeSpent: studyElapsedTimeRef.current
     });
   };
 
@@ -289,7 +355,14 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       onSaveProgress(lesson.id, {}, 0, 0, totalQuestions, false, {
         flaggedQuestions: [],
         lastTab: activeTab,
-        mode: 'practice'
+        mode: 'practice',
+        studyTimeSpent: studyElapsedTimeRef.current
+      });
+      recordHistory('reset', 'practice', {
+        answeredCount: 0,
+        score: 0,
+        timeSpent: 0,
+        studyTimeSpent: studyElapsedTimeRef.current
       });
     }
   };
