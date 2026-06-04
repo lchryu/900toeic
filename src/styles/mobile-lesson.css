@@ -181,6 +181,30 @@
     padding-bottom: 164px !important;
   }
 
+  .lesson-workspace-shell.practice-focus-mode .audio-player-shell {
+    right: 12px;
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .audio-player-bar {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .audio-progress-container {
+    display: none;
+  }
+
+  .lesson-workspace-shell.practice-focus-mode .audio-btn {
+    width: 52px;
+    height: 52px;
+  }
+
   .lesson-workspace-shell.practice-focus-mode .control-banner {
     padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
     flex-direction: row;
