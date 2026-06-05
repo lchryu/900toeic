@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, BarChart2, CheckCircle2, Bookmark, Moon, Sun } from 'lucide-react';
+import { BookOpen, BarChart2, CheckCircle2, Bookmark, Moon, Sun, ChevronLeft } from 'lucide-react';
 import { LessonData, LessonProgress } from '../types';
 
 interface SidebarProps {
@@ -19,6 +19,8 @@ interface SidebarProps {
   onCloseMobileSidebar?: () => void;
   theme: 'dark' | 'light';
   onToggleTheme: () => void;
+  isCollapsed?: boolean;
+  onToggleCollapse?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -36,7 +38,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isMobileOpen,
   onCloseMobileSidebar,
   theme,
-  onToggleTheme
+  onToggleTheme,
+  isCollapsed = false,
+  onToggleCollapse
 }) => {
   const handleNavClick = (view: 'dashboard' | 'lesson', lessonId: string | null) => {
     onNavigate(view, lessonId);
@@ -62,33 +66,43 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ].filter(Boolean).join(' - ');
 
   return (
-    <aside className={`sidebar-panel glass-panel ${isMobileOpen ? 'mobile-open' : ''}`}>
+    <aside className={`sidebar-panel glass-panel ${isMobileOpen ? 'mobile-open' : ''} ${isCollapsed ? 'collapsed' : ''}`}>
       <div className="sidebar-header">
-        <BookOpen className="text-sky-400" size={24} />
-        <div>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: 700 }}>TOEIC Practice</h2>
+        <BookOpen className="text-sky-400 animate-pulse" size={24} style={{ flexShrink: 0 }} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>TOEIC Practice</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
             <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>v{appVersion}</span>
             {buildDateText ? (
-              <span style={{ fontSize: '0.7rem', color: 'hsl(var(--text-muted))' }}>
+              <span style={{ fontSize: '0.7rem', color: 'hsl(var(--text-muted))', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 Updated {buildDateText}
               </span>
             ) : null}
             {buildDetails ? (
-              <span style={{ fontSize: '0.7rem', color: 'hsl(var(--text-muted))' }}>
+              <span style={{ fontSize: '0.7rem', color: 'hsl(var(--text-muted))', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={buildDetails}>
                 {buildDetails}
               </span>
             ) : null}
           </div>
         </div>
-        <button
-          className="theme-toggle-btn"
-          onClick={onToggleTheme}
-          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-        >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
+        <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexShrink: 0 }}>
+          <button
+            className="theme-toggle-btn"
+            onClick={onToggleTheme}
+            title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button
+            className="sidebar-collapse-btn"
+            onClick={onToggleCollapse}
+            title="Collapse Sidebar"
+            aria-label="Collapse Sidebar"
+          >
+            <ChevronLeft size={18} />
+          </button>
+        </div>
       </div>
 
       <nav className="sidebar-nav">

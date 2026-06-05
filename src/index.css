@@ -724,6 +724,83 @@ h1, h2, h3, h4, h5 {
   background: hsl(var(--primary) / 0.08);
 }
 
+.sidebar-collapse-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid hsl(var(--panel-border));
+  background: hsl(var(--panel-bg) / 0.45);
+  color: hsl(var(--text-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar-collapse-btn:hover {
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  background: hsl(var(--primary) / 0.08);
+}
+
+.sidebar-toggle-handle {
+  position: fixed;
+  left: 0;
+  top: 150px;
+  width: 24px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: hsl(var(--panel-bg) / 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--panel-border));
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+  z-index: 99;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: hsl(var(--text-secondary));
+}
+
+.sidebar-toggle-handle:hover {
+  width: 32px;
+  color: hsl(var(--primary));
+  background: hsl(var(--primary) / 0.08);
+}
+
+/* Collapsible sidebar animation for desktop mode */
+@media (min-width: 769px) {
+  .sidebar-panel {
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .sidebar-panel.collapsed {
+    width: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    border-right: 0 solid transparent !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Hide desktop toggle buttons on mobile */
+@media (max-width: 768px) {
+  .sidebar-collapse-btn {
+    display: none !important;
+  }
+  .sidebar-toggle-handle {
+    display: none !important;
+  }
+}
+
 .sidebar-nav {
   flex: 1;
   overflow-y: auto;
@@ -1151,8 +1228,8 @@ h1, h2, h3, h4, h5 {
   .mobile-lesson-tab {
     flex: 1;
     min-width: 0;
-    min-height: 38px;
-    padding: 0 10px;
+    min-height: 44px;
+    padding: 0 12px;
     border: 1px solid hsl(var(--panel-border));
     border-radius: 999px;
     background: hsl(var(--panel-bg) / 0.42);
@@ -1514,7 +1591,7 @@ h1, h2, h3, h4, h5 {
     position: fixed;
     top: auto;
     right: 14px;
-    bottom: 96px;
+    bottom: calc(96px + env(safe-area-inset-bottom));
     z-index: 80;
     width: auto;
     border: 1px solid hsl(var(--panel-border));
@@ -1698,4 +1775,14 @@ h1, h2, h3, h4, h5 {
     padding: 16px;
     font-size: 0.95rem;
   }
+}
+
+/* Spinner Animation for loading screens */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
 }

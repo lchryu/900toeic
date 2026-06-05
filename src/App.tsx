@@ -3,8 +3,7 @@ import { Sidebar } from './components/Sidebar';
 import { Dashboard } from './components/Dashboard';
 import { LessonWorkspace } from './components/LessonWorkspace';
 import { LessonData, LessonProgress, PracticeHistoryEntry } from './types';
-import { Menu } from 'lucide-react';
-import lessonsData from './data/lessons.json';
+import { Menu, ChevronRight } from 'lucide-react';
 import {
   isFirebaseConfigured,
   loadCloudProgress,
@@ -57,13 +56,43 @@ const mergeProgress = (
 };
 
 const App: React.FC = () => {
-  const lessons = lessonsData as LessonData[];
+  const [lessons, setLessons] = useState<LessonData[]>([]);
+  const [isLoadingLessons, setIsLoadingLessons] = useState(true);
   
   const [activeView, setActiveView] = useState<'dashboard' | 'lesson'>('dashboard');
   const [currentLessonId, setCurrentLessonId] = useState<string | null>(null);
+
+  // Load lessons dynamically to optimize main bundle size
+  useEffect(() => {
+    import('./data/lessons.json').then((module) => {
+      setLessons(module.default as LessonData[]);
+      setIsLoadingLessons(false);
+    });
+  }, []);
   
   // Mobile sidebar drawer state
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  // Desktop sidebar collapse state
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
+    try {
+      return localStorage.getItem('toeic_sidebar_collapsed') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const handleToggleSidebar = () => {
+    setIsSidebarCollapsed((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem('toeic_sidebar_collapsed', String(next));
+      } catch (e) {
+        console.error('Failed to save sidebar state:', e);
+      }
+      return next;
+    });
+  };
   
   // Progress state
   const [progress, setProgress] = useState<{ [lessonId: string]: LessonProgress }>({});
@@ -277,8 +306,31 @@ const App: React.FC = () => {
 
   const activeLesson = lessons.find((l) => l.id === currentLessonId);
 
+  if (isLoadingLessons) {
+    return (
+      <div className="app-loading-screen" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', width: '100vw', background: 'var(--bg-app)', color: 'hsl(var(--primary))', fontFamily: 'var(--font-title)', fontSize: '1.5rem', fontWeight: 700 }}>
+        <div style={{ textAlign: 'center' }}>
+          <div className="animate-spin" style={{ width: '40px', height: '40px', border: '4px solid hsl(var(--primary) / 0.1)', borderTopColor: 'hsl(var(--primary))', borderRadius: '50%', margin: '0 auto 16px' }} />
+          Loading Practice Hub...
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="app-container">
+    <div className={`app-container ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
+      {/* Desktop Sidebar Toggle Trigger (Floating handle when collapsed) */}
+      {isSidebarCollapsed && (
+        <button
+          className="sidebar-toggle-handle"
+          onClick={handleToggleSidebar}
+          title="Expand Sidebar"
+          aria-label="Expand Sidebar"
+        >
+          <ChevronRight size={18} />
+        </button>
+      )}
+
       {/* Sidebar with Navigation and Question Navigator Grid */}
       <Sidebar
         lessons={lessons}
@@ -299,6 +351,8 @@ const App: React.FC = () => {
         onCloseMobileSidebar={() => setIsMobileSidebarOpen(false)}
         theme={theme}
         onToggleTheme={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}
+        isCollapsed={isSidebarCollapsed}
+        onToggleCollapse={handleToggleSidebar}
       />
 
       {/* Sidebar Overlay on mobile */}
