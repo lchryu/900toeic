@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Award, BookOpen, CheckCircle2, Cloud, CloudOff, Clock, GraduationCap, History, LogIn, LogOut, Pencil, Play, RotateCcw } from 'lucide-react';
 import { LessonData, LessonProgress, PracticeHistoryEntry } from '../types';
 import type { AuthUser } from '../services/firebase';
@@ -201,29 +201,125 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
       {/* Main Panel */}
       <div className="dashboard-main-layout" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '32px' }}>
-        {/* Next Lesson / Continue */}
-        <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <div>
-            <span style={{ fontSize: '0.8rem', color: 'hsl(var(--primary))', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              Recommend for you
-            </span>
-            <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginTop: '8px', marginBottom: '12px' }}>
-              {nextLesson?.title || 'TOEIC Practice'}
-            </h3>
-            <p style={{ color: 'hsl(var(--text-secondary))', lineHeight: 1.6, marginBottom: '24px' }}>
-              Practice {nextLessonCounts.total} questions: {nextLessonCounts.listening} listening and {nextLessonCounts.reading} reading. Work under time constraints and get instant feedback.
-            </p>
+        
+        {/* Left Side: Recommend for You & Lessons List */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+          {/* Featured Recommendation */}
+          <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            <div>
+              <span style={{ fontSize: '0.8rem', color: 'hsl(var(--primary))', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Recommend for you
+              </span>
+              <h3 style={{ fontSize: '1.8rem', fontWeight: 700, marginTop: '8px', marginBottom: '12px' }}>
+                {nextLesson?.title || 'TOEIC Practice'}
+              </h3>
+              <p style={{ color: 'hsl(var(--text-secondary))', lineHeight: 1.6, marginBottom: '24px' }}>
+                Practice {nextLessonCounts.total} questions: {nextLessonCounts.listening} listening and {nextLessonCounts.reading} reading. Work under time constraints and get instant feedback.
+              </p>
+            </div>
+            {nextLesson && (
+              <button
+                className="primary-btn"
+                style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px' }}
+                onClick={() => onStartLesson(nextLesson.id)}
+              >
+                <Play size={18} fill="currentColor" />
+                Start Lesson
+              </button>
+            )}
           </div>
-          {nextLesson && (
-            <button
-              className="primary-btn"
-              style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 24px' }}
-              onClick={() => onStartLesson(nextLesson.id)}
-            >
-              <Play size={18} fill="currentColor" />
-              Start Lesson
-            </button>
-          )}
+
+          {/* Lessons Grid list */}
+          <div className="glass-panel" style={{ padding: '24px' }}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <BookOpen size={20} className="text-sky-400" />
+              Lesson Directory
+            </h3>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '16px' }}>
+              {lessons.map((lesson) => {
+                const counts = getLessonQuestionCounts(lesson);
+                const lessonProg = progress[lesson.id];
+                const isCompleted = lessonProg && (lessonProg.isSubmitted ?? Object.keys(lessonProg.answers || {}).length > 0);
+                const score = lessonProg ? lessonProg.score : 0;
+                const totalQ = lessonProg ? lessonProg.totalQuestions : counts.total;
+                const answeredCount = lessonProg ? Object.keys(lessonProg.answers || {}).length : 0;
+                
+                let statusText = 'Not started';
+                let statusColor = 'hsl(var(--text-muted))';
+                let progressPercent = 0;
+                
+                if (isCompleted) {
+                  statusText = `Completed · ${score}/${totalQ}`;
+                  statusColor = 'hsl(var(--success))';
+                  progressPercent = 100;
+                } else if (answeredCount > 0) {
+                  statusText = `In Progress · ${answeredCount}/${counts.total}`;
+                  statusColor = 'hsl(var(--warning))';
+                  progressPercent = Math.round((answeredCount / counts.total) * 100);
+                }
+
+                return (
+                  <div
+                    key={lesson.id}
+                    className="lesson-grid-card"
+                    style={{
+                      padding: '16px',
+                      borderRadius: '12px',
+                      background: 'hsl(var(--panel-bg) / 0.35)',
+                      border: '1px solid hsl(var(--panel-border))',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => onStartLesson(lesson.id)}
+                  >
+                    <div>
+                      <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '4px', color: 'hsl(var(--text-primary))' }}>
+                        {lesson.title.replace(/📘|Lesson\s*/g, '').trim()}
+                      </h4>
+                      <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>
+                        {counts.listening} Listening · {counts.reading} Reading
+                      </span>
+                      
+                      {/* Progress bar */}
+                      <div style={{ margin: '14px 0 10px 0' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', marginBottom: '4px' }}>
+                          <span style={{ color: statusColor, fontWeight: 600 }}>{statusText}</span>
+                          <span style={{ color: 'hsl(var(--text-muted))' }}>{progressPercent}%</span>
+                        </div>
+                        <div style={{ width: '100%', height: '6px', background: 'hsl(var(--panel-border) / 0.5)', borderRadius: '3px', overflow: 'hidden' }}>
+                          <div style={{ width: `${progressPercent}%`, height: '100%', background: isCompleted ? 'hsl(var(--success))' : 'hsl(var(--primary))', borderRadius: '3px' }} />
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      className={isCompleted ? 'secondary-btn' : 'primary-btn'}
+                      style={{
+                        width: '100%',
+                        padding: '8px 16px',
+                        fontSize: '0.8rem',
+                        marginTop: '12px',
+                        justifyContent: 'center',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation(); // Avoid triggering parent div onClick
+                        onStartLesson(lesson.id);
+                      }}
+                    >
+                      <Play size={12} fill="currentColor" />
+                      {isCompleted ? 'Review Lesson' : answeredCount > 0 ? 'Resume Lesson' : 'Start Lesson'}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Recent Activity */}

@@ -1786,3 +1786,14 @@ h1, h2, h3, h4, h5 {
 .animate-spin {
   animation: spin 1s linear infinite;
 }
+
+/* Lesson Cards Grid in Dashboard */
+.lesson-grid-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lesson-grid-card:hover {
+  transform: translateY(-2px);
+  border-color: hsl(var(--primary) / 0.5) !important;
+  background: hsl(var(--panel-bg) / 0.55) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
