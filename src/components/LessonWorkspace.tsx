@@ -197,18 +197,41 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   const handleUpdateAudioSegment = (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => {
     const duration = audioControl?.duration || 0;
-    const nextSegments = audioSegments.map((segment) => {
-      if (segment.id !== segmentId) return segment;
-      const nextStart = Math.max(0, Math.min(updates.start ?? segment.start, duration));
-      const nextEnd = Math.max(nextStart + 1, Math.min(updates.end ?? segment.end, duration || updates.end || segment.end));
+    const targetIdx = audioSegments.findIndex((s) => s.id === segmentId);
+    if (targetIdx === -1) return;
 
-      return {
-        ...segment,
-        start: Math.round(nextStart),
-        end: Math.round(nextEnd),
-        isCustom: true,
-        updatedAt: new Date().toISOString()
-      };
+    const targetSegment = audioSegments[targetIdx];
+    const nextStart = Math.max(0, Math.min(updates.start ?? targetSegment.start, duration));
+    const nextEnd = Math.max(nextStart + 1, Math.min(updates.end ?? targetSegment.end, duration || updates.end || targetSegment.end));
+    
+    // Check if the end time was updated
+    const wasEndUpdated = updates.end !== undefined;
+
+    const nextSegments = audioSegments.map((segment, index) => {
+      if (index === targetIdx) {
+        return {
+          ...segment,
+          start: Math.round(nextStart),
+          end: Math.round(nextEnd),
+          isCustom: true,
+          updatedAt: new Date().toISOString()
+        };
+      }
+      
+      // Automatically cascade the new end time as the start time of the next segment
+      if (wasEndUpdated && index === targetIdx + 1) {
+        const adjustedStart = Math.max(0, Math.min(nextEnd, duration));
+        const adjustedEnd = Math.max(adjustedStart + 1, Math.min(segment.end, duration || segment.end));
+        return {
+          ...segment,
+          start: Math.round(adjustedStart),
+          end: Math.round(adjustedEnd),
+          isCustom: true,
+          updatedAt: new Date().toISOString()
+        };
+      }
+
+      return segment;
     });
 
     persistAudioSegments(nextSegments);
