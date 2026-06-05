@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AudioControlState, AudioSegment, ListeningGroup, QuestionState } from '../types';
 import { QuestionBlock } from './QuestionBlock';
-import { Headphones, Lock, Play, Repeat, RotateCcw, SlidersHorizontal, Unlock } from 'lucide-react';
+import { ChevronDown, Headphones, Lock, Play, Repeat, RotateCcw, SlidersHorizontal, Unlock } from 'lucide-react';
 
 interface ListeningWorkspaceProps {
   listeningGroups: ListeningGroup[];
@@ -174,6 +174,164 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
   );
 };
 
+interface AudioSegmentManagerRowProps {
+  segment: AudioSegment;
+  audioControl: AudioControlState | null;
+  onUpdateAudioSegment: (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => void;
+  onResetAudioSegment: (segmentId: string) => void;
+}
+
+const AudioSegmentManagerRow: React.FC<AudioSegmentManagerRowProps> = ({
+  segment,
+  audioControl,
+  onUpdateAudioSegment,
+  onResetAudioSegment
+}) => {
+  const [startValue, setStartValue] = useState(formatTime(segment.start));
+  const [endValue, setEndValue] = useState(formatTime(segment.end));
+
+  useEffect(() => {
+    setStartValue(formatTime(segment.start));
+    setEndValue(formatTime(segment.end));
+  }, [segment]);
+
+  const isActive = audioControl?.activeSegmentId === segment.id;
+  const isLooping = isActive && audioControl?.isLoopingSegment;
+  const canControlAudio = !!audioControl?.isReady;
+
+  const handleSave = () => {
+    const nextStart = parseTimeInput(startValue);
+    const nextEnd = parseTimeInput(endValue);
+
+    if (!Number.isFinite(nextStart) || !Number.isFinite(nextEnd)) return;
+    onUpdateAudioSegment(segment.id, { start: nextStart, end: nextEnd });
+  };
+
+  return (
+    <div className={`audio-segment-manager-row ${isActive ? 'is-active' : ''}`}>
+      <div className="audio-segment-manager-label">
+        <strong>{segment.label}</strong>
+        <span>
+          {segment.isCustom ? 'custom' : segment.isPreset ? 'preset' : 'auto'}
+        </span>
+      </div>
+      <div className="audio-segment-manager-fields">
+        <label>
+          <span>Start</span>
+          <input
+            className="audio-segment-input"
+            value={startValue}
+            onChange={(event) => setStartValue(event.target.value)}
+            inputMode="numeric"
+          />
+        </label>
+        <label>
+          <span>End</span>
+          <input
+            className="audio-segment-input"
+            value={endValue}
+            onChange={(event) => setEndValue(event.target.value)}
+            inputMode="numeric"
+          />
+        </label>
+      </div>
+      <div className="audio-segment-manager-actions">
+        <button
+          className="audio-segment-btn icon-only"
+          type="button"
+          disabled={!canControlAudio}
+          onClick={() => audioControl?.playSegment(segment)}
+          title={`Play ${segment.label}`}
+        >
+          <Play size={14} />
+        </button>
+        <button
+          className={`audio-segment-btn icon-only ${isLooping ? 'active' : ''}`}
+          type="button"
+          disabled={!canControlAudio}
+          onClick={() => isLooping ? audioControl?.stopSegment() : audioControl?.playSegment(segment, true)}
+          title={`Loop ${segment.label}`}
+        >
+          <Repeat size={14} />
+        </button>
+        <button className="audio-segment-btn subtle" type="button" onClick={() => setStartValue(formatTime(audioControl?.currentTime || 0))}>
+          Start
+        </button>
+        <button className="audio-segment-btn subtle" type="button" onClick={() => setEndValue(formatTime(audioControl?.currentTime || 0))}>
+          End
+        </button>
+        <button className="audio-segment-btn" type="button" onClick={handleSave}>
+          Save
+        </button>
+        <button
+          className="audio-segment-btn icon-only subtle"
+          type="button"
+          onClick={() => onResetAudioSegment(segment.id)}
+          title={`Reset ${segment.label}`}
+        >
+          <RotateCcw size={14} />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+interface AudioSegmentManagerProps {
+  segments: AudioSegment[];
+  audioControl: AudioControlState | null;
+  onUpdateAudioSegment: (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => void;
+  onResetAudioSegment: (segmentId: string) => void;
+}
+
+const AudioSegmentManager: React.FC<AudioSegmentManagerProps> = ({
+  segments,
+  audioControl,
+  onUpdateAudioSegment,
+  onResetAudioSegment
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  if (!segments.length) {
+    return null;
+  }
+
+  return (
+    <div className={`audio-segment-manager ${isOpen ? 'is-open' : ''}`}>
+      <button
+        className="audio-segment-manager-toggle"
+        type="button"
+        onClick={() => setIsOpen((value) => !value)}
+        aria-expanded={isOpen}
+      >
+        <SlidersHorizontal size={16} />
+        <span>Segments</span>
+        <small>{segments.length}</small>
+        <ChevronDown size={16} />
+      </button>
+
+      {isOpen && (
+        <div className="audio-segment-manager-panel">
+          <div className="audio-segment-manager-summary">
+            <span>Current {formatTime(audioControl?.currentTime || 0)}</span>
+            <span>{audioControl?.isReady ? 'Audio ready' : 'Audio loading'}</span>
+          </div>
+          <div className="audio-segment-manager-list">
+            {segments.map((segment) => (
+              <AudioSegmentManagerRow
+                key={segment.id}
+                segment={segment}
+                audioControl={audioControl}
+                onUpdateAudioSegment={onUpdateAudioSegment}
+                onResetAudioSegment={onResetAudioSegment}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const GraphicImage: React.FC<{ src: string; qNum: number }> = ({ src, qNum }) => {
   return (
     <div style={{ margin: '20px 0', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -217,6 +375,13 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
         <Headphones className="text-sky-400" size={24} />
         <h2 style={{ fontSize: '1.5rem', fontWeight: 700 }}>Part 3: Listening Comprehension</h2>
       </div>
+
+      <AudioSegmentManager
+        segments={audioSegments}
+        audioControl={audioControl}
+        onUpdateAudioSegment={onUpdateAudioSegment}
+        onResetAudioSegment={onResetAudioSegment}
+      />
 
       {listeningGroups.map((group) => (
         <div
