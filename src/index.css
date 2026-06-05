@@ -636,6 +636,14 @@ h1, h2, h3, h4, h5 {
   color: hsl(var(--text-secondary));
 }
 
+.explanation-panel p {
+  margin: 0;
+}
+
+.explanation-panel p + p {
+  margin-top: 8px;
+}
+
 .explanation-title {
   display: flex;
   align-items: center;

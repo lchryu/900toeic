@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bookmark, CheckCircle, AlertCircle, HelpCircle } from 'lucide-react';
 import { Option } from '../types';
+import ReactMarkdown from 'react-markdown';
 
 interface QuestionBlockProps {
   num: number;
@@ -118,7 +119,7 @@ export const QuestionBlock: React.FC<QuestionBlockProps> = ({
             <HelpCircle size={16} />
             <span>Explanation & Translation</span>
           </div>
-          <p>{explanation}</p>
+          <ReactMarkdown>{explanation}</ReactMarkdown>
         </div>
       )}
     </div>
