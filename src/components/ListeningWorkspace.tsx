@@ -368,6 +368,7 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
   onResetAudioSegment
 }) => {
   const showTranscript = isGraded || mode === 'study';
+  const [showTranslations, setShowTranslations] = useState(true);
 
   return (
     <div className="listening-workspace-root" style={{ padding: '24px', maxWidth: '850px', margin: '0 auto', width: '100%' }}>
@@ -433,9 +434,21 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
           >
             {showTranscript ? (
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'hsl(var(--success))', marginBottom: '16px', fontWeight: 600, fontSize: '0.9rem' }}>
-                  <Unlock size={16} />
-                  <span>{mode === 'study' ? 'Study transcript' : 'Audio Transcript unlocked'}</span>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'hsl(var(--success))', fontWeight: 600, fontSize: '0.9rem' }}>
+                    <Unlock size={16} />
+                    <span>{mode === 'study' ? 'Study transcript' : 'Audio Transcript unlocked'}</span>
+                  </div>
+                  
+                  <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: 'hsl(var(--text-secondary))', cursor: 'pointer', userSelect: 'none' }}>
+                    <input
+                      type="checkbox"
+                      checked={showTranslations}
+                      onChange={(e) => setShowTranslations(e.target.checked)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                    <span>Show translations</span>
+                  </label>
                 </div>
                 
                 {group.transcript.map((line, idx) => (
@@ -445,7 +458,7 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
                     </span>
                     <div className="dialogue-copy">
                       <p className="dialogue-text">{line.text}</p>
-                      {line.translation && (
+                      {line.translation && showTranslations && (
                         <p className="dialogue-translation">{line.translation}</p>
                       )}
                     </div>

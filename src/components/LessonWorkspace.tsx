@@ -54,8 +54,6 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   // Timer state
   const [elapsedTime, setElapsedTime] = useState<number>(progress?.timeSpent || 0);
   const [studyElapsedTime, setStudyElapsedTime] = useState<number>(progress?.studyTimeSpent || 0);
-  const timerRef = useRef<any | null>(null);
-  const studyTimerRef = useRef<any | null>(null);
   const elapsedTimeRef = useRef(elapsedTime);
   const studyElapsedTimeRef = useRef(studyElapsedTime);
   const hasRecordedOpenRef = useRef(false);
@@ -87,38 +85,79 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     setQuestionStates(Object.fromEntries(flags.map((num) => [num, { selectedOption: progress?.answers?.[num] || '', isFlagged: true }])));
   }, [lesson.id]);
 
-  // Start timer if not graded
+  // Start timer if not graded (practice mode)
   useEffect(() => {
-    if (!isGraded && mode === 'practice') {
-      timerRef.current = setInterval(() => {
-        setElapsedTime((prev) => prev + 1);
-      }, 1000);
-    } else {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
+    let intervalId: any = null;
+
+    const startTimer = () => {
+      if (!intervalId && !isGraded && mode === 'practice') {
+        intervalId = setInterval(() => {
+          setElapsedTime((prev) => prev + 1);
+        }, 1000);
       }
+    };
+
+    const stopTimer = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopTimer();
+      } else {
+        startTimer();
+      }
+    };
+
+    if (!isGraded && mode === 'practice') {
+      startTimer();
+      document.addEventListener('visibilitychange', handleVisibilityChange);
     }
 
     return () => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-      }
+      stopTimer();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [isGraded, mode, lesson.id]);
 
+  // Start study timer if mode is study
   useEffect(() => {
+    let intervalId: any = null;
+
+    const startTimer = () => {
+      if (!intervalId && mode === 'study') {
+        intervalId = setInterval(() => {
+          setStudyElapsedTime((prev) => prev + 1);
+        }, 1000);
+      }
+    };
+
+    const stopTimer = () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        stopTimer();
+      } else {
+        startTimer();
+      }
+    };
+
     if (mode === 'study') {
-      studyTimerRef.current = setInterval(() => {
-        setStudyElapsedTime((prev) => prev + 1);
-      }, 1000);
-    } else if (studyTimerRef.current) {
-      clearInterval(studyTimerRef.current);
+      startTimer();
+      document.addEventListener('visibilitychange', handleVisibilityChange);
     }
 
     return () => {
-      if (studyTimerRef.current) {
-        clearInterval(studyTimerRef.current);
-      }
+      stopTimer();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [mode, lesson.id]);
 
