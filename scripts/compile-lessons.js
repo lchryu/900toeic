@@ -14,6 +14,12 @@ const YOUTUBE_AUDIO_BY_LESSON = {
   '15-homework': 'https://www.youtube.com/watch?v=PMsGn82BHYM&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=15',
   '16-homework': 'https://www.youtube.com/watch?v=fnOyphQep5g&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=16'
 };
+
+const AUDIO_SEGMENT_PRESETS_BY_LESSON = {
+  '14': [
+    { range: '1-3', start: 0, end: 50 }
+  ]
+};
 const OUTPUT_DIR = './src/data';
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'lessons.json');
 
@@ -58,6 +64,39 @@ function hasLessonAudio(lessonId) {
       const parsed = path.parse(file);
       return parsed.name === lessonId && ['.mp3', '.m4a', '.wav', '.ogg'].includes(parsed.ext.toLowerCase());
     });
+}
+
+function normalizeRange(range) {
+  return String(range || '').replace(/[–—]/g, '-').replace(/\s+/g, '');
+}
+
+function buildLessonAudioSegments(lessonId, listeningGroups) {
+  const presets = AUDIO_SEGMENT_PRESETS_BY_LESSON[lessonId] || [];
+
+  return presets
+    .map((preset) => {
+      const group = listeningGroups.find((candidate) => (
+        preset.groupId === candidate.id ||
+        normalizeRange(preset.range) === normalizeRange(candidate.range)
+      ));
+
+      if (!group) {
+        console.warn(`Warning: Audio segment preset "${preset.range || preset.groupId}" did not match a listening group in lesson ${lessonId}`);
+        return null;
+      }
+
+      return {
+        id: `${lessonId}-${group.id}`,
+        lessonId,
+        groupId: group.id,
+        label: preset.label || `Q${group.range}`,
+        range: group.range,
+        start: preset.start,
+        end: preset.end,
+        isPreset: true
+      };
+    })
+    .filter(Boolean);
 }
 
 function findLessonGraphics(lessonId) {
@@ -505,12 +544,14 @@ function parseLesson(filePath) {
 
   const graphics = findLessonGraphics(lessonId);
   const youtubeUrl = YOUTUBE_AUDIO_BY_LESSON[lessonId];
+  const audioSegments = buildLessonAudioSegments(lessonId, listeningGroups);
   
   return {
     id: lessonId,
     title,
     audio: hasLessonAudio(lessonId) || !youtubeUrl ? findLessonAudio(lessonId) : '',
     youtubeUrl,
+    ...(audioSegments.length > 0 ? { audioSegments } : {}),
     graphics,
     listening: listeningGroups,
     reading: readingGroups

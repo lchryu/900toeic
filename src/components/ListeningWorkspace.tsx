@@ -94,7 +94,10 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
       <div className="audio-segment-main">
         <div className="audio-segment-label">
           <span>{segment.label}</span>
-          <small>{formatTime(segment.start)} - {formatTime(segment.end)}{segment.isCustom ? ' custom' : ''}</small>
+          <small>
+            {formatTime(segment.start)} - {formatTime(segment.end)}
+            {segment.isCustom ? ' custom' : segment.isPreset ? ' preset' : ''}
+          </small>
         </div>
         <div className="audio-segment-actions">
           <button

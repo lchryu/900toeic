@@ -43,6 +43,7 @@ export interface LessonData {
   title: string;
   audio: string;
   youtubeUrl?: string;
+  audioSegments?: AudioSegment[];
   graphics?: { [qNum: number]: string };
   listening: ListeningGroup[];
   reading: ReadingGroup[];
@@ -100,6 +101,7 @@ export interface AudioSegment {
   end: number;
   updatedAt?: string;
   isCustom?: boolean;
+  isPreset?: boolean;
 }
 
 export interface AudioControlState {

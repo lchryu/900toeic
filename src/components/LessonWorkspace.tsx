@@ -151,6 +151,33 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     }));
   };
 
+  const createInitialAudioSegments = (duration: number) => {
+    const defaultSegments = createDefaultAudioSegments(duration);
+    if (!lesson.audioSegments?.length) return defaultSegments;
+
+    return defaultSegments.map((defaultSegment) => {
+      const preset = lesson.audioSegments?.find((candidate) => (
+        candidate.groupId === defaultSegment.groupId || candidate.range === defaultSegment.range
+      ));
+
+      if (!preset) return defaultSegment;
+
+      return {
+        ...defaultSegment,
+        ...preset,
+        id: defaultSegment.id,
+        lessonId: lesson.id,
+        groupId: defaultSegment.groupId,
+        range: defaultSegment.range,
+        label: preset.label || defaultSegment.label,
+        start: Math.round(preset.start),
+        end: Math.round(Math.min(preset.end, duration)),
+        isPreset: true,
+        isCustom: false
+      };
+    });
+  };
+
   useEffect(() => {
     if (!audioControl?.duration || lesson.listening.length === 0) {
       setAudioSegments([]);
@@ -158,8 +185,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     }
 
     const storedSegments = getStoredAudioSegments()[lesson.id];
-    setAudioSegments(storedSegments?.length ? storedSegments : createDefaultAudioSegments(audioControl.duration));
-  }, [audioControl?.duration, lesson.id]);
+    setAudioSegments(storedSegments?.length ? storedSegments : createInitialAudioSegments(audioControl.duration));
+  }, [audioControl?.duration, lesson.id, lesson.audioSegments?.length]);
 
   const persistAudioSegments = (segments: AudioSegment[]) => {
     const allSegments = getStoredAudioSegments();
@@ -188,7 +215,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   };
 
   const handleResetAudioSegment = (segmentId: string) => {
-    const defaults = createDefaultAudioSegments(audioControl?.duration || 0);
+    const defaults = createInitialAudioSegments(audioControl?.duration || 0);
     const defaultSegment = defaults.find((segment) => segment.id === segmentId);
     if (!defaultSegment) return;
 
