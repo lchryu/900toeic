@@ -562,6 +562,27 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         </div>
       </div>
 
+      <div className="mobile-lesson-tabbar" aria-label="Lesson section switcher">
+        <button
+          className={`mobile-lesson-tab ${activeTab === 'listening' ? 'active' : ''}`}
+          type="button"
+          onClick={() => handleTabChange('listening')}
+        >
+          <Headphones size={15} />
+          <span>Listening</span>
+          <small>{listeningQuestionCount}</small>
+        </button>
+        <button
+          className={`mobile-lesson-tab ${activeTab === 'reading' ? 'active' : ''}`}
+          type="button"
+          onClick={() => handleTabChange('reading')}
+        >
+          <BookOpen size={15} />
+          <span>Reading</span>
+          <small>{readingQuestionCount}</small>
+        </button>
+      </div>
+
       {/* Main Workspace content */}
       <div className="lesson-main-scroll" style={{ flex: 1, padding: '24px', overflowY: 'auto' }}>
         {activeTab === 'listening' ? (

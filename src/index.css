@@ -1064,6 +1064,10 @@ h1, h2, h3, h4, h5 {
   display: none;
 }
 
+.mobile-lesson-tabbar {
+  display: none;
+}
+
 /* Mobile Responsive Overlays and Adjustments */
 .sidebar-overlay {
   position: fixed;
@@ -1128,6 +1132,56 @@ h1, h2, h3, h4, h5 {
 
   .lesson-workspace-shell {
     position: relative;
+  }
+
+  .mobile-lesson-tabbar {
+    display: flex;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--surface-sticky);
+    border-bottom: 1px solid var(--border-subtle);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .mobile-lesson-tabbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-lesson-tab {
+    flex: 1;
+    min-width: 0;
+    min-height: 38px;
+    padding: 0 10px;
+    border: 1px solid hsl(var(--panel-border));
+    border-radius: 999px;
+    background: hsl(var(--panel-bg) / 0.42);
+    color: hsl(var(--text-secondary));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 900;
+  }
+
+  .mobile-lesson-tab.active {
+    border-color: hsl(var(--primary) / 0.65);
+    background: hsl(var(--primary));
+    color: var(--button-contrast);
+  }
+
+  .mobile-lesson-tab small {
+    min-width: 22px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: hsl(var(--panel-bg) / 0.75);
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.68rem;
   }
 
   .reading-mode-fab {
@@ -1200,8 +1254,13 @@ h1, h2, h3, h4, h5 {
     display: flex;
   }
 
+  .lesson-workspace-shell.practice-focus-mode .mobile-lesson-tabbar {
+    display: none !important;
+  }
+
   .lesson-workspace-shell.reading-mode .audio-player-shell,
   .lesson-workspace-shell.reading-mode .lesson-heading-panel,
+  .lesson-workspace-shell.reading-mode .mobile-lesson-tabbar,
   .lesson-workspace-shell.reading-mode .control-banner {
     display: none !important;
   }
@@ -1435,7 +1494,7 @@ h1, h2, h3, h4, h5 {
   }
 
   .reading-mobile-passage .passage-card {
-    max-height: min(24vh, 180px);
+    max-height: min(34vh, 260px);
     overflow-y: auto;
     overscroll-behavior: contain;
     margin-bottom: 0 !important;
