@@ -1,9 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { Play, Pause, Volume2, FastForward, Youtube, ExternalLink, SkipBack, SkipForward } from 'lucide-react';
+import { AudioControlState, AudioSegment } from '../types';
 
 interface AudioPlayerProps {
   src?: string;
   youtubeUrl?: string;
+  onControlStateChange?: (state: AudioControlState) => void;
 }
 
 type AudioSource = 'local' | 'youtube';
@@ -76,19 +78,23 @@ const loadYoutubeApi = () =>
     }
   });
 
-export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl }) => {
+export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onControlStateChange }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const youtubeContainerRef = useRef<HTMLDivElement | null>(null);
   const youtubePlayerRef = useRef<YoutubePlayer | null>(null);
+  const activeSegmentRef = useRef<{ segment: AudioSegment; loop: boolean } | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [playbackRate, setPlaybackRate] = useState(1.0);
   const [source, setSource] = useState<AudioSource>(src ? 'local' : 'youtube');
   const [isYoutubeReady, setIsYoutubeReady] = useState(false);
+  const [activeSegmentId, setActiveSegmentId] = useState<string | null>(null);
+  const [isLoopingSegment, setIsLoopingSegment] = useState(false);
 
   const youtubeVideoId = youtubeUrl ? getYoutubeVideoId(youtubeUrl) : '';
   const isYoutubeSource = source === 'youtube';
+  const canUseControls = !isYoutubeSource || isYoutubeReady;
 
   const getYoutubeCurrentTime = () => youtubePlayerRef.current?.getCurrentTime?.() || 0;
   const getYoutubeDuration = () => youtubePlayerRef.current?.getDuration?.() || 0;
@@ -103,6 +109,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl }) => 
     setCurrentTime(0);
     setDuration(0);
     setPlaybackRate(1.0);
+    activeSegmentRef.current = null;
+    setActiveSegmentId(null);
+    setIsLoopingSegment(false);
     if (audioRef.current) {
       audioRef.current.load();
     }
@@ -161,19 +170,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl }) => 
     };
   }, [youtubeVideoId]);
 
-  useEffect(() => {
-    if (!isYoutubeSource) return;
-
-    const timer = window.setInterval(() => {
-      const player = youtubePlayerRef.current;
-      if (!player) return;
-      setCurrentTime(player.getCurrentTime?.() || 0);
-      setDuration(player.getDuration?.() || 0);
-    }, 500);
-
-    return () => window.clearInterval(timer);
-  }, [isYoutubeSource]);
-
   const pauseLocalAudio = () => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -229,7 +225,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl }) => 
 
   const handleTimeUpdate = () => {
     if (!audioRef.current || isYoutubeSource) return;
-    setCurrentTime(audioRef.current.currentTime);
+    const nextTime = audioRef.current.currentTime;
+    setCurrentTime(nextTime);
+    handleSegmentBoundary(nextTime);
   };
 
   const handleLoadedMetadata = () => {
@@ -237,7 +235,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl }) => 
     setDuration(audioRef.current.duration);
   };
 
-  const seekTo = (seconds: number) => {
+  const seekTo = useCallback((seconds: number) => {
     const nextTime = Math.max(0, Math.min(seconds, duration || seconds));
 
     if (isYoutubeSource) {
@@ -247,7 +245,79 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl }) => 
     }
 
     setCurrentTime(nextTime);
-  };
+  }, [duration, isYoutubeSource]);
+
+  const pauseCurrentSource = useCallback(() => {
+    if (isYoutubeSource) {
+      youtubePlayerRef.current?.pauseVideo?.();
+    } else if (audioRef.current) {
+      audioRef.current.pause();
+    }
+    setIsPlaying(false);
+  }, [isYoutubeSource]);
+
+  const playCurrentSource = useCallback(() => {
+    if (isYoutubeSource) {
+      if (!isYoutubeReady) return;
+      youtubePlayerRef.current?.playVideo?.();
+      setIsPlaying(true);
+      return;
+    }
+
+    audioRef.current?.play().then(() => {
+      setIsPlaying(true);
+    }).catch((e) => {
+      console.error('Audio play failed:', e);
+    });
+  }, [isYoutubeReady, isYoutubeSource]);
+
+  const playSegment = useCallback((segment: AudioSegment, loop = false) => {
+    if (!canUseControls || segment.end <= segment.start) return;
+    activeSegmentRef.current = { segment, loop };
+    setActiveSegmentId(segment.id);
+    setIsLoopingSegment(loop);
+    seekTo(segment.start);
+    window.setTimeout(() => playCurrentSource(), 0);
+  }, [canUseControls, playCurrentSource, seekTo]);
+
+  const stopSegment = useCallback(() => {
+    activeSegmentRef.current = null;
+    setActiveSegmentId(null);
+    setIsLoopingSegment(false);
+    pauseCurrentSource();
+  }, [pauseCurrentSource]);
+
+  const handleSegmentBoundary = useCallback((nextTime: number) => {
+    const activeSegment = activeSegmentRef.current;
+    if (!activeSegment || nextTime < activeSegment.segment.end) return;
+
+    if (activeSegment.loop) {
+      seekTo(activeSegment.segment.start);
+      playCurrentSource();
+      return;
+    }
+
+    activeSegmentRef.current = null;
+    setActiveSegmentId(null);
+    setIsLoopingSegment(false);
+    seekTo(activeSegment.segment.end);
+    pauseCurrentSource();
+  }, [pauseCurrentSource, playCurrentSource, seekTo]);
+
+  useEffect(() => {
+    if (!isYoutubeSource) return;
+
+    const timer = window.setInterval(() => {
+      const player = youtubePlayerRef.current;
+      if (!player) return;
+      const nextTime = player.getCurrentTime?.() || 0;
+      setCurrentTime(nextTime);
+      setDuration(player.getDuration?.() || 0);
+      handleSegmentBoundary(nextTime);
+    }, 500);
+
+    return () => window.clearInterval(timer);
+  }, [handleSegmentBoundary, isYoutubeSource]);
 
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
     if (duration === 0) return;
@@ -282,7 +352,20 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl }) => 
   };
 
   const progressPct = duration > 0 ? (currentTime / duration) * 100 : 0;
-  const canUseControls = !isYoutubeSource || isYoutubeReady;
+
+  useEffect(() => {
+    onControlStateChange?.({
+      currentTime,
+      duration,
+      isPlaying,
+      isReady: canUseControls,
+      activeSegmentId,
+      isLoopingSegment,
+      seekTo,
+      playSegment,
+      stopSegment
+    });
+  }, [currentTime, duration, isPlaying, canUseControls, activeSegmentId, isLoopingSegment, onControlStateChange, playSegment, seekTo, stopSegment]);
 
   return (
     <div className="audio-player-shell">

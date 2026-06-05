@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { LessonData, QuestionState, LessonProgress, PracticeHistoryEntry } from '../types';
+import { AudioControlState, AudioSegment, LessonData, QuestionState, LessonProgress, PracticeHistoryEntry } from '../types';
 import { AudioPlayer } from './AudioPlayer';
 import { ListeningWorkspace } from './ListeningWorkspace';
 import { ReadingPassage } from './ReadingPassage';
@@ -8,6 +8,7 @@ import { Headphones, BookOpen, Clock, Award, RotateCcw, AlertTriangle, Graduatio
 
 type LessonTab = 'listening' | 'reading';
 type LessonMode = 'study' | 'practice' | 'review';
+const AUDIO_SEGMENT_STORAGE_KEY = 'toeic_audio_segments';
 
 interface LessonWorkspaceProps {
   lesson: LessonData;
@@ -47,6 +48,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     !!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0))
   );
   const [isReadingMode, setIsReadingMode] = useState(false);
+  const [audioControl, setAudioControl] = useState<AudioControlState | null>(null);
+  const [audioSegments, setAudioSegments] = useState<AudioSegment[]>([]);
   
   // Timer state
   const [elapsedTime, setElapsedTime] = useState<number>(progress?.timeSpent || 0);
@@ -123,6 +126,76 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const totalQuestions =
     lesson.listening.reduce((sum, g) => sum + g.questions.length, 0) +
     lesson.reading.reduce((sum, g) => sum + g.questions.length, 0);
+
+  const getStoredAudioSegments = () => {
+    try {
+      const stored = localStorage.getItem(AUDIO_SEGMENT_STORAGE_KEY);
+      return stored ? JSON.parse(stored) as { [lessonId: string]: AudioSegment[] } : {};
+    } catch {
+      return {};
+    }
+  };
+
+  const createDefaultAudioSegments = (duration: number) => {
+    if (!duration || lesson.listening.length === 0) return [];
+    const sliceDuration = duration / lesson.listening.length;
+
+    return lesson.listening.map((group, index) => ({
+      id: `${lesson.id}-${group.id}`,
+      lessonId: lesson.id,
+      groupId: group.id,
+      label: `Q${group.range}`,
+      range: group.range,
+      start: Math.round(sliceDuration * index),
+      end: Math.round(index === lesson.listening.length - 1 ? duration : sliceDuration * (index + 1))
+    }));
+  };
+
+  useEffect(() => {
+    if (!audioControl?.duration || lesson.listening.length === 0) {
+      setAudioSegments([]);
+      return;
+    }
+
+    const storedSegments = getStoredAudioSegments()[lesson.id];
+    setAudioSegments(storedSegments?.length ? storedSegments : createDefaultAudioSegments(audioControl.duration));
+  }, [audioControl?.duration, lesson.id]);
+
+  const persistAudioSegments = (segments: AudioSegment[]) => {
+    const allSegments = getStoredAudioSegments();
+    allSegments[lesson.id] = segments;
+    localStorage.setItem(AUDIO_SEGMENT_STORAGE_KEY, JSON.stringify(allSegments));
+    setAudioSegments(segments);
+  };
+
+  const handleUpdateAudioSegment = (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => {
+    const duration = audioControl?.duration || 0;
+    const nextSegments = audioSegments.map((segment) => {
+      if (segment.id !== segmentId) return segment;
+      const nextStart = Math.max(0, Math.min(updates.start ?? segment.start, duration));
+      const nextEnd = Math.max(nextStart + 1, Math.min(updates.end ?? segment.end, duration || updates.end || segment.end));
+
+      return {
+        ...segment,
+        start: Math.round(nextStart),
+        end: Math.round(nextEnd),
+        isCustom: true,
+        updatedAt: new Date().toISOString()
+      };
+    });
+
+    persistAudioSegments(nextSegments);
+  };
+
+  const handleResetAudioSegment = (segmentId: string) => {
+    const defaults = createDefaultAudioSegments(audioControl?.duration || 0);
+    const defaultSegment = defaults.find((segment) => segment.id === segmentId);
+    if (!defaultSegment) return;
+
+    persistAudioSegments(audioSegments.map((segment) => (
+      segment.id === segmentId ? defaultSegment : segment
+    )));
+  };
 
   const getGradedResults = () => {
     const results: { [qNum: number]: boolean } = {};
@@ -388,7 +461,11 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   return (
     <div className={`lesson-workspace-shell ${isReaderOnlyMode ? 'reading-mode' : ''} ${isPracticeFocusMode ? 'practice-focus-mode' : ''} ${isPracticeActive ? 'practice-mode' : ''}`} style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
       {/* Sticky Audio Player for Listening sections */}
-      <AudioPlayer src={lesson.audio ? `/${lesson.audio}` : undefined} youtubeUrl={lesson.youtubeUrl} />
+      <AudioPlayer
+        src={lesson.audio ? `/${lesson.audio}` : undefined}
+        youtubeUrl={lesson.youtubeUrl}
+        onControlStateChange={setAudioControl}
+      />
 
       <button
         className={`reading-mode-fab ${isPracticeActive ? 'practice-focus-fab' : ''}`}
@@ -464,12 +541,16 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
           <ListeningWorkspace
             listeningGroups={lesson.listening}
             graphics={lesson.graphics}
+            audioControl={audioControl}
+            audioSegments={audioSegments}
             selectedAnswers={displayAnswers}
             questionStates={questionStates}
             isGraded={isGraded}
             mode={mode}
             onSelectOption={handleSelectOption}
             onToggleFlag={handleToggleFlag}
+            onUpdateAudioSegment={handleUpdateAudioSegment}
+            onResetAudioSegment={handleResetAudioSegment}
           />
         ) : (
           <>

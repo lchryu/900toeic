@@ -89,3 +89,27 @@ export interface PracticeHistoryEntry {
   studyTimeSpent?: number;
   fromMode?: PracticeHistoryMode;
 }
+
+export interface AudioSegment {
+  id: string;
+  lessonId: string;
+  groupId: string;
+  label: string;
+  range: string;
+  start: number;
+  end: number;
+  updatedAt?: string;
+  isCustom?: boolean;
+}
+
+export interface AudioControlState {
+  currentTime: number;
+  duration: number;
+  isPlaying: boolean;
+  isReady: boolean;
+  activeSegmentId?: string | null;
+  isLoopingSegment?: boolean;
+  seekTo: (seconds: number) => void;
+  playSegment: (segment: AudioSegment, loop?: boolean) => void;
+  stopSegment: () => void;
+}

@@ -1,7 +1,7 @@
-import React from 'react';
-import { ListeningGroup, QuestionState } from '../types';
+import React, { useEffect, useState } from 'react';
+import { AudioControlState, AudioSegment, ListeningGroup, QuestionState } from '../types';
 import { QuestionBlock } from './QuestionBlock';
-import { Headphones, Lock, Unlock } from 'lucide-react';
+import { Headphones, Lock, Play, Repeat, RotateCcw, SlidersHorizontal, Unlock } from 'lucide-react';
 
 interface ListeningWorkspaceProps {
   listeningGroups: ListeningGroup[];
@@ -10,9 +10,166 @@ interface ListeningWorkspaceProps {
   questionStates: { [qNum: number]: QuestionState };
   isGraded: boolean;
   mode: 'study' | 'practice' | 'review';
+  audioControl: AudioControlState | null;
+  audioSegments: AudioSegment[];
   onSelectOption: (qNum: number, label: string) => void;
   onToggleFlag: (qNum: number) => void;
+  onUpdateAudioSegment: (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => void;
+  onResetAudioSegment: (segmentId: string) => void;
 }
+
+const formatTime = (seconds: number) => {
+  const safeSeconds = Math.max(0, Math.round(Number.isFinite(seconds) ? seconds : 0));
+  const minutes = Math.floor(safeSeconds / 60);
+  const remainingSeconds = safeSeconds % 60;
+  return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+};
+
+const parseTimeInput = (value: string) => {
+  const trimmed = value.trim();
+  if (!trimmed) return 0;
+
+  if (trimmed.includes(':')) {
+    const [minutes = '0', seconds = '0'] = trimmed.split(':');
+    return (Number(minutes) * 60) + Number(seconds);
+  }
+
+  return Number(trimmed);
+};
+
+interface AudioSegmentControlsProps {
+  segment?: AudioSegment;
+  audioControl: AudioControlState | null;
+  onUpdateAudioSegment: (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => void;
+  onResetAudioSegment: (segmentId: string) => void;
+}
+
+const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
+  segment,
+  audioControl,
+  onUpdateAudioSegment,
+  onResetAudioSegment
+}) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [startValue, setStartValue] = useState('0:00');
+  const [endValue, setEndValue] = useState('0:00');
+
+  useEffect(() => {
+    if (!segment) return;
+    setStartValue(formatTime(segment.start));
+    setEndValue(formatTime(segment.end));
+  }, [segment]);
+
+  if (!segment) {
+    return (
+      <div className="audio-segment-row audio-segment-empty">
+        Audio segment loading
+      </div>
+    );
+  }
+
+  const isActive = audioControl?.activeSegmentId === segment.id;
+  const isLooping = isActive && audioControl?.isLoopingSegment;
+  const canControlAudio = !!audioControl?.isReady;
+
+  const handleSave = () => {
+    const nextStart = parseTimeInput(startValue);
+    const nextEnd = parseTimeInput(endValue);
+
+    if (!Number.isFinite(nextStart) || !Number.isFinite(nextEnd)) return;
+    onUpdateAudioSegment(segment.id, { start: nextStart, end: nextEnd });
+    setIsEditing(false);
+  };
+
+  const setCurrentAsStart = () => {
+    setStartValue(formatTime(audioControl?.currentTime || 0));
+  };
+
+  const setCurrentAsEnd = () => {
+    setEndValue(formatTime(audioControl?.currentTime || 0));
+  };
+
+  return (
+    <div className={`audio-segment-row ${isActive ? 'is-active' : ''}`}>
+      <div className="audio-segment-main">
+        <div className="audio-segment-label">
+          <span>{segment.label}</span>
+          <small>{formatTime(segment.start)} - {formatTime(segment.end)}{segment.isCustom ? ' custom' : ''}</small>
+        </div>
+        <div className="audio-segment-actions">
+          <button
+            className="audio-segment-btn"
+            type="button"
+            disabled={!canControlAudio}
+            onClick={() => audioControl?.playSegment(segment)}
+            title={`Play ${segment.label}`}
+          >
+            <Play size={14} />
+            <span>Play</span>
+          </button>
+          <button
+            className={`audio-segment-btn ${isLooping ? 'active' : ''}`}
+            type="button"
+            disabled={!canControlAudio}
+            onClick={() => isLooping ? audioControl?.stopSegment() : audioControl?.playSegment(segment, true)}
+            title={`Loop ${segment.label}`}
+          >
+            <Repeat size={14} />
+            <span>Loop</span>
+          </button>
+          <button
+            className={`audio-segment-btn icon-only ${isEditing ? 'active' : ''}`}
+            type="button"
+            onClick={() => setIsEditing((value) => !value)}
+            title="Edit segment time"
+          >
+            <SlidersHorizontal size={15} />
+          </button>
+        </div>
+      </div>
+
+      {isEditing && (
+        <div className="audio-segment-editor">
+          <label>
+            <span>Start</span>
+            <input
+              className="audio-segment-input"
+              value={startValue}
+              onChange={(event) => setStartValue(event.target.value)}
+              inputMode="numeric"
+            />
+          </label>
+          <label>
+            <span>End</span>
+            <input
+              className="audio-segment-input"
+              value={endValue}
+              onChange={(event) => setEndValue(event.target.value)}
+              inputMode="numeric"
+            />
+          </label>
+          <button className="audio-segment-btn subtle" type="button" onClick={setCurrentAsStart}>
+            Set start
+          </button>
+          <button className="audio-segment-btn subtle" type="button" onClick={setCurrentAsEnd}>
+            Set end
+          </button>
+          <button className="audio-segment-btn" type="button" onClick={handleSave}>
+            Save
+          </button>
+          <button
+            className="audio-segment-btn icon-only subtle"
+            type="button"
+            onClick={() => onResetAudioSegment(segment.id)}
+            title="Reset segment"
+          >
+            <RotateCcw size={14} />
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const GraphicImage: React.FC<{ src: string; qNum: number }> = ({ src, qNum }) => {
   return (
@@ -42,8 +199,12 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
   questionStates,
   isGraded,
   mode,
+  audioControl,
+  audioSegments,
   onSelectOption,
-  onToggleFlag
+  onToggleFlag,
+  onUpdateAudioSegment,
+  onResetAudioSegment
 }) => {
   const showTranscript = isGraded || mode === 'study';
 
@@ -84,6 +245,13 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
               Select options as you listen
             </span>
           </div>
+
+          <AudioSegmentControls
+            segment={audioSegments.find((segment) => segment.groupId === group.id)}
+            audioControl={audioControl}
+            onUpdateAudioSegment={onUpdateAudioSegment}
+            onResetAudioSegment={onResetAudioSegment}
+          />
 
           {/* Transcript Panel: Locked during test, revealed after grading */}
           <div
