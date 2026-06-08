@@ -5,12 +5,14 @@ import { LessonWorkspace } from './components/LessonWorkspace';
 import { VocabularyTrainer } from './components/VocabularyTrainer';
 import { Mp3PlayerHub } from './components/Mp3PlayerHub';
 import { AudioPlayer } from './components/AudioPlayer';
-import { LessonData, LessonProgress, PracticeHistoryEntry, AudioControlState } from './types';
+import { LessonData, LessonProgress, PracticeHistoryEntry, AudioControlState, AudioSegment } from './types';
 import { Menu, ChevronRight } from 'lucide-react';
 import {
   isFirebaseConfigured,
   loadCloudProgress,
   saveCloudProgress,
+  loadCloudAudioSegments,
+  saveCloudAudioSegments,
   signInWithGoogle,
   signOutGoogle,
   subscribeToAuth,
@@ -55,6 +57,52 @@ const mergeProgress = (
     }
   });
 
+  return merged;
+};
+
+const mergeAudioSegments = (
+  local: { [lessonId: string]: AudioSegment[] },
+  cloud: { [lessonId: string]: AudioSegment[] }
+) => {
+  const merged = { ...cloud };
+  
+  for (const lessonId in local) {
+    const localSegs = local[lessonId];
+    const cloudSegs = cloud[lessonId];
+    
+    if (!cloudSegs) {
+      merged[lessonId] = localSegs;
+    } else {
+      const localUpdated = localSegs.some((s) => s.updatedAt);
+      const cloudUpdated = cloudSegs.some((s) => s.updatedAt);
+      
+      if (localUpdated && !cloudUpdated) {
+        merged[lessonId] = localSegs;
+      } else if (!localUpdated && cloudUpdated) {
+        merged[lessonId] = cloudSegs;
+      } else if (localUpdated && cloudUpdated) {
+        const getNewestTimestamp = (segs: AudioSegment[]) => {
+          let maxTime = 0;
+          segs.forEach((s) => {
+            if (s.updatedAt) {
+              const t = new Date(s.updatedAt).getTime();
+              if (t > maxTime) maxTime = t;
+            }
+          });
+          return maxTime;
+        };
+        
+        if (getNewestTimestamp(localSegs) > getNewestTimestamp(cloudSegs)) {
+          merged[lessonId] = localSegs;
+        } else {
+          merged[lessonId] = cloudSegs;
+        }
+      } else {
+        merged[lessonId] = cloudSegs;
+      }
+    }
+  }
+  
   return merged;
 };
 
@@ -165,6 +213,7 @@ const App: React.FC = () => {
 
       setIsSyncing(true);
       try {
+        // 1. Sync progress
         const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
         const localProgress = stored ? JSON.parse(stored) : {};
         const cloudProgress = (await loadCloudProgress(user.uid)) || {};
@@ -173,9 +222,19 @@ const App: React.FC = () => {
         setProgress(mergedProgress);
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(mergedProgress));
         await saveCloudProgress(user.uid, mergedProgress);
+
+        // 2. Sync audio segments
+        const storedSegments = localStorage.getItem('toeic_audio_segments');
+        const localSegments = storedSegments ? JSON.parse(storedSegments) : {};
+        const cloudSegments = (await loadCloudAudioSegments(user.uid)) || {};
+        const mergedSegments = mergeAudioSegments(localSegments, cloudSegments);
+
+        localStorage.setItem('toeic_audio_segments', JSON.stringify(mergedSegments));
+        await saveCloudAudioSegments(user.uid, mergedSegments);
+
         setSyncMessage('Synced with Google account');
       } catch (e) {
-        console.error('Failed to sync cloud progress:', e);
+        console.error('Failed to sync cloud data:', e);
         setSyncMessage('Could not sync Google progress');
       } finally {
         setIsSyncing(false);
@@ -270,6 +329,21 @@ const App: React.FC = () => {
         console.error('Failed to save cloud progress:', e);
         setSyncMessage('Could not save to Google account');
       });
+    }
+  };
+
+  const handleSaveAudioSegments = (lessonId: string, segments: AudioSegment[]) => {
+    if (!authUser) return;
+    try {
+      const stored = localStorage.getItem('toeic_audio_segments');
+      const allSegments = stored ? JSON.parse(stored) : {};
+      allSegments[lessonId] = segments;
+      
+      saveCloudAudioSegments(authUser.uid, allSegments).catch((e) => {
+        console.error('Failed to save cloud audio segments:', e);
+      });
+    } catch (e) {
+      console.error('Failed to read local audio segments:', e);
     }
   };
 
@@ -427,6 +501,7 @@ const App: React.FC = () => {
             onSaveProgress={handleSaveProgress}
             onRecordHistory={handleRecordHistory}
             onQuestionNavConfig={handleQuestionNavConfig}
+            onSaveAudioSegments={handleSaveAudioSegments}
           />
         ) : (
           <div style={{ padding: '32px', textAlign: 'center', color: 'hsl(var(--text-muted))' }}>

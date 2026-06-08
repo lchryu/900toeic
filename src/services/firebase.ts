@@ -16,7 +16,7 @@ import {
   setDoc,
   type Firestore
 } from 'firebase/firestore';
-import { LessonProgress } from '../types';
+import { LessonProgress, AudioSegment } from '../types';
 
 export interface AuthUser {
   uid: string;
@@ -107,6 +107,32 @@ export const saveCloudProgress = async (
     doc(db, 'toeicProgress', uid),
     {
       progress,
+      updatedAt: serverTimestamp()
+    },
+    { merge: true }
+  );
+};
+
+export const loadCloudAudioSegments = async (uid: string) => {
+  if (!db) return null;
+
+  const snapshot = await getDoc(doc(db, 'toeicProgress', uid));
+  if (!snapshot.exists()) return null;
+
+  const data = snapshot.data();
+  return (data.audioSegments || null) as { [lessonId: string]: AudioSegment[] } | null;
+};
+
+export const saveCloudAudioSegments = async (
+  uid: string,
+  audioSegments: { [lessonId: string]: AudioSegment[] }
+) => {
+  if (!db) return;
+
+  await setDoc(
+    doc(db, 'toeicProgress', uid),
+    {
+      audioSegments,
       updatedAt: serverTimestamp()
     },
     { merge: true }

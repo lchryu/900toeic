@@ -24,6 +24,7 @@ interface LessonWorkspaceProps {
   ) => void;
   onRecordHistory: (entry: Omit<PracticeHistoryEntry, 'id' | 'timestamp'>) => void;
   onQuestionNavConfig: (qNums: number[], answered: number[], flagged: number[], isGraded: boolean, results: { [qNum: number]: boolean }, scrollCallback: (num: number) => void) => void;
+  onSaveAudioSegments?: (lessonId: string, segments: AudioSegment[]) => void;
 }
 
 export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
@@ -31,7 +32,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   progress,
   onSaveProgress,
   onRecordHistory,
-  onQuestionNavConfig
+  onQuestionNavConfig,
+  onSaveAudioSegments
 }) => {
   const [activeTab, setActiveTab] = useState<LessonTab>(progress?.lastTab || 'listening');
   const [mode, setMode] = useState<LessonMode>(
@@ -232,6 +234,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     allSegments[lesson.id] = segments;
     localStorage.setItem(AUDIO_SEGMENT_STORAGE_KEY, JSON.stringify(allSegments));
     setAudioSegments(segments);
+    if (onSaveAudioSegments) {
+      onSaveAudioSegments(lesson.id, segments);
+    }
   };
 
   const handleUpdateAudioSegment = (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => {
