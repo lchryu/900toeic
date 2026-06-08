@@ -368,7 +368,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
       setCurrentTime(nextTime);
       setDuration(player.getDuration?.() || 0);
       handleSegmentBoundary(nextTime);
-    }, 500);
+    }, 150);
 
     return () => window.clearInterval(timer);
   }, [handleSegmentBoundary, isYoutubeSource]);

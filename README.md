@@ -1,54 +1,54 @@
-# 📘 TOEIC Practice Hub - Kiến trúc Dự án & Hướng dẫn Nâng cấp
+# 📘 TOEIC Practice Hub - Project Architecture & Upgrade Guide
 
-Dự án này là một ứng dụng Single Page Application (SPA) viết bằng **React, Vite, TypeScript** và **Vanilla CSS**, được tích hợp công cụ biên dịch (pre-compiler) tự động chuyển đổi các bài ghi chú định dạng Markdown (.md) thành dữ liệu JSON động cho Frontend.
+This project is a Single Page Application (SPA) built with **React, Vite, TypeScript**, and **Vanilla CSS**. It integrates an automatic pre-compiler that converts Markdown (.md) note files into dynamic JSON data for the Frontend.
 
 ---
 
-## 🛠️ Công nghệ Sử dụng (Tech Stack)
+## 🛠️ Tech Stack
 
-1. **Frontend Core**: React 18 & TypeScript (kiểu dữ liệu chặt chẽ).
-2. **Build Tool**: Vite (tối ưu hóa thời gian chạy dev server và đóng gói sản phẩm cực nhanh).
-3. **Styling**: Vanilla CSS sử dụng hệ màu HSL linh hoạt kết hợp phong cách **Glassmorphism** tối giản và hỗ trợ giao diện tối (Dark Mode) mặc định.
+1. **Frontend Core**: React 18 & TypeScript (strongly typed).
+2. **Build Tool**: Vite (optimizes dev server startup time and provides extremely fast production builds).
+3. **Styling**: Vanilla CSS utilizing a flexible HSL color system combined with a minimalist **Glassmorphism** style, featuring default Dark Mode support.
 4. **Icons**: Lucide React.
-5. **Database**: Pre-compiled JSON file (`src/data/lessons.json`) sinh ra từ các file Markdown.
+5. **Database**: Pre-compiled JSON file (`src/data/lessons.json`) generated from Markdown files.
 
 ---
 
-## 📁 Cấu trúc Thư mục Dự án
+## 📁 Project Directory Structure
 
 ```text
 B12/
-├── lessons/               # 📂 Nơi lưu trữ các file Markdown nguồn (Source of Truth)
-│   ├── 12.md              # File bài học 12
-│   └── 13.md              # File bài học 13 (và các bài sau này)
-├── scripts/               # 📂 Chứa các script bổ trợ cho build-time
-│   └── compile-lessons.js # Bộ biên dịch tự động Markdown -> JSON
-├── src/                   # 📂 Mã nguồn Frontend React
-│   ├── assets/            # Các tài nguyên nội bộ của React (logo, CSS nếu chia nhỏ)
-│   ├── components/        # 🧩 Các Component UI tái sử dụng
-│   │   ├── AudioPlayer.tsx        # Trình phát âm thanh (tua tốc độ, hiển thị tiến trình)
-│   │   ├── Dashboard.tsx          # Trang chủ thống kê kết quả học tập
-│   │   ├── LessonWorkspace.tsx    # Không gian làm việc quản lý tab và chấm điểm
-│   │   ├── ListeningWorkspace.tsx # Không gian làm bài phần Nghe (Transcript mở khóa sau khi chấm)
-│   │   ├── ReadingPassage.tsx     # Đoạn văn đọc hiểu tương tác (tự điền từ khi chọn đáp án)
-│   │   ├── QuestionBlock.tsx      # Block câu hỏi trắc nghiệm A-B-C-D kèm giải thích
-│   │   └── Sidebar.tsx            # Danh sách bài học và bảng điều hướng câu hỏi nhanh
+├── lessons/               # 📂 Storage for source Markdown files (Source of Truth)
+│   ├── 12.md              # Lesson 12 file
+│   └── 13.md              # Lesson 13 file (and future lessons)
+├── scripts/               # 📂 Contains auxiliary build-time scripts
+│   └── compile-lessons.js # Automatic Markdown -> JSON compiler
+├── src/                   # 📂 React Frontend source code
+│   ├── assets/            # React internal assets (logos, modular CSS, etc.)
+│   ├── components/        # 🧩 Reusable UI Components
+│   │   ├── AudioPlayer.tsx        # Audio player (speed controls, progress bar)
+│   │   ├── Dashboard.tsx          # Homepage showing learning statistics and progress
+│   │   ├── LessonWorkspace.tsx    # Workspace managing tabs and grading
+│   │   ├── ListeningWorkspace.tsx # Workspace for Listening section (Transcript unlocks after grading)
+│   │   ├── ReadingPassage.tsx     # Interactive reading passage (fills in blanks when options are selected)
+│   │   ├── QuestionBlock.tsx      # Multiple-choice question block (A-B-C-D) with explanations
+│   │   └── Sidebar.tsx            # Lesson list and quick question navigation panel
 │   ├── data/
-│   │   └── lessons.json   # 🗄️ Database JSON được tạo ra tự động sau khi compile
-│   ├── types.ts           # Định nghĩa cấu trúc kiểu dữ liệu TypeScript
-│   ├── index.css          # Design System (biến CSS, font, màu HSL, animation)
-│   ├── App.tsx            # Điều phối trạng thái toàn cục & lưu lịch sử vào LocalStorage
-│   └── main.tsx           # Điểm khởi chạy React
-├── public/                # 📂 Thư mục chứa tài nguyên tĩnh cho Web Server
-│   ├── assets/            # Chứa các hình ảnh/sơ đồ bài tập (VD: 12_15.png)
-│   └── audio/             # Chứa file nghe MP3 (VD: lesson12.mp3)
-├── package.json           # Danh sách thư viện và cấu hình Scripts chạy lệnh
-└── tsconfig.json          # Cấu hình biên dịch TypeScript
+│   │   └── lessons.json   # 🗄️ JSON Database automatically generated after compilation
+│   ├── types.ts           # TypeScript type definitions
+│   ├── index.css          # Design System (CSS variables, fonts, HSL colors, animations)
+│   ├── App.tsx            # Global state coordinator & LocalStorage history persistence
+│   └── main.tsx           # React entry point
+├── public/                # 📂 Static assets directory for Web Server
+│   ├── assets/            # Contains lesson images/diagrams (e.g., 12_15.png)
+│   └── audio/             # Contains listening MP3 files (e.g., lesson12.mp3)
+├── package.json           # Package dependencies and run scripts
+└── tsconfig.json          # TypeScript compiler configuration
 ```
 
 ---
 
-## 🔄 Luồng Dữ liệu (Data Flow)
+## 🔄 Data Flow
 
 ```mermaid
 graph TD
@@ -59,47 +59,47 @@ graph TD
     E -->|Saves state| F[Browser LocalStorage]
 ```
 
-### ⚡ Quy tắc Hoạt động của Trình biên dịch (Compiler):
-- Compiler quét thư mục `lessons/` để đọc toàn bộ các file `.md`.
-- Sử dụng các Regular Expression chính xác để phân tích các cú pháp:
-  - Tách phần nghe **Listening** dựa vào header `## 🎧 Part 3: Listening Comprehension`.
-  - Tách phần đọc **Reading** dựa vào header `## 📖 Part 6-7: Reading Comprehension`.
-  - Tự động nhận diện block hội thoại theo định dạng nhân vật như `**[W-Am]**` hoặc `**[M-Cn]**`.
-  - Phân tích các câu hỏi trắc nghiệm từ block `#### 📝 Questions & Answers`.
-  - Tự động map đáp án đúng của bài đọc bằng cách tìm cụm từ được gạch dưới `<u>đáp_án</u> (mã_câu_hỏi)` trong phần **Completed Version** đối chiếu ngược lại với danh sách **Options** gốc.
+### ⚡ Compiler Operation Rules:
+- The compiler scans the `lessons/` directory to read all `.md` files.
+- It uses precise Regular Expressions to parse syntax:
+  - Extracts the **Listening** section based on the header `## 🎧 Part 3: Listening Comprehension`.
+  - Extracts the **Reading** section based on the header `## 📖 Part 6-7: Reading Comprehension`.
+  - Automatically identifies dialogue blocks formatted with speaker tags like `**[W-Am]**` or `**[M-Cn]**`.
+  - Parses multiple-choice questions from the `#### 📝 Questions & Answers` block.
+  - Automatically maps the correct answers for reading passages by looking for underlined phrases `<u>correct_answer</u> (question_code)` in the **Completed Version** and matching them back to the original **Options** list.
 
 ---
 
-## 🚀 Hướng dẫn Nâng cấp & Mở rộng (Scaling to 21 Lessons)
+## 🚀 Scaling & Expansion Guide (Scaling to 21 Lessons)
 
-Khi bạn muốn thêm bài mới (ví dụ Bài 14, 15, ..., 21), bạn chỉ cần làm theo các bước chuẩn mực sau:
+When you want to add a new lesson (e.g., Lesson 14, 15, ..., 21), simply follow these standardized steps:
 
-### Bước 1: Chuẩn bị file bài học Markdown nguồn
-- Tạo một file mới trong thư mục `lessons/` đặt tên là `14.md` (giữ đúng cấu trúc tiêu đề và các ký hiệu emoji giống `12.md` và `13.md` để trình biên dịch chạy chuẩn).
-- Kiểm tra các tiêu đề chính bắt buộc phải khớp:
+### Step 1: Prepare the Source Markdown File
+- Create a new file in the `lessons/` directory named `14.md` (keep the exact same heading structure and emoji icons as `12.md` and `13.md` for the compiler to parse correctly).
+- Verify that the required main headings match:
   - `## 🎧 Part 3: Listening Comprehension`
   - `## 📖 Part 6-7: Reading Comprehension`
-  - Đảm bảo các lựa chọn phần nghe có tiền tố như `A.`, `B.`, `C.`, `D.` hoặc `(A)`, `(B)`.
-  - Phần đáp án trắc nghiệm nghe có tiền tố chuẩn: `👉 **Answer: B**`.
-  - Phần gạch chân đáp án Reading completed: `**<u>đáp án</u>** (mã_câu)`.
+  - Ensure the listening option choices prefix with `A.`, `B.`, `C.`, `D.` or `(A)`, `(B)`.
+  - The correct answer prefix format in Listening is: `👉 **Answer: B**`.
+  - The underlined answer format in Reading completed version is: `**<u>answer</u>** (question_code)`.
 
-### Bước 2: Thêm tài nguyên Đồ họa & Âm thanh
-- **Âm thanh bài nghe**: Lưu file âm thanh tương ứng vào thư mục `public/audio/` với tên định dạng **`lesson14.mp3`** (để ứng dụng tự động tải đúng nhạc).
-- **Ảnh minh họa câu hỏi**: Nếu bài tập có sơ đồ, bản đồ (VD: câu hỏi 15 trong bài 14), hãy lưu ảnh đó vào thư mục `public/assets/` với tên định dạng **`14_15.png`** (quy tắc: `${lessonId}_${qNum}.png`). Ứng dụng sẽ tự kiểm tra và hiển thị ảnh đúng câu hỏi đó.
+### Step 2: Add Audio & Graphic Assets
+- **Listening Audio**: Save the corresponding audio file in the `public/audio/` directory named **`lesson14.mp3`** (allowing the app to load the correct track automatically).
+- **Question Images**: If the exercises contain diagrams, maps, or charts (e.g., question 15 in lesson 14), save the image in the `public/assets/` directory named **`14_15.png`** (naming convention: `${lessonId}_${qNum}.png`). The app will automatically check for and display the image next to the corresponding question.
 
-### Bước 3: Chạy biên dịch
-- Chạy lệnh sau để bộ biên dịch tích hợp bài mới vào database JSON:
+### Step 3: Run Compilation
+- Run the following command to integrate the new lesson into the JSON database:
   ```bash
   npm run compile
   ```
-- Hoặc nếu đang chạy dev server, hệ thống sẽ **tự động chạy lệnh này trước** khi chạy server (`predev` script):
+- Alternatively, if you are running the development server, this command runs automatically before starting the server (`predev` script):
   ```bash
   npm run dev
   ```
 
 ---
 
-## 💾 Lưu trữ Tiến trình (Persistence)
+## 💾 Progress Persistence
 
-Ứng dụng lưu kết quả làm bài của bạn (Đáp án đã chọn, điểm số, thời gian làm bài, ngày hoàn thành) vào `localStorage` của trình duyệt dưới khóa `toeic_practice_progress`. 
-Nhờ đó, bạn có thể tắt trình duyệt và mở lại làm tiếp bất kỳ lúc nào mà không sợ mất lịch sử làm bài.
+The app stores your practice progress (selected answers, scores, elapsed time, and completion date) in the browser's `localStorage` under the key `toeic_practice_progress`.
+This allows you to close the browser and resume your work at any time without losing your progress history.
