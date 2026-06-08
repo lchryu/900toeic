@@ -89,6 +89,87 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
     setEndValue(formatTime(audioControl?.currentTime || 0));
   };
 
+  // Keyboard shortcut refs to prevent keydown listener re-registrations
+  const startRef = React.useRef(startValue);
+  const endRef = React.useRef(endValue);
+  const segmentRef = React.useRef(segment);
+  const audioRef = React.useRef(audioControl);
+  const activeRef = React.useRef(isActive);
+  const loopRef = React.useRef(isLooping);
+
+  useEffect(() => {
+    startRef.current = startValue;
+    endRef.current = endValue;
+    segmentRef.current = segment;
+    audioRef.current = audioControl;
+    activeRef.current = isActive;
+    loopRef.current = isLooping;
+  });
+
+  useEffect(() => {
+    if (!isEditing) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const isInput = document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA';
+
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const nextStart = parseTimeInput(startRef.current);
+        const nextEnd = parseTimeInput(endRef.current);
+        if (Number.isFinite(nextStart) && Number.isFinite(nextEnd)) {
+          onUpdateAudioSegment(segmentRef.current.id, { start: nextStart, end: nextEnd });
+          setIsEditing(false);
+        }
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        setIsEditing(false);
+      } else if (!isInput) {
+        if (e.key === '[') {
+          e.preventDefault();
+          setStartValue(formatTime(audioRef.current?.currentTime || 0));
+        } else if (e.key === ']') {
+          e.preventDefault();
+          setEndValue(formatTime(audioRef.current?.currentTime || 0));
+        } else if (e.key.toLowerCase() === 'l') {
+          e.preventDefault();
+          if (audioRef.current?.isReady) {
+            if (loopRef.current) {
+              audioRef.current.stopSegment();
+            } else {
+              audioRef.current.playSegment(segmentRef.current, true);
+            }
+          }
+        } else if (e.key === ' ') {
+          e.preventDefault();
+          if (audioRef.current?.isReady) {
+            if (activeRef.current && audioRef.current.isPlaying) {
+              audioRef.current.stopSegment();
+            } else {
+              audioRef.current.playSegment(segmentRef.current, false);
+            }
+          }
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          if (audioRef.current) {
+            const seekAmt = e.shiftKey ? 5 : 2;
+            audioRef.current.seekTo(Math.max(0, audioRef.current.currentTime - seekAmt));
+          }
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          if (audioRef.current) {
+            const seekAmt = e.shiftKey ? 5 : 2;
+            audioRef.current.seekTo(Math.min(audioRef.current.duration, audioRef.current.currentTime + seekAmt));
+          }
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isEditing]);
+
   return (
     <div className={`audio-segment-row ${isActive ? 'is-active' : ''}`}>
       <div className="audio-segment-main">
@@ -121,7 +202,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
             <span>Loop</span>
           </button>
           <button
-            className={`audio-segment-btn icon-only ${isEditing ? 'active' : ''}`}
+            className={`audio-segment-btn ${isEditing ? 'active' : ''}`}
             type="button"
             onClick={() => setIsEditing((value) => !value)}
             title="Edit segment time"
@@ -168,6 +249,17 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
           >
             <RotateCcw size={14} />
           </button>
+          
+          <div className="audio-segment-shortcuts-legend" style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.72rem', color: 'hsl(var(--text-muted))', marginTop: '12px', paddingTop: '8px', borderTop: '1px dashed hsl(var(--panel-border) / 0.5)' }}>
+            <span>⌨️ Shortcuts:</span>
+            <span><strong>[</strong> Set start</span>
+            <span><strong>]</strong> Set end</span>
+            <span><strong>Space</strong> Play/Pause</span>
+            <span><strong>L</strong> Loop</span>
+            <span><strong>Arrows</strong> Seek 2s (Shift: 5s)</span>
+            <span><strong>Enter</strong> Save</span>
+            <span><strong>Esc</strong> Cancel</span>
+          </div>
         </div>
       )}
     </div>

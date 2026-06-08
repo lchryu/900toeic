@@ -13,6 +13,8 @@ import {
   saveCloudProgress,
   loadCloudAudioSegments,
   saveCloudAudioSegments,
+  loadCloudVocabulary,
+  saveCloudVocabulary,
   signInWithGoogle,
   signOutGoogle,
   subscribeToAuth,
@@ -155,6 +157,7 @@ const App: React.FC = () => {
   const [progress, setProgress] = useState<{ [lessonId: string]: LessonProgress }>({});
   const [history, setHistory] = useState<PracticeHistoryEntry[]>([]);
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
+  const [masteredVocabIds, setMasteredVocabIds] = useState<string[]>([]);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
@@ -194,6 +197,11 @@ const App: React.FC = () => {
       if (storedHistory) {
         setHistory(JSON.parse(storedHistory));
       }
+
+      const storedVocab = localStorage.getItem('toeic_vocabulary_mastered');
+      if (storedVocab) {
+        setMasteredVocabIds(JSON.parse(storedVocab));
+      }
     } catch (e) {
       console.error('Failed to load local learning state:', e);
     }
@@ -231,6 +239,16 @@ const App: React.FC = () => {
 
         localStorage.setItem('toeic_audio_segments', JSON.stringify(mergedSegments));
         await saveCloudAudioSegments(user.uid, mergedSegments);
+
+        // 3. Sync vocabulary
+        const storedVocab = localStorage.getItem('toeic_vocabulary_mastered');
+        const localVocab = storedVocab ? JSON.parse(storedVocab) : [];
+        const cloudVocab = (await loadCloudVocabulary(user.uid)) || [];
+        const mergedVocab = Array.from(new Set([...localVocab, ...cloudVocab]));
+
+        setMasteredVocabIds(mergedVocab);
+        localStorage.setItem('toeic_vocabulary_mastered', JSON.stringify(mergedVocab));
+        await saveCloudVocabulary(user.uid, mergedVocab);
 
         setSyncMessage('Synced with Google account');
       } catch (e) {
@@ -344,6 +362,16 @@ const App: React.FC = () => {
       });
     } catch (e) {
       console.error('Failed to read local audio segments:', e);
+    }
+  };
+
+  const handleSaveVocabulary = (ids: string[]) => {
+    setMasteredVocabIds(ids);
+    localStorage.setItem('toeic_vocabulary_mastered', JSON.stringify(ids));
+    if (authUser) {
+      saveCloudVocabulary(authUser.uid, ids).catch((e) => {
+        console.error('Failed to save cloud vocabulary:', e);
+      });
     }
   };
 
@@ -485,7 +513,11 @@ const App: React.FC = () => {
             onStartLesson={(id) => handleNavigate('lesson', id)}
           />
         ) : activeView === 'vocabulary' ? (
-          <VocabularyTrainer lessons={lessons} />
+          <VocabularyTrainer
+            lessons={lessons}
+            masteredIds={masteredVocabIds}
+            onSaveMasteredIds={handleSaveVocabulary}
+          />
         ) : activeView === 'audioplayer' ? (
           <Mp3PlayerHub
             lessons={lessons}

@@ -4,6 +4,8 @@ import { LessonData } from '../types';
 
 interface VocabularyTrainerProps {
   lessons: LessonData[];
+  masteredIds: string[];
+  onSaveMasteredIds: (ids: string[]) => void;
 }
 
 interface VocabularyItem {
@@ -14,9 +16,7 @@ interface VocabularyItem {
   lessonTitle: string;
 }
 
-const LOCAL_STORAGE_VOCAB_KEY = 'toeic_vocabulary_mastered';
-
-export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons }) => {
+export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons, masteredIds, onSaveMasteredIds }) => {
   const [activeTab, setActiveTab] = useState<'flashcards' | 'library'>('flashcards');
   const [selectedLessonId, setSelectedLessonId] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,14 +25,6 @@ export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons })
   const [deck, setDeck] = useState<VocabularyItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
-  const [masteredIds, setMasteredIds] = useState<string[]>(() => {
-    try {
-      const stored = localStorage.getItem(LOCAL_STORAGE_VOCAB_KEY);
-      return stored ? JSON.parse(stored) : [];
-    } catch {
-      return [];
-    }
-  });
 
   // Extract vocabulary from lessons
   const allVocabItems = React.useMemo(() => {
@@ -75,11 +67,6 @@ export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons })
     });
     return items;
   }, [lessons]);
-
-  // Sync mastered list to localStorage
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_VOCAB_KEY, JSON.stringify(masteredIds));
-  }, [masteredIds]);
 
   // Filter items based on selections
   const filteredItems = React.useMemo(() => {
@@ -131,7 +118,7 @@ export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons })
 
   const handleMarkMastered = (itemId: string) => {
     if (!masteredIds.includes(itemId)) {
-      setMasteredIds((prev) => [...prev, itemId]);
+      onSaveMasteredIds([...masteredIds, itemId]);
     }
     
     // Remove from current deck or just advance
@@ -151,18 +138,15 @@ export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons })
   };
 
   const handleToggleMasteredLibrary = (itemId: string) => {
-    setMasteredIds((prev) => {
-      if (prev.includes(itemId)) {
-        return prev.filter((id) => id !== itemId);
-      } else {
-        return [...prev, itemId];
-      }
-    });
+    const nextMastered = masteredIds.includes(itemId)
+      ? masteredIds.filter((id) => id !== itemId)
+      : [...masteredIds, itemId];
+    onSaveMasteredIds(nextMastered);
   };
 
   const handleResetProgress = () => {
     if (window.confirm('Are you sure you want to reset all vocabulary study progress?')) {
-      setMasteredIds([]);
+      onSaveMasteredIds([]);
       setTimeout(() => initDeck(filteredItems), 50);
     }
   };

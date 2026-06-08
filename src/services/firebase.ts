@@ -139,3 +139,29 @@ export const saveCloudAudioSegments = async (
   );
 };
 
+export const loadCloudVocabulary = async (uid: string) => {
+  if (!db) return null;
+
+  const snapshot = await getDoc(doc(db, 'toeicProgress', uid));
+  if (!snapshot.exists()) return null;
+
+  const data = snapshot.data();
+  return (data.masteredVocabIds || null) as string[] | null;
+};
+
+export const saveCloudVocabulary = async (
+  uid: string,
+  masteredVocabIds: string[]
+) => {
+  if (!db) return;
+
+  await setDoc(
+    doc(db, 'toeicProgress', uid),
+    {
+      masteredVocabIds,
+      updatedAt: serverTimestamp()
+    },
+    { merge: true }
+  );
+};
+
