@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Dashboard } from './components/Dashboard';
 import { LessonWorkspace } from './components/LessonWorkspace';
-import { LessonData, LessonProgress, PracticeHistoryEntry } from './types';
+import { VocabularyTrainer } from './components/VocabularyTrainer';
+import { Mp3PlayerHub } from './components/Mp3PlayerHub';
+import { AudioPlayer } from './components/AudioPlayer';
+import { LessonData, LessonProgress, PracticeHistoryEntry, AudioControlState } from './types';
 import { Menu } from 'lucide-react';
 import lessonsData from './data/lessons.json';
 import {
@@ -59,9 +62,15 @@ const mergeProgress = (
 const App: React.FC = () => {
   const lessons = lessonsData as LessonData[];
   
-  const [activeView, setActiveView] = useState<'dashboard' | 'lesson'>('dashboard');
+  const [activeView, setActiveView] = useState<'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer'>('dashboard');
   const [currentLessonId, setCurrentLessonId] = useState<string | null>(null);
   
+  // Audio Center states for background playback
+  const [activeAudioCenterTrackId, setActiveAudioCenterTrackId] = useState<string | null>(null);
+  const [audioCenterControl, setAudioCenterControl] = useState<AudioControlState | null>(null);
+
+  const activeAudioCenterTrack = lessons.find((l) => l.id === activeAudioCenterTrackId) || null;
+
   // Mobile sidebar drawer state
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   
@@ -165,11 +174,11 @@ const App: React.FC = () => {
     }
   };
 
-  const handleNavigate = (view: 'dashboard' | 'lesson', lessonId: string | null) => {
+  const handleNavigate = (view: 'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer', lessonId: string | null) => {
     setActiveView(view);
     setCurrentLessonId(lessonId);
     // Reset nav grid if moving away from lesson
-    if (view === 'dashboard') {
+    if (view !== 'lesson') {
       setNavConfig({
         questionNumbers: [],
         answeredQuestions: [],
@@ -178,6 +187,10 @@ const App: React.FC = () => {
         gradedResults: {},
         scrollCallback: null
       });
+    } else {
+      // If moving to a lesson, close the background Audio Center player to avoid double playback
+      setActiveAudioCenterTrackId(null);
+      setAudioCenterControl(null);
     }
   };
 
@@ -343,6 +356,15 @@ const App: React.FC = () => {
             onSignOut={handleSignOut}
             onStartLesson={(id) => handleNavigate('lesson', id)}
           />
+        ) : activeView === 'vocabulary' ? (
+          <VocabularyTrainer lessons={lessons} />
+        ) : activeView === 'audioplayer' ? (
+          <Mp3PlayerHub
+            lessons={lessons}
+            activeTrackId={activeAudioCenterTrackId}
+            setActiveTrackId={setActiveAudioCenterTrackId}
+            audioControl={audioCenterControl}
+          />
         ) : activeLesson ? (
           <LessonWorkspace
             key={activeLesson.id}
@@ -358,6 +380,45 @@ const App: React.FC = () => {
           </div>
         )}
       </main>
+
+      {/* Global Audio Center Player for Background Play */}
+      {activeAudioCenterTrack && (
+        <div className="global-audio-player-wrapper glass-panel">
+          {/* Left: Track Info */}
+          <div className="global-audio-player-info">
+            <div className="global-audio-player-equalizer">
+              <div className={`bar bar1 ${audioCenterControl?.isPlaying ? 'playing' : ''}`} />
+              <div className={`bar bar2 ${audioCenterControl?.isPlaying ? 'playing' : ''}`} />
+              <div className={`bar bar3 ${audioCenterControl?.isPlaying ? 'playing' : ''}`} />
+            </div>
+            <span className="global-audio-player-title" title={activeAudioCenterTrack.title}>
+              {activeAudioCenterTrack.title.replace(/📘|Lesson\s*/g, '').trim()}
+            </span>
+          </div>
+
+          {/* Center: Audio player controls */}
+          <div className="global-audio-player-controls-container">
+            <AudioPlayer
+              key={activeAudioCenterTrack.id}
+              src={activeAudioCenterTrack.audio ? `/${activeAudioCenterTrack.audio}` : undefined}
+              youtubeUrl={activeAudioCenterTrack.youtubeUrl}
+              onControlStateChange={setAudioCenterControl}
+            />
+          </div>
+
+          {/* Right: Close button */}
+          <button
+            onClick={() => {
+              setActiveAudioCenterTrackId(null);
+              setAudioCenterControl(null);
+            }}
+            className="global-player-close-btn"
+            title="Close Player"
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </div>
   );
 };

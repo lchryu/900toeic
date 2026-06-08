@@ -1691,6 +1691,199 @@ h1, h2, h3, h4, h5 {
 
   .dashboard-main-layout {
     grid-template-columns: 1fr !important;
+  }
+
+  .reading-mobile-questions .glass-panel {
+    padding: 18px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .reading-mobile-notes {
+    display: grid;
+    gap: 12px;
+  }
+
+  .audio-player-shell {
+    position: fixed;
+    top: auto;
+    right: 14px;
+    bottom: 96px;
+    z-index: 80;
+    width: auto;
+    border: 1px solid hsl(var(--panel-border));
+    border-radius: 999px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
+
+  .audio-player-bar {
+    width: auto;
+    padding: 8px 10px;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+
+  .audio-source-control,
+  .audio-icon-btn,
+  .progress-track,
+  .audio-extra-controls {
+    display: none;
+  }
+
+  .audio-transport-controls {
+    gap: 0;
+  }
+
+  .audio-progress-container {
+    flex: none;
+    width: auto;
+    gap: 6px;
+  }
+
+  .time-label {
+    min-width: auto;
+    font-size: 0.78rem;
+  }
+
+  .audio-segment-row {
+    margin: 0 0 12px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .audio-segment-manager {
+    margin: 0 0 12px;
+  }
+
+  .audio-segment-manager-toggle {
+    min-height: 34px;
+    padding: 0 10px;
+    font-size: 0.76rem;
+  }
+
+  .audio-segment-manager-panel {
+    padding: 8px;
+    border-radius: 10px;
+  }
+
+  .audio-segment-manager-summary {
+    font-size: 0.68rem;
+  }
+
+  .audio-segment-manager-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .audio-segment-manager-label {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .audio-segment-manager-fields {
+    justify-content: space-between;
+  }
+
+  .audio-segment-manager-fields label {
+    flex: 1;
+  }
+
+  .audio-segment-manager-actions {
+    justify-content: flex-start;
+  }
+
+  .audio-segment-main {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .audio-segment-label span {
+    font-size: 0.84rem;
+  }
+
+  .audio-segment-label small {
+    font-size: 0.68rem;
+  }
+
+  .audio-segment-actions {
+    gap: 6px;
+  }
+
+  .audio-segment-btn {
+    min-height: 30px;
+    padding: 0 8px;
+    gap: 4px;
+    font-size: 0.7rem;
+  }
+
+  .audio-segment-btn.icon-only {
+    width: 30px;
+  }
+
+  .audio-segment-editor {
+    gap: 6px;
+  }
+
+  .audio-segment-editor label {
+    flex: 1;
+    min-width: 96px;
+  }
+
+  .audio-segment-input {
+    width: 58px;
+    min-height: 30px;
+  }
+
+  .listening-group-header {
+    align-items: flex-start !important;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .audio-extra-controls {
+    justify-content: space-between;
+  }
+  
+  .audio-btn {
+    width: 34px;
+    height: 34px;
+    box-shadow: 0 0 12px hsl(var(--primary) / 0.32);
+  }
+  
+  .control-banner {
+    padding: 12px 16px;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .control-banner > div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .dashboard-grid {
+    padding: 16px !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .google-sync-panel {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 20px;
+  }
+
+  .google-login-btn,
+  .google-account-actions .secondary-btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .dashboard-main-layout {
+    grid-template-columns: 1fr !important;
     gap: 24px !important;
   }
   
@@ -1699,3 +1892,541 @@ h1, h2, h3, h4, h5 {
     font-size: 0.95rem;
   }
 }
+
+/* ==========================================================================
+   Vocabulary Trainer & Flashcard Styles
+   ========================================================================== */
+
+.vocab-trainer-container {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Flashcard Flipping 3D Effect */
+.flashcard-card {
+  perspective: 1000px;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard-card.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  transition: border-color 0.3s ease;
+}
+
+.flashcard-front {
+  background: var(--card-bg, hsl(var(--panel-bg) / 0.6));
+  border: 1px solid hsl(var(--panel-border));
+}
+
+.flashcard-card:hover .flashcard-front {
+  border-color: hsl(var(--primary) / 0.4);
+}
+
+.flashcard-back {
+  background: linear-gradient(135deg, hsl(var(--panel-bg) / 0.85) 0%, hsl(var(--panel-bg) / 0.55) 100%);
+  border: 1px solid hsl(var(--panel-border));
+  transform: rotateY(180deg);
+}
+
+/* Table styles overrides for Vocabulary library */
+.vocab-trainer-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vocab-trainer-container th, .vocab-trainer-container td {
+  padding: 16px;
+  border-bottom: 1px solid hsl(var(--panel-border) / 0.3);
+}
+
+.vocab-trainer-container tr:hover td {
+  background: hsl(var(--panel-hover) / 0.15);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Scrubber Popup Styling */
+.mobile-scrubber-popup {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  width: 280px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid hsl(var(--panel-border));
+  background: hsl(var(--panel-bg) / 0.85);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  animation: slideUpFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.mobile-scrub-slider {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: hsl(var(--panel-border) / 0.8);
+  accent-color: hsl(var(--primary));
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-scrub-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+}
+
+.mobile-scrub-slider::-webkit-slider-thumb {
+  margin-top: -4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  cursor: pointer;
+  border: none;
+}
+
+.close-scrubber-btn {
+  background: transparent;
+  border: none;
+  color: hsl(var(--text-muted));
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 4px 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.close-scrubber-btn:hover {
+  color: hsl(var(--text-primary));
+  background: hsl(var(--panel-hover));
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Audio Center / MP3 Player Hub Styles
+   ========================================================================== */
+
+.mp3-hub-container {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@media (max-width: 768px) {
+  .mp3-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  .mp3-hub-container {
+    padding: 16px !important;
+  }
+
+  .mp3-playlist-panel {
+    padding: 16px !important;
+  }
+
+  .mp3-track-list {
+    max-height: 350px !important;
+  }
+}
+
+.mp3-track-row {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mp3-track-row:hover {
+  background: hsl(var(--panel-hover) / 0.3) !important;
+  border-color: hsl(var(--primary) / 0.2) !important;
+  transform: translateX(4px);
+}
+
+.mp3-track-row.active {
+  background: hsl(var(--primary) / 0.08) !important;
+  border-color: hsl(var(--primary) / 0.4) !important;
+  box-shadow: 0 4px 12px hsl(var(--primary) / 0.05);
+}
+
+/* Sound Visualizer Bars (Equalizer) */
+.sound-visualizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+  padding-bottom: 2px;
+}
+
+.sound-visualizer-bars .bar {
+  width: 3px;
+  height: 100%;
+  background: hsl(var(--primary));
+  border-radius: 1px;
+  transform-origin: bottom;
+  animation: bounce 0.8s ease-in-out infinite alternate;
+}
+
+.sound-visualizer-bars .bar1 {
+  animation-delay: 0.1s;
+  animation-duration: 0.6s;
+}
+
+.sound-visualizer-bars .bar2 {
+  animation-delay: 0.3s;
+  animation-duration: 0.9s;
+}
+
+.sound-visualizer-bars .bar3 {
+  animation-delay: 0.5s;
+  animation-duration: 0.7s;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scaleY(0.2);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* Vinyl Record Disc Animations */
+.vinyl-record-disc {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vinyl-record-disc.spinning {
+  animation: spin-vinyl 12s linear infinite;
+}
+
+@keyframes spin-vinyl {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Rotate the actual disc icon inside */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Audio chapter segments */
+.audio-segment-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid hsl(var(--panel-border));
+  background: hsl(var(--panel-bg) / 0.4);
+  color: hsl(var(--text-secondary));
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.audio-segment-btn:hover {
+  background: hsl(var(--panel-hover));
+  color: hsl(var(--text-primary));
+  border-color: hsl(var(--primary) / 0.5);
+}
+
+.audio-segment-btn:active {
+  transform: scale(0.96);
+}
+
+/* Custom search and filter styling for MP3 Player Hub */
+.mp3-search-input:focus {
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15);
+}
+
+.mp3-filter-pill:hover:not(.active) {
+  color: hsl(var(--text-primary)) !important;
+  border-color: hsl(var(--primary) / 0.4) !important;
+  background: hsl(var(--panel-hover) / 0.2) !important;
+}
+
+.mp3-filter-pill.active {
+  box-shadow: 0 2px 8px hsl(var(--primary) / 0.25);
+}
+
+/* Global Audio Player Mini-Bar (Pill Shape) */
+.global-audio-player-wrapper {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 850px;
+  height: 64px; /* fixed height for slim profile */
+  background: hsl(var(--panel-bg) / 0.8) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--panel-border));
+  border-radius: 999px; /* Pill */
+  padding: 8px 16px 8px 20px;
+  z-index: 150;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  animation: slideUpFade 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Left: Track Info */
+.global-audio-player-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: 0;
+  max-width: 200px;
+}
+
+.global-audio-player-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: hsl(var(--text-primary));
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Equalizer */
+.global-audio-player-equalizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+  width: 12px;
+  flex-shrink: 0;
+}
+
+.global-audio-player-equalizer .bar {
+  width: 2px;
+  height: 100%;
+  background: hsl(var(--primary));
+  border-radius: 1px;
+  transform-origin: bottom;
+  transform: scaleY(0.2);
+}
+
+.global-audio-player-equalizer .bar.playing {
+  animation: bounce 0.8s ease-in-out infinite alternate;
+}
+
+.global-audio-player-equalizer .bar1 { animation-delay: 0.1s; animation-duration: 0.5s; }
+.global-audio-player-equalizer .bar2 { animation-delay: 0.3s; animation-duration: 0.8s; }
+.global-audio-player-equalizer .bar3 { animation-delay: 0.5s; animation-duration: 0.6s; }
+
+/* Center: Controls Wrapper */
+.global-audio-player-controls-container {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Audio Player Shell reset for global player */
+.global-audio-player-wrapper .audio-player-shell {
+  position: static !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  width: 100% !important;
+}
+
+.global-audio-player-wrapper .audio-player-bar {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 0 !important;
+  gap: 16px !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.global-audio-player-wrapper .audio-progress-container {
+  display: flex !important;
+  flex: 1 !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.global-audio-player-wrapper .progress-track {
+  display: block !important;
+  background: hsl(var(--panel-border) / 0.8) !important;
+}
+
+.global-audio-player-wrapper .audio-source-control,
+.global-audio-player-wrapper .audio-icon-btn,
+.global-audio-player-wrapper .audio-extra-controls {
+  display: flex !important;
+}
+
+/* Right: Close Button */
+.global-audio-player-wrapper .global-player-close-btn {
+  background: transparent;
+  border: none;
+  color: hsl(var(--text-muted));
+  font-size: 0.95rem;
+  font-weight: bold;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.global-audio-player-wrapper .global-player-close-btn:hover {
+  color: hsl(var(--error)) !important;
+  background: hsl(var(--error) / 0.08) !important;
+}
+
+/* Mobile Responsiveness for Global Audio Player */
+@media (max-width: 768px) {
+  .global-audio-player-wrapper {
+    bottom: 80px !important; /* clear mobile tabs */
+    height: 56px !important;
+    padding: 6px 12px 6px 16px !important;
+    gap: 12px !important;
+    width: 94% !important;
+  }
+
+  .global-audio-player-info {
+    max-width: 110px !important;
+  }
+
+  .global-audio-player-title {
+    font-size: 0.8rem !important;
+  }
+
+  /* Hide source controls, speeds and youtube links to save space */
+  .global-audio-player-wrapper .audio-source-control,
+  .global-audio-player-wrapper .audio-extra-controls {
+    display: none !important;
+  }
+
+  /* Skip buttons and progress bar remain */
+  .global-audio-player-wrapper .audio-player-bar {
+    gap: 10px !important;
+  }
+
+  .global-audio-player-wrapper .audio-progress-container {
+    gap: 6px !important;
+  }
+
+  .global-audio-player-wrapper .time-label {
+    font-size: 0.72rem !important;
+    min-width: 32px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* On very small devices, hide timeline to focus on music info and simple play/pause */
+  .global-audio-player-wrapper .audio-progress-container {
+    display: none !important;
+  }
+  
+  .global-audio-player-info {
+    max-width: 140px !important;
+    flex: 1 !important;
+  }
+
+  .global-audio-player-controls-container {
+    flex: none !important;
+  }
+
+  .global-audio-player-wrapper .audio-player-bar {
+    width: auto !important;
+  }
+}
+
+/* Mobile Tabs & Grid view toggle for MP3 Center */
+@media (max-width: 768px) {
+  .mp3-mobile-tabs {
+    display: flex !important;
+    background: hsl(var(--panel-bg) / 0.4);
+    border: 1px solid hsl(var(--panel-border));
+    border-radius: 10px;
+    padding: 4px;
+  }
+  
+  .mp3-mobile-tab:hover:not(.active) {
+    color: hsl(var(--text-primary)) !important;
+  }
+
+  .mp3-grid.show-playlist .mp3-playlist-panel {
+    display: flex !important;
+  }
+  
+  .mp3-grid.show-playlist .mp3-player-column {
+    display: none !important;
+  }
+
+  .mp3-grid.show-player .mp3-playlist-panel {
+    display: none !important;
+  }
+  
+  .mp3-grid.show-player .mp3-player-column {
+    display: flex !important;
+    width: 100%;
+  }
+}
+
+
+

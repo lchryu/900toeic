@@ -92,6 +92,60 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
   const [activeSegmentId, setActiveSegmentId] = useState<string | null>(null);
   const [isLoopingSegment, setIsLoopingSegment] = useState(false);
 
+  // Mobile long-press scrubber states and handlers
+  const [showMobileScrubber, setShowMobileScrubber] = useState(false);
+  const pressTimerRef = useRef<any>(null);
+  const isLongPressRef = useRef(false);
+
+  const handleTouchStart = () => {
+    isLongPressRef.current = false;
+    pressTimerRef.current = setTimeout(() => {
+      isLongPressRef.current = true;
+      setShowMobileScrubber(true);
+      if (navigator.vibrate) {
+        navigator.vibrate(50);
+      }
+    }, 500);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (pressTimerRef.current) {
+      clearTimeout(pressTimerRef.current);
+    }
+    if (isLongPressRef.current) {
+      e.preventDefault();
+    }
+  };
+
+  const handleMouseDown = () => {
+    isLongPressRef.current = false;
+    pressTimerRef.current = setTimeout(() => {
+      isLongPressRef.current = true;
+      setShowMobileScrubber(true);
+    }, 500);
+  };
+
+  const handleMouseUp = () => {
+    if (pressTimerRef.current) {
+      clearTimeout(pressTimerRef.current);
+    }
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (isLongPressRef.current) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+    togglePlay();
+  };
+
+  const handleContextMenu = (e: React.MouseEvent) => {
+    if (isLongPressRef.current) {
+      e.preventDefault();
+    }
+  };
+
   const youtubeVideoId = youtubeUrl ? getYoutubeVideoId(youtubeUrl) : '';
   const isYoutubeSource = source === 'youtube';
   const canUseControls = !isYoutubeSource || isYoutubeReady;
@@ -368,7 +422,22 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
   }, [currentTime, duration, isPlaying, canUseControls, activeSegmentId, isLoopingSegment, onControlStateChange, playSegment, seekTo, stopSegment]);
 
   return (
-    <div className="audio-player-shell">
+    <div className="audio-player-shell" style={{ position: 'relative' }}>
+      {showMobileScrubber && (
+        <div className="mobile-scrubber-popup glass-panel">
+          <span className="time-label">{formatTime(currentTime)}</span>
+          <input
+            type="range"
+            min={0}
+            max={duration || 100}
+            value={currentTime}
+            onChange={(e) => seekTo(Number(e.target.value))}
+            className="mobile-scrub-slider"
+          />
+          <span className="time-label">{formatTime(duration)}</span>
+          <button onClick={() => setShowMobileScrubber(false)} className="close-scrubber-btn">✕</button>
+        </div>
+      )}
       <div className="audio-player-bar">
         {src && (
           <audio
@@ -407,7 +476,18 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
           <button className="audio-icon-btn" onClick={() => handleSkip(-10)} disabled={!canUseControls} title="Back 10 seconds">
             <SkipBack size={18} />
           </button>
-          <button className="audio-btn" onClick={togglePlay} disabled={!canUseControls} title={isPlaying ? 'Pause' : 'Play'}>
+          <button
+            className="audio-btn"
+            onClick={handleClick}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onContextMenu={handleContextMenu}
+            disabled={!canUseControls}
+            title={isPlaying ? 'Pause' : 'Play'}
+            style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+          >
             {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" style={{ marginLeft: '2px' }} />}
           </button>
           <button className="audio-icon-btn" onClick={() => handleSkip(10)} disabled={!canUseControls} title="Forward 10 seconds">

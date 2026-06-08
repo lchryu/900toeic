@@ -197,19 +197,52 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   const handleUpdateAudioSegment = (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => {
     const duration = audioControl?.duration || 0;
-    const nextSegments = audioSegments.map((segment) => {
-      if (segment.id !== segmentId) return segment;
-      const nextStart = Math.max(0, Math.min(updates.start ?? segment.start, duration));
-      const nextEnd = Math.max(nextStart + 1, Math.min(updates.end ?? segment.end, duration || updates.end || segment.end));
+    
+    // Find the target segment's index
+    const targetIndex = audioSegments.findIndex((s) => s.id === segmentId);
+    if (targetIndex === -1) return;
 
-      return {
-        ...segment,
-        start: Math.round(nextStart),
-        end: Math.round(nextEnd),
+    const targetSegment = audioSegments[targetIndex];
+    const newStart = Math.max(0, Math.min(updates.start ?? targetSegment.start, duration));
+    const newEnd = Math.max(newStart + 1, Math.min(updates.end ?? targetSegment.end, duration || updates.end || targetSegment.end));
+
+    // Create a new array of segments and update the target segment
+    const nextSegments = [...audioSegments];
+    nextSegments[targetIndex] = {
+      ...targetSegment,
+      start: Math.round(newStart),
+      end: Math.round(newEnd),
+      isCustom: true,
+      updatedAt: new Date().toISOString()
+    };
+
+    // Propagate end time changes to the next segment's start time
+    if (updates.end !== undefined && targetIndex < nextSegments.length - 1) {
+      const nextSeg = nextSegments[targetIndex + 1];
+      const nextStart = Math.round(newEnd);
+      const nextEnd = Math.max(nextStart + 1, nextSeg.end);
+      nextSegments[targetIndex + 1] = {
+        ...nextSeg,
+        start: nextStart,
+        end: nextEnd,
         isCustom: true,
         updatedAt: new Date().toISOString()
       };
-    });
+    }
+
+    // Propagate start time changes to the previous segment's end time
+    if (updates.start !== undefined && targetIndex > 0) {
+      const prevSeg = nextSegments[targetIndex - 1];
+      const prevEnd = Math.round(newStart);
+      const prevStart = Math.min(prevSeg.start, Math.max(0, prevEnd - 1));
+      nextSegments[targetIndex - 1] = {
+        ...prevSeg,
+        start: prevStart,
+        end: prevEnd,
+        isCustom: true,
+        updatedAt: new Date().toISOString()
+      };
+    }
 
     persistAudioSegments(nextSegments);
   };

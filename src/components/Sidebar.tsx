@@ -1,13 +1,13 @@
 import React from 'react';
-import { BookOpen, BarChart2, CheckCircle2, Bookmark, Moon, Sun } from 'lucide-react';
+import { BookOpen, BarChart2, CheckCircle2, Bookmark, Moon, Sun, Radio } from 'lucide-react';
 import { LessonData, LessonProgress } from '../types';
 
 interface SidebarProps {
   lessons: LessonData[];
   currentLessonId: string | null;
-  activeView: 'dashboard' | 'lesson';
+  activeView: 'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer';
   progress: { [lessonId: string]: LessonProgress };
-  onNavigate: (view: 'dashboard' | 'lesson', lessonId: string | null) => void;
+  onNavigate: (view: 'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer', lessonId: string | null) => void;
   // Question Navigator props
   questionNumbers: number[];
   answeredQuestions: number[];
@@ -38,7 +38,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   theme,
   onToggleTheme
 }) => {
-  const handleNavClick = (view: 'dashboard' | 'lesson', lessonId: string | null) => {
+  const handleNavClick = (view: 'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer', lessonId: string | null) => {
     onNavigate(view, lessonId);
     onCloseMobileSidebar?.();
   };
@@ -98,6 +98,22 @@ export const Sidebar: React.FC<SidebarProps> = ({
         >
           <BarChart2 size={18} />
           <span>Dashboard</span>
+        </div>
+
+        <div
+          className={`nav-item ${activeView === 'vocabulary' ? 'active' : ''}`}
+          onClick={() => handleNavClick('vocabulary', null)}
+        >
+          <Bookmark size={18} />
+          <span>Vocabulary Trainer</span>
+        </div>
+
+        <div
+          className={`nav-item ${activeView === 'audioplayer' ? 'active' : ''}`}
+          onClick={() => handleNavClick('audioplayer', null)}
+        >
+          <Radio size={18} />
+          <span>Audio Center</span>
         </div>
 
         <div style={{ marginTop: '16px', paddingLeft: '8px', marginBottom: '8px' }}>
