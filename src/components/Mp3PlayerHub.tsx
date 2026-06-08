@@ -52,13 +52,15 @@ export const Mp3PlayerHub: React.FC<Mp3PlayerHubProps> = ({
     // Check if the user has custom segments stored locally/synced
     try {
       const stored = localStorage.getItem('toeic_audio_segments');
-      const allStored = stored ? JSON.parse(stored) : {};
-      const customSegs = allStored[activeTrack.id];
-      if (customSegs && customSegs.length > 0) {
-        return customSegs as AudioSegment[];
+      if (stored) {
+        const parsed = JSON.parse(stored) as { [lessonId: string]: AudioSegment[] };
+        const storedSegments = parsed[activeTrack.id];
+        if (storedSegments && storedSegments.length > 0) {
+          return storedSegments;
+        }
       }
     } catch (e) {
-      console.error('Failed to parse custom segments in Audio Center:', e);
+      console.error('Failed to parse stored audio segments in Mp3PlayerHub:', e);
     }
 
     // Check if the track has preset segments

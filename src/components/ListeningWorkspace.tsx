@@ -250,15 +250,34 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
             <RotateCcw size={14} />
           </button>
           
-          <div className="audio-segment-shortcuts-legend" style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.72rem', color: 'hsl(var(--text-muted))', marginTop: '12px', paddingTop: '8px', borderTop: '1px dashed hsl(var(--panel-border) / 0.5)' }}>
-            <span>⌨️ Shortcuts:</span>
-            <span><strong>[</strong> Set start</span>
-            <span><strong>]</strong> Set end</span>
-            <span><strong>Space</strong> Play/Pause</span>
-            <span><strong>L</strong> Loop</span>
-            <span><strong>Arrows</strong> Seek 2s (Shift: 5s)</span>
-            <span><strong>Enter</strong> Save</span>
-            <span><strong>Esc</strong> Cancel</span>
+          <div className="audio-segment-shortcuts-legend">
+            <div className="audio-segment-shortcuts-title">Keyboard Shortcuts (Editor Active):</div>
+            <div className="audio-segment-shortcuts-grid">
+              <div className="audio-segment-shortcuts-item">
+                <kbd className="shortcut-kbd">[</kbd> <kbd className="shortcut-kbd">]</kbd>
+                <span>Set Start/End</span>
+              </div>
+              <div className="audio-segment-shortcuts-item">
+                <kbd className="shortcut-kbd">Space</kbd>
+                <span>Play/Pause</span>
+              </div>
+              <div className="audio-segment-shortcuts-item">
+                <kbd className="shortcut-kbd">L</kbd>
+                <span>Toggle Loop</span>
+              </div>
+              <div className="audio-segment-shortcuts-item">
+                <kbd className="shortcut-kbd">←</kbd> <kbd className="shortcut-kbd">→</kbd>
+                <span>Seek 2s (<kbd className="shortcut-kbd">Shift</kbd>: 5s)</span>
+              </div>
+              <div className="audio-segment-shortcuts-item">
+                <kbd className="shortcut-kbd">Enter</kbd>
+                <span>Save</span>
+              </div>
+              <div className="audio-segment-shortcuts-item">
+                <kbd className="shortcut-kbd">Esc</kbd>
+                <span>Cancel</span>
+              </div>
+            </div>
           </div>
         </div>
       )}

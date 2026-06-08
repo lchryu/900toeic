@@ -94,7 +94,7 @@ export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons, m
 
   useEffect(() => {
     initDeck();
-  }, [selectedLessonId, allVocabItems]);
+  }, [selectedLessonId, allVocabItems, masteredIds]);
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);

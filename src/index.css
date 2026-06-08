@@ -38,8 +38,12 @@
 
   /* Speaker Badges */
   --color-w-am: 11 80% 61%;  /* Warm Orange */
+  --color-m-am: 11 80% 50%;  /* Darker Warm Orange (M-Am) */
+  --color-w-cn: 208 89% 56%; /* Lighter Cool Blue (W-Cn) */
   --color-m-cn: 208 89% 46%; /* Cool Blue */
   --color-w-br: 41 96% 61%;  /* Gold */
+  --color-m-br: 35 85% 48%;  /* Bronze / Darker Gold (M-Br) */
+  --color-w-au: 160 60% 45%; /* Emerald Green (W-Au) */
   --color-m-au: 145 63% 49%; /* Green */
 }
 
@@ -348,6 +352,49 @@ h1, h2, h3, h4, h5 {
   font-weight: 700;
 }
 
+.audio-segment-shortcuts-legend {
+  width: 100%;
+  margin-top: 12px;
+  font-size: 0.74rem;
+  color: hsl(var(--text-muted));
+  border-top: 1px solid hsl(var(--panel-border) / 0.5);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.audio-segment-shortcuts-title {
+  font-weight: 700;
+  color: hsl(var(--text-secondary));
+  font-size: 0.76rem;
+  margin-bottom: 2px;
+}
+
+.audio-segment-shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 6px 12px;
+}
+
+.audio-segment-shortcuts-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.shortcut-kbd {
+  background: hsl(var(--panel-bg) / 0.9);
+  border: 1px solid hsl(var(--panel-border));
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: hsl(var(--text-primary));
+  font-family: monospace;
+}
+
 .audio-segment-manager {
   margin: -8px 0 20px;
 }
@@ -542,8 +589,12 @@ h1, h2, h3, h4, h5 {
 }
 
 .bg-w-am { background-color: hsl(var(--color-w-am)); }
+.bg-m-am { background-color: hsl(var(--color-m-am)); }
+.bg-w-cn { background-color: hsl(var(--color-w-cn)); }
 .bg-m-cn { background-color: hsl(var(--color-m-cn)); }
 .bg-w-br { background-color: hsl(var(--color-w-br)); }
+.bg-m-br { background-color: hsl(var(--color-m-br)); }
+.bg-w-au { background-color: hsl(var(--color-w-au)); }
 .bg-m-au { background-color: hsl(var(--color-m-au)); }
 .bg-auto { background-color: hsl(var(--text-muted)); }
 
