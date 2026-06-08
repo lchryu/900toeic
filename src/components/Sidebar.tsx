@@ -21,6 +21,7 @@ interface SidebarProps {
   onToggleTheme: () => void;
   isCollapsed?: boolean;
   onToggleCollapse?: () => void;
+  onVersionClick?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -40,7 +41,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   theme,
   onToggleTheme,
   isCollapsed = false,
-  onToggleCollapse
+  onToggleCollapse,
+  onVersionClick
 }) => {
   const handleNavClick = (view: 'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer', lessonId: string | null) => {
     onNavigate(view, lessonId);
@@ -67,7 +69,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   return (
     <aside className={`sidebar-panel glass-panel ${isMobileOpen ? 'mobile-open' : ''} ${isCollapsed ? 'collapsed' : ''}`}>
-      <div className="sidebar-header">
+      <div 
+        className="sidebar-header" 
+        onClick={onVersionClick} 
+        style={{ cursor: onVersionClick ? 'pointer' : 'default' }}
+        title={onVersionClick ? 'Xem chi tiết phiên bản' : undefined}
+      >
         <BookOpen className="text-sky-400 animate-pulse" size={24} style={{ flexShrink: 0 }} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <h2 style={{ fontSize: '1.1rem', fontWeight: 700, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>TOEIC Practice</h2>

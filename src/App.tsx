@@ -6,7 +6,7 @@ import { VocabularyTrainer } from './components/VocabularyTrainer';
 import { Mp3PlayerHub } from './components/Mp3PlayerHub';
 import { AudioPlayer } from './components/AudioPlayer';
 import { LessonData, LessonProgress, PracticeHistoryEntry, AudioControlState, AudioSegment } from './types';
-import { Menu, ChevronRight } from 'lucide-react';
+import { Menu, ChevronRight, BookOpen } from 'lucide-react';
 import {
   isFirebaseConfigured,
   loadCloudProgress,
@@ -160,6 +160,37 @@ const App: React.FC = () => {
   const [masteredVocabIds, setMasteredVocabIds] = useState<string[]>([]);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
+
+  const [showUpdateToast, setShowUpdateToast] = useState(false);
+  const [showVersionModal, setShowVersionModal] = useState(false);
+
+  const appVersion = typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : '1.0.0';
+  const commitHash = typeof __APP_COMMIT_HASH__ !== 'undefined' ? __APP_COMMIT_HASH__ : '';
+  const commitMessage = typeof __APP_COMMIT_MESSAGE__ !== 'undefined' ? __APP_COMMIT_MESSAGE__ : '';
+  const branchName = typeof __APP_BRANCH__ !== 'undefined' ? __APP_BRANCH__ : '';
+  const buildTimestamp = typeof __APP_BUILD_TIMESTAMP__ !== 'undefined' ? __APP_BUILD_TIMESTAMP__ : '';
+  const buildTarget = typeof __APP_BUILD_TARGET__ !== 'undefined' ? __APP_BUILD_TARGET__ : '';
+
+  const buildDate = buildTimestamp ? new Date(buildTimestamp) : null;
+  const buildDateText = buildDate && !Number.isNaN(buildDate.getTime())
+    ? buildDate.toLocaleString('vi-VN', {
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    })
+    : '';
+
+  useEffect(() => {
+    if (commitHash && commitMessage) {
+      try {
+        const lastSeen = localStorage.getItem('toeic_last_seen_commit');
+        if (lastSeen !== commitHash) {
+          setShowUpdateToast(true);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, []);
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     try {
       return localStorage.getItem(THEME_STORAGE_KEY) === 'light' ? 'light' : 'dark';
@@ -468,6 +499,7 @@ const App: React.FC = () => {
         onToggleTheme={() => setTheme((current) => current === 'dark' ? 'light' : 'dark')}
         isCollapsed={isSidebarCollapsed}
         onToggleCollapse={handleToggleSidebar}
+        onVersionClick={() => setShowVersionModal(true)}
       />
 
       {/* Sidebar Overlay on mobile */}
@@ -578,6 +610,86 @@ const App: React.FC = () => {
           >
             ✕
           </button>
+        </div>
+      )}
+
+      {/* Toast Notification for Latest Commit */}
+      {showUpdateToast && commitMessage && (
+        <div className="update-toast glass-panel animate-fade-in-up">
+          <div className="update-toast-icon">🚀</div>
+          <div className="update-toast-content">
+            <h4>Hệ thống đã cập nhật</h4>
+            <p className="update-toast-msg">{commitMessage}</p>
+            <div className="update-toast-meta">
+              <span className="update-toast-hash">#{commitHash.slice(0, 7)}</span>
+              {buildDateText && <span className="update-toast-date">{buildDateText}</span>}
+            </div>
+          </div>
+          <button 
+            onClick={() => {
+              setShowUpdateToast(false);
+              try {
+                localStorage.setItem('toeic_last_seen_commit', commitHash);
+              } catch (e) {
+                console.error(e);
+              }
+            }}
+            className="update-toast-close"
+            title="Đóng thông báo"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      {/* Version Details Modal */}
+      {showVersionModal && (
+        <div className="version-modal-overlay" onClick={() => setShowVersionModal(false)}>
+          <div className="version-modal glass-panel animate-scale-up" onClick={(e) => e.stopPropagation()}>
+            <div className="version-modal-header">
+              <h3>Thông tin phiên bản</h3>
+              <button className="version-modal-close" onClick={() => setShowVersionModal(false)}>✕</button>
+            </div>
+            <div className="version-modal-body">
+              <div className="version-modal-app-logo">
+                <BookOpen className="text-sky-400 animate-pulse" size={48} />
+                <h2 style={{ fontFamily: 'var(--font-title)', marginTop: '8px' }}>TOEIC Practice Hub</h2>
+                <span>v{appVersion}</span>
+              </div>
+              
+              <div className="version-modal-info-list">
+                <div className="version-modal-info-item">
+                  <strong>Thông tin cập nhật mới nhất:</strong>
+                  <p className="version-commit-message">{commitMessage}</p>
+                </div>
+                
+                <div className="version-modal-info-grid">
+                  <div className="version-modal-subitem">
+                    <strong>Mã Commit:</strong>
+                    <code>#{commitHash.slice(0, 7)}</code>
+                  </div>
+                  <div className="version-modal-subitem">
+                    <strong>Nhánh Git:</strong>
+                    <code>{branchName || 'main'}</code>
+                  </div>
+                  <div className="version-modal-subitem">
+                    <strong>Thời gian cập nhật:</strong>
+                    <span>{buildDateText || 'Hôm nay'}</span>
+                  </div>
+                  <div className="version-modal-subitem">
+                    <strong>Môi trường:</strong>
+                    <span>{buildTarget === 'vercel' ? 'Vercel Cloud' : 'Local Host'}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="version-modal-footer">
+                <a href="https://github.com/lchryu/900toeic" target="_blank" rel="noreferrer" className="primary-btn version-github-btn">
+                  Xem trên GitHub
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

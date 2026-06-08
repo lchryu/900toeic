@@ -25,6 +25,10 @@ const buildTimestamp =
   process.env.VERCEL_GIT_COMMIT_COMMITTER_DATE ||
   new Date().toISOString();
 const buildTarget = process.env.VITE_APP_BUILD_TARGET || (process.env.VERCEL ? 'vercel' : 'local');
+const commitMessage =
+  process.env.VITE_APP_COMMIT_MESSAGE ||
+  process.env.VERCEL_GIT_COMMIT_MESSAGE ||
+  getGitValue('git log -1 --pretty=%s');
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,7 +38,8 @@ export default defineConfig({
     __APP_BUILD_TIMESTAMP__: JSON.stringify(buildTimestamp),
     __APP_COMMIT_HASH__: JSON.stringify(commitHash),
     __APP_BRANCH__: JSON.stringify(branchName),
-    __APP_BUILD_TARGET__: JSON.stringify(buildTarget)
+    __APP_BUILD_TARGET__: JSON.stringify(buildTarget),
+    __APP_COMMIT_MESSAGE__: JSON.stringify(commitMessage)
   },
   build: {
     outDir: 'dist',
