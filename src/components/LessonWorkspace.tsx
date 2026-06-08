@@ -241,8 +241,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     if (targetIndex === -1) return;
 
     const targetSegment = audioSegments[targetIndex];
-    const newStart = Math.max(0, Math.min(updates.start ?? targetSegment.start, duration));
-    const newEnd = Math.max(newStart + 1, Math.min(updates.end ?? targetSegment.end, duration || updates.end || targetSegment.end));
+    // If duration is 0 (not loaded), do not cap values at duration
+    const newStart = Math.max(0, duration ? Math.min(updates.start ?? targetSegment.start, duration) : (updates.start ?? targetSegment.start));
+    const newEnd = Math.max(newStart + 1, duration ? Math.min(updates.end ?? targetSegment.end, duration) : (updates.end ?? targetSegment.end));
 
     // Create a new array of segments and update the target segment
     const nextSegments = [...audioSegments];
@@ -254,32 +255,50 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       updatedAt: new Date().toISOString()
     };
 
-    // Propagate end time changes to the next segment's start time
-    if (updates.end !== undefined && targetIndex < nextSegments.length - 1) {
-      const nextSeg = nextSegments[targetIndex + 1];
-      const nextStart = Math.round(newEnd);
-      const nextEnd = Math.max(nextStart + 1, nextSeg.end);
-      nextSegments[targetIndex + 1] = {
-        ...nextSeg,
-        start: nextStart,
-        end: nextEnd,
-        isCustom: true,
-        updatedAt: new Date().toISOString()
-      };
+    // Propagate end time changes recursively to subsequent segments
+    if (Math.round(newEnd) !== targetSegment.end) {
+      let currentEnd = newEnd;
+      for (let i = targetIndex + 1; i < nextSegments.length; i++) {
+        const seg = nextSegments[i];
+        const updatedStart = Math.round(currentEnd);
+        const updatedEnd = Math.round(Math.max(updatedStart + 1, seg.end));
+        
+        nextSegments[i] = {
+          ...seg,
+          start: updatedStart,
+          end: updatedEnd,
+          isCustom: true,
+          updatedAt: new Date().toISOString()
+        };
+
+        if (updatedEnd === seg.end) {
+          break;
+        }
+        currentEnd = updatedEnd;
+      }
     }
 
-    // Propagate start time changes to the previous segment's end time
-    if (updates.start !== undefined && targetIndex > 0) {
-      const prevSeg = nextSegments[targetIndex - 1];
-      const prevEnd = Math.round(newStart);
-      const prevStart = Math.min(prevSeg.start, Math.max(0, prevEnd - 1));
-      nextSegments[targetIndex - 1] = {
-        ...prevSeg,
-        start: prevStart,
-        end: prevEnd,
-        isCustom: true,
-        updatedAt: new Date().toISOString()
-      };
+    // Propagate start time changes recursively to preceding segments
+    if (Math.round(newStart) !== targetSegment.start) {
+      let currentStart = newStart;
+      for (let i = targetIndex - 1; i >= 0; i--) {
+        const seg = nextSegments[i];
+        const updatedEnd = Math.round(currentStart);
+        const updatedStart = Math.round(Math.min(seg.start, Math.max(0, updatedEnd - 1)));
+        
+        nextSegments[i] = {
+          ...seg,
+          start: updatedStart,
+          end: updatedEnd,
+          isCustom: true,
+          updatedAt: new Date().toISOString()
+        };
+
+        if (updatedStart === seg.start) {
+          break;
+        }
+        currentStart = updatedStart;
+      }
     }
 
     persistAudioSegments(nextSegments);
