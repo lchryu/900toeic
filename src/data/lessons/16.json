@@ -493,7 +493,7 @@
       "questions": [
         {
           "num": 131,
-          "text": "",
+          "text": "What are employees being asked to do?",
           "options": [
             {
               "label": "A",
@@ -520,7 +520,7 @@
         },
         {
           "num": 132,
-          "text": "",
+          "text": "When will the policy change take effect?",
           "options": [
             {
               "label": "A",
@@ -567,7 +567,7 @@
       "questions": [
         {
           "num": 133,
-          "text": "",
+          "text": "What is the main topic of the article?",
           "options": [
             {
               "label": "A",
@@ -594,7 +594,7 @@
         },
         {
           "num": 134,
-          "text": "",
+          "text": "How does the article describe Mr. Hullot?",
           "options": [
             {
               "label": "A",
@@ -621,7 +621,7 @@
         },
         {
           "num": 135,
-          "text": "",
+          "text": "According to the article, what will probably happen later this week?",
           "options": [
             {
               "label": "A",
@@ -668,7 +668,7 @@
       "questions": [
         {
           "num": 136,
-          "text": "",
+          "text": "For whom is the notice intended?",
           "options": [
             {
               "label": "A",
@@ -695,7 +695,7 @@
         },
         {
           "num": 137,
-          "text": "",
+          "text": "What is probably NOT sold at Smythe and Lewes stores?",
           "options": [
             {
               "label": "A",
@@ -722,7 +722,7 @@
         },
         {
           "num": 138,
-          "text": "",
+          "text": "What will Smythe and Lewes give to recipients of the notice?",
           "options": [
             {
               "label": "A",
@@ -749,7 +749,7 @@
         },
         {
           "num": 139,
-          "text": "",
+          "text": "What are recipients encouraged to do?",
           "options": [
             {
               "label": "A",
@@ -796,7 +796,7 @@
       "questions": [
         {
           "num": 140,
-          "text": "",
+          "text": "What does the information mainly discuss?",
           "options": [
             {
               "label": "A",
@@ -823,7 +823,7 @@
         },
         {
           "num": 141,
-          "text": "",
+          "text": "What is indicated about Woodsmith, Inc.?",
           "options": [
             {
               "label": "A",
@@ -850,7 +850,7 @@
         },
         {
           "num": 142,
-          "text": "",
+          "text": "What does the information recommend for use with hardwood furniture?",
           "options": [
             {
               "label": "A",
@@ -877,7 +877,7 @@
         },
         {
           "num": 143,
-          "text": "",
+          "text": "According to the information, what could happen to hardwood furniture in direct sunlight?",
           "options": [
             {
               "label": "A",
