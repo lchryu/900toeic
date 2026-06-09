@@ -524,7 +524,7 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
   }>({ visible: false, x: 0, y: 0, text: '' });
   const [saveDefinition, setSaveDefinition] = useState('');
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
     const selection = window.getSelection();
     if (!selection) return;
     const text = selection.toString().trim();
@@ -532,14 +532,15 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
       try {
         const range = selection.getRangeAt(0);
         const rect = range.getBoundingClientRect();
+        const parentRect = e.currentTarget.getBoundingClientRect();
         setPopover({
           visible: true,
-          x: rect.left + rect.width / 2 + window.scrollX,
-          y: rect.top + window.scrollY - 10,
+          x: rect.left + rect.width / 2 - parentRect.left,
+          y: rect.top - parentRect.top - 10,
           text: text
         });
-      } catch (e) {
-        console.error(e);
+      } catch (err) {
+        console.error(err);
       }
     }
   };

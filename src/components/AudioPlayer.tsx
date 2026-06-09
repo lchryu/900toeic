@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { Play, Pause, Volume2, FastForward, Youtube, ExternalLink, SkipBack, SkipForward } from 'lucide-react';
+import { Play, Pause, Volume2, FastForward, Youtube, ExternalLink, SkipBack, SkipForward, CirclePause } from 'lucide-react';
 import { AudioControlState, AudioSegment } from '../types';
 
 interface AudioPlayerProps {
   src?: string;
   youtubeUrl?: string;
   onControlStateChange?: (state: AudioControlState) => void;
+  segments?: AudioSegment[];
 }
 
 type AudioSource = 'local' | 'youtube';
@@ -78,7 +79,7 @@ const loadYoutubeApi = () =>
     }
   });
 
-export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onControlStateChange }) => {
+export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onControlStateChange, segments }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const youtubeContainerRef = useRef<HTMLDivElement | null>(null);
   const youtubePlayerRef = useRef<YoutubePlayer | null>(null);
@@ -91,6 +92,33 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
   const [isYoutubeReady, setIsYoutubeReady] = useState(false);
   const [activeSegmentId, setActiveSegmentId] = useState<string | null>(null);
   const [isLoopingSegment, setIsLoopingSegment] = useState(false);
+
+  const [autoPause, setAutoPause] = useState(() => {
+    try {
+      const stored = localStorage.getItem('toeic_audio_autopause');
+      return stored !== 'false';
+    } catch {
+      return true;
+    }
+  });
+
+  const toggleAutoPause = () => {
+    setAutoPause((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem('toeic_audio_autopause', String(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+  };
+
+  const lastTimeRef = useRef(0);
+
+  useEffect(() => {
+    lastTimeRef.current = currentTime;
+  }, [currentTime]);
 
   // Mobile long-press scrubber states and handlers
   const [showMobileScrubber, setShowMobileScrubber] = useState(false);
@@ -277,18 +305,6 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
     }
   };
 
-  const handleTimeUpdate = () => {
-    if (!audioRef.current || isYoutubeSource) return;
-    const nextTime = audioRef.current.currentTime;
-    setCurrentTime(nextTime);
-    handleSegmentBoundary(nextTime);
-  };
-
-  const handleLoadedMetadata = () => {
-    if (!audioRef.current || isYoutubeSource) return;
-    setDuration(audioRef.current.duration);
-  };
-
   const seekTo = useCallback((seconds: number) => {
     const nextTime = Math.max(0, Math.min(seconds, duration || seconds));
 
@@ -299,7 +315,50 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
     }
 
     setCurrentTime(nextTime);
+    lastTimeRef.current = nextTime;
   }, [duration, isYoutubeSource]);
+
+  const checkAutoPauseBoundary = useCallback((nextTime: number) => {
+    if (!autoPause || !isPlaying || !segments || segments.length === 0) {
+      lastTimeRef.current = nextTime;
+      return;
+    }
+
+    const lastTime = lastTimeRef.current;
+    const diff = nextTime - lastTime;
+    
+    if (diff > 0 && diff < 2.0) {
+      const crossedSegment = segments.find(
+        (s) => lastTime < s.end && nextTime >= s.end
+      );
+      
+      if (crossedSegment) {
+        if (isYoutubeSource) {
+          youtubePlayerRef.current?.pauseVideo?.();
+        } else if (audioRef.current) {
+          audioRef.current.pause();
+        }
+        setIsPlaying(false);
+        seekTo(crossedSegment.end);
+        setActiveSegmentId(crossedSegment.id);
+      }
+    }
+    
+    lastTimeRef.current = nextTime;
+  }, [autoPause, isPlaying, segments, isYoutubeSource, seekTo]);
+
+  const handleTimeUpdate = () => {
+    if (!audioRef.current || isYoutubeSource) return;
+    const nextTime = audioRef.current.currentTime;
+    checkAutoPauseBoundary(nextTime);
+    setCurrentTime(nextTime);
+    handleSegmentBoundary(nextTime);
+  };
+
+  const handleLoadedMetadata = () => {
+    if (!audioRef.current || isYoutubeSource) return;
+    setDuration(audioRef.current.duration);
+  };
 
   const pauseCurrentSource = useCallback(() => {
     if (isYoutubeSource) {
@@ -365,18 +424,27 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
       const player = youtubePlayerRef.current;
       if (!player) return;
       const nextTime = player.getCurrentTime?.() || 0;
+      checkAutoPauseBoundary(nextTime);
       setCurrentTime(nextTime);
       setDuration(player.getDuration?.() || 0);
       handleSegmentBoundary(nextTime);
     }, 150);
 
     return () => window.clearInterval(timer);
-  }, [handleSegmentBoundary, isYoutubeSource]);
+  }, [handleSegmentBoundary, isYoutubeSource, checkAutoPauseBoundary]);
 
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
     if (duration === 0) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
+    seekTo((x / rect.width) * duration);
+  };
+
+  const handleTouchSeek = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (duration === 0) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const touch = e.touches[0];
+    const x = touch.clientX - rect.left;
     seekTo((x / rect.width) * duration);
   };
 
@@ -460,7 +528,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
               title="Use local audio"
             >
               <Volume2 size={15} />
-              <span>Local</span>
+              <span className="source-btn-text">Local</span>
             </button>
             <button
               className={`segmented-btn ${isYoutubeSource ? 'active' : ''}`}
@@ -468,7 +536,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
               title="Use YouTube"
             >
               <Youtube size={15} />
-              <span>YouTube</span>
+              <span className="source-btn-text">YouTube</span>
             </button>
           </div>
         )}
@@ -498,13 +566,37 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
 
         <div className="audio-progress-container">
           <span className="time-label">{formatTime(currentTime)}</span>
-          <div className="progress-track" onClick={handleSeek}>
+          <div
+            className="progress-track"
+            onClick={handleSeek}
+            onTouchStart={handleTouchSeek}
+            onTouchMove={handleTouchSeek}
+          >
             <div className="progress-fill" style={{ width: `${progressPct}%` }} />
           </div>
           <span className="time-label">{formatTime(duration)}</span>
         </div>
 
         <div className="audio-extra-controls">
+          <button
+            className={`secondary-btn auto-pause-btn ${autoPause ? 'active' : ''}`}
+            onClick={toggleAutoPause}
+            title="Auto-pause at the end of each section"
+            style={{
+              padding: '6px 12px',
+              fontSize: '0.8rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              background: autoPause ? 'rgba(16, 185, 129, 0.1)' : 'transparent',
+              borderColor: autoPause ? 'hsl(var(--success))' : 'hsl(var(--panel-border))',
+              color: autoPause ? 'hsl(var(--success))' : 'hsl(var(--text-primary))'
+            }}
+          >
+            <CirclePause size={14} />
+            <span className="auto-pause-text">Auto-Pause</span>
+          </button>
+
           <button
             className="secondary-btn"
             style={{

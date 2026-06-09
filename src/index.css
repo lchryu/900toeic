@@ -1646,238 +1646,97 @@ h1, h2, h3, h4, h5 {
     gap: 12px;
   }
 
+  /* Sticky top layout instead of floating pill */
   .audio-player-shell {
-    position: fixed;
-    top: auto;
-    right: 14px;
-    bottom: calc(96px + env(safe-area-inset-bottom));
-    z-index: 80;
-    width: auto;
-    border: 1px solid hsl(var(--panel-border));
-    border-radius: 999px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background: var(--surface-sticky);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 0 !important;
   }
 
   .audio-player-bar {
-    width: auto;
-    padding: 8px 10px;
-    gap: 8px;
-    flex-wrap: nowrap;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    gap: 8px 12px;
   }
 
-  .audio-source-control,
-  .audio-icon-btn,
-  .progress-track,
-  .audio-extra-controls {
-    display: none;
+  /* Auto-pause, source switcher, and scrubber compact styles */
+  .audio-progress-container {
+    order: 1;
+    width: 100%;
+    flex: 0 0 100%;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .progress-track {
+    display: block !important;
+    flex: 1;
+    height: 6px;
+    background: hsl(var(--panel-border));
+    border-radius: 999px;
+  }
+
+  .audio-source-control {
+    order: 2;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
   }
 
   .audio-transport-controls {
-    gap: 0;
-  }
-
-  .audio-progress-container {
-    flex: none;
-    width: auto;
-    gap: 6px;
-  }
-
-  .time-label {
-    min-width: auto;
-    font-size: 0.78rem;
-  }
-
-  .audio-segment-row {
-    margin: 0 0 12px;
-    padding: 8px;
-    border-radius: 8px;
-  }
-
-  .audio-segment-manager {
-    margin: 0 0 12px;
-  }
-
-  .audio-segment-manager-toggle {
-    min-height: 34px;
-    padding: 0 10px;
-    font-size: 0.76rem;
-  }
-
-  .audio-segment-manager-panel {
-    padding: 8px;
-    border-radius: 10px;
-  }
-
-  .audio-segment-manager-summary {
-    font-size: 0.68rem;
-  }
-
-  .audio-segment-manager-row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 8px;
-  }
-
-  .audio-segment-manager-label {
-    grid-template-columns: auto 1fr;
+    order: 3;
+    display: flex !important;
     align-items: center;
-    gap: 8px;
-  }
-
-  .audio-segment-manager-fields {
-    justify-content: space-between;
-  }
-
-  .audio-segment-manager-fields label {
-    flex: 1;
-  }
-
-  .audio-segment-manager-actions {
-    justify-content: flex-start;
-  }
-
-  .audio-segment-main {
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .audio-segment-label span {
-    font-size: 0.84rem;
-  }
-
-  .audio-segment-label small {
-    font-size: 0.68rem;
-  }
-
-  .audio-segment-actions {
-    gap: 6px;
-  }
-
-  .audio-segment-btn {
-    min-height: 30px;
-    padding: 0 8px;
-    gap: 4px;
-    font-size: 0.7rem;
-  }
-
-  .audio-segment-btn.icon-only {
-    width: 30px;
-  }
-
-  .audio-segment-editor {
-    gap: 6px;
-  }
-
-  .audio-segment-editor label {
-    flex: 1;
-    min-width: 96px;
-  }
-
-  .audio-segment-input {
-    width: 58px;
-    min-height: 30px;
-  }
-
-  .listening-group-header {
-    align-items: flex-start !important;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .audio-extra-controls {
-    justify-content: space-between;
-  }
-  
-  .audio-btn {
-    width: 34px;
-    height: 34px;
-    box-shadow: 0 0 12px hsl(var(--primary) / 0.32);
-  }
-  
-  .control-banner {
-    padding: 12px 16px;
-    flex-direction: column;
-    gap: 12px;
-    align-items: stretch;
-  }
-  
-  .control-banner > div {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .dashboard-grid {
-    padding: 16px !important;
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-
-  .google-sync-panel {
-    flex-direction: column;
-    align-items: stretch;
-    margin-bottom: 20px;
-  }
-
-  .google-login-btn,
-  .google-account-actions .secondary-btn {
     justify-content: center;
-    width: 100%;
+    gap: 10px;
+    margin: 0;
   }
 
-  .dashboard-main-layout {
-    grid-template-columns: 1fr !important;
-  }
-
-  .reading-mobile-questions .glass-panel {
-    padding: 18px !important;
-    margin-bottom: 16px !important;
-  }
-
-  .reading-mobile-notes {
-    display: grid;
-    gap: 12px;
-  }
-
-  .audio-player-shell {
-    position: fixed;
-    top: auto;
-    right: 14px;
-    bottom: 96px;
-    z-index: 80;
-    width: auto;
-    border: 1px solid hsl(var(--panel-border));
-    border-radius: 999px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  }
-
-  .audio-player-bar {
-    width: auto;
-    padding: 8px 10px;
-    gap: 8px;
-    flex-wrap: nowrap;
-  }
-
-  .audio-source-control,
-  .audio-icon-btn,
-  .progress-track,
   .audio-extra-controls {
-    display: none;
+    order: 4;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin: 0;
   }
 
-  .audio-transport-controls {
-    gap: 0;
+  .audio-btn {
+    width: 38px;
+    height: 38px;
   }
 
-  .audio-progress-container {
-    flex: none;
-    width: auto;
-    gap: 6px;
+  .audio-icon-btn {
+    display: flex !important;
+    width: 34px;
+    height: 34px;
   }
 
-  .time-label {
-    min-width: auto;
-    font-size: 0.78rem;
+  /* Hide mobile scrubber popup and button text */
+  .mobile-scrubber-popup {
+    display: none !important;
+  }
+
+  .source-btn-text,
+  .auto-pause-text {
+    display: none !important;
+  }
+
+  /* Clean segment button layout (hide label text for icons on mobile) */
+  .audio-segment-btn span {
+    display: none !important;
   }
 
   .audio-segment-row {
@@ -1977,16 +1836,17 @@ h1, h2, h3, h4, h5 {
     gap: 6px;
   }
 
-  .audio-extra-controls {
-    justify-content: space-between;
+  .time-label {
+    min-width: auto;
+    font-size: 0.78rem;
   }
-  
-  .audio-btn {
-    width: 34px;
-    height: 34px;
-    box-shadow: 0 0 12px hsl(var(--primary) / 0.32);
+
+  /* Redundant tabs in lesson heading panel: hide desktop listening/reading switch on mobile */
+  .lesson-mode-tabs .segmented-control:last-child {
+    display: none !important;
   }
-  
+
+  /* Control Banner layout */
   .control-banner {
     padding: 12px 16px;
     flex-direction: column;
@@ -1998,6 +1858,12 @@ h1, h2, h3, h4, h5 {
     display: flex;
     justify-content: space-between;
     width: 100%;
+  }
+
+  /* Remove huge padding-bottoms from main scroll container since player is not floating anymore */
+  .lesson-workspace-shell.practice-mode .lesson-main-scroll,
+  .lesson-workspace-shell.practice-focus-mode .lesson-main-scroll {
+    padding-bottom: 24px !important;
   }
 
   .dashboard-grid {

@@ -625,11 +625,11 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   return (
     <div className={`lesson-workspace-shell ${isReaderOnlyMode ? 'reading-mode' : ''} ${isPracticeFocusMode ? 'practice-focus-mode' : ''} ${isPracticeActive ? 'practice-mode' : ''}`} style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
-      {/* Sticky Audio Player for Listening sections */}
       <AudioPlayer
         src={lesson.audio ? `/${lesson.audio}` : undefined}
         youtubeUrl={lesson.youtubeUrl}
         onControlStateChange={setAudioControl}
+        segments={audioSegments}
       />
 
       <button
