@@ -376,6 +376,7 @@ function parseLesson(filePath) {
         completedPassage: '',
         options: {},
         explanations: {},
+        questionTexts: {},
         vocabulary: [],
         takeaways: []
       };
@@ -416,6 +417,7 @@ function parseLesson(filePath) {
           const answerMatch = qBody.match(/(?:👉\s*)?\*\*Answer:\s*([A-D])\*\*/i) || qBody.match(/Answer:\s*([A-D])/i);
           const correctAnswer = answerMatch ? answerMatch[1].toUpperCase() : '';
           const explanationLines = [];
+          const qTextLines = [];
           const optLines = qBody.split('\n');
           for (const optLine of optLines) {
             const cleanedOpt = optLine.replace(/\r/g, '').trim();
@@ -433,9 +435,14 @@ function parseLesson(filePath) {
                 text: optMatch[2].trim(),
                 correct: optMatch[1].toUpperCase() === correctAnswer
               });
+            } else {
+              if (!cleanedOpt.toLowerCase().includes('answer:') && cleanedOpt !== '---') {
+                qTextLines.push(cleanedOpt);
+              }
             }
           }
           groupData.options[qNum] = opts;
+          groupData.questionTexts[qNum] = qTextLines.join(' ').trim();
           const explanation = explanationLines
             .join(' ')
             .replace(/^\*\*Explanation:\*\*\s*/i, '')
@@ -545,6 +552,7 @@ function parseLesson(filePath) {
       const qNum = parseInt(qStr);
       return {
         num: qNum,
+        text: group.questionTexts[qNum] || '',
         options: group.options[qNum],
         explanation: group.explanations[qNum]
       };

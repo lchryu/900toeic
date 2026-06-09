@@ -505,6 +505,7 @@
       "questions": [
         {
           "num": 131,
+          "text": "What item would need to be ordered in advance?",
           "options": [
             {
               "label": "A",
@@ -531,6 +532,7 @@
         },
         {
           "num": 132,
+          "text": "For what information are customers directed to call the bakery?",
           "options": [
             {
               "label": "A",
@@ -577,6 +579,7 @@
       "questions": [
         {
           "num": 133,
+          "text": "What kind of business is moving?",
           "options": [
             {
               "label": "A",
@@ -603,6 +606,7 @@
         },
         {
           "num": 134,
+          "text": "Where was the business previously located?",
           "options": [
             {
               "label": "A",
@@ -629,6 +633,7 @@
         },
         {
           "num": 135,
+          "text": "What is suggested about the business?",
           "options": [
             {
               "label": "A",
@@ -675,6 +680,7 @@
       "questions": [
         {
           "num": 136,
+          "text": "Why are the escalators being closed?",
           "options": [
             {
               "label": "A",
@@ -701,6 +707,7 @@
         },
         {
           "num": 137,
+          "text": "For how long are the escalators expected to be closed?",
           "options": [
             {
               "label": "A",
@@ -727,6 +734,7 @@
         },
         {
           "num": 138,
+          "text": "What are employees asked to do?",
           "options": [
             {
               "label": "A",
