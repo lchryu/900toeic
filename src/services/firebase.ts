@@ -3,6 +3,7 @@ import {
   getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signInWithRedirect,
   signInWithPopup,
   signOut,
   type Auth,
@@ -78,8 +79,35 @@ export const signInWithGoogle = async () => {
   }
 
   const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
-  return toAuthUser(result.user);
+  provider.setCustomParameters({ prompt: 'select_account' });
+
+  const shouldUseRedirect =
+    /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent) ||
+    window.matchMedia?.('(pointer: coarse)').matches;
+
+  if (shouldUseRedirect) {
+    await signInWithRedirect(auth, provider);
+    return null;
+  }
+
+  try {
+    const result = await signInWithPopup(auth, provider);
+    return toAuthUser(result.user);
+  } catch (error) {
+    const code = (error as { code?: string })?.code || '';
+    const canRecoverWithRedirect = [
+      'auth/popup-blocked',
+      'auth/cancelled-popup-request',
+      'auth/operation-not-supported-in-this-environment'
+    ].includes(code);
+
+    if (!canRecoverWithRedirect) {
+      throw error;
+    }
+
+    await signInWithRedirect(auth, provider);
+    return null;
+  }
 };
 
 export const signOutGoogle = async () => {
@@ -190,4 +218,3 @@ export const saveCloudCustomVocabulary = async (
     { merge: true }
   );
 };
-
