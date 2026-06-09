@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { AudioControlState, AudioSegment, LessonData, QuestionState, LessonProgress, PracticeHistoryEntry } from '../types';
+import { AudioControlState, AudioSegment, LessonData, QuestionState, LessonProgress, PracticeHistoryEntry, VocabularyItem } from '../types';
 import { AudioPlayer } from './AudioPlayer';
 import { ListeningWorkspace } from './ListeningWorkspace';
 import { ReadingPassage } from './ReadingPassage';
@@ -9,6 +9,17 @@ import { Headphones, BookOpen, Clock, Award, RotateCcw, AlertTriangle, Graduatio
 type LessonTab = 'listening' | 'reading';
 type LessonMode = 'study' | 'practice' | 'review';
 const AUDIO_SEGMENT_STORAGE_KEY = 'toeic_audio_segments';
+
+const getVocabWord = (vocabString: string) => {
+  let word = vocabString;
+  if (word.includes(':')) {
+    word = word.split(':')[0];
+  }
+  if (word.includes('(')) {
+    word = word.split('(')[0];
+  }
+  return word.trim();
+};
 
 interface LessonWorkspaceProps {
   lesson: LessonData;
@@ -25,6 +36,8 @@ interface LessonWorkspaceProps {
   onRecordHistory: (entry: Omit<PracticeHistoryEntry, 'id' | 'timestamp'>) => void;
   onQuestionNavConfig: (qNums: number[], answered: number[], flagged: number[], isGraded: boolean, results: { [qNum: number]: boolean }, scrollCallback: (num: number) => void) => void;
   onSaveAudioSegments?: (lessonId: string, segments: AudioSegment[]) => void;
+  customVocabItems: VocabularyItem[];
+  onSaveCustomVocab: (item: VocabularyItem) => void;
 }
 
 export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
@@ -33,7 +46,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   onSaveProgress,
   onRecordHistory,
   onQuestionNavConfig,
-  onSaveAudioSegments
+  onSaveAudioSegments,
+  customVocabItems,
+  onSaveCustomVocab
 }) => {
   const [activeTab, setActiveTab] = useState<LessonTab>(progress?.lastTab || 'listening');
   const [mode, setMode] = useState<LessonMode>(
@@ -42,6 +57,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const [selectedAnswers, setSelectedAnswers] = useState<{ [qNum: number]: string }>(
     progress?.answers || {}
   );
+  const [flagNotes, setFlagNotes] = useState<{ [qNum: number]: string }>(progress?.flagNotes || {});
+  const [highlightedWord, setHighlightedWord] = useState<string | null>(null);
   const [questionStates, setQuestionStates] = useState<{ [qNum: number]: QuestionState }>(() => {
     const flags = progress?.flaggedQuestions || [];
     return Object.fromEntries(flags.map((num) => [num, { selectedOption: progress?.answers?.[num] || '', isFlagged: true }]));
@@ -85,6 +102,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     hasRecordedOpenRef.current = false;
     const flags = progress?.flaggedQuestions || [];
     setQuestionStates(Object.fromEntries(flags.map((num) => [num, { selectedOption: progress?.answers?.[num] || '', isFlagged: true }])));
+    setFlagNotes(progress?.flagNotes || {});
+    setHighlightedWord(null);
   }, [lesson.id]);
 
   // Start timer if not graded (practice mode)
@@ -413,14 +432,36 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     nextMode = mode,
     nextTab = activeTab,
     nextFlags = getFlaggedQuestions(),
-    nextStudyTime = studyElapsedTimeRef.current
+    nextStudyTime = studyElapsedTimeRef.current,
+    nextFlagNotes = flagNotes
   ) => {
     onSaveProgress(lesson.id, nextAnswers, nextTime, isGraded ? score : 0, totalQuestions, isGraded, {
       flaggedQuestions: nextFlags,
       lastTab: nextTab,
       mode: nextMode,
-      studyTimeSpent: nextStudyTime
+      studyTimeSpent: nextStudyTime,
+      flagNotes: nextFlagNotes
     });
+  };
+
+  const handleSaveFlagNote = (qNum: number, note: string) => {
+    setFlagNotes((prev) => {
+      const nextNotes = { ...prev, [qNum]: note };
+      persistProgressSnapshot(
+        selectedAnswers,
+        elapsedTimeRef.current,
+        mode,
+        activeTab,
+        getFlaggedQuestions(),
+        studyElapsedTimeRef.current,
+        nextNotes
+      );
+      return nextNotes;
+    });
+  };
+
+  const handleVocabularyWordClick = (word: string) => {
+    setHighlightedWord(word);
   };
 
   const handleSelectOption = (qNum: number, label: string) => {
@@ -544,6 +585,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     if (window.confirm('Are you sure you want to reset your answers and retake this lesson practice?')) {
       setSelectedAnswers({});
       setQuestionStates({});
+      setFlagNotes({});
       setIsGraded(false);
       setMode('practice');
       setElapsedTime(0);
@@ -551,7 +593,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         flaggedQuestions: [],
         lastTab: activeTab,
         mode: 'practice',
-        studyTimeSpent: studyElapsedTimeRef.current
+        studyTimeSpent: studyElapsedTimeRef.current,
+        flagNotes: {}
       });
       recordHistory('reset', 'practice', {
         answeredCount: 0,
@@ -694,6 +737,10 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
             onToggleFlag={handleToggleFlag}
             onUpdateAudioSegment={handleUpdateAudioSegment}
             onResetAudioSegment={handleResetAudioSegment}
+            customVocabItems={customVocabItems}
+            onSaveCustomVocab={onSaveCustomVocab}
+            lessonId={lesson.id}
+            lessonTitle={lesson.title}
           />
         ) : (
           <>
@@ -717,6 +764,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                     isGraded={isGraded}
                     mode={mode}
                     onBlankClick={handleScrollToQuestion}
+                    vocabulary={group.vocabulary}
+                    customVocabItems={customVocabItems}
+                    onSaveCustomVocab={onSaveCustomVocab}
+                    lessonId={lesson.id}
+                    lessonTitle={lesson.title}
+                    highlightedWord={highlightedWord}
+                    onClearHighlightedWord={() => setHighlightedWord(null)}
                   />
 
                   {/* Vocabulary & Key takeaways: reveal after grading */}
@@ -734,11 +788,24 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                       <div className="glass-panel" style={{ padding: '16px', fontSize: '0.85rem' }}>
                         <h4 style={{ color: 'hsl(var(--primary))', marginBottom: '10px', fontWeight: 600 }}>📝 Vocabulary & Analysis</h4>
                         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px', color: 'hsl(var(--text-secondary))' }}>
-                          {group.vocabulary.map((vocab, idx) => (
-                            <li key={idx} style={{ borderBottom: '1px solid hsl(var(--panel-border) / 0.3)', paddingBottom: '4px' }}>
-                              {vocab}
-                            </li>
-                          ))}
+                          {group.vocabulary.map((vocab, idx) => {
+                            const word = getVocabWord(vocab);
+                            return (
+                              <li
+                                key={idx}
+                                style={{
+                                  borderBottom: '1px solid hsl(var(--panel-border) / 0.3)',
+                                  paddingBottom: '4px',
+                                  cursor: 'pointer'
+                                }}
+                                onClick={() => handleVocabularyWordClick(word)}
+                                title="Click to highlight and scroll in passage"
+                                className="vocab-list-item-hoverable"
+                              >
+                                {vocab}
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     </div>
@@ -765,6 +832,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                       isGraded={isGraded || mode === 'study'}
                       onSelect={(label) => handleSelectOption(q.num, label)}
                       onToggleFlag={() => handleToggleFlag(q.num)}
+                      flagNote={flagNotes[q.num] || ''}
+                      onSaveFlagNote={(note) => handleSaveFlagNote(q.num, note)}
                     />
                   ))}
                 </div>
@@ -791,6 +860,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                     isGraded={isGraded}
                     mode={mode}
                     onBlankClick={handleScrollToQuestion}
+                    vocabulary={group.vocabulary}
+                    customVocabItems={customVocabItems}
+                    onSaveCustomVocab={onSaveCustomVocab}
+                    lessonId={lesson.id}
+                    lessonTitle={lesson.title}
+                    highlightedWord={highlightedWord}
+                    onClearHighlightedWord={() => setHighlightedWord(null)}
                   />
                 </div>
 
@@ -809,6 +885,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                       isGraded={isGraded || mode === 'study'}
                       onSelect={(label) => handleSelectOption(q.num, label)}
                       onToggleFlag={() => handleToggleFlag(q.num)}
+                      flagNote={flagNotes[q.num] || ''}
+                      onSaveFlagNote={(note) => handleSaveFlagNote(q.num, note)}
                     />
                   ))}
                 </div>
@@ -827,11 +905,24 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                     <div className="glass-panel" style={{ padding: '16px', fontSize: '0.85rem' }}>
                       <h4 style={{ color: 'hsl(var(--primary))', marginBottom: '10px', fontWeight: 600 }}>Vocabulary & Analysis</h4>
                       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px', color: 'hsl(var(--text-secondary))' }}>
-                        {group.vocabulary.map((vocab, idx) => (
-                          <li key={idx} style={{ borderBottom: '1px solid hsl(var(--panel-border) / 0.3)', paddingBottom: '4px' }}>
-                            {vocab}
-                          </li>
-                        ))}
+                        {group.vocabulary.map((vocab, idx) => {
+                          const word = getVocabWord(vocab);
+                          return (
+                            <li
+                              key={idx}
+                              style={{
+                                borderBottom: '1px solid hsl(var(--panel-border) / 0.3)',
+                                paddingBottom: '4px',
+                                cursor: 'pointer'
+                              }}
+                              onClick={() => handleVocabularyWordClick(word)}
+                              title="Click to highlight and scroll in passage"
+                              className="vocab-list-item-hoverable"
+                            >
+                              {vocab}
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   </div>

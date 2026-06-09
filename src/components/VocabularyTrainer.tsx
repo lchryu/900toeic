@@ -6,6 +6,7 @@ interface VocabularyTrainerProps {
   lessons: LessonData[];
   masteredIds: string[];
   onSaveMasteredIds: (ids: string[]) => void;
+  customVocabItems?: VocabularyItem[];
 }
 
 interface VocabularyItem {
@@ -16,7 +17,12 @@ interface VocabularyItem {
   lessonTitle: string;
 }
 
-export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons, masteredIds, onSaveMasteredIds }) => {
+export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({
+  lessons,
+  masteredIds,
+  onSaveMasteredIds,
+  customVocabItems = []
+}) => {
   const [activeTab, setActiveTab] = useState<'flashcards' | 'library'>('flashcards');
   const [selectedLessonId, setSelectedLessonId] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -65,8 +71,25 @@ export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons, m
         });
       });
     });
+
+    // Merge custom vocabulary items
+    if (customVocabItems) {
+      customVocabItems.forEach((customItem) => {
+        const exists = items.some((x) => x.term.toLowerCase() === customItem.term.toLowerCase());
+        if (!exists) {
+          items.push({
+            id: customItem.id,
+            term: customItem.term,
+            definition: customItem.definition,
+            lessonId: customItem.lessonId || 'custom',
+            lessonTitle: customItem.lessonTitle || '⚡ Custom Words'
+          });
+        }
+      });
+    }
+
     return items;
-  }, [lessons]);
+  }, [lessons, customVocabItems]);
 
   // Filter items based on selections
   const filteredItems = React.useMemo(() => {
@@ -234,6 +257,9 @@ export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({ lessons, m
                 {l.title.replace(/📘|Lesson\s*/g, '').trim()}
               </option>
             ))}
+            {allVocabItems.some((x) => x.lessonId === 'custom') && (
+              <option value="custom">⚡ Custom Words</option>
+            )}
           </select>
 
           {masteredIds.length > 0 && (

@@ -13,6 +13,8 @@ interface QuestionBlockProps {
   isGraded: boolean;
   onSelect: (label: string) => void;
   onToggleFlag: () => void;
+  flagNote?: string;
+  onSaveFlagNote?: (note: string) => void;
 }
 
 export const QuestionBlock: React.FC<QuestionBlockProps> = ({
@@ -24,7 +26,9 @@ export const QuestionBlock: React.FC<QuestionBlockProps> = ({
   isFlagged,
   isGraded,
   onSelect,
-  onToggleFlag
+  onToggleFlag,
+  flagNote = '',
+  onSaveFlagNote
 }) => {
   const handleOptionClick = (label: string) => {
     if (isGraded) return; // Disable changes after grading
@@ -111,6 +115,30 @@ export const QuestionBlock: React.FC<QuestionBlockProps> = ({
           );
         })}
       </ul>
+
+      {/* Flag Notes Edit Input - visible in practice/study mode when flagged */}
+      {isFlagged && !isGraded && (
+        <div className="flag-notes-container">
+          <div className="flag-notes-label">
+            <Bookmark size={14} fill="currentColor" />
+            <span>Ghi chú câu hỏi:</span>
+          </div>
+          <textarea
+            className="flag-notes-textarea"
+            placeholder="Ví dụ: Cần xem lại từ vựng, bẫy cấu trúc, phân vân câu A và C..."
+            value={flagNote}
+            onChange={(e) => onSaveFlagNote?.(e.target.value)}
+          />
+        </div>
+      )}
+
+      {/* Flag Notes View Display - visible in review mode if note exists */}
+      {isGraded && flagNote && flagNote.trim().length > 0 && (
+        <div className="flag-notes-display">
+          <div className="flag-notes-display-title">Ghi chú của bạn:</div>
+          <div className="flag-notes-display-content">{flagNote}</div>
+        </div>
+      )}
 
       {/* Render explanation post-grading */}
       {isGraded && explanation && (

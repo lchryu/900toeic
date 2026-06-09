@@ -5,7 +5,7 @@ import { LessonWorkspace } from './components/LessonWorkspace';
 import { VocabularyTrainer } from './components/VocabularyTrainer';
 import { Mp3PlayerHub } from './components/Mp3PlayerHub';
 import { AudioPlayer } from './components/AudioPlayer';
-import { LessonData, LessonProgress, PracticeHistoryEntry, AudioControlState, AudioSegment } from './types';
+import { LessonData, LessonProgress, PracticeHistoryEntry, AudioControlState, AudioSegment, VocabularyItem } from './types';
 import { Menu, ChevronRight, BookOpen } from 'lucide-react';
 import {
   isFirebaseConfigured,
@@ -15,6 +15,8 @@ import {
   saveCloudAudioSegments,
   loadCloudVocabulary,
   saveCloudVocabulary,
+  loadCloudCustomVocabulary,
+  saveCloudCustomVocabulary,
   signInWithGoogle,
   signOutGoogle,
   subscribeToAuth,
@@ -67,17 +69,17 @@ const mergeAudioSegments = (
   cloud: { [lessonId: string]: AudioSegment[] }
 ) => {
   const merged = { ...cloud };
-  
+
   for (const lessonId in local) {
     const localSegs = local[lessonId];
     const cloudSegs = cloud[lessonId];
-    
+
     if (!cloudSegs) {
       merged[lessonId] = localSegs;
     } else {
       const localUpdated = localSegs.some((s) => s.updatedAt);
       const cloudUpdated = cloudSegs.some((s) => s.updatedAt);
-      
+
       if (localUpdated && !cloudUpdated) {
         merged[lessonId] = localSegs;
       } else if (!localUpdated && cloudUpdated) {
@@ -93,7 +95,7 @@ const mergeAudioSegments = (
           });
           return maxTime;
         };
-        
+
         if (getNewestTimestamp(localSegs) > getNewestTimestamp(cloudSegs)) {
           merged[lessonId] = localSegs;
         } else {
@@ -104,14 +106,24 @@ const mergeAudioSegments = (
       }
     }
   }
-  
+
   return merged;
+};
+
+const mergeCustomVocabulary = (
+  local: VocabularyItem[],
+  cloud: VocabularyItem[]
+) => {
+  const map = new Map<string, VocabularyItem>();
+  local.forEach((item) => map.set(item.id || item.term.toLowerCase(), item));
+  cloud.forEach((item) => map.set(item.id || item.term.toLowerCase(), item));
+  return Array.from(map.values());
 };
 
 const App: React.FC = () => {
   const [lessons, setLessons] = useState<LessonData[]>([]);
   const [isLoadingLessons, setIsLoadingLessons] = useState(true);
-  
+
   const [activeView, setActiveView] = useState<'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer'>('dashboard');
   const [currentLessonId, setCurrentLessonId] = useState<string | null>(null);
 
@@ -122,7 +134,7 @@ const App: React.FC = () => {
       setIsLoadingLessons(false);
     });
   }, []);
-  
+
   // Audio Center states for background playback
   const [activeAudioCenterTrackId, setActiveAudioCenterTrackId] = useState<string | null>(null);
   const [audioCenterControl, setAudioCenterControl] = useState<AudioControlState | null>(null);
@@ -152,12 +164,13 @@ const App: React.FC = () => {
       return next;
     });
   };
-  
+
   // Progress state
   const [progress, setProgress] = useState<{ [lessonId: string]: LessonProgress }>({});
   const [history, setHistory] = useState<PracticeHistoryEntry[]>([]);
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
   const [masteredVocabIds, setMasteredVocabIds] = useState<string[]>([]);
+  const [customVocabItems, setCustomVocabItems] = useState<VocabularyItem[]>([]);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
 
@@ -233,10 +246,41 @@ const App: React.FC = () => {
       if (storedVocab) {
         setMasteredVocabIds(JSON.parse(storedVocab));
       }
+
+      const storedCustomVocab = localStorage.getItem('toeic_custom_vocabulary');
+      if (storedCustomVocab) {
+        setCustomVocabItems(JSON.parse(storedCustomVocab));
+      }
     } catch (e) {
       console.error('Failed to load local learning state:', e);
     }
   }, []);
+
+  // Global keydown handler for keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Must be Alt key + specified key
+      if (e.altKey && !e.ctrlKey && !e.metaKey) {
+        const key = e.key.toLowerCase();
+        if (key === '1') {
+          e.preventDefault();
+          handleNavigate('dashboard', null);
+        } else if (key === '2') {
+          e.preventDefault();
+          handleNavigate('vocabulary', null);
+        } else if (key === '3') {
+          e.preventDefault();
+          handleNavigate('audioplayer', null);
+        } else if (key === 'l') {
+          e.preventDefault();
+          handleToggleSidebar();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lessons]);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -280,6 +324,16 @@ const App: React.FC = () => {
         setMasteredVocabIds(mergedVocab);
         localStorage.setItem('toeic_vocabulary_mastered', JSON.stringify(mergedVocab));
         await saveCloudVocabulary(user.uid, mergedVocab);
+
+        // 4. Sync custom vocabulary
+        const storedCustomVocab = localStorage.getItem('toeic_custom_vocabulary');
+        const localCustomVocab = storedCustomVocab ? JSON.parse(storedCustomVocab) : [];
+        const cloudCustomVocab = (await loadCloudCustomVocabulary(user.uid)) || [];
+        const mergedCustomVocab = mergeCustomVocabulary(localCustomVocab, cloudCustomVocab);
+
+        setCustomVocabItems(mergedCustomVocab);
+        localStorage.setItem('toeic_custom_vocabulary', JSON.stringify(mergedCustomVocab));
+        await saveCloudCustomVocabulary(user.uid, mergedCustomVocab);
 
         setSyncMessage('Synced with Google account');
       } catch (e) {
@@ -369,7 +423,7 @@ const App: React.FC = () => {
         ...metadata
       }
     };
-    
+
     setProgress(updatedProgress);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updatedProgress));
 
@@ -387,7 +441,7 @@ const App: React.FC = () => {
       const stored = localStorage.getItem('toeic_audio_segments');
       const allSegments = stored ? JSON.parse(stored) : {};
       allSegments[lessonId] = segments;
-      
+
       saveCloudAudioSegments(authUser.uid, allSegments).catch((e) => {
         console.error('Failed to save cloud audio segments:', e);
       });
@@ -404,6 +458,22 @@ const App: React.FC = () => {
         console.error('Failed to save cloud vocabulary:', e);
       });
     }
+  };
+
+  const handleSaveCustomVocab = (item: VocabularyItem) => {
+    setCustomVocabItems((prev) => {
+      const exists = prev.some((x) => x.term.toLowerCase() === item.term.toLowerCase());
+      const next = exists
+        ? prev.map((x) => (x.term.toLowerCase() === item.term.toLowerCase() ? item : x))
+        : [...prev, item];
+      localStorage.setItem('toeic_custom_vocabulary', JSON.stringify(next));
+      if (authUser) {
+        saveCloudCustomVocabulary(authUser.uid, next).catch((e) => {
+          console.error('Failed to save cloud custom vocabulary:', e);
+        });
+      }
+      return next;
+    });
   };
 
   const handleRecordHistory = (entry: Omit<PracticeHistoryEntry, 'id' | 'timestamp'>) => {
@@ -549,6 +619,7 @@ const App: React.FC = () => {
             lessons={lessons}
             masteredIds={masteredVocabIds}
             onSaveMasteredIds={handleSaveVocabulary}
+            customVocabItems={customVocabItems}
           />
         ) : activeView === 'audioplayer' ? (
           <Mp3PlayerHub
@@ -566,6 +637,8 @@ const App: React.FC = () => {
             onRecordHistory={handleRecordHistory}
             onQuestionNavConfig={handleQuestionNavConfig}
             onSaveAudioSegments={handleSaveAudioSegments}
+            customVocabItems={customVocabItems}
+            onSaveCustomVocab={handleSaveCustomVocab}
           />
         ) : (
           <div style={{ padding: '32px', textAlign: 'center', color: 'hsl(var(--text-muted))' }}>
@@ -625,7 +698,7 @@ const App: React.FC = () => {
               {buildDateText && <span className="update-toast-date">{buildDateText}</span>}
             </div>
           </div>
-          <button 
+          <button
             onClick={() => {
               setShowUpdateToast(false);
               try {
@@ -656,13 +729,13 @@ const App: React.FC = () => {
                 <h2 style={{ fontFamily: 'var(--font-title)', marginTop: '8px' }}>TOEIC Practice Hub</h2>
                 <span>v{appVersion}</span>
               </div>
-              
+
               <div className="version-modal-info-list">
                 <div className="version-modal-info-item">
                   <strong>Thông tin cập nhật mới nhất:</strong>
                   <p className="version-commit-message">{commitMessage}</p>
                 </div>
-                
+
                 <div className="version-modal-info-grid">
                   <div className="version-modal-subitem">
                     <strong>Mã Commit:</strong>

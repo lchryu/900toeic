@@ -151,7 +151,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
       const backup = {
         progress: localStorage.getItem('toeic_practice_progress') ? JSON.parse(localStorage.getItem('toeic_practice_progress')!) : {},
         history: localStorage.getItem('toeic_practice_history') ? JSON.parse(localStorage.getItem('toeic_practice_history')!) : [],
-        vocab: localStorage.getItem('toeic_vocabulary_mastered') ? JSON.parse(localStorage.getItem('toeic_vocabulary_mastered')!) : []
+        vocab: localStorage.getItem('toeic_vocabulary_mastered') ? JSON.parse(localStorage.getItem('toeic_vocabulary_mastered')!) : [],
+        customVocab: localStorage.getItem('toeic_custom_vocabulary') ? JSON.parse(localStorage.getItem('toeic_custom_vocabulary')!) : [],
+        audioSegments: localStorage.getItem('toeic_audio_segments') ? JSON.parse(localStorage.getItem('toeic_audio_segments')!) : {}
       };
       const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backup, null, 2));
       const downloadAnchor = document.createElement('a');
@@ -174,10 +176,12 @@ export const Dashboard: React.FC<DashboardProps> = ({
     fileReader.onload = (event) => {
       try {
         const data = JSON.parse(event.target?.result as string);
-        if (data.progress || data.history || data.vocab) {
+        if (data.progress || data.history || data.vocab || data.customVocab || data.audioSegments) {
           if (data.progress) localStorage.setItem('toeic_practice_progress', JSON.stringify(data.progress));
           if (data.history) localStorage.setItem('toeic_practice_history', JSON.stringify(data.history));
           if (data.vocab) localStorage.setItem('toeic_vocabulary_mastered', JSON.stringify(data.vocab));
+          if (data.customVocab) localStorage.setItem('toeic_custom_vocabulary', JSON.stringify(data.customVocab));
+          if (data.audioSegments) localStorage.setItem('toeic_audio_segments', JSON.stringify(data.audioSegments));
           alert('Backup restored successfully! The page will reload.');
           window.location.reload();
         } else {

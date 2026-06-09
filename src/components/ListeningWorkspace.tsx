@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AudioControlState, AudioSegment, ListeningGroup, QuestionState } from '../types';
+import { AudioControlState, AudioSegment, ListeningGroup, QuestionState, VocabularyItem } from '../types';
 import { QuestionBlock } from './QuestionBlock';
 import { ChevronDown, Headphones, Lock, Play, Repeat, RotateCcw, SlidersHorizontal, Unlock } from 'lucide-react';
 
@@ -16,6 +16,10 @@ interface ListeningWorkspaceProps {
   onToggleFlag: (qNum: number) => void;
   onUpdateAudioSegment: (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => void;
   onResetAudioSegment: (segmentId: string) => void;
+  customVocabItems?: VocabularyItem[];
+  onSaveCustomVocab?: (item: VocabularyItem) => void;
+  lessonId?: string;
+  lessonTitle?: string;
 }
 
 const formatTime = (seconds: number) => {
@@ -60,36 +64,10 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
     setEndValue(formatTime(segment.end));
   }, [segment]);
 
-  if (!segment) {
-    return (
-      <div className="audio-segment-row audio-segment-empty">
-        Audio segment loading
-      </div>
-    );
-  }
-
-  const isActive = audioControl?.activeSegmentId === segment.id;
+  const isActive = segment ? audioControl?.activeSegmentId === segment.id : false;
   const isLooping = isActive && audioControl?.isLoopingSegment;
   const canControlAudio = !!audioControl?.isReady;
 
-  const handleSave = () => {
-    const nextStart = parseTimeInput(startValue);
-    const nextEnd = parseTimeInput(endValue);
-
-    if (!Number.isFinite(nextStart) || !Number.isFinite(nextEnd)) return;
-    onUpdateAudioSegment(segment.id, { start: nextStart, end: nextEnd });
-    setIsEditing(false);
-  };
-
-  const setCurrentAsStart = () => {
-    setStartValue(formatTime(audioControl?.currentTime || 0));
-  };
-
-  const setCurrentAsEnd = () => {
-    setEndValue(formatTime(audioControl?.currentTime || 0));
-  };
-
-  // Keyboard shortcut refs to prevent keydown listener re-registrations
   const startRef = React.useRef(startValue);
   const endRef = React.useRef(endValue);
   const segmentRef = React.useRef(segment);
@@ -107,7 +85,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
   });
 
   useEffect(() => {
-    if (!isEditing) return;
+    if (!isEditing || !segment) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const isInput = document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA';
@@ -116,7 +94,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
         e.preventDefault();
         const nextStart = parseTimeInput(startRef.current);
         const nextEnd = parseTimeInput(endRef.current);
-        if (Number.isFinite(nextStart) && Number.isFinite(nextEnd)) {
+        if (Number.isFinite(nextStart) && Number.isFinite(nextEnd) && segmentRef.current) {
           onUpdateAudioSegment(segmentRef.current.id, { start: nextStart, end: nextEnd });
           setIsEditing(false);
         }
@@ -132,7 +110,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
           setEndValue(formatTime(audioRef.current?.currentTime || 0));
         } else if (e.key.toLowerCase() === 'l') {
           e.preventDefault();
-          if (audioRef.current?.isReady) {
+          if (audioRef.current?.isReady && segmentRef.current) {
             if (loopRef.current) {
               audioRef.current.stopSegment();
             } else {
@@ -141,7 +119,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
           }
         } else if (e.key === ' ') {
           e.preventDefault();
-          if (audioRef.current?.isReady) {
+          if (audioRef.current?.isReady && segmentRef.current) {
             if (activeRef.current && audioRef.current.isPlaying) {
               audioRef.current.stopSegment();
             } else {
@@ -168,7 +146,32 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isEditing]);
+  }, [isEditing, segment]);
+
+  if (!segment) {
+    return (
+      <div className="audio-segment-row audio-segment-empty">
+        Audio segment loading
+      </div>
+    );
+  }
+
+  const handleSave = () => {
+    const nextStart = parseTimeInput(startValue);
+    const nextEnd = parseTimeInput(endValue);
+
+    if (!Number.isFinite(nextStart) || !Number.isFinite(nextEnd)) return;
+    onUpdateAudioSegment(segment.id, { start: nextStart, end: nextEnd });
+    setIsEditing(false);
+  };
+
+  const setCurrentAsStart = () => {
+    setStartValue(formatTime(audioControl?.currentTime || 0));
+  };
+
+  const setCurrentAsEnd = () => {
+    setEndValue(formatTime(audioControl?.currentTime || 0));
+  };
 
   return (
     <div className={`audio-segment-row ${isActive ? 'is-active' : ''}`}>
@@ -476,10 +479,78 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
   onSelectOption,
   onToggleFlag,
   onUpdateAudioSegment,
-  onResetAudioSegment
+  onResetAudioSegment,
+  customVocabItems = [],
+  onSaveCustomVocab,
+  lessonId,
+  lessonTitle
 }) => {
   const showTranscript = isGraded || mode === 'study';
   const [showTranslations, setShowTranslations] = useState(true);
+
+  // Popover state for double-click word lookup
+  const [popover, setPopover] = useState<{
+    visible: boolean;
+    x: number;
+    y: number;
+    text: string;
+  }>({ visible: false, x: 0, y: 0, text: '' });
+  const [saveDefinition, setSaveDefinition] = useState('');
+
+  const handleMouseUp = () => {
+    const selection = window.getSelection();
+    if (!selection) return;
+    const text = selection.toString().trim();
+    if (text.length > 0 && text.length < 50) {
+      try {
+        const range = selection.getRangeAt(0);
+        const rect = range.getBoundingClientRect();
+        setPopover({
+          visible: true,
+          x: rect.left + rect.width / 2 + window.scrollX,
+          y: rect.top + window.scrollY - 10,
+          text: text
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const popoverEl = document.getElementById('selection-popover');
+      if (popoverEl && !popoverEl.contains(e.target as Node)) {
+        setPopover((prev) => ({ ...prev, visible: false }));
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const foundDefinition = React.useMemo(() => {
+    if (!popover.text) return null;
+    const cleanWord = popover.text.toLowerCase().trim().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?]/g, '');
+    const match = customVocabItems.find((x) => x.term.toLowerCase() === cleanWord);
+    return match ? `Custom definition: ${match.definition}` : null;
+  }, [popover.text, customVocabItems]);
+
+  const handleSaveToTrainer = () => {
+    if (!popover.text || !saveDefinition.trim()) return;
+
+    const newItem: VocabularyItem = {
+      id: `custom-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      term: popover.text.trim(),
+      definition: saveDefinition.trim(),
+      lessonId: lessonId || '',
+      lessonTitle: lessonTitle || ''
+    };
+
+    onSaveCustomVocab?.(newItem);
+    setSaveDefinition('');
+    setPopover((prev) => ({ ...prev, visible: false }));
+    window.getSelection()?.removeAllRanges();
+  };
 
   return (
     <div className="listening-workspace-root" style={{ padding: '24px', maxWidth: '850px', margin: '0 auto', width: '100%' }}>
@@ -540,8 +611,10 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
               padding: '24px',
               marginBottom: '24px',
               background: showTranscript ? 'hsl(var(--panel-bg) / 0.5)' : 'hsl(var(--panel-bg) / 0.25)',
-              borderStyle: showTranscript ? 'solid' : 'dashed'
+              borderStyle: showTranscript ? 'solid' : 'dashed',
+              position: 'relative'
             }}
+            onMouseUp={handleMouseUp}
           >
             {showTranscript ? (
               <div>
@@ -611,6 +684,55 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
           </div>
         </div>
       ))}
+
+      {/* Popover Menu */}
+      {popover.visible && (
+        <div
+          id="selection-popover"
+          className="selection-popover"
+          style={{
+            top: `${popover.y}px`,
+            left: `${popover.x}px`,
+            transform: 'translate(-50%, -100%)'
+          }}
+        >
+          <div className="popover-lookup" style={{ border: 'none', padding: '4px' }}>
+            <span className="popover-term">"{popover.text}"</span>
+            {foundDefinition ? (
+              <div className="popover-definition">{foundDefinition}</div>
+            ) : (
+              <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>
+                Not in glossary
+              </span>
+            )}
+
+            <a
+              href={`https://translate.google.com/?sl=en&tl=vi&text=${encodeURIComponent(popover.text)}&op=translate`}
+              target="_blank"
+              rel="noreferrer"
+              className="popover-translate-link"
+            >
+              Google Translate ↗
+            </a>
+
+            <div className="popover-save-form" onKeyDown={(e) => e.stopPropagation()}>
+              <input
+                type="text"
+                className="popover-save-input"
+                placeholder="Definition / Nghĩa..."
+                value={saveDefinition}
+                onChange={(e) => setSaveDefinition(e.target.value)}
+              />
+              <button
+                className="popover-save-btn"
+                onClick={handleSaveToTrainer}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

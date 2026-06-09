@@ -385,9 +385,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
   };
 
   const handleSpeedChange = () => {
-    let nextRate = 1.0;
-    if (playbackRate === 1.0) nextRate = 1.2;
-    else if (playbackRate === 1.2) nextRate = 1.5;
+    const speeds = [0.8, 1.0, 1.2, 1.5, 1.8, 2.0];
+    const currentIndex = speeds.indexOf(playbackRate);
+    const nextIndex = currentIndex === -1 ? 1 : (currentIndex + 1) % speeds.length;
+    const nextRate = speeds[nextIndex];
 
     if (isYoutubeSource) {
       youtubePlayerRef.current?.setPlaybackRate?.(nextRate);
@@ -512,13 +513,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
               display: 'flex',
               alignItems: 'center',
               gap: '4px',
-              background: playbackRate > 1.0 ? 'rgba(14, 165, 233, 0.1)' : 'transparent',
-              borderColor: playbackRate > 1.0 ? 'hsl(var(--primary))' : 'hsl(var(--panel-border))',
-              color: playbackRate > 1.0 ? 'hsl(var(--primary))' : 'hsl(var(--text-primary))'
+              background: playbackRate !== 1.0 ? 'rgba(14, 165, 233, 0.1)' : 'transparent',
+              borderColor: playbackRate !== 1.0 ? 'hsl(var(--primary))' : 'hsl(var(--panel-border))',
+              color: playbackRate !== 1.0 ? 'hsl(var(--primary))' : 'hsl(var(--text-primary))'
             }}
             onClick={handleSpeedChange}
             disabled={!canUseControls}
-            title="Toggle speed: 1.0x -> 1.2x -> 1.5x"
+            title="Toggle speed: 0.8x -> 1.0x -> 1.2x -> 1.5x -> 1.8x -> 2.0x"
           >
             <FastForward size={14} />
             <span>{playbackRate.toFixed(1)}x</span>

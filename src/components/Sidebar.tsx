@@ -44,6 +44,23 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onToggleCollapse,
   onVersionClick
 }) => {
+  const [filterMode, setFilterMode] = React.useState<'all' | 'unanswered' | 'flagged'>('all');
+
+  React.useEffect(() => {
+    setFilterMode('all');
+  }, [currentLessonId]);
+
+  const filteredQuestionNumbers = React.useMemo(() => {
+    if (filterMode === 'all') return questionNumbers;
+    if (filterMode === 'unanswered') {
+      return questionNumbers.filter((num) => !answeredQuestions.includes(num));
+    }
+    if (filterMode === 'flagged') {
+      return questionNumbers.filter((num) => flaggedQuestions.includes(num));
+    }
+    return questionNumbers;
+  }, [filterMode, questionNumbers, answeredQuestions, flaggedQuestions]);
+
   const handleNavClick = (view: 'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer', lessonId: string | null) => {
     onNavigate(view, lessonId);
     onCloseMobileSidebar?.();
@@ -173,12 +190,40 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Render Question Navigator Grid if inside a lesson */}
       {activeView === 'lesson' && currentLessonId && questionNumbers.length > 0 && (
         <div className="navigator-container">
-          <h4 style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'hsl(var(--text-muted))', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <h4 style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'hsl(var(--text-muted))', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
             <Bookmark size={14} />
             Question Navigator
           </h4>
+
+          {/* Navigator filters row */}
+          {!isCollapsed && (
+            <div className="navigator-filters">
+              <button
+                className={`nav-filter-btn ${filterMode === 'all' ? 'active' : ''}`}
+                onClick={() => setFilterMode('all')}
+                title={`All questions (${questionNumbers.length})`}
+              >
+                All ({questionNumbers.length})
+              </button>
+              <button
+                className={`nav-filter-btn ${filterMode === 'unanswered' ? 'active' : ''}`}
+                onClick={() => setFilterMode('unanswered')}
+                title={`Unanswered questions (${questionNumbers.length - answeredQuestions.length})`}
+              >
+                Unanswered ({questionNumbers.length - answeredQuestions.length})
+              </button>
+              <button
+                className={`nav-filter-btn ${filterMode === 'flagged' ? 'active' : ''}`}
+                onClick={() => setFilterMode('flagged')}
+                title={`Flagged questions (${flaggedQuestions.length})`}
+              >
+                Flagged ({flaggedQuestions.length})
+              </button>
+            </div>
+          )}
+
           <div className="navigator-grid">
-            {questionNumbers.map((num) => {
+            {filteredQuestionNumbers.map((num) => {
               const isAnswered = answeredQuestions.includes(num);
               const isFlagged = flaggedQuestions.includes(num);
               const isCorrect = gradedResults[num];
@@ -203,6 +248,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 </button>
               );
             })}
+            {filteredQuestionNumbers.length === 0 && (
+              <div style={{ gridColumn: '1 / -1', textAlign: 'center', fontSize: '0.75rem', color: 'hsl(var(--text-muted))', padding: '12px 0' }}>
+                No questions found.
+              </div>
+            )}
           </div>
         </div>
       )}

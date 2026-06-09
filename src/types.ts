@@ -58,6 +58,7 @@ export interface LessonProgress {
   lessonId: string;
   answers: { [qNum: number]: string }; // qNum -> selected option
   flaggedQuestions?: number[];
+  flagNotes?: { [qNum: number]: string };
   lastTab?: 'listening' | 'reading';
   mode?: 'study' | 'practice' | 'review';
   timeSpent: number; // in seconds
@@ -114,4 +115,12 @@ export interface AudioControlState {
   seekTo: (seconds: number) => void;
   playSegment: (segment: AudioSegment, loop?: boolean) => void;
   stopSegment: () => void;
+}
+
+export interface VocabularyItem {
+  id: string;
+  term: string;
+  definition: string;
+  lessonId: string;
+  lessonTitle: string;
 }
