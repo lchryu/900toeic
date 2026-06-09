@@ -825,6 +825,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                     <QuestionBlock
                       key={q.num}
                       num={q.num}
+                      text={q.text}
                       options={q.options}
                       explanation={q.explanation || 'Refer to the vocabulary notes for translations.'}
                       selectedOption={displayAnswers[q.num] || ''}
@@ -878,6 +879,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                     <QuestionBlock
                       key={q.num}
                       num={q.num}
+                      text={q.text}
                       options={q.options}
                       explanation={q.explanation || 'Refer to the vocabulary notes for translations.'}
                       selectedOption={displayAnswers[q.num] || ''}
