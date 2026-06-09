@@ -5,6 +5,7 @@ import {
   onAuthStateChanged,
   signInWithRedirect,
   signInWithPopup,
+  getRedirectResult,
   signOut,
   type Auth,
   type User
@@ -62,11 +63,23 @@ const toAuthUser = (user: User): AuthUser => {
   };
 };
 
-export const subscribeToAuth = (callback: (user: AuthUser | null) => void) => {
+export const subscribeToAuth = (callback: (user: AuthUser | null, error?: any) => void) => {
   if (!auth) {
     callback(null);
     return () => undefined;
   }
+
+  // Handle pending redirect results (if any)
+  getRedirectResult(auth)
+    .then((result) => {
+      if (result?.user) {
+        callback(toAuthUser(result.user));
+      }
+    })
+    .catch((error) => {
+      console.error('Redirect sign-in error:', error);
+      callback(null, error);
+    });
 
   return onAuthStateChanged(auth, (user) => {
     callback(user ? toAuthUser(user) : null);
@@ -80,15 +93,6 @@ export const signInWithGoogle = async () => {
 
   const provider = new GoogleAuthProvider();
   provider.setCustomParameters({ prompt: 'select_account' });
-
-  const shouldUseRedirect =
-    /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent) ||
-    window.matchMedia?.('(pointer: coarse)').matches;
-
-  if (shouldUseRedirect) {
-    await signInWithRedirect(auth, provider);
-    return null;
-  }
 
   try {
     const result = await signInWithPopup(auth, provider);
@@ -107,6 +111,30 @@ export const signInWithGoogle = async () => {
 
     await signInWithRedirect(auth, provider);
     return null;
+  }
+};
+
+export const getFriendlyAuthErrorMessage = (error: any): string => {
+  const code = error?.code || '';
+  switch (code) {
+    case 'auth/operation-not-allowed':
+      return 'Google sign-in is not enabled in your Firebase Console.';
+    case 'auth/unauthorized-domain':
+      return 'Domain not authorized. Add this domain to Authorized Domains in Firebase.';
+    case 'auth/popup-blocked':
+      return 'Sign-in popup blocked. Please allow popups for this site.';
+    case 'auth/popup-closed-by-user':
+      return 'Sign-in popup was closed before completion.';
+    case 'auth/cancelled-popup-request':
+      return 'Popup sign-in request cancelled.';
+    case 'auth/web-storage-unsupported':
+      return 'Third-party cookies/storage are blocked by your browser settings.';
+    case 'auth/network-request-failed':
+      return 'Network error. Check your internet connection.';
+    case 'auth/internal-error':
+      return 'Firebase internal error. Check project configuration.';
+    default:
+      return error?.message || 'Google sign-in failed.';
   }
 };
 

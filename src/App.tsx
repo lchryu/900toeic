@@ -21,6 +21,7 @@ import {
   signInWithGoogle,
   signOutGoogle,
   subscribeToAuth,
+  getFriendlyAuthErrorMessage,
   type AuthUser
 } from './services/firebase';
 
@@ -293,7 +294,15 @@ const App: React.FC = () => {
   }, [theme]);
 
   useEffect(() => {
-    return subscribeToAuth(async (user) => {
+    return subscribeToAuth(async (user, error) => {
+      if (error) {
+        console.error('Auth subscription error:', error);
+        setSyncMessage(getFriendlyAuthErrorMessage(error));
+        setAuthUser(null);
+        setIsSyncing(false);
+        return;
+      }
+
       setAuthUser(user);
       setSyncMessage(null);
 
@@ -356,7 +365,7 @@ const App: React.FC = () => {
       await signInWithGoogle();
     } catch (e) {
       console.error('Failed to sign in with Google:', e);
-      setSyncMessage('Google sign-in failed');
+      setSyncMessage(getFriendlyAuthErrorMessage(e));
     }
   };
 
@@ -646,7 +655,7 @@ const App: React.FC = () => {
             isAuthConfigured={isFirebaseConfigured}
             isSyncing={isSyncing}
             syncMessage={syncMessage}
-        onSignIn={handleSignIn}
+            onSignIn={handleSignIn}
             onSignOut={handleSignOut}
             onStartLesson={(id) => handleNavigate('lesson', id)}
           />
