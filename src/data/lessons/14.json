@@ -501,7 +501,7 @@
       "startQ": 131,
       "endQ": 132,
       "originalPassage": "**Flyte Bakery**\n\nAll baked goods are handmade on the premises including:\n- Cakes\n- Seasonal fruit pies\n- Breads and pastries\n- Cookies\n- Personalized desserts for anniversaries, weddings, birthdays, and other special occasions. Please order at least one week beforehand.\n\nCatering for corporate events and private parties is now available! To learn more about our rates, telephone us during the business hours below.\n\nMonday - Saturday: 6 A.M. - 7 P.M.\nSunday: 6 A.M. - 6 P.M.\nLocation: 192 South Street, Sydney\nTel: (02) 9272-6555",
-      "completedPassage": "**Flyte Bakery**\n\nAll baked goods are handmade on the premises, including cakes, seasonal fruit pies, breads and pastries, cookies, and personalized desserts for special occasions.\n\nPersonalized desserts should be ordered at least one week beforehand. Customers should call the bakery to learn more about catering rates.",
+      "completedPassage": "**Flyte Bakery**\n\nAll baked goods are handmade on the premises, including cakes, seasonal fruit pies, breads and pastries, cookies, and personalized desserts for special occasions.\n\nPersonalized desserts should be ordered at least one week beforehand. Customers should call the bakery to learn more about catering rates.\n\n**Dịch:** Tất cả bánh ở Flyte Bakery đều được làm thủ công ngay tại cửa hàng. Các món tráng miệng cá nhân hóa cho sinh nhật, đám cưới hoặc dịp đặc biệt cần được đặt trước ít nhất một tuần. Khách hàng nên gọi cho tiệm bánh để hỏi thêm về giá dịch vụ cung cấp đồ ăn cho sự kiện.",
       "questions": [
         {
           "num": 131,
@@ -573,7 +573,7 @@
       "startQ": 133,
       "endQ": 135,
       "originalPassage": "**April 16**\n\nDear Ms. Gianetti,\n\nAs you may know, our office is moving to a new location at 1837 Plymouth Avenue, across the street from the Bailey supermarket. Construction is finally complete, and we will begin seeing patients there on Monday, May 2.\n\nThe new location offers twice as many parking spaces, more examination rooms, and a larger waiting room than the old office on Eastbridge Road did. In order to accommodate an increase in the number of patients, our new schedule will offer weekend appointments and longer hours during the workweek. We will now be open 8 A.M. - 6 P.M., Monday-Friday, and 10 A.M. - 3 P.M. on Saturday. We are also welcoming two additions to our staff: Dr. Anne Hui, who has been practicing dentistry for over ten years, and Ellen Howard, our new dental assistant.\n\nFor detailed directions to the new location, see the enclosed map. Please note that Exit 9 is the nearest exit if you are driving on the Benson Highway. The nearest light rail station is Grosvenor Street.\n\nDr. Charles Somerville",
-      "completedPassage": "Dr. Charles Somerville's dental practice is moving from Eastbridge Road to 1837 Plymouth Avenue. The new office is larger and will allow the practice to serve more patients with longer hours and weekend appointments.",
+      "completedPassage": "Dr. Charles Somerville's dental practice is moving from Eastbridge Road to 1837 Plymouth Avenue. The new office is larger and will allow the practice to serve more patients with longer hours and weekend appointments.\n\n**Dịch:** Phòng khám nha khoa của bác sĩ Charles Somerville sẽ chuyển từ đường Eastbridge đến số 1837 đại lộ Plymouth. Văn phòng mới rộng hơn, có thêm chỗ đậu xe, nhiều phòng khám hơn, phòng chờ lớn hơn và cho phép phòng khám phục vụ nhiều bệnh nhân hơn với giờ làm việc dài hơn cùng lịch hẹn cuối tuần.",
       "questions": [
         {
           "num": 133,
@@ -671,7 +671,7 @@
       "startQ": 136,
       "endQ": 138,
       "originalPassage": "**MEMO**\n\n**Date:** July 25\n**To:** Canary Wharf Productions Employees\n**From:** Althea Lee, Human Resources\n**Re:** Building escalators\n\nEscalators in the first-floor lobby will be closed beginning on Monday, August 1, so that a new motor and handrail can be installed. Barring unexpected delays, they will be back in service by the following Monday.\n\nTo access the second floor of the building, take the stairway located next to the service elevator on the east side of the building. Do NOT use the freight elevator itself, as it is reserved for equipment, supplies, and other heavy items, and cannot accommodate additional traffic from employees. If you need an elevator, use the passenger elevators near the Baywater Street entrance on the north side of the building.",
-      "completedPassage": "The first-floor lobby escalators at Canary Wharf Productions will be closed for about one week while a new motor and handrail are installed. Employees should use the stairs or passenger elevators instead of the freight elevator.",
+      "completedPassage": "The first-floor lobby escalators at Canary Wharf Productions will be closed for about one week while a new motor and handrail are installed. Employees should use the stairs or passenger elevators instead of the freight elevator.\n\n**Dịch:** Thang cuốn ở sảnh tầng một của Canary Wharf Productions sẽ đóng khoảng một tuần để lắp mô-tơ và tay vịn mới. Nhân viên nên dùng cầu thang hoặc thang máy chở khách thay vì thang máy chở hàng.",
       "questions": [
         {
           "num": 136,
