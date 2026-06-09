@@ -501,7 +501,7 @@
       "startQ": 157,
       "endQ": 158,
       "originalPassage": "**Flyte Bakery**\n\nAll baked goods are handmade on the premises including:\n- Cakes\n- Seasonal fruit pies\n- Breads and pastries\n- Cookies\n- Personalized desserts for anniversaries, weddings, birthdays, and other special occasions. Please order at least one week beforehand.\n\nCatering for corporate events and private parties is now available! To learn more about our rates, telephone us during the business hours below.\n\nMonday - Saturday: 6 A.M. - 7 P.M.\nSunday: 6 A.M. - 6 P.M.\nLocation: 192 South Street, Sydney\nTel: (02) 9272-6555",
-      "completedPassage": "**Flyte Bakery**\n\nAll baked goods are handmade on the premises, including cakes, seasonal fruit pies, breads and pastries, cookies, and personalized desserts for special occasions.\n\nPersonalized desserts should be ordered at least one week beforehand. Customers should call the bakery to learn more about catering rates.\n\n**Dịch:** Tất cả bánh ở Flyte Bakery đều được làm thủ công ngay tại cửa hàng. Các món tráng miệng cá nhân hóa cho sinh nhật, đám cưới hoặc dịp đặc biệt cần được đặt trước ít nhất một tuần. Khách hàng nên gọi cho tiệm bánh để hỏi thêm về giá dịch vụ cung cấp đồ ăn cho sự kiện.",
+      "completedPassage": "**Flyte Bakery**\n\nAll baked goods are handmade on the premises, including cakes, seasonal fruit pies, breads and pastries, cookies, and personalized desserts for special occasions.\n\nPersonalized desserts should be ordered at least one week beforehand. Customers should call the bakery to learn more about catering rates.\n\n**Dịch:**\nTất cả các loại bánh nướng đều được làm thủ công ngay tại cửa hàng, bao gồm:\n- Các loại bánh kem\n- Bánh pie trái cây theo mùa\n- Bánh mì và các loại bánh ngọt (pastries)\n- Bánh quy\n- Các món tráng miệng được thiết kế theo yêu cầu cho lễ kỷ niệm, đám cưới, sinh nhật và những dịp đặc biệt khác. Vui lòng đặt trước ít nhất một tuần.\n\nHiện chúng tôi cũng nhận phục vụ tiệc (catering) cho các sự kiện của công ty và các bữa tiệc riêng. Để biết thêm về mức giá, vui lòng gọi cho chúng tôi trong khung giờ làm việc dưới đây.\n\nGiờ mở cửa:\n- Thứ Hai – Thứ Bảy: 6:00 sáng – 7:00 tối\n- Chủ Nhật: 6:00 sáng – 6:00 tối\n\nĐịa chỉ: 192 South Street, Sydney\nĐiện thoại: (02) 9272-6555",
       "questions": [
         {
           "num": 157,
@@ -559,9 +559,18 @@
         }
       ],
       "vocabulary": [
-        "**Handmade on the premises:** made at the shop location.",
-        "**Personalized dessert:** a dessert customized for a specific occasion.",
-        "**Catering rates:** prices for providing food for an event."
+        "**baked goods**: các loại bánh nướng",
+        "**handmade**: làm thủ công",
+        "**on the premises**: ngay tại cơ sở/cửa hàng (không phải làm ở nơi khác rồi mang đến)",
+        "**seasonal**: theo mùa",
+        "**pastries**: các loại bánh ngọt làm từ bột nhiều lớp (croissant, Danish, puff pastry...)",
+        "**personalized**: được thiết kế/cá nhân hóa theo yêu cầu",
+        "**beforehand**: trước đó, trước",
+        "**catering**: dịch vụ cung cấp đồ ăn cho sự kiện, tiệc",
+        "**corporate events**: sự kiện của doanh nghiệp/công ty",
+        "**private parties**: tiệc riêng",
+        "**rates**: bảng giá, mức phí",
+        "**business hours**: giờ làm việc/giờ mở cửa"
       ],
       "takeaways": [
         "Personalized desserts require advance ordering.",
@@ -575,7 +584,7 @@
       "startQ": 159,
       "endQ": 161,
       "originalPassage": "**April 16**\n\nDear Ms. Gianetti,\n\nAs you may know, our office is moving to a new location at 1837 Plymouth Avenue, across the street from the Bailey supermarket. Construction is finally complete, and we will begin seeing patients there on Monday, May 2.\n\nThe new location offers twice as many parking spaces, more examination rooms, and a larger waiting room than the old office on Eastbridge Road did. In order to accommodate an increase in the number of patients, our new schedule will offer weekend appointments and longer hours during the workweek. We will now be open 8 A.M. - 6 P.M., Monday-Friday, and 10 A.M. - 3 P.M. on Saturday. We are also welcoming two additions to our staff: Dr. Anne Hui, who has been practicing dentistry for over ten years, and Ellen Howard, our new dental assistant.\n\nFor detailed directions to the new location, see the enclosed map. Please note that Exit 9 is the nearest exit if you are driving on the Benson Highway. The nearest light rail station is Grosvenor Street.\n\nDr. Charles Somerville",
-      "completedPassage": "Dr. Charles Somerville's dental practice is moving from Eastbridge Road to 1837 Plymouth Avenue. The new office is larger and will allow the practice to serve more patients with longer hours and weekend appointments.\n\n**Dịch:** Phòng khám nha khoa của bác sĩ Charles Somerville sẽ chuyển từ đường Eastbridge đến số 1837 đại lộ Plymouth. Văn phòng mới rộng hơn, có thêm chỗ đậu xe, nhiều phòng khám hơn, phòng chờ lớn hơn và cho phép phòng khám phục vụ nhiều bệnh nhân hơn với giờ làm việc dài hơn cùng lịch hẹn cuối tuần.",
+      "completedPassage": "Dr. Charles Somerville's dental practice is moving from Eastbridge Road to 1837 Plymouth Avenue. The new office is larger and will allow the practice to serve more patients with longer hours and weekend appointments.\n\n**Dịch:**\nNgày 16 tháng 4\n\nKính gửi bà Gianetti,\n\nNhư bà có thể đã biết, phòng khám của chúng tôi sẽ chuyển đến địa điểm mới tại 1837 Plymouth Avenue, nằm đối diện siêu thị Bailey. Công trình xây dựng cuối cùng cũng đã hoàn tất và chúng tôi sẽ bắt đầu khám chữa bệnh tại địa điểm mới từ Thứ Hai, ngày 2 tháng 5.\n\nĐịa điểm mới có số chỗ đậu xe gấp đôi, nhiều phòng khám hơn và phòng chờ rộng hơn so với phòng khám cũ trên đường Eastbridge. Để đáp ứng số lượng bệnh nhân ngày càng tăng, lịch làm việc mới của chúng tôi sẽ có lịch hẹn vào cuối tuần và kéo dài thời gian làm việc trong các ngày trong tuần.\n\nGiờ làm việc mới như sau:\n- Thứ Hai – Thứ Sáu: 8:00 sáng – 6:00 chiều\n- Thứ Bảy: 10:00 sáng – 3:00 chiều\n\nChúng tôi cũng vui mừng chào đón hai thành viên mới gia nhập đội ngũ:\n- Bác sĩ Anne Hui, người đã hành nghề nha khoa hơn 10 năm.\n- Ellen Howard, trợ lý nha khoa mới của chúng tôi.\n\nĐể biết đường đi chi tiết đến địa điểm mới, vui lòng xem bản đồ đính kèm. Xin lưu ý rằng nếu bà đi bằng ô tô trên đường cao tốc Benson, thì Lối ra số 9 (Exit 9) là lối ra gần nhất. Ga tàu điện nhẹ (light rail) gần nhất là Grosvenor Street.\n\nTrân trọng,\nBác sĩ Charles Somerville",
       "questions": [
         {
           "num": 159,
@@ -660,14 +669,29 @@
         }
       ],
       "vocabulary": [
-        "**Accommodate:** to make room for or meet a need.",
-        "**Examination room:** a room where patients are examined.",
-        "**Detailed directions:** specific instructions for how to get somewhere."
+        "**as you may know**: như bạn có thể đã biết",
+        "**move to a new location**: chuyển đến địa điểm mới",
+        "**across the street from**: đối diện (bên kia đường so với)",
+        "**construction is complete**: công trình xây dựng đã hoàn thành",
+        "**parking spaces**: chỗ đậu xe",
+        "**examination rooms**: phòng khám/phòng khám bệnh",
+        "**waiting room**: phòng chờ",
+        "**accommodate**: đáp ứng, phục vụ, tạo điều kiện cho",
+        "**an increase in**: sự gia tăng của",
+        "**appointments**: cuộc hẹn, lịch hẹn",
+        "**workweek**: tuần làm việc",
+        "**additions to our staff**: thành viên mới trong đội ngũ",
+        "**practicing dentistry**: hành nghề nha khoa",
+        "**dental assistant**: trợ lý nha khoa",
+        "**enclosed map**: bản đồ đính kèm",
+        "**Exit 9**: lối ra số 9 (trên đường cao tốc)",
+        "**light rail station**: ga tàu điện nhẹ"
       ],
       "takeaways": [
         "The business is a dental practice.",
         "The previous office was on Eastbridge Road.",
-        "The move supports expansion and more patient appointments."
+        "The move supports expansion and more patient appointments.",
+        "**Dạng bài TOEIC phổ biến**: Đây là một dạng thư thông báo (announcement letter) rất phổ biến trong TOEIC Part 7. Các câu hỏi thường xoay quanh lý do gửi thư, địa chỉ mới, thời gian bắt đầu hoạt động, giờ làm việc mới, những thay đổi tại địa điểm mới và cách di chuyển đến phòng khám."
       ]
     },
     {
@@ -676,7 +700,7 @@
       "startQ": 162,
       "endQ": 164,
       "originalPassage": "**MEMO**\n\n**Date:** July 25\n**To:** Canary Wharf Productions Employees\n**From:** Althea Lee, Human Resources\n**Re:** Building escalators\n\nEscalators in the first-floor lobby will be closed beginning on Monday, August 1, so that a new motor and handrail can be installed. Barring unexpected delays, they will be back in service by the following Monday.\n\nTo access the second floor of the building, take the stairway located next to the service elevator on the east side of the building. Do NOT use the freight elevator itself, as it is reserved for equipment, supplies, and other heavy items, and cannot accommodate additional traffic from employees. If you need an elevator, use the passenger elevators near the Baywater Street entrance on the north side of the building.",
-      "completedPassage": "The first-floor lobby escalators at Canary Wharf Productions will be closed for about one week while a new motor and handrail are installed. Employees should use the stairs or passenger elevators instead of the freight elevator.\n\n**Dịch:** Thang cuốn ở sảnh tầng một của Canary Wharf Productions sẽ đóng khoảng một tuần để lắp mô-tơ và tay vịn mới. Nhân viên nên dùng cầu thang hoặc thang máy chở khách thay vì thang máy chở hàng.",
+      "completedPassage": "The first-floor lobby escalators at Canary Wharf Productions will be closed for about one week while a new motor and handrail are installed. Employees should use the stairs or passenger elevators instead of the freight elevator.\n\n**Dịch:**\nTHÔNG BÁO (MEMO)\n\nNgày: 25 tháng 7\n\nGửi đến: Nhân viên của Canary Wharf Productions\n\nNgười gửi: Althea Lee, Phòng Nhân sự\n\nChủ đề: Thang cuốn của tòa nhà\n\nThang cuốn tại sảnh tầng 1 sẽ đóng cửa từ Thứ Hai, ngày 1 tháng 8 để lắp đặt động cơ mới và tay vịn mới. Nếu không có sự chậm trễ ngoài dự kiến, thang cuốn sẽ hoạt động trở lại vào thứ Hai của tuần kế tiếp.\n\nĐể lên tầng 2 của tòa nhà, vui lòng sử dụng cầu thang nằm cạnh thang máy dịch vụ ở phía đông của tòa nhà.\n\nKhông sử dụng thang máy chở hàng, vì thang máy này được dành riêng để vận chuyển thiết bị, vật tư và các vật nặng khác, và không thể đáp ứng thêm lượng người sử dụng là nhân viên.\n\nNếu bạn cần sử dụng thang máy, hãy dùng thang máy dành cho hành khách nằm gần lối vào trên đường Baywater ở phía bắc của tòa nhà.",
       "questions": [
         {
           "num": 162,
@@ -761,15 +785,36 @@
         }
       ],
       "vocabulary": [
-        "**Escalator:** moving stairs between floors.",
-        "**Handrail:** the rail people hold on an escalator or stairway.",
-        "**Barring unexpected delays:** unless unexpected delays happen.",
-        "**Freight elevator:** an elevator for equipment and heavy items."
+        "**memo**: thông báo nội bộ",
+        "**escalator**: thang cuốn",
+        "**lobby**: sảnh",
+        "**beginning on**: bắt đầu từ",
+        "**install**: lắp đặt",
+        "**motor**: động cơ",
+        "**handrail**: tay vịn",
+        "**barring unexpected delays**: nếu không có sự chậm trễ ngoài dự kiến",
+        "**be back in service**: hoạt động trở lại",
+        "**access**: đi tới, tiếp cận",
+        "**stairway**: cầu thang bộ",
+        "**service elevator**: thang máy dịch vụ",
+        "**freight elevator**: thang máy chở hàng",
+        "**be reserved for**: được dành riêng cho",
+        "**equipment**: thiết bị",
+        "**supplies**: vật tư, đồ dùng",
+        "**heavy items**: vật nặng",
+        "**accommodate**: đáp ứng, chứa, phục vụ",
+        "**additional traffic**: lượng người/lưu lượng bổ sung",
+        "**passenger elevator**: thang máy chở khách",
+        "**entrance**: lối vào"
       ],
       "takeaways": [
         "The escalators are closed for maintenance.",
         "The closure is expected to last one week.",
-        "Employees should use the stairs or passenger elevators."
+        "Employees should use the stairs or passenger elevators.",
+        "**Câu khó cần chú ý**:",
+        "*Barring unexpected delays, they will be back in service by the following Monday.* (barring = unless: trừ khi, nếu không có...; be back in service = hoạt động trở lại -> Nếu không có sự chậm trễ ngoài dự kiến, thang cuốn sẽ hoạt động trở lại vào thứ Hai tuần sau).",
+        "*Do NOT use the freight elevator itself, as it is reserved for equipment...* (itself dùng để nhấn mạnh chính thang máy chở hàng đó, không phải thang máy nói chung; as = vì -> Không sử dụng chính thang máy chở hàng, vì nó được dành riêng để vận chuyển thiết bị, vật tư và các hàng hóa nặng).",
+        "**Dạng bài TOEIC phổ biến**: Đây là dạng TOEIC Part 7 – Memo/Notice, thường hỏi về mục đích của thông báo, thời gian bảo trì bắt đầu/kết thúc, lối đi thay thế của nhân viên, thang máy được phép sử dụng và lý do không được dùng thang máy chở hàng."
       ]
     }
   ]

@@ -476,72 +476,352 @@
     "lessonTitle": "📘 Lesson 13 – Practice"
   },
   {
-    "id": "14-handmade-on-the-premises-0",
-    "term": "Handmade on the premises",
-    "definition": "** made at the shop location.",
+    "id": "14-baked-goods-0",
+    "term": "baked goods",
+    "definition": "các loại bánh nướng",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
   {
-    "id": "14-personalized-dessert-1",
-    "term": "Personalized dessert",
-    "definition": "** a dessert customized for a specific occasion.",
+    "id": "14-handmade-1",
+    "term": "handmade",
+    "definition": "làm thủ công",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
   {
-    "id": "14-catering-rates-2",
-    "term": "Catering rates",
-    "definition": "** prices for providing food for an event.",
+    "id": "14-on-the-premises-2",
+    "term": "on the premises",
+    "definition": "ngay tại cơ sở/cửa hàng (không phải làm ở nơi khác rồi mang đến)",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
   {
-    "id": "14-accommodate-0",
-    "term": "Accommodate",
-    "definition": "** to make room for or meet a need.",
+    "id": "14-seasonal-3",
+    "term": "seasonal",
+    "definition": "theo mùa",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
   {
-    "id": "14-examination-room-1",
-    "term": "Examination room",
-    "definition": "** a room where patients are examined.",
+    "id": "14-pastries-4",
+    "term": "pastries",
+    "definition": "các loại bánh ngọt làm từ bột nhiều lớp (croissant, Danish, puff pastry...)",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
   {
-    "id": "14-detailed-directions-2",
-    "term": "Detailed directions",
-    "definition": "** specific instructions for how to get somewhere.",
+    "id": "14-personalized-5",
+    "term": "personalized",
+    "definition": "được thiết kế/cá nhân hóa theo yêu cầu",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
   {
-    "id": "14-escalator-0",
-    "term": "Escalator",
-    "definition": "** moving stairs between floors.",
+    "id": "14-beforehand-6",
+    "term": "beforehand",
+    "definition": "trước đó, trước",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
   {
-    "id": "14-handrail-1",
-    "term": "Handrail",
-    "definition": "** the rail people hold on an escalator or stairway.",
+    "id": "14-catering-7",
+    "term": "catering",
+    "definition": "dịch vụ cung cấp đồ ăn cho sự kiện, tiệc",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
   {
-    "id": "14-barring-unexpected-delays-2",
-    "term": "Barring unexpected delays",
-    "definition": "** unless unexpected delays happen.",
+    "id": "14-corporate-events-8",
+    "term": "corporate events",
+    "definition": "sự kiện của doanh nghiệp/công ty",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
   {
-    "id": "14-freight-elevator-3",
-    "term": "Freight elevator",
-    "definition": "** an elevator for equipment and heavy items.",
+    "id": "14-private-parties-9",
+    "term": "private parties",
+    "definition": "tiệc riêng",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-rates-10",
+    "term": "rates",
+    "definition": "bảng giá, mức phí",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-business-hours-11",
+    "term": "business hours",
+    "definition": "giờ làm việc/giờ mở cửa",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-as-you-may-know-0",
+    "term": "as you may know",
+    "definition": "như bạn có thể đã biết",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-move-to-a-new-location-1",
+    "term": "move to a new location",
+    "definition": "chuyển đến địa điểm mới",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-across-the-street-from-2",
+    "term": "across the street from",
+    "definition": "đối diện (bên kia đường so với)",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-construction-is-complete-3",
+    "term": "construction is complete",
+    "definition": "công trình xây dựng đã hoàn thành",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-parking-spaces-4",
+    "term": "parking spaces",
+    "definition": "chỗ đậu xe",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-examination-rooms-5",
+    "term": "examination rooms",
+    "definition": "phòng khám/phòng khám bệnh",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-waiting-room-6",
+    "term": "waiting room",
+    "definition": "phòng chờ",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-accommodate-7",
+    "term": "accommodate",
+    "definition": "đáp ứng, phục vụ, tạo điều kiện cho",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-an-increase-in-8",
+    "term": "an increase in",
+    "definition": "sự gia tăng của",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-appointments-9",
+    "term": "appointments",
+    "definition": "cuộc hẹn, lịch hẹn",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-workweek-10",
+    "term": "workweek",
+    "definition": "tuần làm việc",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-additions-to-our-staff-11",
+    "term": "additions to our staff",
+    "definition": "thành viên mới trong đội ngũ",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-practicing-dentistry-12",
+    "term": "practicing dentistry",
+    "definition": "hành nghề nha khoa",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-dental-assistant-13",
+    "term": "dental assistant",
+    "definition": "trợ lý nha khoa",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-enclosed-map-14",
+    "term": "enclosed map",
+    "definition": "bản đồ đính kèm",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-exit-9-15",
+    "term": "Exit 9",
+    "definition": "lối ra số 9 (trên đường cao tốc)",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-light-rail-station-16",
+    "term": "light rail station",
+    "definition": "ga tàu điện nhẹ",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-memo-0",
+    "term": "memo",
+    "definition": "thông báo nội bộ",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-escalator-1",
+    "term": "escalator",
+    "definition": "thang cuốn",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-lobby-2",
+    "term": "lobby",
+    "definition": "sảnh",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-beginning-on-3",
+    "term": "beginning on",
+    "definition": "bắt đầu từ",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-install-4",
+    "term": "install",
+    "definition": "lắp đặt",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-motor-5",
+    "term": "motor",
+    "definition": "động cơ",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-handrail-6",
+    "term": "handrail",
+    "definition": "tay vịn",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-barring-unexpected-delays-7",
+    "term": "barring unexpected delays",
+    "definition": "nếu không có sự chậm trễ ngoài dự kiến",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-be-back-in-service-8",
+    "term": "be back in service",
+    "definition": "hoạt động trở lại",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-access-9",
+    "term": "access",
+    "definition": "đi tới, tiếp cận",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-stairway-10",
+    "term": "stairway",
+    "definition": "cầu thang bộ",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-service-elevator-11",
+    "term": "service elevator",
+    "definition": "thang máy dịch vụ",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-freight-elevator-12",
+    "term": "freight elevator",
+    "definition": "thang máy chở hàng",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-be-reserved-for-13",
+    "term": "be reserved for",
+    "definition": "được dành riêng cho",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-equipment-14",
+    "term": "equipment",
+    "definition": "thiết bị",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-supplies-15",
+    "term": "supplies",
+    "definition": "vật tư, đồ dùng",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-heavy-items-16",
+    "term": "heavy items",
+    "definition": "vật nặng",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-accommodate-17",
+    "term": "accommodate",
+    "definition": "đáp ứng, chứa, phục vụ",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-additional-traffic-18",
+    "term": "additional traffic",
+    "definition": "lượng người/lưu lượng bổ sung",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-passenger-elevator-19",
+    "term": "passenger elevator",
+    "definition": "thang máy chở khách",
+    "lessonId": "14",
+    "lessonTitle": "Lesson 14 - Practice"
+  },
+  {
+    "id": "14-entrance-20",
+    "term": "entrance",
+    "definition": "lối vào",
     "lessonId": "14",
     "lessonTitle": "Lesson 14 - Practice"
   },
