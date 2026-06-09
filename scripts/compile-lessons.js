@@ -375,6 +375,7 @@ function parseLesson(filePath) {
         originalPassage: '',
         completedPassage: '',
         options: {},
+        explanations: {},
         vocabulary: [],
         takeaways: []
       };
@@ -412,10 +413,17 @@ function parseLesson(filePath) {
           const qNum = parseInt(qOptsSplits[k]);
           const qBody = qOptsSplits[k+1];
           const opts = [];
+          const answerMatch = qBody.match(/(?:👉\s*)?\*\*Answer:\s*([A-D])\*\*/i) || qBody.match(/Answer:\s*([A-D])/i);
+          const correctAnswer = answerMatch ? answerMatch[1].toUpperCase() : '';
+          const explanationLines = [];
           const optLines = qBody.split('\n');
           for (const optLine of optLines) {
             const cleanedOpt = optLine.replace(/\r/g, '').trim();
             if (cleanedOpt === '') continue;
+            if (cleanedOpt.startsWith('>')) {
+              explanationLines.push(cleanedOpt.replace(/^>\s*/, '').trim());
+              continue;
+            }
             
             const unboldedOpt = cleanedOpt.replace(/^\*\*(.*?)\*\*/, '$1').trim();
             const optMatch = unboldedOpt.match(/^[\(\[]?([A-D])[\)\]\.]?\s+(.*)$/i);
@@ -423,11 +431,18 @@ function parseLesson(filePath) {
               opts.push({
                 label: optMatch[1].toUpperCase(),
                 text: optMatch[2].trim(),
-                correct: false
+                correct: optMatch[1].toUpperCase() === correctAnswer
               });
             }
           }
           groupData.options[qNum] = opts;
+          const explanation = explanationLines
+            .join(' ')
+            .replace(/^\*\*Explanation:\*\*\s*/i, '')
+            .trim();
+          if (explanation) {
+            groupData.explanations[qNum] = explanation;
+          }
         }
       }
     } else if (type === 'Completed Version') {
@@ -488,6 +503,7 @@ function parseLesson(filePath) {
     Object.keys(group.options).forEach(qStr => {
       const qNum = parseInt(qStr);
       const opts = group.options[qNum];
+      if (opts.some((opt) => opt.correct)) return;
       
       // Match <u>Answer</u> (qNum) or **<u>Answer</u>** (qNum) or <u>Answer</u>(qNum)
       const regexStr = `(?:\\*\\%)?(?:\\*\\*)?<u>(.*?)</u>(?:\\*\\*)?\\s*\\(${qNum}\\)`;
@@ -529,7 +545,8 @@ function parseLesson(filePath) {
       const qNum = parseInt(qStr);
       return {
         num: qNum,
-        options: group.options[qNum]
+        options: group.options[qNum],
+        explanation: group.explanations[qNum]
       };
     }).sort((a, b) => a.num - b.num);
     

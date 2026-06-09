@@ -482,5 +482,424 @@
       ]
     }
   ],
-  "reading": []
+  "reading": [
+    {
+      "id": "rc-131",
+      "range": "131–132",
+      "startQ": 131,
+      "endQ": 132,
+      "originalPassage": "**Pomeran Bank - Account statements**\n\nAs a holder of a Pomeran Bank account, you will receive monthly statements of your account activity. Our representative will be calling you within the next few days to inquire whether you would like statements sent to you by e-mail or delivered to you by postal mail. Please decide which of these two options suits you better. Statements are free of charge. A fee of $5.00 is charged if the balance on your account falls below $100.\n\nAdditionally, you can access your account information on our Website. Pomeran Bank is proud of its online services. We store records of your account activity for five years, while most other banks store the information for only two to three years.",
+      "completedPassage": "Pomeran Bank customers receive monthly account statements and must choose whether to get them by e-mail or postal mail. The bank keeps online account records for five years.",
+      "questions": [
+        {
+          "num": 131,
+          "options": [
+            {
+              "label": "A",
+              "text": "Choose a way of receiving information from the bank",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Contact a bank representative",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Update their contact information",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Pay an account processing fee",
+              "correct": false
+            }
+          ],
+          "explanation": "Customers need to decide whether to receive statements by e-mail or postal mail."
+        },
+        {
+          "num": 132,
+          "options": [
+            {
+              "label": "A",
+              "text": "It has recently updated its Web site.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "It has been in business for two years.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Its online services are a new feature.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It keeps customer records online for five years.",
+              "correct": true
+            }
+          ],
+          "explanation": "The bank stores account activity records online for five years."
+        }
+      ],
+      "vocabulary": [
+        "**Account statement:** a record of account activity.",
+        "**Postal mail:** physical mail delivery.",
+        "**Free of charge:** without a fee."
+      ],
+      "takeaways": [
+        "Customers choose how to receive statements.",
+        "Statements are free.",
+        "Online records are stored for five years."
+      ]
+    },
+    {
+      "id": "rc-133",
+      "range": "133–135",
+      "startQ": 133,
+      "endQ": 135,
+      "originalPassage": "**Waitakere Zoo**\n\nJanuary 22\n\nDear Mr. McBride,\n\nOn behalf of the Friends of the Waitakere Zoo, I thank you for your donation. Your generosity, along with that of other donors, has enabled us to complete construction on the African Savannah enclosure. When it opens in July, the enclosure will provide our antelope, giraffe, and zebra populations an environment that is more similar to their natural habitat than zoo enclosures typically are. Moreover, it will give visitors a better vantage from which to view these beautiful creatures.\n\nWe are pleased to inform you that your name will be listed with the names of other donors on a commemorative plaque at the entrance to the African Savannah enclosure. As a further token of our appreciation, please accept a full season pass, which will allow you and one guest to enter at no charge. It will arrive this week in a separate letter.\n\nSincerely,\nJoseph Ihimaera\nAssociate Director",
+      "completedPassage": "Waitakere Zoo thanks Mr. McBride for his donation to the African Savannah enclosure. The enclosure will improve animal habitats and visitor viewing access. Mr. McBride will receive a season pass.",
+      "questions": [
+        {
+          "num": 133,
+          "options": [
+            {
+              "label": "A",
+              "text": "To inquire about the opening of a new zoo attraction",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To express gratitude for a contribution",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "To thank a longtime visitor for coming to the zoo",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To solicit donations for a construction project",
+              "correct": false
+            }
+          ],
+          "explanation": "The letter thanks Mr. McBride for his donation."
+        },
+        {
+          "num": 134,
+          "options": [
+            {
+              "label": "A",
+              "text": "It will increase visitors' viewing access.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "It will house only one type of animal.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It will be the largest at the zoo.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It will have enhanced security features.",
+              "correct": false
+            }
+          ],
+          "explanation": "The enclosure will give visitors a better vantage point."
+        },
+        {
+          "num": 135,
+          "options": [
+            {
+              "label": "A",
+              "text": "A complete list of donor names",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Guided tours of the African Savannah enclosure",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Free admission for the season",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A personal commemorative plaque",
+              "correct": false
+            }
+          ],
+          "explanation": "Mr. McBride will receive a full season pass for himself and one guest."
+        }
+      ],
+      "vocabulary": [
+        "**Donation:** money or support given to help an organization.",
+        "**Enclosure:** an area where zoo animals live.",
+        "**Vantage:** a good viewing position."
+      ],
+      "takeaways": [
+        "The letter thanks a donor.",
+        "The new enclosure improves viewing access.",
+        "The donor receives free seasonal admission."
+      ]
+    },
+    {
+      "id": "rc-136",
+      "range": "136–139",
+      "startQ": 136,
+      "endQ": 139,
+      "originalPassage": "**The Manor at Aldous Street**\n\nParkhurst's newest apartment building offers city life at its most comfortable and convenient. The Manor at Aldous Street has a wide array of shops and fine restaurants just outside its door. For daily commuters to the city center, public transportation is available at the Queens Landing station, just a short walk to the north.\n\nOur apartment units range from one to three bedrooms. Each unit has a full-sized kitchen with a refrigerator, oven, and dishwashing machine, a dining room separate from the kitchen, and a spacious sitting room with balcony access. Residents also have access to complimentary high-speed Internet, shared laundry facilities, and, for an additional monthly fee, the parking garage.\n\nCall Henman Estate Agents at 0430-555-0108 to schedule an appointment. Visit our Web site for apartment floor plans, photos of the building, and a map of the Parkhurst neighborhood. Units will be available beginning on April 1.",
+      "completedPassage": "The Manor at Aldous Street is a new apartment building in a convenient neighborhood with nearby restaurants and public transportation. Units include appliances, separate dining rooms, balcony access, and high-speed Internet.",
+      "questions": [
+        {
+          "num": 136,
+          "options": [
+            {
+              "label": "A",
+              "text": "A residential building",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "A city park",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A historic site",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A restaurant",
+              "correct": false
+            }
+          ],
+          "explanation": "The advertisement describes an apartment building."
+        },
+        {
+          "num": 137,
+          "options": [
+            {
+              "label": "A",
+              "text": "It is in the center of the city.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "It is not accessible by public transportation.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It offers many dining options.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "It has few newly constructed apartment buildings.",
+              "correct": false
+            }
+          ],
+          "explanation": "The advertisement says there are many shops and fine restaurants nearby."
+        },
+        {
+          "num": 138,
+          "options": [
+            {
+              "label": "A",
+              "text": "They do not include kitchen appliances.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The bedrooms have balconies.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "The kitchens include dining areas.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "They are equipped for Internet access.",
+              "correct": true
+            }
+          ],
+          "explanation": "Residents have access to complimentary high-speed Internet."
+        },
+        {
+          "num": 139,
+          "options": [
+            {
+              "label": "A",
+              "text": "Photographs of The Manor",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A map of the area",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Information on apartment layouts",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "An appointment calendar",
+              "correct": true
+            }
+          ],
+          "explanation": "The Web site has floor plans, photos, and a map, but appointments are scheduled by phone."
+        }
+      ],
+      "vocabulary": [
+        "**Residential building:** a building where people live.",
+        "**Complimentary:** free.",
+        "**Floor plan:** a diagram of an apartment layout."
+      ],
+      "takeaways": [
+        "The advertised property is an apartment building.",
+        "The neighborhood offers dining options.",
+        "Appointment scheduling is done by phone."
+      ]
+    },
+    {
+      "id": "rc-140",
+      "range": "140–143",
+      "startQ": 140,
+      "endQ": 143,
+      "originalPassage": "**Passenger Check-in**\n\nAir Albion asks that you allow yourself ample time to board your flight. Passenger check-in and security screening are subject to unexpected and sometimes lengthy delays. Please arrive at the airport at least one hour before scheduled departure for flights within the United Kingdom, 90 minutes before flights from the UK to Ireland, and two hours before flights from the UK to international destinations other than Ireland.\n\nValid government-issued photo identification is required at check-in. The name on the ID must match the name in which the reservation was made.\n\nYour reservation is subject to cancellation and additional rescheduling fees if you are not checked in and present at the boarding gate at least 10 minutes before domestic flights and flights between the UK and Ireland, and at least 25 minutes before all other international flights. Domestic flights and flights between the UK and Ireland do not require confirmation. For all other international flights, confirm your reservation at least 24 hours before departure.",
+      "completedPassage": "Air Albion asks passengers to arrive early because check-in and security screening times can vary. Passengers flying from the UK to Ireland should arrive 90 minutes early. Other international flights require confirmation 24 hours before departure.",
+      "questions": [
+        {
+          "num": 140,
+          "options": [
+            {
+              "label": "A",
+              "text": "It is more complicated than it used to be.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "It can vary widely in duration.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "It comes after a security screening.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It can be expedited for an additional fee.",
+              "correct": false
+            }
+          ],
+          "explanation": "Check-in and screening can involve unexpected and lengthy delays."
+        },
+        {
+          "num": 141,
+          "options": [
+            {
+              "label": "A",
+              "text": "25 minutes",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "One hour",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "90 minutes",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Two hours",
+              "correct": false
+            }
+          ],
+          "explanation": "Flights from the UK to Ireland require arrival 90 minutes before departure."
+        },
+        {
+          "num": 142,
+          "options": [
+            {
+              "label": "A",
+              "text": "correspond to",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "be near",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "join with",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "compete with",
+              "correct": false
+            }
+          ],
+          "explanation": "The ID name must match, or correspond to, the reservation name."
+        },
+        {
+          "num": 143,
+          "options": [
+            {
+              "label": "A",
+              "text": "Edinburgh, UK",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Paris, France",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Manchester, UK",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Dublin, Ireland",
+              "correct": false
+            }
+          ],
+          "explanation": "International destinations other than Ireland require confirmation in advance."
+        }
+      ],
+      "vocabulary": [
+        "**Ample time:** enough time.",
+        "**Photo identification:** an official ID with a photo.",
+        "**Reservation confirmation:** verifying a booking before travel."
+      ],
+      "takeaways": [
+        "Check-in duration can vary.",
+        "UK-to-Ireland flights require arrival 90 minutes early.",
+        "Paris requires advance confirmation because it is international and not Ireland."
+      ]
+    }
+  ]
 }

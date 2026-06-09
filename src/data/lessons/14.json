@@ -494,5 +494,275 @@
       ]
     }
   ],
-  "reading": []
+  "reading": [
+    {
+      "id": "rc-131",
+      "range": "131–132",
+      "startQ": 131,
+      "endQ": 132,
+      "originalPassage": "**Flyte Bakery**\n\nAll baked goods are handmade on the premises including:\n- Cakes\n- Seasonal fruit pies\n- Breads and pastries\n- Cookies\n- Personalized desserts for anniversaries, weddings, birthdays, and other special occasions. Please order at least one week beforehand.\n\nCatering for corporate events and private parties is now available! To learn more about our rates, telephone us during the business hours below.\n\nMonday - Saturday: 6 A.M. - 7 P.M.\nSunday: 6 A.M. - 6 P.M.\nLocation: 192 South Street, Sydney\nTel: (02) 9272-6555",
+      "completedPassage": "**Flyte Bakery**\n\nAll baked goods are handmade on the premises, including cakes, seasonal fruit pies, breads and pastries, cookies, and personalized desserts for special occasions.\n\nPersonalized desserts should be ordered at least one week beforehand. Customers should call the bakery to learn more about catering rates.",
+      "questions": [
+        {
+          "num": 131,
+          "options": [
+            {
+              "label": "A",
+              "text": "An autumn harvest apple pie",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A personalized birthday cake",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Whole wheat bread",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Chocolate chip cookies",
+              "correct": false
+            }
+          ],
+          "explanation": "Personalized desserts for birthdays must be ordered at least one week beforehand."
+        },
+        {
+          "num": 132,
+          "options": [
+            {
+              "label": "A",
+              "text": "Store hours",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Baking recipes",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Driving directions",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Catering prices",
+              "correct": true
+            }
+          ],
+          "explanation": "Customers are told to call to learn more about catering rates."
+        }
+      ],
+      "vocabulary": [
+        "**Handmade on the premises:** made at the shop location.",
+        "**Personalized dessert:** a dessert customized for a specific occasion.",
+        "**Catering rates:** prices for providing food for an event."
+      ],
+      "takeaways": [
+        "Personalized desserts require advance ordering.",
+        "The bakery provides catering for corporate and private events.",
+        "Customers should call for catering prices."
+      ]
+    },
+    {
+      "id": "rc-133",
+      "range": "133–135",
+      "startQ": 133,
+      "endQ": 135,
+      "originalPassage": "**April 16**\n\nDear Ms. Gianetti,\n\nAs you may know, our office is moving to a new location at 1837 Plymouth Avenue, across the street from the Bailey supermarket. Construction is finally complete, and we will begin seeing patients there on Monday, May 2.\n\nThe new location offers twice as many parking spaces, more examination rooms, and a larger waiting room than the old office on Eastbridge Road did. In order to accommodate an increase in the number of patients, our new schedule will offer weekend appointments and longer hours during the workweek. We will now be open 8 A.M. - 6 P.M., Monday-Friday, and 10 A.M. - 3 P.M. on Saturday. We are also welcoming two additions to our staff: Dr. Anne Hui, who has been practicing dentistry for over ten years, and Ellen Howard, our new dental assistant.\n\nFor detailed directions to the new location, see the enclosed map. Please note that Exit 9 is the nearest exit if you are driving on the Benson Highway. The nearest light rail station is Grosvenor Street.\n\nDr. Charles Somerville",
+      "completedPassage": "Dr. Charles Somerville's dental practice is moving from Eastbridge Road to 1837 Plymouth Avenue. The new office is larger and will allow the practice to serve more patients with longer hours and weekend appointments.",
+      "questions": [
+        {
+          "num": 133,
+          "options": [
+            {
+              "label": "A",
+              "text": "A construction firm",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A dentist's practice",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A shipping company",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A supermarket",
+              "correct": false
+            }
+          ],
+          "explanation": "The notice mentions seeing patients, Dr. Anne Hui, and a dental assistant."
+        },
+        {
+          "num": 134,
+          "options": [
+            {
+              "label": "A",
+              "text": "On Plymouth Avenue",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "On Grosvenor Street",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "On Eastbridge Road",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "On Benson Highway",
+              "correct": false
+            }
+          ],
+          "explanation": "The letter compares the new office with the old office on Eastbridge Road."
+        },
+        {
+          "num": 135,
+          "options": [
+            {
+              "label": "A",
+              "text": "It is moving so that it can expand.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Its new location is more convenient for travel by train.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It has several employees who are retiring soon.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It will offer fewer appointments during the workweek.",
+              "correct": false
+            }
+          ],
+          "explanation": "The new location has more parking, more examination rooms, a larger waiting room, longer hours, and weekend appointments."
+        }
+      ],
+      "vocabulary": [
+        "**Accommodate:** to make room for or meet a need.",
+        "**Examination room:** a room where patients are examined.",
+        "**Detailed directions:** specific instructions for how to get somewhere."
+      ],
+      "takeaways": [
+        "The business is a dental practice.",
+        "The previous office was on Eastbridge Road.",
+        "The move supports expansion and more patient appointments."
+      ]
+    },
+    {
+      "id": "rc-136",
+      "range": "136–138",
+      "startQ": 136,
+      "endQ": 138,
+      "originalPassage": "**MEMO**\n\n**Date:** July 25\n**To:** Canary Wharf Productions Employees\n**From:** Althea Lee, Human Resources\n**Re:** Building escalators\n\nEscalators in the first-floor lobby will be closed beginning on Monday, August 1, so that a new motor and handrail can be installed. Barring unexpected delays, they will be back in service by the following Monday.\n\nTo access the second floor of the building, take the stairway located next to the service elevator on the east side of the building. Do NOT use the freight elevator itself, as it is reserved for equipment, supplies, and other heavy items, and cannot accommodate additional traffic from employees. If you need an elevator, use the passenger elevators near the Baywater Street entrance on the north side of the building.",
+      "completedPassage": "The first-floor lobby escalators at Canary Wharf Productions will be closed for about one week while a new motor and handrail are installed. Employees should use the stairs or passenger elevators instead of the freight elevator.",
+      "questions": [
+        {
+          "num": 136,
+          "options": [
+            {
+              "label": "A",
+              "text": "They need to be expanded to accommodate increased traffic.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "They have been replaced by a new elevator.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Maintenance is being performed on them.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A special event is taking place in the lobby.",
+              "correct": false
+            }
+          ],
+          "explanation": "A new motor and handrail will be installed."
+        },
+        {
+          "num": 137,
+          "options": [
+            {
+              "label": "A",
+              "text": "A few hours",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "One day",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Two days",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "One week",
+              "correct": true
+            }
+          ],
+          "explanation": "The escalators close on Monday, August 1 and should return to service the following Monday."
+        },
+        {
+          "num": 138,
+          "options": [
+            {
+              "label": "A",
+              "text": "Use the stairs",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Work on the first floor only",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Arrive one hour earlier",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Take the freight elevator",
+              "correct": false
+            }
+          ],
+          "explanation": "Employees are told to take the stairway to access the second floor."
+        }
+      ],
+      "vocabulary": [
+        "**Escalator:** moving stairs between floors.",
+        "**Handrail:** the rail people hold on an escalator or stairway.",
+        "**Barring unexpected delays:** unless unexpected delays happen.",
+        "**Freight elevator:** an elevator for equipment and heavy items."
+      ],
+      "takeaways": [
+        "The escalators are closed for maintenance.",
+        "The closure is expected to last one week.",
+        "Employees should use the stairs or passenger elevators."
+      ]
+    }
+  ]
 }
