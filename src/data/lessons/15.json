@@ -484,15 +484,15 @@
   ],
   "reading": [
     {
-      "id": "rc-131",
-      "range": "131–132",
-      "startQ": 131,
-      "endQ": 132,
+      "id": "rc-163",
+      "range": "163–164",
+      "startQ": 163,
+      "endQ": 164,
       "originalPassage": "**Pomeran Bank - Account statements**\n\nAs a holder of a Pomeran Bank account, you will receive monthly statements of your account activity. Our representative will be calling you within the next few days to inquire whether you would like statements sent to you by e-mail or delivered to you by postal mail. Please decide which of these two options suits you better. Statements are free of charge. A fee of $5.00 is charged if the balance on your account falls below $100.\n\nAdditionally, you can access your account information on our Website. Pomeran Bank is proud of its online services. We store records of your account activity for five years, while most other banks store the information for only two to three years.",
       "completedPassage": "Pomeran Bank customers receive monthly account statements and must choose whether to get them by e-mail or postal mail. The bank keeps online account records for five years.\n\n**Dịch:** Khách hàng của Ngân hàng Pomeran sẽ nhận sao kê tài khoản hằng tháng và cần chọn nhận sao kê qua e-mail hoặc qua thư bưu điện. Sao kê miễn phí, nhưng nếu số dư tài khoản dưới 100 đô la thì sẽ bị tính phí 5 đô la. Ngân hàng cũng lưu hồ sơ hoạt động tài khoản trực tuyến trong năm năm.",
       "questions": [
         {
-          "num": 131,
+          "num": 163,
           "text": "What are customers asked to do?",
           "options": [
             {
@@ -519,7 +519,7 @@
           "explanation": "Customers need to decide whether to receive statements by e-mail or postal mail."
         },
         {
-          "num": 132,
+          "num": 164,
           "text": "What is mentioned about Pomeran Bank?",
           "options": [
             {
@@ -558,15 +558,15 @@
       ]
     },
     {
-      "id": "rc-133",
-      "range": "133–135",
-      "startQ": 133,
-      "endQ": 135,
+      "id": "rc-165",
+      "range": "165–167",
+      "startQ": 165,
+      "endQ": 167,
       "originalPassage": "**Waitakere Zoo**\n\nJanuary 22\n\nDear Mr. McBride,\n\nOn behalf of the Friends of the Waitakere Zoo, I thank you for your donation. Your generosity, along with that of other donors, has enabled us to complete construction on the African Savannah enclosure. When it opens in July, the enclosure will provide our antelope, giraffe, and zebra populations an environment that is more similar to their natural habitat than zoo enclosures typically are. Moreover, it will give visitors a better vantage from which to view these beautiful creatures.\n\nWe are pleased to inform you that your name will be listed with the names of other donors on a commemorative plaque at the entrance to the African Savannah enclosure. As a further token of our appreciation, please accept a full season pass, which will allow you and one guest to enter at no charge. It will arrive this week in a separate letter.\n\nSincerely,\nJoseph Ihimaera\nAssociate Director",
       "completedPassage": "Waitakere Zoo thanks Mr. McBride for his donation to the African Savannah enclosure. The enclosure will improve animal habitats and visitor viewing access. Mr. McBride will receive a season pass.\n\n**Dịch:** Sở thú Waitakere gửi thư cảm ơn ông McBride vì khoản quyên góp cho khu chuồng African Savannah. Khu chuồng mới sẽ tạo môi trường sống giống tự nhiên hơn cho linh dương, hươu cao cổ và ngựa vằn, đồng thời giúp khách tham quan quan sát tốt hơn. Ông McBride sẽ nhận được vé mùa cho ông và một khách đi kèm.",
       "questions": [
         {
-          "num": 133,
+          "num": 165,
           "text": "What is the purpose of the letter?",
           "options": [
             {
@@ -593,7 +593,7 @@
           "explanation": "The letter thanks Mr. McBride for his donation."
         },
         {
-          "num": 134,
+          "num": 166,
           "text": "What is stated about the new enclosure?",
           "options": [
             {
@@ -620,7 +620,7 @@
           "explanation": "The enclosure will give visitors a better vantage point."
         },
         {
-          "num": 135,
+          "num": 167,
           "text": "What will Mr. McBride receive?",
           "options": [
             {
@@ -659,15 +659,15 @@
       ]
     },
     {
-      "id": "rc-136",
-      "range": "136–139",
-      "startQ": 136,
-      "endQ": 139,
+      "id": "rc-168",
+      "range": "168–171",
+      "startQ": 168,
+      "endQ": 171,
       "originalPassage": "**The Manor at Aldous Street**\n\nParkhurst's newest apartment building offers city life at its most comfortable and convenient. The Manor at Aldous Street has a wide array of shops and fine restaurants just outside its door. For daily commuters to the city center, public transportation is available at the Queens Landing station, just a short walk to the north.\n\nOur apartment units range from one to three bedrooms. Each unit has a full-sized kitchen with a refrigerator, oven, and dishwashing machine, a dining room separate from the kitchen, and a spacious sitting room with balcony access. Residents also have access to complimentary high-speed Internet, shared laundry facilities, and, for an additional monthly fee, the parking garage.\n\nCall Henman Estate Agents at 0430-555-0108 to schedule an appointment. Visit our Web site for apartment floor plans, photos of the building, and a map of the Parkhurst neighborhood. Units will be available beginning on April 1.",
       "completedPassage": "The Manor at Aldous Street is a new apartment building in a convenient neighborhood with nearby restaurants and public transportation. Units include appliances, separate dining rooms, balcony access, and high-speed Internet.\n\n**Dịch:** The Manor at Aldous Street là một tòa căn hộ mới nằm trong khu phố thuận tiện, gần nhiều cửa hàng, nhà hàng và phương tiện công cộng. Các căn hộ có thiết bị nhà bếp, phòng ăn riêng, lối ra ban công và Internet tốc độ cao miễn phí. Khách có thể gọi điện để đặt lịch xem căn hộ.",
       "questions": [
         {
-          "num": 136,
+          "num": 168,
           "text": "What is being advertised?",
           "options": [
             {
@@ -694,7 +694,7 @@
           "explanation": "The advertisement describes an apartment building."
         },
         {
-          "num": 137,
+          "num": 169,
           "text": "How is the Parkhurst neighborhood described?",
           "options": [
             {
@@ -721,7 +721,7 @@
           "explanation": "The advertisement says there are many shops and fine restaurants nearby."
         },
         {
-          "num": 138,
+          "num": 170,
           "text": "What is suggested about the units at The Manor?",
           "options": [
             {
@@ -748,7 +748,7 @@
           "explanation": "Residents have access to complimentary high-speed Internet."
         },
         {
-          "num": 139,
+          "num": 171,
           "text": "What is NOT available on the Henman Web site?",
           "options": [
             {
@@ -787,15 +787,15 @@
       ]
     },
     {
-      "id": "rc-140",
-      "range": "140–143",
-      "startQ": 140,
-      "endQ": 143,
+      "id": "rc-172",
+      "range": "172–175",
+      "startQ": 172,
+      "endQ": 175,
       "originalPassage": "**Passenger Check-in**\n\nAir Albion asks that you allow yourself ample time to board your flight. Passenger check-in and security screening are subject to unexpected and sometimes lengthy delays. Please arrive at the airport at least one hour before scheduled departure for flights within the United Kingdom, 90 minutes before flights from the UK to Ireland, and two hours before flights from the UK to international destinations other than Ireland.\n\nValid government-issued photo identification is required at check-in. The name on the ID must match the name in which the reservation was made.\n\nYour reservation is subject to cancellation and additional rescheduling fees if you are not checked in and present at the boarding gate at least 10 minutes before domestic flights and flights between the UK and Ireland, and at least 25 minutes before all other international flights. Domestic flights and flights between the UK and Ireland do not require confirmation. For all other international flights, confirm your reservation at least 24 hours before departure.",
       "completedPassage": "Air Albion asks passengers to arrive early because check-in and security screening times can vary. Passengers flying from the UK to Ireland should arrive 90 minutes early. Other international flights require confirmation 24 hours before departure.\n\n**Dịch:** Air Albion yêu cầu hành khách đến sân bay sớm vì thời gian làm thủ tục và kiểm tra an ninh có thể thay đổi nhiều. Hành khách bay từ Vương quốc Anh đến Ireland nên đến trước 90 phút. Các chuyến bay quốc tế khác ngoài Ireland cần được xác nhận ít nhất 24 giờ trước giờ khởi hành.",
       "questions": [
         {
-          "num": 140,
+          "num": 172,
           "text": "What is suggested about the check-in process?",
           "options": [
             {
@@ -822,7 +822,7 @@
           "explanation": "Check-in and screening can involve unexpected and lengthy delays."
         },
         {
-          "num": 141,
+          "num": 173,
           "text": "How far in advance should passengers arrive at the airport if flying to Ireland?",
           "options": [
             {
@@ -849,7 +849,7 @@
           "explanation": "Flights from the UK to Ireland require arrival 90 minutes before departure."
         },
         {
-          "num": 142,
+          "num": 174,
           "text": "In paragraph 2, line 2, the word \"match\" is closest in meaning to",
           "options": [
             {
@@ -876,7 +876,7 @@
           "explanation": "The ID name must match, or correspond to, the reservation name."
         },
         {
-          "num": 143,
+          "num": 175,
           "text": "For what destination from the UK, would passengers have to confirm a flight in advance?",
           "options": [
             {
