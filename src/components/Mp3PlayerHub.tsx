@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Disc, ChevronRight, ListMusic, Repeat, Volume2, Youtube, Radio, Search } from 'lucide-react';
-import { LessonData, AudioControlState, AudioSegment } from '../types';
+import { LessonData, LessonManifest, AudioControlState, AudioSegment } from '../types';
 
 interface Mp3PlayerHubProps {
-  lessons: LessonData[];
+  lessons: LessonManifest[];
   activeTrackId: string | null;
   setActiveTrackId: (id: string | null) => void;
   audioControl: AudioControlState | null;
@@ -23,6 +23,27 @@ export const Mp3PlayerHub: React.FC<Mp3PlayerHubProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState<'all' | 'local' | 'youtube'>('all');
   const [mobileView, setMobileView] = useState<'playlist' | 'player'>('playlist');
+  const [activeTrackData, setActiveTrackData] = useState<LessonData | null>(null);
+  const [isLoadingTrackData, setIsLoadingTrackData] = useState(false);
+
+  useEffect(() => {
+    if (!activeTrackId) {
+      setActiveTrackData(null);
+      return;
+    }
+    
+    setIsLoadingTrackData(true);
+    import(`../data/lessons/${activeTrackId}.json`)
+      .then((module) => {
+        setActiveTrackData(module.default as LessonData);
+        setIsLoadingTrackData(false);
+      })
+      .catch((err) => {
+        console.error(`Failed to load track data for ${activeTrackId}:`, err);
+        setActiveTrackData(null);
+        setIsLoadingTrackData(false);
+      });
+  }, [activeTrackId]);
 
   useEffect(() => {
     if (!activeTrackId && tracks.length > 0 && typeof setActiveTrackId === 'function') {
@@ -47,14 +68,14 @@ export const Mp3PlayerHub: React.FC<Mp3PlayerHubProps> = ({
 
   // Generate audio segments dynamically for the active track
   const trackSegments = React.useMemo(() => {
-    if (!activeTrack || !audioControl?.duration) return [];
+    if (!activeTrackData || !audioControl?.duration) return [];
     
     // Check if the user has custom segments stored locally/synced
     try {
       const stored = localStorage.getItem('toeic_audio_segments');
       if (stored) {
         const parsed = JSON.parse(stored) as { [lessonId: string]: AudioSegment[] };
-        const storedSegments = parsed[activeTrack.id];
+        const storedSegments = parsed[activeTrackData.id];
         if (storedSegments && storedSegments.length > 0) {
           return storedSegments;
         }
@@ -64,25 +85,25 @@ export const Mp3PlayerHub: React.FC<Mp3PlayerHubProps> = ({
     }
 
     // Check if the track has preset segments
-    if (activeTrack.audioSegments && activeTrack.audioSegments.length > 0) {
-      return activeTrack.audioSegments;
+    if (activeTrackData.audioSegments && activeTrackData.audioSegments.length > 0) {
+      return activeTrackData.audioSegments;
     }
 
     // Fallback: split by listening groups
     const duration = audioControl.duration;
-    if (!duration || activeTrack.listening.length === 0) return [];
-    const sliceDuration = duration / activeTrack.listening.length;
+    if (!duration || !activeTrackData.listening || activeTrackData.listening.length === 0) return [];
+    const sliceDuration = duration / activeTrackData.listening.length;
 
-    return activeTrack.listening.map((group, index) => ({
-      id: `${activeTrack.id}-${group.id}`,
-      lessonId: activeTrack.id,
+    return activeTrackData.listening.map((group, index) => ({
+      id: `${activeTrackData.id}-${group.id}`,
+      lessonId: activeTrackData.id,
       groupId: group.id,
       label: `Questions ${group.range}`,
       range: group.range,
       start: Math.round(sliceDuration * index),
-      end: Math.round(index === activeTrack.listening.length - 1 ? duration : sliceDuration * (index + 1))
+      end: Math.round(index === activeTrackData.listening.length - 1 ? duration : sliceDuration * (index + 1))
     }));
-  }, [activeTrack, audioControl?.duration]);
+  }, [activeTrackData, audioControl?.duration]);
 
   // Handle auto-advancing to the next track when ended
   useEffect(() => {
@@ -427,78 +448,89 @@ export const Mp3PlayerHub: React.FC<Mp3PlayerHubProps> = ({
           )}
 
           {/* Chapter / Audio Segments List */}
-          {activeTrack && trackSegments.length > 0 && (
+          {activeTrack && (
             <div className="glass-panel" style={{ padding: '24px' }}>
               <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Radio size={18} className="text-emerald-400" />
                 Audio Chapters (Loop Segments)
               </h3>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {trackSegments.map((segment) => {
-                  const isSegmentActive = audioControl?.activeSegmentId === segment.id;
-                  const isLooping = isSegmentActive && audioControl?.isLoopingSegment;
-                  
-                  return (
-                    <div 
-                      key={segment.id}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '12px 16px',
-                        borderRadius: '8px',
-                        background: isSegmentActive ? 'hsl(var(--success) / 0.08)' : 'hsl(var(--panel-bg) / 0.2)',
-                        border: '1px solid',
-                        borderColor: isSegmentActive ? 'hsl(var(--success) / 0.3)' : 'hsl(var(--panel-border) / 0.5)',
-                        transition: 'all 0.2s ease'
-                      }}
-                    >
-                      <div>
-                        <strong style={{ fontSize: '0.9rem', color: isSegmentActive ? 'hsl(var(--success))' : 'hsl(var(--text-primary))' }}>
-                          {segment.label}
-                        </strong>
-                        <div style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))', marginTop: '2px' }}>
-                          Range: {formatTime(segment.start)} - {formatTime(segment.end)}
+              {isLoadingTrackData ? (
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px 0', color: 'hsl(var(--primary))' }}>
+                  <div className="animate-spin" style={{ width: '20px', height: '20px', border: '2px solid hsl(var(--primary) / 0.1)', borderTopColor: 'hsl(var(--primary))', borderRadius: '50%', marginRight: '10px' }} />
+                  <span>Loading Chapters...</span>
+                </div>
+              ) : trackSegments.length > 0 ? (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {trackSegments.map((segment) => {
+                    const isSegmentActive = audioControl?.activeSegmentId === segment.id;
+                    const isLooping = isSegmentActive && audioControl?.isLoopingSegment;
+                    
+                    return (
+                      <div 
+                        key={segment.id}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '12px 16px',
+                          borderRadius: '8px',
+                          background: isSegmentActive ? 'hsl(var(--success) / 0.08)' : 'hsl(var(--panel-bg) / 0.2)',
+                          border: '1px solid',
+                          borderColor: isSegmentActive ? 'hsl(var(--success) / 0.3)' : 'hsl(var(--panel-border) / 0.5)',
+                          transition: 'all 0.2s ease'
+                        }}
+                      >
+                        <div>
+                          <strong style={{ fontSize: '0.9rem', color: isSegmentActive ? 'hsl(var(--success))' : 'hsl(var(--text-primary))' }}>
+                            {segment.label}
+                          </strong>
+                          <div style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))', marginTop: '2px' }}>
+                            Range: {formatTime(segment.start)} - {formatTime(segment.end)}
+                          </div>
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '8px' }}>
+                          <button
+                            className="audio-segment-btn"
+                            type="button"
+                            onClick={() => isSegmentActive && !isLooping ? handleStopSegment() : handlePlaySegment(segment, false)}
+                            style={{
+                              padding: '6px 12px',
+                              fontSize: '0.78rem',
+                              borderRadius: '6px',
+                              background: isSegmentActive && !isLooping ? 'hsl(var(--success))' : 'transparent',
+                              color: isSegmentActive && !isLooping ? 'white' : 'inherit'
+                            }}
+                          >
+                            <Play size={12} fill="currentColor" style={{ marginRight: '4px' }} />
+                            <span>Play</span>
+                          </button>
+                          <button
+                            className="audio-segment-btn"
+                            type="button"
+                            onClick={() => isLooping ? handleStopSegment() : handlePlaySegment(segment, true)}
+                            style={{
+                              padding: '6px 12px',
+                              fontSize: '0.78rem',
+                              borderRadius: '6px',
+                              background: isLooping ? 'hsl(var(--success))' : 'transparent',
+                              color: isLooping ? 'white' : 'inherit'
+                            }}
+                          >
+                            <Repeat size={12} style={{ marginRight: '4px' }} />
+                            <span>Loop</span>
+                          </button>
                         </div>
                       </div>
-
-                      <div style={{ display: 'flex', gap: '8px' }}>
-                        <button
-                          className="audio-segment-btn"
-                          type="button"
-                          onClick={() => isSegmentActive && !isLooping ? handleStopSegment() : handlePlaySegment(segment, false)}
-                          style={{
-                            padding: '6px 12px',
-                            fontSize: '0.78rem',
-                            borderRadius: '6px',
-                            background: isSegmentActive && !isLooping ? 'hsl(var(--success))' : 'transparent',
-                            color: isSegmentActive && !isLooping ? 'white' : 'inherit'
-                          }}
-                        >
-                          <Play size={12} fill="currentColor" style={{ marginRight: '4px' }} />
-                          <span>Play</span>
-                        </button>
-                        <button
-                          className="audio-segment-btn"
-                          type="button"
-                          onClick={() => isLooping ? handleStopSegment() : handlePlaySegment(segment, true)}
-                          style={{
-                            padding: '6px 12px',
-                            fontSize: '0.78rem',
-                            borderRadius: '6px',
-                            background: isLooping ? 'hsl(var(--success))' : 'transparent',
-                            color: isLooping ? 'white' : 'inherit'
-                          }}
-                        >
-                          <Repeat size={12} style={{ marginRight: '4px' }} />
-                          <span>Loop</span>
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div style={{ textAlign: 'center', padding: '20px 0', color: 'hsl(var(--text-muted))', fontSize: '0.9rem' }}>
+                  No chapters available for this track.
+                </div>
+              )}
             </div>
           )}
 

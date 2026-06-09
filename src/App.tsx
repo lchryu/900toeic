@@ -678,7 +678,7 @@ const App: React.FC = () => {
           )
         ) : activeView === 'audioplayer' ? (
           <Mp3PlayerHub
-            lessons={lessons as any}
+            lessons={lessons}
             activeTrackId={activeAudioCenterTrackId}
             setActiveTrackId={setActiveAudioCenterTrackId}
             audioControl={audioCenterControl}
