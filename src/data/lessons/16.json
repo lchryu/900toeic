@@ -1,0 +1,486 @@
+{
+  "id": "16",
+  "title": "Lesson 16 - Practice",
+  "audio": "audio/16.mp3",
+  "graphics": {
+    "14": "assets/16_14.png"
+  },
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "Radio advertisement",
+          "text": "Do you like to learn about unusual vacation destinations? Then don't miss Radio Explorers with host Bruce Mac Williams. Each week Bruce Mac Williams gives detailed information about exotic locations, interviews leading environmentalists, and offers special tips from experienced tour guides. Radio Explorers is broadcast every Tuesday at 3 P.M., with a repeat show at 9 P.M. on Wednesday. For a complete schedule of upcoming destinations that will be discussed, visit our Website at radioexplorers.org."
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "What is being advertised?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A travel agency",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A radio show",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A holiday tour",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A nature course",
+              "correct": false
+            }
+          ],
+          "explanation": "The advertisement promotes Radio Explorers, a weekly broadcast."
+        },
+        {
+          "num": 2,
+          "text": "Who is Bruce Mac Williams?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A professor",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A tour guide",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "An environmentalist",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A radio host",
+              "correct": true
+            }
+          ],
+          "explanation": "Bruce Mac Williams is introduced as the host of Radio Explorers."
+        },
+        {
+          "num": 3,
+          "text": "What can be found on the Web site?",
+          "options": [
+            {
+              "label": "A",
+              "text": "An address",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A schedule",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A price list",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "An application form",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker tells listeners to visit the Web site for a complete schedule."
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "Hotel advertisement",
+          "text": "Do you look forward to long business trips? Vella customers do, because they know they'll find a Vella hotel wherever they go. With locations in more than 100 countries, Vella hotels offer their customers the very best service. We provide computers in every room, free Internet service, and a choice of conference rooms. Not only that, but our friendly staff is trained to help plan your conference so you can relax knowing that everything is taken care of. So next time you're traveling on business, make sure you book a room at a Vella hotel."
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "What kind of business is being advertised?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A shipping company",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "An Internet service",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A hotel chain",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A design firm",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker advertises Vella hotels."
+        },
+        {
+          "num": 5,
+          "text": "According to the speaker, what advantage does the business have?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It provides the fastest service.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "It provides the latest software.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It is in many countries.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "It has competitive prices.",
+              "correct": false
+            }
+          ],
+          "explanation": "Vella has locations in more than 100 countries."
+        },
+        {
+          "num": 6,
+          "text": "According to the speaker, what is the company's staff trained to help with?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Installing computers",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Planning conferences",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Packaging products",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Marketing tours",
+              "correct": false
+            }
+          ],
+          "explanation": "The staff is trained to help plan conferences."
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "Automotive product advertisement",
+          "text": "People might love summer, but cars don't. During the summer, an annoying yellow dust called pollen begins appearing in the air, and everywhere else. Everyone is familiar with the thick layers of pollen that cover streets, buildings, and cars in the summer. However, many people don't realize that pollen can damage your vehicle's paint. If pollen is left on a car's paint for too long, it will leave a permanent stain. Sure, rain will wash the pollen off of a car, but you can't count on that. Use Wilkinson Brand Wax Sealer to reliably protect your car's paint from pollen. Stop by your automotive supply dealer today and ask for the brand America trusts, Wilkinson."
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "What does the speaker suggest about pollen?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It is a common problem.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "It is unaffected by rain.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It is unhealthy to breathe in.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It is plentiful throughout the year.",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker says everyone is familiar with pollen during the summer."
+        },
+        {
+          "num": 8,
+          "text": "According to the advertisement, how can pollen be harmful?",
+          "options": [
+            {
+              "label": "A",
+              "text": "By blocking an air vent",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "By reducing driver visibility",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "By damaging car paint",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "By making tires slip",
+              "correct": false
+            }
+          ],
+          "explanation": "Pollen can damage a vehicle's paint and leave a permanent stain."
+        },
+        {
+          "num": 9,
+          "text": "What does the speaker imply when he says, \"You can't count on that\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Listeners should not change vacation plans.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Listeners should not rely on the weather.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Listeners should not trust advertisements.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Listeners should not drive during a storm.",
+              "correct": false
+            }
+          ],
+          "explanation": "Rain may wash pollen away, but listeners should not rely on rain to protect their cars."
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "Fitness drink advertisement",
+          "text": "Do you like to exercise and need a quick, healthy way to get energy? If you want more power for your fitness routine, try drinking Rita's Shakes. Our delicious beverages provide all the nutrients you need. And if you're used to paying a lot for fitness drinks, you'll be pleasantly surprised at our affordable price. Rita's is the economical choice. Plus, if you go to our Website, you can sign up for exclusive access to exercise videos led by famous fitness instructors. So, next time you need a boost, reach for Rita's Shakes."
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "What is being advertised?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A recipe book",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A fitness drink",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Some exercise clothing",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Some athletic equipment",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker advertises Rita's Shakes, a fitness drink."
+        },
+        {
+          "num": 11,
+          "text": "What does the speaker say is surprising about the product?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Its money-back guarantee",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Its simple instructions",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Its affordable price",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Its wide availability",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker says listeners will be pleasantly surprised by the affordable price."
+        },
+        {
+          "num": 12,
+          "text": "What can the listeners do on a Web site?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Subscribe to a podcast",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Receive discount coupons",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Chat with personal trainers",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Access some videos",
+              "correct": true
+            }
+          ],
+          "explanation": "Visitors can get exclusive access to exercise videos."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "E-reader advertisement",
+          "text": "Buy a Mishu E-reader today and discover the reading revolution. Mishu E-readers are famous for the number of books they can store. Mishu customers can carry more than three thousand books on one device! Users can easily transfer books onto their devices when they connect to their computer or move books wirelessly onto their device. The model with the largest display size even has an application installed for video chatting. Visit the Mishu Website's Customer Feedback section to read for yourself what our customers are saying about their devices."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "What is mentioned as a notable feature of Mishu E-readers?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Their light weight",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Their long battery life",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Their large storage capacity",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Their low price",
+              "correct": false
+            }
+          ],
+          "explanation": "The advertisement says the e-readers can store more than three thousand books."
+        },
+        {
+          "num": 14,
+          "text": "Look at the graphic. Which e-reader has an app for video chatting?",
+          "options": [
+            {
+              "label": "A",
+              "text": "PT-250",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "DX-16",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "DX-32",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "DX-64",
+              "correct": true
+            }
+          ],
+          "explanation": "The speaker says the model with the largest display size has the video-chatting app, and the graphic shows DX-64 has the largest display."
+        },
+        {
+          "num": 15,
+          "text": "What does the speaker say visitors to the Mishu Web site can do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Read customer reviews",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Purchase a product",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Receive a discount",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Enter a contest for prizes",
+              "correct": false
+            }
+          ],
+          "explanation": "Visitors can read the Customer Feedback section."
+        }
+      ]
+    }
+  ],
+  "reading": []
+}

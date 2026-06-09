@@ -41,6 +41,21 @@ const parseTimeInput = (value: string) => {
   return Number(trimmed);
 };
 
+const isValidTimeFormat = (value: string) => {
+  const trimmed = value.trim();
+  if (!trimmed) return false;
+  if (trimmed.includes(':')) {
+    const parts = trimmed.split(':');
+    if (parts.length !== 2) return false;
+    const [mins, secs] = parts;
+    const nM = Number(mins);
+    const nS = Number(secs);
+    return !isNaN(nM) && !isNaN(nS) && nM >= 0 && nS >= 0 && nS < 60;
+  }
+  const n = Number(trimmed);
+  return !isNaN(n) && n >= 0;
+};
+
 interface AudioSegmentControlsProps {
   segment?: AudioSegment;
   audioControl: AudioControlState | null;
@@ -173,6 +188,10 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
     setEndValue(formatTime(audioControl?.currentTime || 0));
   };
 
+  const isStartValid = isValidTimeFormat(startValue);
+  const isEndValid = isValidTimeFormat(endValue);
+  const areTimesChronological = isStartValid && isEndValid && parseTimeInput(startValue) < parseTimeInput(endValue);
+
   return (
     <div className={`audio-segment-row ${isActive ? 'is-active' : ''}`}>
       <div className="audio-segment-main">
@@ -224,6 +243,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
               value={startValue}
               onChange={(event) => setStartValue(event.target.value)}
               inputMode="numeric"
+              style={(!isStartValid || !areTimesChronological) ? { borderColor: 'hsl(var(--danger))', boxShadow: '0 0 0 1px hsl(var(--danger) / 0.2)' } : undefined}
             />
           </label>
           <label>
@@ -233,6 +253,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
               value={endValue}
               onChange={(event) => setEndValue(event.target.value)}
               inputMode="numeric"
+              style={(!isEndValid || !areTimesChronological) ? { borderColor: 'hsl(var(--danger))', boxShadow: '0 0 0 1px hsl(var(--danger) / 0.2)' } : undefined}
             />
           </label>
           <button className="audio-segment-btn subtle" type="button" onClick={setCurrentAsStart}>
@@ -321,6 +342,10 @@ const AudioSegmentManagerRow: React.FC<AudioSegmentManagerRowProps> = ({
     onUpdateAudioSegment(segment.id, { start: nextStart, end: nextEnd });
   };
 
+  const isStartValid = isValidTimeFormat(startValue);
+  const isEndValid = isValidTimeFormat(endValue);
+  const areTimesChronological = isStartValid && isEndValid && parseTimeInput(startValue) < parseTimeInput(endValue);
+
   return (
     <div className={`audio-segment-manager-row ${isActive ? 'is-active' : ''}`}>
       <div className="audio-segment-manager-label">
@@ -337,6 +362,7 @@ const AudioSegmentManagerRow: React.FC<AudioSegmentManagerRowProps> = ({
             value={startValue}
             onChange={(event) => setStartValue(event.target.value)}
             inputMode="numeric"
+            style={(!isStartValid || !areTimesChronological) ? { borderColor: 'hsl(var(--danger))', boxShadow: '0 0 0 1px hsl(var(--danger) / 0.2)' } : undefined}
           />
         </label>
         <label>
@@ -346,6 +372,7 @@ const AudioSegmentManagerRow: React.FC<AudioSegmentManagerRowProps> = ({
             value={endValue}
             onChange={(event) => setEndValue(event.target.value)}
             inputMode="numeric"
+            style={(!isEndValid || !areTimesChronological) ? { borderColor: 'hsl(var(--danger))', boxShadow: '0 0 0 1px hsl(var(--danger) / 0.2)' } : undefined}
           />
         </label>
       </div>

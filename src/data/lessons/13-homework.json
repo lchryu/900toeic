@@ -1,0 +1,799 @@
+{
+  "id": "13-homework",
+  "title": "13 Homework",
+  "audio": "",
+  "youtubeUrl": "https://www.youtube.com/watch?v=CI2p8-b1nao&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=13",
+  "graphics": {
+    "21": "assets/13-homework_21.png"
+  },
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "This apartment has an extra-large master bedroom, two bathrooms, and brand-new appliances in the kitchen. And as you can see, the living room is quite spacious.",
+          "translation": "Căn hộ này có phòng ngủ chính rất lớn, hai phòng tắm và các thiết bị nhà bếp hoàn toàn mới. Như anh thấy, phòng khách cũng khá rộng rãi."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "I like that there's a second bedroom. I do a lot of work at home, so that would be a good spot for my computer and filing cabinet.",
+          "translation": "Tôi thích việc có phòng ngủ thứ hai. Tôi làm việc ở nhà khá nhiều, nên đó sẽ là chỗ tốt để đặt máy tính và tủ hồ sơ."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "The last tenant used it as storage space for clothes, and some exercise equipment. By the way, that room has a nice view of the park.",
+          "translation": "Người thuê trước dùng nó làm nơi chứa quần áo và một số thiết bị tập thể dục. Nhân tiện, phòng đó có tầm nhìn đẹp ra công viên."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Then the only thing left to discuss is the rent. How much is it per month?",
+          "translation": "Vậy điều duy nhất còn lại cần bàn là tiền thuê. Mỗi tháng là bao nhiêu?"
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "What are the speakers discussing?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A kitchen appliance",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A vacant apartment",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Decorating a bedroom",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Renovating a house",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman describes an apartment's rooms and appliances, so they are discussing a vacant apartment."
+        },
+        {
+          "num": 2,
+          "text": "How would the man use a second bedroom?",
+          "options": [
+            {
+              "label": "A",
+              "text": "As a guest room",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "As an exercise room",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "As a home office",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "As a storage space",
+              "correct": false
+            }
+          ],
+          "explanation": "The man says the second bedroom would be a good spot for his computer and filing cabinet."
+        },
+        {
+          "num": 3,
+          "text": "What does the man ask about?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The parking facilities",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The monthly rental charge",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "The number of bathrooms",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "The size of the living room",
+              "correct": false
+            }
+          ],
+          "explanation": "He asks how much the rent is per month."
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "M-Au",
+          "text": "Hi, I recently moved here, and I'd like to apply for a library card. What do I need to do?",
+          "translation": "Xin chào, tôi mới chuyển đến đây và muốn đăng ký thẻ thư viện. Tôi cần làm gì?"
+        },
+        {
+          "speaker": "W-Br",
+          "text": "You'll have to complete this application and then show proof of your current address, such as a lease agreement.",
+          "translation": "Anh cần hoàn thành đơn đăng ký này rồi xuất trình bằng chứng về địa chỉ hiện tại, chẳng hạn như hợp đồng thuê nhà."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Hmm, unfortunately, I don't have the lease agreement with me. I guess I'm going to have to stop by later this week.",
+          "translation": "Tiếc là tôi không mang theo hợp đồng thuê nhà. Có lẽ tôi sẽ phải ghé lại vào cuối tuần này."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Well, why don't you fill out the application form today? Then the next time you visit, be sure to bring your proof of address.",
+          "translation": "Vậy sao anh không điền mẫu đơn hôm nay? Lần tới khi đến, nhớ mang theo bằng chứng địa chỉ."
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "Where does the conversation take place?",
+          "options": [
+            {
+              "label": "A",
+              "text": "In a library",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "In a utility company office",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "In a community center",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "At a real estate agency",
+              "correct": false
+            }
+          ],
+          "explanation": "The man wants to apply for a library card."
+        },
+        {
+          "num": 5,
+          "text": "What is the man asked to provide?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Photo identification",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A credit card number",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Proof of residence",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A receipt",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman asks for proof of his current address."
+        },
+        {
+          "num": 6,
+          "text": "What does the woman suggest doing today?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Going to another location",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Completing a form",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Reviewing a policy",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Making some copies",
+              "correct": false
+            }
+          ],
+          "explanation": "She suggests that he fill out the application form today."
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "W-Br",
+          "text": "Excuse me. The chocolate cake here at your restaurant is delicious. Is there any way I could get the recipe?",
+          "translation": "Xin lỗi. Bánh sô-cô-la ở nhà hàng của anh rất ngon. Có cách nào tôi lấy được công thức không?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Actually, our chef, David Wilson, is publishing a cookbook that'll be out in November. And he's included the recipe for his chocolate cake. It's a customer favorite.",
+          "translation": "Thật ra đầu bếp của chúng tôi, David Wilson, sắp xuất bản một sách nấu ăn vào tháng Mười Một. Ông ấy đã đưa công thức bánh sô-cô-la vào sách. Đây là món được khách hàng yêu thích."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Really? That's great! Will the book be sold here?",
+          "translation": "Thật sao? Tuyệt quá! Sách đó có bán ở đây không?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Yes, it will. In fact, if you leave your contact information, I'll make sure a book is signed by chef David and set aside for you.",
+          "translation": "Có. Nếu cô để lại thông tin liên hệ, tôi sẽ đảm bảo một cuốn sách được đầu bếp David ký tên và giữ riêng cho cô."
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "What does the woman ask for?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A bill",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A recipe",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A photograph",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A menu",
+              "correct": false
+            }
+          ],
+          "explanation": "She asks whether she can get the recipe for the chocolate cake."
+        },
+        {
+          "num": 8,
+          "text": "Who is David Wilson?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A magazine editor",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A television producer",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A food critic",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A restaurant chef",
+              "correct": true
+            }
+          ],
+          "explanation": "The man says David Wilson is their chef."
+        },
+        {
+          "num": 9,
+          "text": "What does the man offer to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Send an e-mail reminder",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Make a video",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Reserve a book",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Arrange a banquet",
+              "correct": false
+            }
+          ],
+          "explanation": "He offers to have a signed book set aside for the woman."
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "M-Cn",
+          "text": "Hi, my name's Tom Wilson. I'm visiting family here in Miami for three months, and I'm hoping to earn a bit of money while I'm in town. Does your restaurant happen to have any short-term job openings?",
+          "translation": "Xin chào, tôi tên là Tom Wilson. Tôi đang thăm gia đình ở Miami trong ba tháng và hy vọng kiếm thêm chút tiền khi ở đây. Nhà hàng của cô có vị trí ngắn hạn nào đang tuyển không?"
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Actually, I think we could use some help in the kitchen, since it's the beginning of the tourist season now. But do you have any restaurant experience?",
+          "translation": "Thật ra tôi nghĩ chúng tôi cần thêm người phụ trong bếp vì bây giờ là đầu mùa du lịch. Nhưng anh có kinh nghiệm nhà hàng không?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Um, I worked for a couple of years in a French restaurant in New Orleans. I'm sure the manager there would give me a recommendation.",
+          "translation": "Tôi từng làm vài năm ở một nhà hàng Pháp tại New Orleans. Tôi chắc quản lý ở đó sẽ giới thiệu tốt cho tôi."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "OK, that sounds promising. If you wait here a second, I'm going to go to the kitchen to see if our chef's available to talk with you.",
+          "translation": "Được, nghe có vẻ triển vọng. Nếu anh chờ ở đây một lát, tôi sẽ vào bếp xem đầu bếp của chúng tôi có rảnh để nói chuyện với anh không."
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "Why did the man come to Miami?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To see some relatives",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "To open a business",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To do some sightseeing",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To take cooking classes",
+              "correct": false
+            }
+          ],
+          "explanation": "He says he is visiting family in Miami."
+        },
+        {
+          "num": 11,
+          "text": "What does the woman mean when she says, \"we could use some help in the kitchen\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "She enjoys her work in the kitchen.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "She may have work to offer the man.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "The restaurant is undergoing changes.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Some staff need further training.",
+              "correct": false
+            }
+          ],
+          "explanation": "She means the restaurant may have a short-term kitchen job available."
+        },
+        {
+          "num": 12,
+          "text": "What will the woman do next?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Make a reservation",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Look for an employee",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Show the man a menu",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Take a customer's order",
+              "correct": false
+            }
+          ],
+          "explanation": "She will go to the kitchen to see whether the chef is available."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hello, Mr. Garrett. It's nice to see you again. I see your medical check-up appointment with Dr. Singh was scheduled for 12:15 P.M. Unfortunately, Dr. Singh is running about thirty-five minutes behind today.",
+          "translation": "Chào ông Garrett. Rất vui được gặp lại ông. Tôi thấy lịch khám sức khỏe của ông với bác sĩ Singh là 12:15 trưa. Tiếc là hôm nay bác sĩ Singh đang trễ khoảng ba mươi lăm phút."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "That's too bad. I'm on my lunch break, and I'll never be able to make it back to the office by 1 o'clock if she's running that far behind.",
+          "translation": "Tệ quá. Tôi đang trong giờ nghỉ trưa và sẽ không thể quay lại văn phòng trước 1 giờ nếu bác sĩ trễ lâu như vậy."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "I apologize for the inconvenience. A couple of her morning appointments lasted longer than expected. Would you like me to reschedule your appointment?",
+          "translation": "Tôi xin lỗi vì sự bất tiện này. Một vài cuộc hẹn buổi sáng kéo dài hơn dự kiến. Ông có muốn tôi đặt lại lịch hẹn không?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Um, I think I'd rather wait here and see Dr. Singh today. I can call my manager to let him know I'll be late.",
+          "translation": "Tôi nghĩ tôi muốn chờ ở đây và gặp bác sĩ Singh hôm nay. Tôi có thể gọi cho quản lý để báo rằng tôi sẽ về muộn."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "Where are the speakers?",
+          "options": [
+            {
+              "label": "A",
+              "text": "At a doctor's office",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "At a travel agency",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "At a restaurant",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "At a pharmacy",
+              "correct": false
+            }
+          ],
+          "explanation": "They are discussing a medical check-up appointment with Dr. Singh."
+        },
+        {
+          "num": 14,
+          "text": "Why does the woman apologize?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The man's account has been closed.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The man's bill is incorrect.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "The man has to wait.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "The man must resubmit a form.",
+              "correct": false
+            }
+          ],
+          "explanation": "Dr. Singh is running about thirty-five minutes behind, so the man has to wait."
+        },
+        {
+          "num": 15,
+          "text": "What will the man most likely do next?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Forward an e-mail",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Go to the airport",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Make a telephone call",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Provide credit card information",
+              "correct": false
+            }
+          ],
+          "explanation": "The man says he can call his manager."
+        }
+      ]
+    },
+    {
+      "id": "lc-16",
+      "range": "16–18",
+      "startQ": 16,
+      "endQ": 18,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hello. This is Claudia Radinsky, customer service representative at Stratton Bank. I'm following up on a message you left about your new account.",
+          "translation": "Xin chào. Tôi là Claudia Radinsky, đại diện dịch vụ khách hàng của Ngân hàng Stratton. Tôi gọi lại về tin nhắn ông để lại liên quan đến tài khoản mới."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Yes, thanks for calling back. I recently opened a checking account, but the banker I spoke with didn't explain how to access my account online.",
+          "translation": "Vâng, cảm ơn cô đã gọi lại. Gần đây tôi mở tài khoản thanh toán, nhưng nhân viên ngân hàng tôi nói chuyện không giải thích cách truy cập tài khoản trực tuyến."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "I can help you with that. If you give me your e-mail address, I'll send you instructions on how to do transactions online. Or you can come in tomorrow, and I can show you in person.",
+          "translation": "Tôi có thể giúp ông. Nếu ông cho tôi địa chỉ e-mail, tôi sẽ gửi hướng dẫn cách thực hiện giao dịch trực tuyến. Hoặc ông có thể đến vào ngày mai và tôi sẽ hướng dẫn trực tiếp."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "That'd be great. I work in the neighborhood, so stopping by during my lunch hour would be convenient for me. I'll be there at one o'clock.",
+          "translation": "Tuyệt quá. Tôi làm việc gần đây nên ghé qua vào giờ nghỉ trưa sẽ tiện cho tôi. Tôi sẽ đến lúc một giờ."
+        }
+      ],
+      "questions": [
+        {
+          "num": 16,
+          "text": "Why does the woman call the man?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To check an e-mail address",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To cancel an appointment",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To respond to a message",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "To give directions to a location",
+              "correct": false
+            }
+          ],
+          "explanation": "She says she is following up on a message the man left."
+        },
+        {
+          "num": 17,
+          "text": "What problem does the man mention?",
+          "options": [
+            {
+              "label": "A",
+              "text": "He lost his keys.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "He forgot his password.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "He will not be on time for an appointment.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "He did not receive some instructions.",
+              "correct": true
+            }
+          ],
+          "explanation": "The banker did not explain how to access the account online."
+        },
+        {
+          "num": 18,
+          "text": "What does the man say he will do tomorrow?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Go to the bank",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Call a client",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Work from home",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Have lunch with a colleague",
+              "correct": false
+            }
+          ],
+          "explanation": "The man says he will stop by tomorrow at one o'clock."
+        }
+      ]
+    },
+    {
+      "id": "lc-19",
+      "range": "19–21",
+      "startQ": 19,
+      "endQ": 21,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Astley's Cafe. May I help you?",
+          "translation": "Quán cà phê Astley xin nghe. Tôi có thể giúp gì cho ông?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Hi, I'm calling from Turning-Key Software. I'm putting together a lunch outing for my department. Can you take a reservation for twenty people?",
+          "translation": "Xin chào, tôi gọi từ Turning-Key Software. Tôi đang tổ chức một buổi ăn trưa cho phòng ban của mình. Quán có thể nhận đặt chỗ cho hai mươi người không?"
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Yes. What date are you interested in?",
+          "translation": "Có. Ông muốn đặt vào ngày nào?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Next Thursday, from noon to two o'clock? Also, some of our employees don't eat meat. Will they be able to eat at your cafe?",
+          "translation": "Thứ Năm tới, từ trưa đến hai giờ được không? Ngoài ra, một số nhân viên của chúng tôi không ăn thịt. Họ có thể ăn ở quán của cô không?"
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Sure. In fact, we were voted the area's best vegetarian eatery on the City Food Website. You can see on our menu that some items will have the word \"healthy\" in their name. Those meals don't have any meat in them.",
+          "translation": "Chắc chắn rồi. Thật ra chúng tôi được bình chọn là quán ăn chay tốt nhất khu vực trên trang City Food. Trên thực đơn, một số món có từ \"healthy\" trong tên. Những món đó không có thịt."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Great. I'll talk to my colleagues and call you back.",
+          "translation": "Tuyệt. Tôi sẽ trao đổi với đồng nghiệp rồi gọi lại cho cô."
+        }
+      ],
+      "questions": [
+        {
+          "num": 19,
+          "text": "What type of event is the man organizing?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A business conference",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A client lunch",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A retirement party",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A department outing",
+              "correct": true
+            }
+          ],
+          "explanation": "The man says he is putting together a lunch outing for his department."
+        },
+        {
+          "num": 20,
+          "text": "What does the woman mention about the cafe?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Large groups are hosted in an outdoor space.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Cancellations require 24 hours notice.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It received recognition from local diners.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "The menu changes seasonally.",
+              "correct": false
+            }
+          ],
+          "explanation": "The cafe was voted the area's best vegetarian eatery on a food website."
+        },
+        {
+          "num": 21,
+          "text": "Look at the graphic. What menu item does not contain meat?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The soup",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The sandwich",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "The salad",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "The sampler",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman says items with \"healthy\" in their name do not contain meat. The graphic lists the Healthy Athens Sandwich."
+        }
+      ]
+    }
+  ],
+  "reading": []
+}

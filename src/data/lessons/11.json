@@ -1,0 +1,839 @@
+{
+  "id": "11",
+  "title": "Lesson 11 - Homework",
+  "audio": "audio/11.mp3",
+  "youtubeUrl": "https://www.youtube.com/watch?v=BKSLF-FVcwE&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=11",
+  "graphics": {
+    "20": "assets/11_20.svg"
+  },
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "W-Br",
+          "text": "Hi, is this the Help Desk? This is Miranda Shin in Room 252B. I'm calling about a problem I'm having with my computer. I hear a loud whistling sound, like from a fan blowing.",
+          "translation": "Xin chào, đây có phải là bộ phận hỗ trợ không? Tôi là Miranda Shin ở phòng 252B. Tôi gọi về một vấn đề với máy tính của mình. Tôi nghe thấy tiếng huýt lớn, giống như tiếng quạt đang thổi."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "OK, let's see if I can help you with that. I'd like you to shut the computer off and then turn it back on.",
+          "translation": "Được rồi, để xem tôi có thể giúp gì không. Tôi muốn cô tắt máy tính rồi bật lại."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Actually, I've done that three times already. Unfortunately, it didn't help.",
+          "translation": "Thực ra tôi đã làm vậy ba lần rồi. Tiếc là việc đó không giúp được gì."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "All right then. I have some time now, so I can come over to your office and try to figure this out.",
+          "translation": "Vậy được rồi. Bây giờ tôi có chút thời gian, nên tôi có thể qua văn phòng của cô và thử tìm nguyên nhân."
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "What department does the man probably work in?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Human Resources",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Accounting",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Technical Support",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Public Relations",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman calls the Help Desk about a computer problem, so the man most likely works in technical support."
+        },
+        {
+          "num": 2,
+          "text": "What does the man ask the woman to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Attend a meeting",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Write a report",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Check a manual",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Restart a computer",
+              "correct": true
+            }
+          ],
+          "explanation": "He asks her to shut the computer off and turn it back on."
+        },
+        {
+          "num": 3,
+          "text": "What does the man say he can do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Provide a reference",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Visit the woman's office",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Approve a request",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Select a project team",
+              "correct": false
+            }
+          ],
+          "explanation": "He says he can come over to her office."
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "W-Br",
+          "text": "Hello, Selwin Office Manufacturers. You've reached customer service. How may I help you today?",
+          "translation": "Xin chào, đây là Selwin Office Manufacturers. Bạn đã liên hệ tới bộ phận chăm sóc khách hàng. Hôm nay tôi có thể giúp gì cho bạn?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Yes, hello. I recently bought a used Selwin 6 label maker. The person I got it from no longer had the instructions, though, and I'm not sure how the machine works.",
+          "translation": "Vâng, xin chào. Gần đây tôi mua một máy in nhãn Selwin 6 đã qua sử dụng. Tuy nhiên, người bán cho tôi không còn giữ hướng dẫn sử dụng, nên tôi không chắc máy hoạt động như thế nào."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Unfortunately, that's an earlier model that we no longer produce.",
+          "translation": "Rất tiếc, đó là mẫu đời cũ mà chúng tôi không còn sản xuất nữa."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Oh, no. That's a problem.",
+          "translation": "Ôi không. Vậy thì phiền thật."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "No, it's OK, because the Selwin 10 has a similar design, and the instructions should be nearly the same.",
+          "translation": "Không sao đâu, vì Selwin 10 có thiết kế tương tự, nên hướng dẫn sử dụng gần như giống nhau."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Great! Could you send me the instructions? My address is...",
+          "translation": "Tuyệt quá! Bạn có thể gửi hướng dẫn cho tôi không? Địa chỉ của tôi là..."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Actually, the manual for Selwin 10 is on our Web site. I can send you the link so you can download it.",
+          "translation": "Thực ra, sách hướng dẫn của Selwin 10 có trên trang web của chúng tôi. Tôi có thể gửi cho bạn đường liên kết để bạn tải xuống."
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "What does the woman mention about the Selwin 6?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It is easy to use.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "It is an earlier model.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "It is well designed.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It is very popular.",
+              "correct": false
+            }
+          ],
+          "explanation": "She says the Selwin 6 is an earlier model that is no longer produced."
+        },
+        {
+          "num": 5,
+          "text": "What does the man request?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A warranty",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A reimbursement",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A replacement part",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "An instruction manual",
+              "correct": true
+            }
+          ],
+          "explanation": "He asks her to send the instructions."
+        },
+        {
+          "num": 6,
+          "text": "What does the woman offer to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Reset a password",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Explain a policy",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Check part of an order",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Send a link to a Web site",
+              "correct": true
+            }
+          ],
+          "explanation": "She offers to send him the link to the manual on the Web site."
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "M-Au",
+          "text": "Hi, I'm calling from Skiller Building Repair Company. I got your message about the damaged wall in your store.",
+          "translation": "Xin chào, tôi gọi từ Công ty Sửa chữa Tòa nhà Skiller. Tôi đã nhận được tin nhắn của cô về bức tường bị hư hỏng trong cửa hàng."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Yes. The damage was from a leaking water line. The leak's been repaired, but the wall behind the cash register has several cracks.",
+          "translation": "Vâng. Hư hỏng là do một đường ống nước bị rò rỉ. Chỗ rò rỉ đã được sửa rồi, nhưng bức tường phía sau quầy thu ngân có vài vết nứt."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "We can fix that for you.",
+          "translation": "Chúng tôi có thể sửa chỗ đó cho cô."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Oh good! But I'd like to avoid closing the store early. Could you do the work in the evening?",
+          "translation": "Ồ, tốt quá! Nhưng tôi muốn tránh việc phải đóng cửa hàng sớm. Anh có thể làm việc đó vào buổi tối không?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Well, if you don't mind paying a slightly higher rate, I can get a crew in there after your regular hours.",
+          "translation": "Nếu cô không ngại trả mức phí cao hơn một chút, tôi có thể sắp xếp một đội đến đó sau giờ làm việc thường lệ của cô."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "OK, that'd be fine. Thanks!",
+          "translation": "Được, như vậy cũng ổn. Cảm ơn!"
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "What problem are the speakers discussing?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A power failure",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A damaged wall",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A broken appliance",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A delayed delivery",
+              "correct": false
+            }
+          ],
+          "explanation": "They discuss a damaged wall with several cracks."
+        },
+        {
+          "num": 8,
+          "text": "What does the woman want to avoid?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Adjusting her store's hours",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Relocating her business",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Purchasing some equipment",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Ruining some items",
+              "correct": false
+            }
+          ],
+          "explanation": "She wants to avoid closing the store early."
+        },
+        {
+          "num": 9,
+          "text": "What does the woman agree to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Call back later",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Give away some merchandise",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Pay more for a service",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Provide customer feedback",
+              "correct": false
+            }
+          ],
+          "explanation": "She agrees to pay a higher rate for evening repair work."
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "M-Cn",
+          "text": "Hi, Gabriella. I wanted to talk to you about using the new online time reporting system. A lot of people have been asking about it.",
+          "translation": "Chào Gabriella. Tôi muốn trao đổi với cô về việc sử dụng hệ thống báo cáo thời gian trực tuyến mới. Rất nhiều người đã hỏi về hệ thống đó."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Yes, well, I've been very busy. But I am planning the training session for early next week. That should make it quite clear to everyone.",
+          "translation": "Vâng, dạo này tôi rất bận. Nhưng tôi đang lên kế hoạch cho buổi đào tạo vào đầu tuần sau. Việc đó sẽ giúp mọi người hiểu rõ hơn."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "OK. But isn't there any written documentation?",
+          "translation": "Được thôi. Nhưng không có tài liệu hướng dẫn bằng văn bản à?"
+        },
+        {
+          "speaker": "W-Br",
+          "text": "What do you mean?",
+          "translation": "Ý anh là sao?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "You know, a guide that staff can follow in the meantime?",
+          "translation": "Ý tôi là một bản hướng dẫn để nhân viên có thể làm theo trong lúc chờ ấy."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "I don't think that's necessary. I'll have everyone go through the steps with me in the computer lab. Then they'll know exactly what to do. It's very simple.",
+          "translation": "Tôi không nghĩ điều đó cần thiết. Tôi sẽ cho mọi người làm từng bước cùng tôi trong phòng máy tính. Sau đó họ sẽ biết chính xác cần làm gì. Nó rất đơn giản."
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "What are the speakers discussing?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Drafting a contract",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Working extra hours",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Using a new time reporting system",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Revising a vacation policy",
+              "correct": false
+            }
+          ],
+          "explanation": "The man says he wants to talk about using the new online time reporting system."
+        },
+        {
+          "num": 11,
+          "text": "What does the man imply when he says, \"A lot of people have been asking about it\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Staff are confused about a procedure.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "People have heard that a workshop is interesting.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Staff are waiting for a new assignment.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A vacation calendar has not been posted yet.",
+              "correct": false
+            }
+          ],
+          "explanation": "People asking about the system suggests they do not understand the procedure yet."
+        },
+        {
+          "num": 12,
+          "text": "What does the woman plan to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Lead some training",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Ask for assistance",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Take some time off",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Author a manual",
+              "correct": false
+            }
+          ],
+          "explanation": "She says she is planning a training session and will guide everyone through the steps."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "W-Br",
+          "text": "Hi, I bought an electric piano from your store several months ago. It came with a one-year warranty. One of the keys on the keyboard isn't working now. Can you fix it for me?",
+          "translation": "Xin chào, tôi đã mua một cây đàn piano điện từ cửa hàng của anh vài tháng trước. Nó đi kèm bảo hành một năm. Bây giờ một phím trên bàn phím không hoạt động. Anh có thể sửa giúp tôi không?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Of course! Do you have your original receipt? I'll need that to confirm that the piano's still under warranty.",
+          "translation": "Tất nhiên rồi! Cô có còn hóa đơn gốc không? Tôi cần nó để xác nhận rằng cây đàn vẫn còn trong thời hạn bảo hành."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Yes, here it is.",
+          "translation": "Vâng, đây ạ."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Thanks! My colleague Ayako does all our keyboard repairs, but she's left for the day. When she comes back tomorrow, she'll be able to work on it.",
+          "translation": "Cảm ơn! Đồng nghiệp Ayako của tôi phụ trách tất cả việc sửa đàn phím, nhưng hôm nay cô ấy đã về rồi. Khi cô ấy quay lại vào ngày mai, cô ấy sẽ có thể sửa nó."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "OK. Umm ... I'm performing in a concert on Saturday. Do you think it'll be ready before then?",
+          "translation": "Được rồi. Ừm... tôi sẽ biểu diễn trong một buổi hòa nhạc vào thứ Bảy. Anh nghĩ nó sẽ được sửa xong trước lúc đó chứ?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Oh, definitely! These sorts of repairs take no more than a couple of hours.",
+          "translation": "Ồ, chắc chắn rồi! Những kiểu sửa chữa như thế này chỉ mất nhiều nhất vài tiếng thôi."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "What is the purpose of the woman's visit?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To buy some sheet music",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To get an instrument repaired",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "To check on a price",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To audition for a musical group",
+              "correct": false
+            }
+          ],
+          "explanation": "She says a key on her electric piano is not working and asks if it can be fixed."
+        },
+        {
+          "num": 14,
+          "text": "What does the man request?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A credit card",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "An address",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A receipt",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Photo identification",
+              "correct": false
+            }
+          ],
+          "explanation": "He asks for the original receipt to confirm the warranty."
+        },
+        {
+          "num": 15,
+          "text": "What does the woman say she will do on Saturday?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Give a musical performance",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Return a product",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Meet a repair person",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Teach a piano lesson",
+              "correct": false
+            }
+          ],
+          "explanation": "She says she is performing in a concert on Saturday."
+        }
+      ]
+    },
+    {
+      "id": "lc-16",
+      "range": "16–18",
+      "startQ": 16,
+      "endQ": 18,
+      "transcript": [
+        {
+          "speaker": "M-Au",
+          "text": "Are you going to the conference in London next month?",
+          "translation": "Cô có đi dự hội nghị ở London vào tháng tới không?"
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Yes, they asked me to give a presentation about my last project.",
+          "translation": "Có, họ đã mời tôi thuyết trình về dự án gần đây nhất của tôi."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "That's great. Do you know if the company will pay for your travel expenses?",
+          "translation": "Tuyệt quá. Cô có biết công ty có chi trả chi phí đi lại cho cô không?"
+        },
+        {
+          "speaker": "W-Br",
+          "text": "They'll pay for the registration fee, but I have to cover the airfare myself. The company paid for my plane tickets to the conferences in January and March, and they only cover airfare for two conferences per year.",
+          "translation": "Họ sẽ trả phí đăng ký, nhưng tôi phải tự chi trả tiền vé máy bay. Công ty đã trả tiền vé máy bay cho tôi tới các hội nghị vào tháng Một và tháng Ba, và họ chỉ chi trả vé máy bay cho hai hội nghị mỗi năm."
+        }
+      ],
+      "questions": [
+        {
+          "num": 16,
+          "text": "What are the speakers discussing?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Travel agencies",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Foreign companies",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Conference attendance",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Application deadlines",
+              "correct": false
+            }
+          ],
+          "explanation": "They discuss attending a conference in London."
+        },
+        {
+          "num": 17,
+          "text": "What is the woman going to do in London?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Give a presentation",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Meet with investors",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Take a tour of the city",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Interview for a job",
+              "correct": false
+            }
+          ],
+          "explanation": "She says she was asked to give a presentation."
+        },
+        {
+          "num": 18,
+          "text": "What does the woman say about the registration fee?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It includes meals.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "It will be paid by the company.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "It is due in January.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It can be paid by credit card.",
+              "correct": false
+            }
+          ],
+          "explanation": "She says the company will pay for the registration fee."
+        }
+      ]
+    },
+    {
+      "id": "lc-19",
+      "range": "19–21",
+      "startQ": 19,
+      "endQ": 21,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hi, Mr. Olson? I'm Eun-hee Sohn from Circle Optical Supplies. I'm calling about the order you placed yesterday.",
+          "translation": "Xin chào, ông Olson phải không ạ? Tôi là Eun-hee Sohn từ Circle Optical Supplies. Tôi gọi về đơn hàng ông đã đặt hôm qua."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Oh, yes - I ordered supplies for my eyeglass store. Is there an issue?",
+          "translation": "À vâng, tôi đã đặt vật tư cho cửa hàng kính mắt của mình. Có vấn đề gì sao?"
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Well, we only have 25 of the eyeglass cases you ordered. Unfortunately, we won't have any more in stock for another two weeks.",
+          "translation": "Chúng tôi chỉ còn 25 hộp đựng kính mà ông đã đặt. Rất tiếc, chúng tôi sẽ không có thêm hàng trong kho trong hai tuần nữa."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Oh, no - we have a promotional event starting next Friday, and we usually provide a case with each pair of eyeglasses our customers purchase. Hmmm ... I guess I'll take the 25 cases you have, but I'll have to order the rest from another company.",
+          "translation": "Ôi không, chúng tôi có một sự kiện khuyến mãi bắt đầu vào thứ Sáu tuần tới, và chúng tôi thường tặng một hộp đựng cho mỗi cặp kính khách hàng mua. Hừm... Tôi nghĩ tôi sẽ lấy 25 hộp các bạn đang có, nhưng tôi sẽ phải đặt phần còn lại từ công ty khác."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "OK, I'll update your order. And as an apology, my manager told me to waive your delivery charge. So, we'll cover the twenty-dollar shipping fee.",
+          "translation": "Được, tôi sẽ cập nhật đơn hàng của ông. Và để xin lỗi, quản lý của tôi đã bảo tôi miễn phí giao hàng cho ông. Vì vậy, chúng tôi sẽ chi trả phí vận chuyển hai mươi đô la."
+        }
+      ],
+      "questions": [
+        {
+          "num": 19,
+          "text": "Why is the woman calling?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To upgrade an account",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To advertise a product",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To report a problem",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "To provide an estimate",
+              "correct": false
+            }
+          ],
+          "explanation": "She calls because the company only has 25 of the eyeglass cases ordered."
+        },
+        {
+          "num": 20,
+          "text": "Look at the graphic. What quantity on the original order form has to be changed?",
+          "options": [
+            {
+              "label": "A",
+              "text": "10",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "20",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "50",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "100",
+              "correct": true
+            }
+          ],
+          "explanation": "The original order lists 100 eyeglass cases, but only 25 are available, so the quantity for eyeglass cases must be changed."
+        },
+        {
+          "num": 21,
+          "text": "What has the woman's manager instructed her to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Provide free shipping",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Send samples of new products",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Personally deliver an order",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Offer a discount on a future purchase",
+              "correct": false
+            }
+          ],
+          "explanation": "Her manager told her to waive the delivery charge."
+        }
+      ]
+    }
+  ],
+  "reading": []
+}

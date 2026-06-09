@@ -1,0 +1,498 @@
+{
+  "id": "14",
+  "title": "Lesson 14 - Practice",
+  "audio": "audio/14.mp3",
+  "audioSegments": [
+    {
+      "id": "14-lc-1",
+      "lessonId": "14",
+      "groupId": "lc-1",
+      "label": "Q1–3",
+      "range": "1–3",
+      "start": 0,
+      "end": 50,
+      "isPreset": true
+    }
+  ],
+  "graphics": {
+    "13": "assets/14_13.png"
+  },
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "M-Am",
+          "text": "Hi, Judy. It's Ted in the accounting department. I'm working on the reimbursement request from your business trip to New York last week. I've received the receipts for your travel expenses, but you forgot to attach the reimbursement form. I'll need that before we can reimburse you for your travel expenses. Would you mind sending the completed form to my office? Thanks, Judy."
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "What did Judy do last week?",
+          "options": [
+            {
+              "label": "A",
+              "text": "She took a vacation.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "She opened a bank account.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "She bought office supplies.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "She went on a business trip.",
+              "correct": true
+            }
+          ],
+          "explanation": "Ted mentions Judy's business trip to New York last week."
+        },
+        {
+          "num": 2,
+          "text": "What is the problem?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Seats are not available on a flight.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A form has not been received.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Some receipts are missing.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "The wrong price was provided.",
+              "correct": false
+            }
+          ],
+          "explanation": "Judy forgot to attach the reimbursement form."
+        },
+        {
+          "num": 3,
+          "text": "What does the speaker ask Judy to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Send in a payment",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Change a reservation",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Return a telephone call",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Submit a document",
+              "correct": true
+            }
+          ],
+          "explanation": "Ted asks her to send the completed form to his office."
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "M-Am",
+          "text": "Hi, Ms. Chambers. This is Steve from Dr. Chang's office. I'm calling because we need to reschedule your appointment. The doctor will be attending a convention in New York, and the only return flight he could get is on the morning of Wednesday, July twenty-seventh, the day of your appointment. We'd like to change your appointment to the following day, July twenty-eighth at ten thirty. Would you please call the office before five today and let me know if this change is OK for you? Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "What is the purpose of this telephone message?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To reschedule an appointment",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "To update information on flights",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To announce an upcoming conference",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To arrange a business meeting",
+              "correct": false
+            }
+          ],
+          "explanation": "Steve says the office needs to reschedule Ms. Chambers's appointment."
+        },
+        {
+          "num": 5,
+          "text": "What will Dr. Chang do in New York?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Visit his family",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Go to a conference",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Meet a patient",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Attend a show",
+              "correct": false
+            }
+          ],
+          "explanation": "The doctor will be attending a convention in New York."
+        },
+        {
+          "num": 6,
+          "text": "What is Ms. Chambers asked to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Attend a meeting",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Return a telephone call",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Make travel reservations",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Arrange a conference call",
+              "correct": false
+            }
+          ],
+          "explanation": "Steve asks her to call the office before five today."
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hello, this is Eun-Jung Park at Computer Innovations. I'm at a conference for software developers in Atlanta and will be out of the office until Monday, June twenty-sixth. If you need to speak to someone urgently about a software product before I return, please contact my colleague in software development, Jason Lee, at extension 331. Jason should be able to answer most questions, and he will let me know of any concerns upon my return. Thanks for your call."
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "According to the message, why is the speaker in Atlanta?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To start a branch office",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To review a proposal",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To attend a conference",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "To visit local attractions",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker says she is at a conference for software developers."
+        },
+        {
+          "num": 8,
+          "text": "What does the speaker ask callers to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Request a brochure",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Visit a Web site",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Contact her colleague",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Attend her presentation",
+              "correct": false
+            }
+          ],
+          "explanation": "Callers should contact Jason Lee if they need urgent help."
+        },
+        {
+          "num": 9,
+          "text": "Who most likely is Jason Lee?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A store manager",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A software specialist",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A conference organizer",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A travel agent",
+              "correct": false
+            }
+          ],
+          "explanation": "Jason works in software development and can answer questions about software products."
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hello, this is Naomi's Custom Office Furniture. Just wanted to give you an update on your orders. We've received the office chairs you ordered. From what I see in the invoice notes, it looks like you had wanted them to be delivered tomorrow, but all of our trucks are busy for the next few days. In addition, the desks you requested have not arrived yet. The factory's only just finished producing them. To apologize for these delays, we'll give you fifteen percent off your next purchase with us."
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "What kind of business does the speaker work for?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A catering company",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A truck rental company",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "An automotive repair shop",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A furniture store",
+              "correct": true
+            }
+          ],
+          "explanation": "The company name is Naomi's Custom Office Furniture, and the speaker discusses chairs and desks."
+        },
+        {
+          "num": 11,
+          "text": "What does the speaker mean when she says, \"all of our trucks are busy for the next few days\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A rental vehicle is not available.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A business is doing well.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A delivery will be delayed.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Some employees will be working overtime.",
+              "correct": false
+            }
+          ],
+          "explanation": "The chairs cannot be delivered tomorrow because the trucks are unavailable."
+        },
+        {
+          "num": 12,
+          "text": "What does the speaker offer the listener?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A replacement product",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A future discount",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A free consultation",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A design upgrade",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker offers fifteen percent off the listener's next purchase."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "M-Am",
+          "text": "Hi, this is a message for the manager of H.W.'s Sandwiches. I'm standing outside your store. It's seven thirty, and it's closed. I don't see a sign on the door, but I'm looking at your Website on my phone, and it says that you should be open tonight. I'm disappointed. I've made a special trip to your restaurant this evening to try the new spicy chicken sandwich for dinner, and I even have a ten percent off coupon that expires today. Will you still accept it if I come back tomorrow? I have some time and I'd really like to use the coupon. Please let me know. This is John, at 555-0179."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "Look at the graphic. When is the speaker leaving the message?",
+          "options": [
+            {
+              "label": "A",
+              "text": "On Monday",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "On Wednesday",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "On Thursday",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "On Sunday",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker says it is 7:30 and the Web site says the shop should be open tonight. The graphic shows only Thursday is open until 8:00 P.M."
+        },
+        {
+          "num": 14,
+          "text": "Why does the speaker leave the message?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To apologize for a mistake",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To express disappointment",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "To show appreciation",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To communicate a decision",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker says, \"I'm disappointed,\" because the store is closed even though the Web site says it should be open."
+        },
+        {
+          "num": 15,
+          "text": "What does the speaker request?",
+          "options": [
+            {
+              "label": "A",
+              "text": "An updated menu",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A job application",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A flexible delivery time",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "An extension to use a coupon",
+              "correct": true
+            }
+          ],
+          "explanation": "He asks whether the restaurant will still accept his coupon if he comes back tomorrow."
+        }
+      ]
+    }
+  ],
+  "reading": []
+}

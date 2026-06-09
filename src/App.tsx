@@ -5,7 +5,8 @@ import { LessonWorkspace } from './components/LessonWorkspace';
 import { VocabularyTrainer } from './components/VocabularyTrainer';
 import { Mp3PlayerHub } from './components/Mp3PlayerHub';
 import { AudioPlayer } from './components/AudioPlayer';
-import { LessonData, LessonProgress, PracticeHistoryEntry, AudioControlState, AudioSegment, VocabularyItem } from './types';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { LessonData, LessonManifest, LessonProgress, PracticeHistoryEntry, AudioControlState, AudioSegment, VocabularyItem } from './types';
 import { Menu, ChevronRight, BookOpen } from 'lucide-react';
 import {
   isFirebaseConfigured,
@@ -121,16 +122,20 @@ const mergeCustomVocabulary = (
 };
 
 const App: React.FC = () => {
-  const [lessons, setLessons] = useState<LessonData[]>([]);
+  const [lessons, setLessons] = useState<LessonManifest[]>([]);
   const [isLoadingLessons, setIsLoadingLessons] = useState(true);
+  const [activeLessonData, setActiveLessonData] = useState<LessonData | null>(null);
+  const [isLoadingActiveLesson, setIsLoadingActiveLesson] = useState(false);
+  const [vocabItems, setVocabItems] = useState<VocabularyItem[]>([]);
+  const [isLoadingVocab, setIsLoadingVocab] = useState(false);
 
   const [activeView, setActiveView] = useState<'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer'>('dashboard');
   const [currentLessonId, setCurrentLessonId] = useState<string | null>(null);
 
   // Load lessons dynamically to optimize main bundle size
   useEffect(() => {
-    import('./data/lessons.json').then((module) => {
-      setLessons(module.default as LessonData[]);
+    import('./data/lessons_manifest.json').then((module) => {
+      setLessons(module.default as LessonManifest[]);
       setIsLoadingLessons(false);
     });
   }, []);
@@ -368,6 +373,40 @@ const App: React.FC = () => {
   const handleNavigate = (view: 'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer', lessonId: string | null) => {
     setActiveView(view);
     setCurrentLessonId(lessonId);
+
+    if (view === 'lesson' && lessonId) {
+      // If moving to a lesson, close the background Audio Center player to avoid double playback
+      setActiveAudioCenterTrackId(null);
+      setAudioCenterControl(null);
+
+      if (activeLessonData?.id !== lessonId) {
+        setIsLoadingActiveLesson(true);
+        setActiveLessonData(null);
+        import(`./data/lessons/${lessonId}.json`)
+          .then((module) => {
+            setActiveLessonData(module.default as LessonData);
+            setIsLoadingActiveLesson(false);
+          })
+          .catch((err) => {
+            console.error(`Failed to load lesson data for ${lessonId}:`, err);
+            setIsLoadingActiveLesson(false);
+          });
+      }
+    } else if (view === 'vocabulary') {
+      if (vocabItems.length === 0) {
+        setIsLoadingVocab(true);
+        import('./data/vocabulary.json')
+          .then((module) => {
+            setVocabItems(module.default as VocabularyItem[]);
+            setIsLoadingVocab(false);
+          })
+          .catch((err) => {
+            console.error('Failed to load vocabulary list:', err);
+            setIsLoadingVocab(false);
+          });
+      }
+    }
+
     // Reset nav grid if moving away from lesson
     if (view !== 'lesson') {
       setNavConfig({
@@ -378,10 +417,7 @@ const App: React.FC = () => {
         gradedResults: {},
         scrollCallback: null
       });
-    } else {
-      // If moving to a lesson, close the background Audio Center player to avoid double playback
-      setActiveAudioCenterTrackId(null);
-      setAudioCenterControl(null);
+      setActiveLessonData(null);
     }
   };
 
@@ -610,36 +646,61 @@ const App: React.FC = () => {
             isAuthConfigured={isFirebaseConfigured}
             isSyncing={isSyncing}
             syncMessage={syncMessage}
-            onSignIn={handleSignIn}
+        onSignIn={handleSignIn}
             onSignOut={handleSignOut}
             onStartLesson={(id) => handleNavigate('lesson', id)}
           />
         ) : activeView === 'vocabulary' ? (
-          <VocabularyTrainer
-            lessons={lessons}
-            masteredIds={masteredVocabIds}
-            onSaveMasteredIds={handleSaveVocabulary}
-            customVocabItems={customVocabItems}
-          />
+          isLoadingVocab ? (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '300px', width: '100%', color: 'hsl(var(--primary))' }}>
+              <div style={{ textAlign: 'center' }}>
+                <div className="animate-spin" style={{ width: '30px', height: '30px', border: '3px solid hsl(var(--primary) / 0.1)', borderTopColor: 'hsl(var(--primary))', borderRadius: '50%', margin: '0 auto 12px' }} />
+                Loading Vocabulary Trainer...
+              </div>
+            </div>
+          ) : (
+            <VocabularyTrainer
+              lessons={lessons}
+              vocabItems={vocabItems}
+              masteredIds={masteredVocabIds}
+              onSaveMasteredIds={handleSaveVocabulary}
+              customVocabItems={customVocabItems}
+            />
+          )
         ) : activeView === 'audioplayer' ? (
           <Mp3PlayerHub
-            lessons={lessons}
+            lessons={lessons as any}
             activeTrackId={activeAudioCenterTrackId}
             setActiveTrackId={setActiveAudioCenterTrackId}
             audioControl={audioCenterControl}
           />
         ) : activeLesson ? (
-          <LessonWorkspace
-            key={activeLesson.id}
-            lesson={activeLesson}
-            progress={progress[activeLesson.id]}
-            onSaveProgress={handleSaveProgress}
-            onRecordHistory={handleRecordHistory}
-            onQuestionNavConfig={handleQuestionNavConfig}
-            onSaveAudioSegments={handleSaveAudioSegments}
-            customVocabItems={customVocabItems}
-            onSaveCustomVocab={handleSaveCustomVocab}
-          />
+          isLoadingActiveLesson ? (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '300px', width: '100%', color: 'hsl(var(--primary))' }}>
+              <div style={{ textAlign: 'center' }}>
+                <div className="animate-spin" style={{ width: '45px', height: '45px', border: '4px solid hsl(var(--primary) / 0.1)', borderTopColor: 'hsl(var(--primary))', borderRadius: '50%', margin: '0 auto 16px' }} />
+                Loading Lesson details...
+              </div>
+            </div>
+          ) : activeLessonData ? (
+            <ErrorBoundary key={activeLessonData.id}>
+              <LessonWorkspace
+                key={activeLessonData.id}
+                lesson={activeLessonData}
+                progress={progress[activeLessonData.id]}
+                onSaveProgress={handleSaveProgress}
+                onRecordHistory={handleRecordHistory}
+                onQuestionNavConfig={handleQuestionNavConfig}
+                onSaveAudioSegments={handleSaveAudioSegments}
+                customVocabItems={customVocabItems}
+                onSaveCustomVocab={handleSaveCustomVocab}
+              />
+            </ErrorBoundary>
+          ) : (
+            <div style={{ padding: '32px', textAlign: 'center', color: 'hsl(var(--text-muted))' }}>
+              Không thể tải nội dung bài học. Vui lòng tải lại trang.
+            </div>
+          )
         ) : (
           <div style={{ padding: '32px', textAlign: 'center', color: 'hsl(var(--text-muted))' }}>
             Lesson not found.

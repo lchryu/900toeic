@@ -1,0 +1,733 @@
+{
+  "id": "15-homework",
+  "title": "15 Homework",
+  "audio": "",
+  "youtubeUrl": "https://www.youtube.com/watch?v=PMsGn82BHYM&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=15",
+  "graphics": {
+    "20": "assets/15-homework_20.png"
+  },
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Attention, Food Market shoppers. This is your Food Market manager, Lisa Stanley, alerting you to some fantastic deals we have for you this afternoon."
+        },
+        {
+          "speaker": "Auto",
+          "text": "In our fruit section, delicious red apples are just a dollar a kilogram! Also, customers with a Food Market shopper's card can purchase Oat Crunch breakfast cereal at half price."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Don't miss out on the savings in our drinks aisle, where we are offering all customers a discount on six-packs of Springvale Mineral Water. And remember to pick up your complimentary shopping bag before you leave. It's our way of thanking you for shopping with us!"
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "What is the purpose of this announcement?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To tell people about special offers",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "To ask for assistance",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To announce a closing time",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To thank employees",
+              "correct": false
+            }
+          ],
+          "explanation": "The announcement tells shoppers about several special offers in the store."
+        },
+        {
+          "num": 2,
+          "text": "What is Ms. Stanley's job?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Apple farmer",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Restaurant employee",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Radio announcer",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Store manager",
+              "correct": true
+            }
+          ],
+          "explanation": "She introduces herself as the Food Market manager."
+        },
+        {
+          "num": 3,
+          "text": "What can people receive for free as they leave?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Mineral water",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Apples",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Shopping bags",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Membership cards",
+              "correct": false
+            }
+          ],
+          "explanation": "Customers are told to pick up a complimentary shopping bag before leaving."
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Attention, passengers. Because of track work north of Boston, all arriving trains that pass through that region are operating at slower speeds and experiencing delays of approximately 45 minutes."
+        },
+        {
+          "speaker": "Auto",
+          "text": "At present, the Montreal trains are not affected. Please check the status of your train on the arrivals board, which is updated every ten minutes."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Also, please be advised that due to engine trouble, departing Train 55 to Vermont is not yet ready to receive passengers. Wait for the boarding announcement before proceeding to the track."
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "Where is this announcement most likely being made?",
+          "options": [
+            {
+              "label": "A",
+              "text": "At an airport",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "At a bus station",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "At a ferry terminal",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "At a train station",
+              "correct": true
+            }
+          ],
+          "explanation": "The speaker mentions trains, tracks, and the arrivals board."
+        },
+        {
+          "num": 5,
+          "text": "For how long will arrivals be delayed?",
+          "options": [
+            {
+              "label": "A",
+              "text": "5 minutes",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "10 minutes",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "45 minutes",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "55 minutes",
+              "correct": false
+            }
+          ],
+          "explanation": "Arriving trains are delayed by approximately 45 minutes."
+        },
+        {
+          "num": 6,
+          "text": "What are passengers traveling to Vermont told to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Speak to a staff member",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Listen for an announcement",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Proceed to the gate",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Make alternate plans",
+              "correct": false
+            }
+          ],
+          "explanation": "Passengers are told to wait for the boarding announcement."
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Ladies and gentlemen, thank you for joining us at tonight's performance of Geraldine Ephart's new play, \"The Lion's Tale.\""
+        },
+        {
+          "speaker": "Auto",
+          "text": "Due to a minor difficulty with the sound system, we ask that you remain here in the lobby until we've fixed the problem."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Please visit the snack bar, which has coffee, tea, soft drinks, and light snacks available for purchase. We expect that you'll be able to take your seats in the theater in about fifteen minutes. Again, we apologize for the delay."
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "What are the listeners waiting to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Purchase tickets",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Meet a guest speaker",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Enter a theater",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Listen to a concert",
+              "correct": false
+            }
+          ],
+          "explanation": "The listeners are waiting in the lobby before taking their seats in the theater."
+        },
+        {
+          "num": 8,
+          "text": "What problem does the speaker mention?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A performance is sold out.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A sound system is not working.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A performer has not arrived yet.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "There are not enough refreshments.",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker says there is a minor difficulty with the sound system."
+        },
+        {
+          "num": 9,
+          "text": "What does the speaker invite listeners to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Exchange their tickets",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Purchase refreshments",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Read a program",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "View a display",
+              "correct": false
+            }
+          ],
+          "explanation": "The listeners are invited to visit the snack bar."
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Attention Hamilton Grocery Shoppers! Thank you for shopping with us today."
+        },
+        {
+          "speaker": "Auto",
+          "text": "We would appreciate it if you would fill out our customer survey. We have two tables set up for your convenience staffed by our customer service representatives, one in the fruit section and one in front of the bakery."
+        },
+        {
+          "speaker": "Auto",
+          "text": "It'll only take a minute, and will help us find out how we can better serve our customers to the best of our abilities. Those who complete the survey will receive a voucher for 5 percent off all your purchases today. Thank you, and have a great day!"
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "Where is the announcement taking place?",
+          "options": [
+            {
+              "label": "A",
+              "text": "At a train station",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "At a grocery store",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "At a restaurant",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "At furniture store",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker addresses Hamilton Grocery shoppers."
+        },
+        {
+          "num": 11,
+          "text": "Why does the speaker say, \"It'll only take a minute\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To correct a misunderstanding",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To encourage participation",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "To ask for permission",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To explain a delay",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker wants shoppers to complete the customer survey."
+        },
+        {
+          "num": 12,
+          "text": "What does the speaker offer customers?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A discount coupon",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Home delivery",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Upgraded seating",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A free dessert",
+              "correct": false
+            }
+          ],
+          "explanation": "Customers who complete the survey receive a voucher for 5 percent off."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "The city of Dover would like to inform residents of the following upcoming construction work. Beginning Monday, August 8, Main Street will be closed for water pipe installation."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Automobile traffic will not be allowed on Main Street between Sixteenth Street and Twentieth Street. Pedestrians will be able to access all stores in the area while the work is being completed."
+        },
+        {
+          "speaker": "Auto",
+          "text": "We expect to reopen Main Street by August 11. We apologize for any inconvenience this closure may cause. If you have any questions regarding the construction on Main Street, please call the City Planning Office at 555-3701."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "What is the purpose of this radio announcement?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To inform people of a city project",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "To publicize available construction jobs",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To request that residents conserve water",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To apologize for a store closing",
+              "correct": false
+            }
+          ],
+          "explanation": "The announcement informs residents about construction work on Main Street."
+        },
+        {
+          "num": 14,
+          "text": "When will Main Street close to automobile traffic?",
+          "options": [
+            {
+              "label": "A",
+              "text": "On August 8",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "On August 11",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "On August 16",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "On August 20",
+              "correct": false
+            }
+          ],
+          "explanation": "Main Street closes beginning Monday, August 8."
+        },
+        {
+          "num": 15,
+          "text": "What should people do if they have questions?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Send an e-mail",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Visit the Dover Web site",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Make a phone call",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Go to the City Planning Office",
+              "correct": false
+            }
+          ],
+          "explanation": "People with questions should call the City Planning Office."
+        }
+      ]
+    },
+    {
+      "id": "lc-16",
+      "range": "16–18",
+      "startQ": 16,
+      "endQ": 18,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Attention shoppers: Our store will be closing in fifteen minutes. Please make your final selections and proceed to the checkout line."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Don't forget today's specials in the fruits and vegetables section: all Florida oranges and grapefruit, just two dollars a kilo, but only for a few more minutes!"
+        },
+        {
+          "speaker": "Auto",
+          "text": "The customer service counter is now closed; please direct all questions to the manager on duty. We're proud to announce that we've extended our hours of operation in order to serve you better. Starting next week, our new hours will be from seven A.M. to nine P.M., seven days a week. Thank you for shopping with us, and we look forward to seeing you again."
+        }
+      ],
+      "questions": [
+        {
+          "num": 16,
+          "text": "Why is the announcement being made?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To direct people to the service desk",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To tell customers the store is closing",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "To introduce payment procedures",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To advertise bakery prices",
+              "correct": false
+            }
+          ],
+          "explanation": "The announcement says the store will close in fifteen minutes."
+        },
+        {
+          "num": 17,
+          "text": "Where are customers with questions directed to go?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To the manager",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "To the checkout line",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To the information board",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To the customer service counter",
+              "correct": false
+            }
+          ],
+          "explanation": "Customers with questions should speak to the manager on duty."
+        },
+        {
+          "num": 18,
+          "text": "What change will be introduced next week?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A new manager will be hired.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A special sale will take place.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "The store will stay open longer.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "The store will have more stock.",
+              "correct": false
+            }
+          ],
+          "explanation": "The store's hours will be extended starting next week."
+        }
+      ]
+    },
+    {
+      "id": "lc-19",
+      "range": "19–21",
+      "startQ": 19,
+      "endQ": 21,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Attention, passengers. Welcome aboard Trilsen Airways flight 209 with nonstop service to Seattle. At this time, please make sure your bags and personal items are properly stowed in the overhead bins or under the seat ahead of you."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Our flight today will be about six hours long, and we expect an on-time arrival. We'll be taking off in just a few minutes, so I'd like to remind you that wireless Internet access is available on this flight. You can refer to the brochure in your seat-back pocket for pricing options."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Once our cruising altitude has been reached, flight attendants will come around with our complimentary beverage service."
+        }
+      ],
+      "questions": [
+        {
+          "num": 19,
+          "text": "What does the speaker request that passengers do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Store their luggage",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Turn off their mobile phones",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Fasten their seat belts",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Double-check their seating assignments",
+              "correct": false
+            }
+          ],
+          "explanation": "Passengers are asked to stow bags and personal items."
+        },
+        {
+          "num": 20,
+          "text": "Look at the graphic. How much does Internet access cost for the duration of the flight?",
+          "options": [
+            {
+              "label": "A",
+              "text": "$2.00",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "$5.00",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "$8.00",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "$10.00",
+              "correct": true
+            }
+          ],
+          "explanation": "The flight is about six hours long, and the graphic lists six-hour Internet access as $10.00."
+        },
+        {
+          "num": 21,
+          "text": "What does the speaker say flight attendants will do later?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Show a video",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Serve beverages",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Distribute customs forms",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Provide blankets",
+              "correct": false
+            }
+          ],
+          "explanation": "Flight attendants will provide complimentary beverage service."
+        }
+      ]
+    }
+  ],
+  "reading": []
+}

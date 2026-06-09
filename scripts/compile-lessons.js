@@ -21,10 +21,14 @@ const AUDIO_SEGMENT_PRESETS_BY_LESSON = {
   ]
 };
 const OUTPUT_DIR = './src/data';
-const OUTPUT_FILE = path.join(OUTPUT_DIR, 'lessons.json');
+const MANIFEST_FILE = path.join(OUTPUT_DIR, 'lessons_manifest.json');
+const VOCABULARY_FILE = path.join(OUTPUT_DIR, 'vocabulary.json');
+const CORRECT_ANSWERS_FILE = path.join(OUTPUT_DIR, 'correct_answers.json');
+const INDIVIDUAL_LESSONS_DIR = path.join(OUTPUT_DIR, 'lessons');
 
-// Make sure target directory exists
+// Make sure target directories exist
 fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+fs.mkdirSync(INDIVIDUAL_LESSONS_DIR, { recursive: true });
 
 function cleanMarkdown(text) {
   if (!text) return '';
@@ -591,8 +595,108 @@ function main() {
     }
   }
   
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(lessons, null, 2), 'utf-8');
-  console.log(`Successfully generated ${lessons.length} lessons in ${OUTPUT_FILE}`);
+  // 1. Generate Manifest
+  const manifest = lessons.map((lesson) => ({
+    id: lesson.id,
+    title: lesson.title,
+    audio: lesson.audio,
+    youtubeUrl: lesson.youtubeUrl || '',
+    listeningCount: lesson.listening.reduce((sum, g) => sum + g.questions.length, 0),
+    readingCount: lesson.reading.reduce((sum, g) => sum + g.questions.length, 0)
+  }));
+  
+  // 2. Generate Vocabulary
+  const vocabularyItems = [];
+  lessons.forEach((lesson) => {
+    lesson.reading.forEach((group) => {
+      if (!group.vocabulary) return;
+      group.vocabulary.forEach((line, lineIdx) => {
+        const boldColonMatch = line.match(/^\*\*(.*?)\*\*:\s*(.*)$/);
+        let term = '';
+        let definition = '';
+        
+        if (boldColonMatch) {
+          term = boldColonMatch[1].trim();
+          definition = boldColonMatch[2].trim();
+        } else {
+          const colonIndex = line.indexOf(':');
+          if (colonIndex !== -1) {
+            term = line.substring(0, colonIndex).replace(/\*\*|\*/g, '').trim();
+            definition = line.substring(colonIndex + 1).trim();
+          } else {
+            term = line.replace(/\*\*|\*/g, '').trim();
+            definition = '';
+          }
+        }
+
+        if (term) {
+          vocabularyItems.push({
+            id: `${lesson.id}-${term.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${lineIdx}`,
+            term,
+            definition,
+            lessonId: lesson.id,
+            lessonTitle: lesson.title
+          });
+        }
+      });
+    });
+  });
+
+  // Clean old individual lesson JSONs
+  if (fs.existsSync(INDIVIDUAL_LESSONS_DIR)) {
+    const oldFiles = fs.readdirSync(INDIVIDUAL_LESSONS_DIR);
+    for (const oldFile of oldFiles) {
+      fs.unlinkSync(path.join(INDIVIDUAL_LESSONS_DIR, oldFile));
+    }
+  } else {
+    fs.mkdirSync(INDIVIDUAL_LESSONS_DIR, { recursive: true });
+  }
+
+  // 3. Write individual lesson files
+  lessons.forEach((lesson) => {
+    const lessonPath = path.join(INDIVIDUAL_LESSONS_DIR, `${lesson.id}.json`);
+    fs.writeFileSync(lessonPath, JSON.stringify(lesson, null, 2), 'utf-8');
+  });
+
+  // 4. Generate Correct Answers Map
+  const correctAnswers = {};
+  lessons.forEach((lesson) => {
+    const listeningMap = {};
+    lesson.listening.forEach((group) => {
+      group.questions.forEach((q) => {
+        const correctOpt = q.options.find((o) => o.correct);
+        if (correctOpt) {
+          listeningMap[q.num] = correctOpt.label;
+        }
+      });
+    });
+
+    const readingMap = {};
+    lesson.reading.forEach((group) => {
+      group.questions.forEach((q) => {
+        const correctOpt = q.options.find((o) => o.correct);
+        if (correctOpt) {
+          readingMap[q.num] = correctOpt.label;
+        }
+      });
+    });
+
+    correctAnswers[lesson.id] = {
+      listening: listeningMap,
+      reading: readingMap
+    };
+  });
+
+  // Write Manifest, Vocabulary, and Correct Answers files
+  fs.writeFileSync(MANIFEST_FILE, JSON.stringify(manifest, null, 2), 'utf-8');
+  fs.writeFileSync(VOCABULARY_FILE, JSON.stringify(vocabularyItems, null, 2), 'utf-8');
+  fs.writeFileSync(CORRECT_ANSWERS_FILE, JSON.stringify(correctAnswers, null, 2), 'utf-8');
+
+  console.log(`Successfully compiled to:`);
+  console.log(`  - Manifest: ${MANIFEST_FILE}`);
+  console.log(`  - Vocabulary: ${VOCABULARY_FILE}`);
+  console.log(`  - Correct Answers: ${CORRECT_ANSWERS_FILE}`);
+  console.log(`  - Individual Lessons folder: ${INDIVIDUAL_LESSONS_DIR}`);
 }
 
 main();

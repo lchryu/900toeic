@@ -1,10 +1,11 @@
 import React from 'react';
 import { BookOpen, CheckCircle2, Cloud, CloudOff, Clock, GraduationCap, History, LogIn, LogOut, Pencil, Play, RotateCcw, Upload, Download } from 'lucide-react';
-import { LessonData, LessonProgress, PracticeHistoryEntry } from '../types';
+import { LessonManifest, LessonProgress, PracticeHistoryEntry } from '../types';
 import type { AuthUser } from '../services/firebase';
+import correctAnswersData from '../data/correct_answers.json';
 
 interface DashboardProps {
-  lessons: LessonData[];
+  lessons: LessonManifest[];
   progress: { [lessonId: string]: LessonProgress };
   history: PracticeHistoryEntry[];
   authUser: AuthUser | null;
@@ -102,32 +103,33 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
     Object.entries(progress).forEach(([lessonId, p]) => {
       if (!p.isSubmitted && (!p.answers || Object.keys(p.answers).length === 0)) return;
-      const lesson = lessons.find((l) => l.id === lessonId);
-      if (!lesson) return;
+
+      const lessonAnswers = (correctAnswersData as any)[lessonId];
+      if (!lessonAnswers) return;
 
       // Listening
-      lesson.listening.forEach((g) => {
-        g.questions.forEach((q) => {
+      if (lessonAnswers.listening) {
+        Object.entries(lessonAnswers.listening).forEach(([qNumStr, correctOpt]) => {
+          const qNum = parseInt(qNumStr);
           listeningTotal++;
-          const userAns = p.answers[q.num];
-          const correctOpt = q.options.find((o) => o.correct)?.label;
+          const userAns = p.answers[qNum];
           if (userAns && userAns === correctOpt) {
             listeningCorrect++;
           }
         });
-      });
+      }
 
       // Reading
-      lesson.reading.forEach((g) => {
-        g.questions.forEach((q) => {
+      if (lessonAnswers.reading) {
+        Object.entries(lessonAnswers.reading).forEach(([qNumStr, correctOpt]) => {
+          const qNum = parseInt(qNumStr);
           readingTotal++;
-          const userAns = p.answers[q.num];
-          const correctOpt = q.options.find((o) => o.correct)?.label;
+          const userAns = p.answers[qNum];
           if (userAns && userAns === correctOpt) {
             readingCorrect++;
           }
         });
-      });
+      }
     });
 
     const listeningPct = listeningTotal > 0 ? Math.round((listeningCorrect / listeningTotal) * 100) : 0;
@@ -196,12 +198,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
   // Find next lesson to do
   const nextLesson = lessons.find((l) => !(progress[l.id]?.isSubmitted ?? Object.keys(progress[l.id]?.answers || {}).length > 0)) || lessons[0];
-  const getLessonQuestionCounts = (lesson: LessonData | undefined) => {
+  const getLessonQuestionCounts = (lesson: LessonManifest | undefined) => {
     if (!lesson) return { listening: 0, reading: 0, total: 0 };
-
-    const listening = lesson.listening.reduce((sum, group) => sum + group.questions.length, 0);
-    const reading = lesson.reading.reduce((sum, group) => sum + group.questions.length, 0);
-    return { listening, reading, total: listening + reading };
+    return {
+      listening: lesson.listeningCount,
+      reading: lesson.readingCount,
+      total: lesson.listeningCount + lesson.readingCount
+    };
   };
   const nextLessonCounts = getLessonQuestionCounts(nextLesson);
 

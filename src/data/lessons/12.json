@@ -1,0 +1,1070 @@
+{
+  "id": "12",
+  "title": "📘 Lesson 12 – Practice",
+  "audio": "audio/12.mp3",
+  "graphics": {
+    "15": "assets/12_15.png"
+  },
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Have you made your flight reservations for the National Marketing Conference yet?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Actually, I just canceled them. We had to cut part of our travel budget because sales have been down the past three months."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "But I thought you were going to lead a question and answer session on online marketing."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "I've asked Miguel Fernandez from the local office to go instead. They're close by so he can fill in for me."
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "What are the speakers discussing?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A budget proposal",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A conference",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A marketing report",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A training session",
+              "correct": false
+            }
+          ],
+          "explanation": "The speakers are talking about flight reservations and budget cuts for the **National Marketing Conference**."
+        },
+        {
+          "num": 2,
+          "text": "Why did the man cancel his plans?",
+          "options": [
+            {
+              "label": "A",
+              "text": "He is sick",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "He has another meeting",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "His budget has been reduced",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "His flight was delayed",
+              "correct": false
+            }
+          ],
+          "explanation": "The man mentions that they had to **cut part of their travel budget** because sales have been down."
+        },
+        {
+          "num": 3,
+          "text": "What did the man ask Miguel Fernandez to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Prepare a report",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Organize a meeting",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Contact a client",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Represent the company at an event",
+              "correct": true
+            }
+          ],
+          "explanation": "The man asked Miguel to go to the conference **instead of him**, which means representing the company at the event."
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "W-Br",
+          "text": "Luis, our summer vacation package sales were low in June."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Well, we'll start running a new advertisement soon. We should see more sales in a few weeks."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Yeah, but summer's almost over."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "You're right. We really should have more summer vacations booked by now."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "I have an idea. Let's talk to our hotel and transportation vendors about putting together more two- and three-day package tours. That'll attract people who just want a short getaway."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "That could work! I'll start calling our vendors right away and see what they can do."
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "Where do the speakers most likely work?",
+          "options": [
+            {
+              "label": "A",
+              "text": "At a travel agency",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "At a hotel",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "At a restaurant",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "At a transportation company",
+              "correct": false
+            }
+          ],
+          "explanation": "The speakers are discussing summer vacation package **sales** and calling **hotel/transportation vendors**, which are typical tasks at a **travel agency**."
+        },
+        {
+          "num": 5,
+          "text": "What does the woman imply when she says \"but summer's almost over\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They should cancel the advertisement",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "They should extend the summer season",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "An advertisement will come out too late",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "The weather has been unusual",
+              "correct": false
+            }
+          ],
+          "explanation": "The man suggests running a new ad, but the woman worries it's too late because summer is ending, implying the **ad will not be effective**."
+        },
+        {
+          "num": 6,
+          "text": "What will the man do next?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Review a report",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Talk to customers",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Plan a vacation",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Call some vendors",
+              "correct": true
+            }
+          ],
+          "explanation": "The man explicitly says, \"I'll start **calling our vendors** right away.\""
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hi, Jeff, have you submitted your article on seabirds to any science journals yet?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Yes, in fact, I just heard yesterday that Science Monthly will publish my paper in their next issue."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Congratulations! I have a subscription to that journal—I can't wait to read your article when it comes out. This must be a big step for your research project."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "It's definitely good news. People will be able to read about my work. Then, when we meet at the summer conference, we can have some good discussions about the project."
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "Who most likely is the man?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A researcher",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "A journalist",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A professor",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A student",
+              "correct": false
+            }
+          ],
+          "explanation": "The man mentions his **article on seabirds** and his **research project**, indicating he is a **researcher**."
+        },
+        {
+          "num": 8,
+          "text": "Why does the woman congratulate the man?",
+          "options": [
+            {
+              "label": "A",
+              "text": "He received a promotion",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "His article will be published",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "He completed a project",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "He won an award",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman congratulates him because **Science Monthly will publish his paper** in their next issue."
+        },
+        {
+          "num": 9,
+          "text": "What does the man plan to do this summer?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Travel abroad",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Attend a conference",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Start a new project",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Teach a class",
+              "correct": false
+            }
+          ],
+          "explanation": "The man mentions, \"when we **meet at the summer conference**,\" indicating his plan."
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hello. My name is Heidi Park, and I'm a reporter from Modern Architect Magazine. I'm here to see Mr. Mitra. I'm supposed to interview him at eleven thirty."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "OK. I'll let him know you're here. In the meantime, can you please sign in? We keep track of all visitors' appointments."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Sure. No problem."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Mr. Mitra is on his way down to meet you. Oh, here he is now! Mr. Mitra, this is Heidi Park, your eleven thirty appointment."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Hi, Ms. Park. Thanks for coming. I'm so sorry, but I need a few more minutes before we meet. I have to respond to an urgent phone call."
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "Why is the woman meeting Mr. Mitra?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To conduct an interview",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "To attend a meeting",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To apply for a job",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To deliver a document",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman says she is a reporter and is \"supposed to **interview him** at eleven thirty.\""
+        },
+        {
+          "num": 11,
+          "text": "What does the woman agree to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Wait in the lobby",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Sign in for a visit",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Call back later",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Fill out a form",
+              "correct": false
+            }
+          ],
+          "explanation": "The man asks her to **sign in**, and she responds, \"Sure. No problem.\""
+        },
+        {
+          "num": 12,
+          "text": "Why does Mr. Mitra apologize?",
+          "options": [
+            {
+              "label": "A",
+              "text": "He forgot about the appointment",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "He is leaving early",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "He made a mistake",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "He will be late for a meeting",
+              "correct": true
+            }
+          ],
+          "explanation": "Mr. Mitra says, \"I need a few more minutes before we meet,\" which means he will be **late for their meeting**."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hi, Hank. I'm back from our Product Development Lab. They're wondering how the taste-test surveys for our new flavors of juice drinks are coming along."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Oh, our market research firm sent us 30 completed surveys from another supermarket testing site, just this morning."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Great. Why don't you get in touch with our advertising agency? If the survey results are positive, they can be used in our new ads."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Sure—so far the feedback seems good. These 30 surveys came from the Medford Park Supermarket. So we're just waiting on one more set of results."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "OK. Which supermarket still hasn't sent us their surveys?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "That would be Burnside, but they received their product samples late. They expect to send us all their surveys tomorrow."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "Where do the speakers most likely work?",
+          "options": [
+            {
+              "label": "A",
+              "text": "At a supermarket",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "At a beverage company",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "At a research institute",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "At an advertising agency",
+              "correct": false
+            }
+          ],
+          "explanation": ""
+        },
+        {
+          "num": 14,
+          "text": "What does the woman suggest the man do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Contact a supermarket",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Review survey results",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Contact an advertising agency",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Develop a new product",
+              "correct": false
+            }
+          ],
+          "explanation": ""
+        },
+        {
+          "num": 15,
+          "text": "Look at the graphic. How many surveys are the speakers waiting to receive?",
+          "options": [
+            {
+              "label": "A",
+              "text": "15",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "20",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "25",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "30",
+              "correct": false
+            }
+          ],
+          "explanation": "The man mentions that they are still waiting for surveys from the **Burnside** supermarket. According to the graphic, the number of surveys for Burnside is **15**. Therefore, the speakers are waiting to receive 15 surveys."
+        }
+      ]
+    }
+  ],
+  "reading": [
+    {
+      "id": "rc-131",
+      "range": "131–134",
+      "startQ": 131,
+      "endQ": 134,
+      "originalPassage": "**Thank you for shopping with Danforth Fashions online.**\n\nOur quality-control team carefully inspects all products **<u>&nbsp;&nbsp;&nbsp;&nbsp;(131)&nbsp;&nbsp;&nbsp;&nbsp;</u>** packaging to ensure customer satisfaction. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(132)&nbsp;&nbsp;&nbsp;&nbsp;</u>**. If not, we make exchanges or returns easy. Simply contact us at `service@danforthfashions.com` if you need a different size, a color, or pattern—or if you are dissatisfied for any reason. Your exchange **<u>&nbsp;&nbsp;&nbsp;&nbsp;(133)&nbsp;&nbsp;&nbsp;&nbsp;</u>** right away.\n\nTo return an item for a refund, use the prepaid return shipping label included with your order and send it back to us in its original packaging unused and undamaged. We issue refunds to the original method of payment, **<u>&nbsp;&nbsp;&nbsp;&nbsp;(134)&nbsp;&nbsp;&nbsp;&nbsp;</u>** the return shipping fee.",
+      "completedPassage": "**Thank you for shopping with Danforth Fashions online.**\n\nOur quality-control team carefully inspects all products **<u>prior to</u>** (131) packaging to ensure customer satisfaction. **<u>We hope you are entirely pleased with your purchase.</u>** (132). If not, we make exchanges or returns easy. Simply contact us at `service@danforthfashions.com` if you need a different size, a color, or pattern—or if you are dissatisfied for any reason. Your exchange **<u>will be processed</u>** (133) right away.\n\nTo return an item for a refund, use the prepaid return shipping label included with your order and send it back to us in its original packaging unused and undamaged. We issue refunds to the original method of payment, **<u>minus</u>** (134) the return shipping fee.",
+      "questions": [
+        {
+          "num": 131,
+          "options": [
+            {
+              "label": "A",
+              "text": "in case",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "as much as",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "prior to",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "in keeping with",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 132,
+          "options": [
+            {
+              "label": "A",
+              "text": "We hope you are entirely pleased with your purchase.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "We expect to be redesigning our Website this summer.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "We value all of our loyal customers.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "We noticed that your billing address has changed.",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 133,
+          "options": [
+            {
+              "label": "A",
+              "text": "will be processed",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "was processed",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "is processing",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "to be processing",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 134,
+          "options": [
+            {
+              "label": "A",
+              "text": "past",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "above",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "aboard",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "minus",
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Quality-control team:** Đội ngũ kiểm soát chất lượng.",
+        "**Inspect:** Kiểm tra kỹ lưỡng.",
+        "**Prior to:** = *Before* (Trước khi).",
+        "**Ensure customer satisfaction:** Đảm bảo sự hài lòng của khách hàng.",
+        "**Entirely pleased:** Hoàn toàn hài lòng.",
+        "**Exchange:** Đổi hàng / **Return:** Trả hàng.",
+        "**Pattern:** Mẫu mã, hoa văn.",
+        "**Dissatisfied:** Không hài lòng.",
+        "**Process right away:** Xử lý ngay lập tức.",
+        "**Refund:** Hoàn tiền.",
+        "**Prepaid return shipping label:** Nhãn vận chuyển trả hàng đã trả tiền trước.",
+        "**Original packaging:** Bao bì gốc.",
+        "**Unused and undamaged:** Chưa dùng và không hỏng.",
+        "**Original method of payment:** Phương thức thanh toán ban đầu.",
+        "**Return shipping fee:** Phí vận chuyển trả hàng."
+      ],
+      "takeaways": [
+        "**Exchanges** (đổi hàng) are processed immediately for size/color issues.",
+        "**Refunds** (hoàn tiền) require the item to be unused, undamaged, and in original packaging.",
+        "The **shipping fee** will be deducted from the total refund amount (*minus the return shipping fee*)."
+      ]
+    },
+    {
+      "id": "rc-135",
+      "range": "135–138",
+      "startQ": 135,
+      "endQ": 138,
+      "originalPassage": "**Attention, Alden-Apper Industries Employees!**\n\nPlease remember that the switch to our new e-mail software will begin at 11:00 P.M. on Sunday, May 2. All **<u>&nbsp;&nbsp;&nbsp;&nbsp;(135)&nbsp;&nbsp;&nbsp;&nbsp;</u>** information in your account, including contacts and calendar events, will be moved to the new system by 4:00 A.M. on Monday, May 3.\n\nThough we are working diligently to anticipate and provide solutions for all potential issues, some employees may experience difficulty **<u>&nbsp;&nbsp;&nbsp;&nbsp;(136)&nbsp;&nbsp;&nbsp;&nbsp;</u>** attempting to log in to their accounts after the switch. In addition, there is a remote possibility that some information may be lost. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(137)&nbsp;&nbsp;&nbsp;&nbsp;</u>**, be sure to back up any critical e-mail files as soon as possible. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(138)&nbsp;&nbsp;&nbsp;&nbsp;</u>**.\n\nA training session will be scheduled next week to familiarize employees with key functions of the new software.\n\nIf you need assistance with this, please contact the IT department.",
+      "completedPassage": "**Attention, Alden-Apper Industries Employees!**\n\nPlease remember that the switch to our new e-mail software will begin at **11:00 P.M. on Sunday, May 2**. All **<u>existing</u>** (135) information in your account, including contacts and calendar events, will be moved to the new system by **4:00 A.M. on Monday, May 3**.\n\nThough we are working diligently to anticipate and provide solutions for all potential issues, some employees may experience difficulty **<u>when</u>** (136) attempting to log in to their accounts after the switch. In addition, there is a remote possibility that some information may be lost. **<u>For this reason</u>** (137), be sure to **back up any critical e-mail files** as soon as possible. **<u>If you need assistance with this, please contact the IT department.</u>** (138).\n\nA training session will be scheduled next week to familiarize employees with key functions of the new software.\n\nIf you need assistance with this, please contact the IT department.",
+      "questions": [
+        {
+          "num": 135,
+          "options": [
+            {
+              "label": "A",
+              "text": "existed",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "existence",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "to exist",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "existing",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 136,
+          "options": [
+            {
+              "label": "A",
+              "text": "when",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "plus",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "already",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "whose",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 137,
+          "options": [
+            {
+              "label": "A",
+              "text": "Previously",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Otherwise",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Even so",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "For this reason",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 138,
+          "options": [
+            {
+              "label": "A",
+              "text": "The new software will be ordered this week.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The current system will be reactivated in June.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "If you need assistance with this, please contact the IT department.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "In that case, you must complete the installation yourself.",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Switch to:** Chuyển đổi sang (hệ thống/phần mềm mới).",
+        "**Existing information:** Thông tin hiện có/đang tồn tại.",
+        "**Diligently:** Cần mẫn, siêng năng.",
+        "**Anticipate potential issues:** Dự đoán/lường trước các vấn đề tiềm ẩn.",
+        "**Remote possibility:** Khả năng xa vời/mong manh.",
+        "**Back up critical files:** Sao lưu các tập tin quan trọng.",
+        "**Familiarize employees with:** Giúp nhân viên làm quen với."
+      ],
+      "takeaways": [
+        "The email system migration takes place between **Sunday night and Monday morning**.",
+        "**Backing up files** is strongly recommended as a precaution against data loss.",
+        "Training sessions will be provided to help staff use the new software."
+      ]
+    },
+    {
+      "id": "rc-139",
+      "range": "139–142",
+      "startQ": 139,
+      "endQ": 142,
+      "originalPassage": "**Dear Director Yoshida,**\n\nThank you for your school's interest in visiting our farm next month. Please note that children must be at least six years old to visit and tour the farm. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(139)&nbsp;&nbsp;&nbsp;&nbsp;</u>**. I have enclosed a list of the **<u>&nbsp;&nbsp;&nbsp;&nbsp;(140)&nbsp;&nbsp;&nbsp;&nbsp;</u>** activities available for our young visitors. Two of these **<u>&nbsp;&nbsp;&nbsp;&nbsp;(141)&nbsp;&nbsp;&nbsp;&nbsp;</u>** must be scheduled in advance. They are a cheese-making class and an introduction to beekeeping. Both are very popular with our visitors.\n\nPlease let **<u>&nbsp;&nbsp;&nbsp;&nbsp;(142)&nbsp;&nbsp;&nbsp;&nbsp;</u>** know your selection by early next week. I look forward to welcoming your group soon!\n\nSincerely,\n**Annabel Romero**\nCoordinator, Merrytree Family Farm",
+      "completedPassage": "Dear Director Yoshida,\n\nThank you for your school's interest in visiting our farm next month. Please note that children must be at least six years old to visit and tour the farm. **<u>There are no exceptions to this policy.</u>** (139). I have enclosed a list of the **<u>educational</u>** (140) activities available for our young visitors. Two of these **<u>events</u>** (141) must be scheduled in advance. They are a cheese-making class and an introduction to beekeeping. Both are very popular with our visitors.\n\nPlease let **<u>me</u>** (142) know your selection by early next week. I look forward to welcoming your group soon!\n\nSincerely,\n**Annabel Romero**\nCoordinator, Merrytree Family Farm",
+      "questions": [
+        {
+          "num": 139,
+          "options": [
+            {
+              "label": "A",
+              "text": "In the event of bad weather, the animals will be inside.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "There are no exceptions to this policy.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Ones younger than that can find much to enjoy.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "This fee includes lunch and a small souvenir.",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 140,
+          "options": [
+            {
+              "label": "A",
+              "text": "legal",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "artistic",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "athletic",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "educational",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 141,
+          "options": [
+            {
+              "label": "A",
+              "text": "events",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "plays",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "treatments",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "trips",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 142,
+          "options": [
+            {
+              "label": "A",
+              "text": "they",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "me",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "her",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "one",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**No exceptions to this policy:** Không có ngoại lệ đối với chính sách này (quy tắc nghiêm ngặt).",
+        "**At least:** Ít nhất.",
+        "**Enclosed:** Được gửi kèm theo.",
+        "**Educational activities:** Các hoạt động mang tính giáo dục.",
+        "**In advance:** Trước (về mặt thời gian).",
+        "**Beekeeping:** Nuôi ong."
+      ],
+      "takeaways": [
+        "The farm tour has a **strict age policy** (minimum 6 years old).",
+        "Special activities like cheese-making and beekeeping require **prior booking**.",
+        "A list of available educational activities is provided in the letter."
+      ]
+    },
+    {
+      "id": "rc-143",
+      "range": "143–146",
+      "startQ": 143,
+      "endQ": 146,
+      "originalPassage": "**Jamaica National Tourist Organization Offers Free Cultural Passes**\n\nThe Jamaica National Tourist Organization (JAMTO) announces an exciting new program that provides free entry to a variety of cultural attractions. The program is sponsored by the JAMTO **<u>&nbsp;&nbsp;&nbsp;&nbsp;(143)&nbsp;&nbsp;&nbsp;&nbsp;</u>** the hotels and businesses listed on the back of this flyer. Together, we **<u>&nbsp;&nbsp;&nbsp;&nbsp;(144)&nbsp;&nbsp;&nbsp;&nbsp;</u>** you to take advantage of some of the finest cultural and educational experiences that Jamaica has to offer. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(145)&nbsp;&nbsp;&nbsp;&nbsp;</u>** attractions include the Caribbean National Gardens, Montego Bay Potters Gallery, Jamaican Music Experience, and many others.\n\nTo obtain your pass, visit our Web site at [www.jamto.org/freepass](http://www.jamto.org/freepass) or stop by any JAMTO office. One pass is valid for up to five people. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(146)&nbsp;&nbsp;&nbsp;&nbsp;</u>**.",
+      "completedPassage": "**Jamaica National Tourist Organization Offers Free Cultural Passes**\n\nThe Jamaica National Tourist Organization (JAMTO) announces an exciting new program that provides free entry to a variety of cultural attractions. The program is sponsored by the JAMTO **<u>along with</u>** (143) the hotels and businesses listed on the back of this flyer.\n\nTogether, we **<u>invite</u>** (144) you to take advantage of some of the finest cultural and educational experiences that Jamaica has to offer. **<u>Participating</u>** (145) attractions include:\nCaribbean National Gardens\nMontego Bay Potters Gallery\nJamaican Music Experience\nAnd many others.\n\nTo obtain your pass, visit our website at [www.jamto.org/freepass](http://www.jamto.org/freepass) or stop by any JAMTO office. One pass is valid for up to **five people**. **<u>It can be used for three days.</u>** (146).",
+      "questions": [
+        {
+          "num": 143,
+          "options": [
+            {
+              "label": "A",
+              "text": "despite",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "instead of",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "except for",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "along with",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 144,
+          "options": [
+            {
+              "label": "A",
+              "text": "invite",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "invited",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "may invite",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "were inviting",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 145,
+          "options": [
+            {
+              "label": "A",
+              "text": "Early",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Past",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Affordable",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Participating",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 146,
+          "options": [
+            {
+              "label": "A",
+              "text": "Thank you for your order.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "It can be used for three days.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "The bus runs only on weekdays.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "All major credit cards are accepted.",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Free entry:** Vào cửa miễn phí.",
+        "**Variety of cultural attractions:** Nhiều điểm tham quan văn hóa đa dạng.",
+        "**Sponsored by:** Được tài trợ bởi.",
+        "**Along with:** Cùng với.",
+        "**Take advantage of:** Tận dụng/Khai thác lợi ích từ.",
+        "**Participating attractions:** Các điểm tham quan tham gia chương trình.",
+        "**Valid for:** Có giá trị/hiệu lực đối với."
+      ],
+      "takeaways": [
+        "The program offers **free access** to multiple cultural spots in Jamaica.",
+        "Passes can be retrieved either **online** or at physical offices.",
+        "Each pass covers a group of up to **5 people** for a duration of **3 days**."
+      ]
+    }
+  ]
+}

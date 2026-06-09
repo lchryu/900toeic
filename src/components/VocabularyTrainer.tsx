@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpen, Search, RotateCcw, Check, HelpCircle, CheckCircle, ChevronLeft, ChevronRight, Bookmark } from 'lucide-react';
-import { LessonData } from '../types';
 
 interface VocabularyTrainerProps {
-  lessons: LessonData[];
+  lessons: { id: string; title: string }[];
+  vocabItems: VocabularyItem[];
   masteredIds: string[];
   onSaveMasteredIds: (ids: string[]) => void;
   customVocabItems?: VocabularyItem[];
@@ -19,6 +19,7 @@ interface VocabularyItem {
 
 export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({
   lessons,
+  vocabItems,
   masteredIds,
   onSaveMasteredIds,
   customVocabItems = []
@@ -34,43 +35,7 @@ export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({
 
   // Extract vocabulary from lessons
   const allVocabItems = React.useMemo(() => {
-    const items: VocabularyItem[] = [];
-    lessons.forEach((lesson) => {
-      lesson.reading.forEach((group) => {
-        if (!group.vocabulary) return;
-        group.vocabulary.forEach((line, lineIdx) => {
-          // Parse lines like "**Quality-control team:** Đội ngũ kiểm soát chất lượng."
-          // or "**Prior to:** = *Before* (Trước khi)."
-          const boldColonMatch = line.match(/^\*\*(.*?)\*\*:\s*(.*)$/);
-          let term = '';
-          let definition = '';
-          
-          if (boldColonMatch) {
-            term = boldColonMatch[1].trim();
-            definition = boldColonMatch[2].trim();
-          } else {
-            const colonIndex = line.indexOf(':');
-            if (colonIndex !== -1) {
-              term = line.substring(0, colonIndex).replace(/\*\*|\*/g, '').trim();
-              definition = line.substring(colonIndex + 1).trim();
-            } else {
-              term = line.replace(/\*\*|\*/g, '').trim();
-              definition = '';
-            }
-          }
-
-          if (term) {
-            items.push({
-              id: `${lesson.id}-${term.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${lineIdx}`,
-              term,
-              definition,
-              lessonId: lesson.id,
-              lessonTitle: lesson.title
-            });
-          }
-        });
-      });
-    });
+    const items = [...vocabItems];
 
     // Merge custom vocabulary items
     if (customVocabItems) {
@@ -89,7 +54,7 @@ export const VocabularyTrainer: React.FC<VocabularyTrainerProps> = ({
     }
 
     return items;
-  }, [lessons, customVocabItems]);
+  }, [vocabItems, customVocabItems]);
 
   // Filter items based on selections
   const filteredItems = React.useMemo(() => {

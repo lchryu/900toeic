@@ -1,0 +1,478 @@
+[
+  {
+    "id": "12-quality-control-team-0",
+    "term": "Quality-control team",
+    "definition": "** Đội ngũ kiểm soát chất lượng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-inspect-1",
+    "term": "Inspect",
+    "definition": "** Kiểm tra kỹ lưỡng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-prior-to-2",
+    "term": "Prior to",
+    "definition": "** = *Before* (Trước khi).",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-ensure-customer-satisfaction-3",
+    "term": "Ensure customer satisfaction",
+    "definition": "** Đảm bảo sự hài lòng của khách hàng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-entirely-pleased-4",
+    "term": "Entirely pleased",
+    "definition": "** Hoàn toàn hài lòng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-exchange-5",
+    "term": "Exchange",
+    "definition": "** Đổi hàng / **Return:** Trả hàng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-pattern-6",
+    "term": "Pattern",
+    "definition": "** Mẫu mã, hoa văn.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-dissatisfied-7",
+    "term": "Dissatisfied",
+    "definition": "** Không hài lòng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-process-right-away-8",
+    "term": "Process right away",
+    "definition": "** Xử lý ngay lập tức.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-refund-9",
+    "term": "Refund",
+    "definition": "** Hoàn tiền.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-prepaid-return-shipping-label-10",
+    "term": "Prepaid return shipping label",
+    "definition": "** Nhãn vận chuyển trả hàng đã trả tiền trước.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-original-packaging-11",
+    "term": "Original packaging",
+    "definition": "** Bao bì gốc.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-unused-and-undamaged-12",
+    "term": "Unused and undamaged",
+    "definition": "** Chưa dùng và không hỏng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-original-method-of-payment-13",
+    "term": "Original method of payment",
+    "definition": "** Phương thức thanh toán ban đầu.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-return-shipping-fee-14",
+    "term": "Return shipping fee",
+    "definition": "** Phí vận chuyển trả hàng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-switch-to-0",
+    "term": "Switch to",
+    "definition": "** Chuyển đổi sang (hệ thống/phần mềm mới).",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-existing-information-1",
+    "term": "Existing information",
+    "definition": "** Thông tin hiện có/đang tồn tại.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-diligently-2",
+    "term": "Diligently",
+    "definition": "** Cần mẫn, siêng năng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-anticipate-potential-issues-3",
+    "term": "Anticipate potential issues",
+    "definition": "** Dự đoán/lường trước các vấn đề tiềm ẩn.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-remote-possibility-4",
+    "term": "Remote possibility",
+    "definition": "** Khả năng xa vời/mong manh.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-back-up-critical-files-5",
+    "term": "Back up critical files",
+    "definition": "** Sao lưu các tập tin quan trọng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-familiarize-employees-with-6",
+    "term": "Familiarize employees with",
+    "definition": "** Giúp nhân viên làm quen với.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-no-exceptions-to-this-policy-0",
+    "term": "No exceptions to this policy",
+    "definition": "** Không có ngoại lệ đối với chính sách này (quy tắc nghiêm ngặt).",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-at-least-1",
+    "term": "At least",
+    "definition": "** Ít nhất.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-enclosed-2",
+    "term": "Enclosed",
+    "definition": "** Được gửi kèm theo.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-educational-activities-3",
+    "term": "Educational activities",
+    "definition": "** Các hoạt động mang tính giáo dục.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-in-advance-4",
+    "term": "In advance",
+    "definition": "** Trước (về mặt thời gian).",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-beekeeping-5",
+    "term": "Beekeeping",
+    "definition": "** Nuôi ong.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-free-entry-0",
+    "term": "Free entry",
+    "definition": "** Vào cửa miễn phí.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-variety-of-cultural-attractions-1",
+    "term": "Variety of cultural attractions",
+    "definition": "** Nhiều điểm tham quan văn hóa đa dạng.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-sponsored-by-2",
+    "term": "Sponsored by",
+    "definition": "** Được tài trợ bởi.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-along-with-3",
+    "term": "Along with",
+    "definition": "** Cùng với.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-take-advantage-of-4",
+    "term": "Take advantage of",
+    "definition": "** Tận dụng/Khai thác lợi ích từ.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-participating-attractions-5",
+    "term": "Participating attractions",
+    "definition": "** Các điểm tham quan tham gia chương trình.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "12-valid-for-6",
+    "term": "Valid for",
+    "definition": "** Có giá trị/hiệu lực đối với.",
+    "lessonId": "12",
+    "lessonTitle": "📘 Lesson 12 – Practice"
+  },
+  {
+    "id": "13-take-someone-something-seriously-0",
+    "term": "Take someone/something seriously",
+    "definition": "** Coi trọng ai đó/vấn đề gì đó.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-technical-difficulties-1",
+    "term": "Technical difficulties",
+    "definition": "** Khó khăn/sự cố kỹ thuật.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-experience-2",
+    "term": "Experience",
+    "definition": "** Trải qua/gặp phải (vấn đề).",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-software-bug-3",
+    "term": "Software bug",
+    "definition": "** Lỗi phần mềm.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-up-and-running-4",
+    "term": "Up and running",
+    "definition": "** Hoạt động trở lại, vận hành bình thường.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-in-the-meantime-5",
+    "term": "In the meantime",
+    "definition": "** Trong lúc chờ đợi.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-branch-locations-6",
+    "term": "Branch locations",
+    "definition": "** Các chi nhánh.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-guarantee-0",
+    "term": "Guarantee",
+    "definition": "** Bảo đảm, cam kết.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-function-as-advertised-1",
+    "term": "Function as advertised",
+    "definition": "** Hoạt động đúng như quảng cáo.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-period-may-be-extended-2",
+    "term": "Period may be extended",
+    "definition": "** Thời gian có thể được gia hạn.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-warranty-3",
+    "term": "Warranty",
+    "definition": "** Bảo hành.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-licensed-distributors-4",
+    "term": "Licensed distributors",
+    "definition": "** Các nhà phân phối được cấp phép.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-defective-5",
+    "term": "Defective",
+    "definition": "** Bị lỗi, hỏng.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-repair-or-exchange-6",
+    "term": "Repair or exchange",
+    "definition": "** Sửa chữa hoặc đổi mới.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-original-packaging-7",
+    "term": "Original packaging",
+    "definition": "** Bao bì gốc.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-renovations-0",
+    "term": "Renovations",
+    "definition": "** Cải tạo, tân trang.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-temporarily-unavailable-1",
+    "term": "Temporarily unavailable",
+    "definition": "** Tạm thời không có sẵn.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-under-construction-2",
+    "term": "Under construction",
+    "definition": "** Đang trong quá trình xây dựng/sửa chữa.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-remodeling-3",
+    "term": "Remodeling",
+    "definition": "** Sửa sang, tái cấu trúc.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-confident-4",
+    "term": "Confident",
+    "definition": "** Tự tin.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-inconvenience-5",
+    "term": "Inconvenience",
+    "definition": "** Sự bất tiện.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-well-worth-it-6",
+    "term": "Well worth it",
+    "definition": "** Rất xứng đáng.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-complimentary-samples-7",
+    "term": "Complimentary samples",
+    "definition": "** Mẫu thử miễn phí.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-ready-to-eat-meals-8",
+    "term": "Ready-to-eat meals",
+    "definition": "** Các bữa ăn chế biến sẵn.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-unveil-0",
+    "term": "Unveil",
+    "definition": "** Tiết lộ, ra mắt.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-annual-showcase-1",
+    "term": "Annual Showcase",
+    "definition": "** Triển lãm thường niên.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-botanical-research-2",
+    "term": "Botanical research",
+    "definition": "** Nghiên cứu thực vật học.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-customer-surveys-3",
+    "term": "Customer surveys",
+    "definition": "** Khảo sát khách hàng.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-address-difficulties-4",
+    "term": "Address difficulties",
+    "definition": "** Giải quyết các khó khăn.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-drought-hardy-breeds-5",
+    "term": "Drought-hardy breeds",
+    "definition": "** Các giống cây chịu hạn tốt.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-withstand-6",
+    "term": "Withstand",
+    "definition": "** Chịu đựng.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-sustaining-damage-7",
+    "term": "Sustaining damage",
+    "definition": "** Chịu thiệt hại.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  },
+  {
+    "id": "13-thrive-8",
+    "term": "Thrive",
+    "definition": "** Phát triển mạnh mẽ.",
+    "lessonId": "13",
+    "lessonTitle": "📘 Lesson 13 – Practice"
+  }
+]

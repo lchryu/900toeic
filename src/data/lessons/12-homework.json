@@ -1,0 +1,824 @@
+{
+  "id": "12-homework",
+  "title": "12 Homework",
+  "audio": "",
+  "youtubeUrl": "https://www.youtube.com/watch?v=-qarDF0Fhf4&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=12",
+  "graphics": {
+    "21": "assets/12-homework_21.png"
+  },
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "W-Br",
+          "text": "Welcome back, Jim! How was your time off?",
+          "translation": "Chào mừng quay lại, Jim! Kỳ nghỉ của anh thế nào?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "It was great. I spent most of my time at the beach, swimming.",
+          "translation": "Rất tuyệt. Tôi dành phần lớn thời gian ở bãi biển để bơi."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Did you have good weather for it?",
+          "translation": "Thời tiết có thuận lợi cho việc đó không?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "The weather was good, but I should have chosen a less popular spot. All those people made it difficult to get around.",
+          "translation": "Thời tiết tốt, nhưng lẽ ra tôi nên chọn một nơi ít nổi tiếng hơn. Quá đông người khiến việc di chuyển rất khó."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Well, at least you had a break.",
+          "translation": "Dù sao thì ít nhất anh cũng đã có thời gian nghỉ."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Yep, now it's time to catch up on work!",
+          "translation": "Đúng vậy, giờ là lúc bắt kịp công việc!"
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Plenty of that for everybody. While you were gone, we got a new client who wants us to create a multimedia advertising campaign. We'd better start thinking of ideas now!",
+          "translation": "Việc thì có nhiều cho mọi người. Khi anh đi vắng, chúng ta có một khách hàng mới muốn chúng ta tạo một chiến dịch quảng cáo đa phương tiện. Tốt hơn là bắt đầu nghĩ ý tưởng ngay."
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "What did the man do on his holiday?",
+          "options": [
+            {
+              "label": "A",
+              "text": "He shopped.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "He swam.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "He hiked.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "He cycled.",
+              "correct": false
+            }
+          ],
+          "explanation": "The man says he spent most of his time at the beach, swimming."
+        },
+        {
+          "num": 2,
+          "text": "What does the man say about the place he visited?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It was crowded.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "It was expensive.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It was boring.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It was far away.",
+              "correct": false
+            }
+          ],
+          "explanation": "He says all those people made it difficult to get around, meaning the place was crowded."
+        },
+        {
+          "num": 3,
+          "text": "According to the woman, what did the company do recently?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They changed their business hours.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "They completed a project.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "They got a new client.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "They opened a branch office.",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman says they got a new client while the man was gone."
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "M-Au",
+          "text": "That'll be 27 dollars. Would you like these gloves gift wrapped?",
+          "translation": "Tổng cộng là 27 đô la. Cô có muốn gói quà đôi găng tay này không?"
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Oh, I'm buying them for myself. You know, I think I'll wear them home. It's kind of cold outside. Do you accept credit cards?",
+          "translation": "À, tôi mua cho chính mình. Tôi nghĩ tôi sẽ đeo chúng về nhà. Ngoài trời khá lạnh. Anh có nhận thẻ tín dụng không?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Yes, but only for amounts over 30 dollars. Your total is less than that.",
+          "translation": "Có, nhưng chỉ với khoản thanh toán trên 30 đô la. Tổng của cô thấp hơn mức đó."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "OK, then I'll pay with cash.",
+          "translation": "Được rồi, vậy tôi sẽ trả bằng tiền mặt."
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "Where does this conversation take place?",
+          "options": [
+            {
+              "label": "A",
+              "text": "At a restaurant",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "At a clothing store",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "At a bookstore",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "At a flower shop",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman is buying gloves, so the conversation most likely takes place at a clothing store."
+        },
+        {
+          "num": 5,
+          "text": "What does the woman want to do with her purchase?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Pick it up later",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Use it immediately",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Have it gift wrapped",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Have it delivered to her home",
+              "correct": false
+            }
+          ],
+          "explanation": "She says she thinks she will wear the gloves home."
+        },
+        {
+          "num": 6,
+          "text": "Why is the woman unable to use her credit card?",
+          "options": [
+            {
+              "label": "A",
+              "text": "She left her card at home.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The business does not accept credit cards.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "The cost of her purchase is not high enough.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "The card is damaged.",
+              "correct": false
+            }
+          ],
+          "explanation": "Credit cards are accepted only for amounts over 30 dollars, but her total is 27 dollars."
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "I've just been on the phone with the airline. They've moved our reservation to 8:15 tonight, so we can attend the meeting back at the office tomorrow morning.",
+          "translation": "Tôi vừa nói chuyện điện thoại với hãng hàng không. Họ đã chuyển đặt chỗ của chúng ta sang 8:15 tối nay, nên chúng ta có thể dự cuộc họp ở văn phòng vào sáng mai."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "That's a relief. I can't believe the client changed the meeting date at the last minute. So what's the best way to get to the airport? Does this hotel offer shuttle service?",
+          "translation": "Thật nhẹ nhõm. Tôi không thể tin khách hàng đổi ngày họp vào phút chót. Vậy cách tốt nhất để ra sân bay là gì? Khách sạn này có xe đưa đón không?"
+        },
+        {
+          "speaker": "W-Am",
+          "text": "There is a shuttle bus, but it doesn't leave for another hour. But the new airport train goes straight to the airport, and leaves the station every fifteen minutes.",
+          "translation": "Có xe buýt đưa đón, nhưng một giờ nữa mới chạy. Tuy nhiên, tàu sân bay mới đi thẳng tới sân bay và rời ga cứ mỗi mười lăm phút."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Let's get the train, then. If we leave the hotel now, we'll get to the airport in plenty of time, and we won't have to rush to check in.",
+          "translation": "Vậy thì đi tàu nhé. Nếu rời khách sạn bây giờ, chúng ta sẽ đến sân bay dư thời gian và không phải vội làm thủ tục."
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "Why have the speakers' travel plans changed?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A flight was delayed.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A reservation was not made.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A meeting was rescheduled.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A project was canceled.",
+              "correct": false
+            }
+          ],
+          "explanation": "The client changed the meeting date at the last minute, so the speakers changed their travel plans."
+        },
+        {
+          "num": 8,
+          "text": "Where most likely are the speakers?",
+          "options": [
+            {
+              "label": "A",
+              "text": "In a business office",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "At a train station",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "At an airport",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "In a hotel",
+              "correct": true
+            }
+          ],
+          "explanation": "One speaker asks whether this hotel offers shuttle service and says they should leave the hotel now."
+        },
+        {
+          "num": 9,
+          "text": "What will the speakers most likely do next?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Go to a train station",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Reserve a bus seat",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Board an airplane",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Check in to a hotel",
+              "correct": false
+            }
+          ],
+          "explanation": "They decide to take the airport train, so they will likely go to the train station."
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "M-Au",
+          "text": "Abby, look at these scarves!",
+          "translation": "Abby, nhìn những chiếc khăn quàng này đi!"
+        },
+        {
+          "speaker": "W-Br",
+          "text": "I know. Aren't they great! I bought one for myself a while ago. They're handmade by local weavers so each scarf is one of a kind, a total original.",
+          "translation": "Tôi biết. Chúng đẹp quá phải không! Tôi đã mua một chiếc cho mình trước đây. Chúng được thợ dệt địa phương làm thủ công nên mỗi chiếc khăn là độc nhất."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Wow, I'd like to get one for my office assistant. Her birthday is coming up. But, uh, I get paid only once a month.",
+          "translation": "Tôi muốn mua một chiếc cho trợ lý văn phòng của tôi. Sắp đến sinh nhật cô ấy. Nhưng tôi chỉ được trả lương mỗi tháng một lần."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Oh, I'd be happy to lend you the money today. Just pay me back when you can.",
+          "translation": "Tôi sẵn lòng cho anh mượn tiền hôm nay. Khi nào có thì trả lại tôi."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Thanks so much! But I don't remember seeing you wear a scarf like that at work before.",
+          "translation": "Cảm ơn nhiều! Nhưng tôi không nhớ đã từng thấy cô đeo chiếc khăn như vậy ở nơi làm việc."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Actually, I let my sister borrow it one time, and she liked it so much that I told her to keep it.",
+          "translation": "Thật ra có lần tôi cho em gái mượn, và cô ấy thích nó đến mức tôi bảo cô ấy giữ luôn."
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "What does the woman say is special about the scarves?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They are made by hand.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "They are imported from overseas.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "They are made from silk.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "They are sold only in certain stores.",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman says the scarves are handmade by local weavers."
+        },
+        {
+          "num": 11,
+          "text": "What does the man imply when he says, \"I get paid only once a month\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "He used to be paid more often.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "He does not have money for a purchase.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "He has to pick up his paycheck today.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "He is planning to ask for a pay raise.",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman offers to lend him money, so the man is implying he cannot pay for the scarf right now."
+        },
+        {
+          "num": 12,
+          "text": "Why does the woman say she no longer wears her scarf?",
+          "options": [
+            {
+              "label": "A",
+              "text": "She lost it.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "She tore it.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "She exchanged it.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "She gave it away.",
+              "correct": true
+            }
+          ],
+          "explanation": "She told her sister to keep the scarf after her sister borrowed it."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Did you hear they started repairing the main road to the beach?",
+          "translation": "Anh có nghe nói họ đã bắt đầu sửa con đường chính ra bãi biển chưa?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "I know. It already takes two hours to drive there; it'll take much longer if I have to take another route.",
+          "translation": "Tôi biết. Lái xe đến đó đã mất hai tiếng rồi; nếu phải đi đường khác thì sẽ lâu hơn nhiều."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Well, maybe the work will be done by the time you go on vacation.",
+          "translation": "Có lẽ công trình sẽ hoàn thành trước khi anh đi nghỉ."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "I hope so. I have a reservation at a hotel near the beach in six weeks.",
+          "translation": "Hy vọng vậy. Sáu tuần nữa tôi có đặt phòng ở một khách sạn gần bãi biển."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "What are the speakers mainly discussing?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Road repairs",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Car problems",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Flight reservations",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Popular beaches",
+              "correct": false
+            }
+          ],
+          "explanation": "The conversation is about repairs to the main road to the beach."
+        },
+        {
+          "num": 14,
+          "text": "What is the man concerned about?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The schedule at work",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The length of his travel time",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "The price of a hotel",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "The weather during his vacation",
+              "correct": false
+            }
+          ],
+          "explanation": "He worries that taking another route will make the trip much longer."
+        },
+        {
+          "num": 15,
+          "text": "What will probably happen in six weeks?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The man will start a new job.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A new hotel will open.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "The man will take a vacation.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A construction project will begin.",
+              "correct": false
+            }
+          ],
+          "explanation": "The man says he has a hotel reservation near the beach in six weeks."
+        }
+      ]
+    },
+    {
+      "id": "lc-16",
+      "range": "16–18",
+      "startQ": 16,
+      "endQ": 18,
+      "transcript": [
+        {
+          "speaker": "W-Br",
+          "text": "Hi, Pablo. I see you won't be in the office next week; are you going on holiday?",
+          "translation": "Chào Pablo. Tôi thấy tuần tới anh sẽ không ở văn phòng; anh đi nghỉ à?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Yes, I'm leaving on Monday to spend a week in Buenos Aires with my parents. I haven't seen them in a long time, so I'm really looking forward to the trip.",
+          "translation": "Đúng vậy, thứ Hai tôi sẽ đi Buenos Aires một tuần với bố mẹ. Lâu rồi tôi chưa gặp họ nên tôi rất mong chuyến đi này."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Will you have enough time to prepare the opening speech for the shareholders' meeting? Remember, the meeting is two days after you get back. If you're too busy, I can ask Tom to do it.",
+          "translation": "Anh có đủ thời gian chuẩn bị bài phát biểu khai mạc cho cuộc họp cổ đông không? Hãy nhớ cuộc họp diễn ra hai ngày sau khi anh quay lại. Nếu anh quá bận, tôi có thể nhờ Tom làm."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Don't worry. I'll be ready. I plan to finish writing it before I leave work tomorrow.",
+          "translation": "Đừng lo. Tôi sẽ sẵn sàng. Tôi dự định viết xong trước khi rời công ty ngày mai."
+        }
+      ],
+      "questions": [
+        {
+          "num": 16,
+          "text": "Why will the man be out of the office?",
+          "options": [
+            {
+              "label": "A",
+              "text": "He will be visiting clients.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "He will be on vacation.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "He will be attending a convention.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "He will be working at home.",
+              "correct": false
+            }
+          ],
+          "explanation": "He says he is leaving to spend a week in Buenos Aires with his parents."
+        },
+        {
+          "num": 17,
+          "text": "What does the woman offer to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Finish a project",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Sign some documents",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Reassign a task",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Take notes at a meeting",
+              "correct": false
+            }
+          ],
+          "explanation": "She offers to ask Tom to prepare the opening speech if the man is too busy."
+        },
+        {
+          "num": 18,
+          "text": "What does the man say he will do before he leaves?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Write a speech",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Talk with a team member",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Read a report",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Revise a budget",
+              "correct": false
+            }
+          ],
+          "explanation": "He plans to finish writing the opening speech before leaving work."
+        }
+      ]
+    },
+    {
+      "id": "lc-19",
+      "range": "19–21",
+      "startQ": 19,
+      "endQ": 21,
+      "transcript": [
+        {
+          "speaker": "M-Cn",
+          "text": "Hi. I've never been to this tea store. Can you recommend something?",
+          "translation": "Chào cô. Tôi chưa từng đến cửa hàng trà này. Cô có thể giới thiệu loại nào không?"
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Sure, what kind of tea do you usually drink?",
+          "translation": "Được chứ, anh thường uống loại trà nào?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "I've only had black tea, but I watched a documentary on the health benefits of green tea, and I'd like to try some.",
+          "translation": "Tôi chỉ từng uống trà đen, nhưng tôi đã xem một phim tài liệu về lợi ích sức khỏe của trà xanh và muốn thử."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Green tea is healthy. We have several options, but I'd recommend a simple one to begin with. We're actually having a promotion on our basic green tea. If you buy some, you'll get a free ceramic teapot.",
+          "translation": "Trà xanh tốt cho sức khỏe. Chúng tôi có vài lựa chọn, nhưng tôi khuyên anh nên bắt đầu với loại đơn giản. Hiện chúng tôi đang có khuyến mãi cho loại trà xanh cơ bản. Nếu anh mua, anh sẽ nhận được một ấm trà gốm miễn phí."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Great. I'd like to buy some. Is it prepared the same as black tea?",
+          "translation": "Tuyệt. Tôi muốn mua một ít. Nó được pha giống trà đen không?"
+        },
+        {
+          "speaker": "W-Am",
+          "text": "It doesn't have to stay as long in hot water. Here's a guide for you, telling you about it.",
+          "translation": "Nó không cần ngâm trong nước nóng lâu như vậy. Đây là hướng dẫn cho anh."
+        }
+      ],
+      "questions": [
+        {
+          "num": 19,
+          "text": "Why does the man want to try a new tea?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It is popular with his coworkers.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "It is only sold at this shop.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It has a mild flavor.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It has health benefits.",
+              "correct": true
+            }
+          ],
+          "explanation": "The man says he watched a documentary on the health benefits of green tea."
+        },
+        {
+          "num": 20,
+          "text": "What will the man receive with his purchase?",
+          "options": [
+            {
+              "label": "A",
+              "text": "An extra tea sample",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A membership card",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A free teapot",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A gift certificate",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman says he will get a free ceramic teapot if he buys the green tea."
+        },
+        {
+          "num": 21,
+          "text": "Look at the graphic. How long should the man leave the tea in hot water?",
+          "options": [
+            {
+              "label": "A",
+              "text": "2 minutes",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "3 minutes",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "4 minutes",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "5 minutes",
+              "correct": false
+            }
+          ],
+          "explanation": "The man is buying green tea. The graphic shows that green tea should stay in hot water for 3 minutes."
+        }
+      ]
+    }
+  ],
+  "reading": []
+}

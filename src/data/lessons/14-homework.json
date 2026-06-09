@@ -1,0 +1,759 @@
+{
+  "id": "14-homework",
+  "title": "14 Homework",
+  "audio": "",
+  "youtubeUrl": "https://www.youtube.com/watch?v=lKoMVgLFXbg&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=14",
+  "graphics": {
+    "20": "assets/14-homework_20.png"
+  },
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "This is an automated message from the Minson Pharmaceutical Company to all employees. Due to the severe weather predicted for this afternoon, the company president has decided to close the office early, at two P.M.",
+          "translation": "Đây là tin nhắn tự động từ Công ty Dược phẩm Minson gửi đến toàn thể nhân viên. Do thời tiết xấu được dự báo vào chiều nay, chủ tịch công ty đã quyết định đóng cửa văn phòng sớm lúc 2 giờ chiều."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Local weather reports indicate that temperatures are dropping quickly, and roads will likely become slippery by early evening.",
+          "translation": "Các bản tin thời tiết địa phương cho biết nhiệt độ đang giảm nhanh và đường có thể trở nên trơn trượt vào đầu buổi tối."
+        },
+        {
+          "speaker": "Auto",
+          "text": "As a precaution, please remember to shut down your computers before you leave. This will prevent any damage that a storm-related power failure may cause. Thank you.",
+          "translation": "Để đề phòng, vui lòng nhớ tắt máy tính trước khi rời đi. Việc này sẽ ngăn mọi hư hại có thể xảy ra do mất điện liên quan đến bão. Xin cảm ơn."
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "What is the main purpose of the message?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To report a computer problem",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To explain a hiring decision",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To announce an early closing",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "To request a deadline extension",
+              "correct": false
+            }
+          ],
+          "explanation": "The company president has decided to close the office early because of severe weather."
+        },
+        {
+          "num": 2,
+          "text": "What is expected to happen by the evening?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Power will be restored.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Software updates will be installed.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "New security measures will go into effect.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Road conditions will worsen.",
+              "correct": true
+            }
+          ],
+          "explanation": "The message says roads will likely become slippery by early evening."
+        },
+        {
+          "num": 3,
+          "text": "What are listeners reminded to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Lock their office doors",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Turn off some equipment",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Update a schedule",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Contact a technician",
+              "correct": false
+            }
+          ],
+          "explanation": "Employees are reminded to shut down their computers before leaving."
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hi, this is Jackie Gross, from Human Resources. Congratulations on your promotion to manager of our Thailand office! I'm calling because I've been asked to assist you with your move overseas.",
+          "translation": "Xin chào, tôi là Jackie Gross từ phòng Nhân sự. Chúc mừng anh được thăng chức làm quản lý văn phòng Thái Lan! Tôi gọi vì được yêu cầu hỗ trợ anh chuyển ra nước ngoài."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "The first thing I'll do is get in touch with a moving company to estimate the cost of the move. I also need to confirm your passport number for your work visa; I want to make sure your paperwork is in order as soon as possible.",
+          "translation": "Việc đầu tiên tôi sẽ làm là liên hệ với một công ty chuyển nhà để ước tính chi phí. Tôi cũng cần xác nhận số hộ chiếu của anh cho thị thực lao động; tôi muốn đảm bảo giấy tờ của anh hoàn tất sớm nhất có thể."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Please call me back at your earliest convenience.",
+          "translation": "Vui lòng gọi lại cho tôi khi thuận tiện sớm nhất."
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "Why is the listener going overseas?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To attend a sales conference",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To manage an office",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "To meet some clients",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To go on a tour",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker congratulates the listener on becoming manager of the Thailand office."
+        },
+        {
+          "num": 5,
+          "text": "What does the speaker plan to do first?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Organize a business dinner",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Reserve airline seats",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Purchase some merchandise",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Contact a moving company",
+              "correct": true
+            }
+          ],
+          "explanation": "She says the first thing she will do is get in touch with a moving company."
+        },
+        {
+          "num": 6,
+          "text": "What does the speaker have to confirm?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Travel dates",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Account information",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A passport number",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Vaccination requirements",
+              "correct": false
+            }
+          ],
+          "explanation": "She needs to confirm the listener's passport number for the work visa."
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hello, this message is for Mr. Lehman. This is Mei Li from Sun Central Pharmacy. I'm calling to let you know that your doctor called in your prescription for allergy pills earlier today.",
+          "translation": "Xin chào, tin nhắn này gửi cho ông Lehman. Tôi là Mei Li từ Nhà thuốc Sun Central. Tôi gọi để báo rằng bác sĩ của ông đã gửi đơn thuốc dị ứng của ông đến hôm nay."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "We usually have that medication in stock, but unfortunately, we ran out yesterday. We'll get a new shipment in tomorrow, though. Your prescription will be ready for you to pick up after two P.M.",
+          "translation": "Thông thường chúng tôi có loại thuốc đó trong kho, nhưng tiếc là hôm qua đã hết. Tuy nhiên, ngày mai chúng tôi sẽ có lô hàng mới. Đơn thuốc của ông sẽ sẵn sàng để nhận sau 2 giờ chiều."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Please come by the front desk of the pharmacy when you stop in tomorrow. Thank you and have a good evening.",
+          "translation": "Vui lòng ghé quầy phía trước của nhà thuốc khi ông đến vào ngày mai. Xin cảm ơn và chúc buổi tối tốt lành."
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "Where does the speaker most likely work?",
+          "options": [
+            {
+              "label": "A",
+              "text": "At a laboratory",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "At a university",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "At a pharmacy",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "At a clothing shop",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker says she is calling from Sun Central Pharmacy."
+        },
+        {
+          "num": 8,
+          "text": "What problem does the speaker mention?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A product is not available.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "A clinic is understaffed.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "An appointment must be canceled.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A store is closing early.",
+              "correct": false
+            }
+          ],
+          "explanation": "The pharmacy ran out of the allergy medication yesterday."
+        },
+        {
+          "num": 9,
+          "text": "What is the listener instructed to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Bring some identification",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Go to the front desk",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Return a telephone call",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Reschedule a delivery",
+              "correct": false
+            }
+          ],
+          "explanation": "The listener is asked to come by the front desk of the pharmacy."
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Anwei! Thank you so much for helping set up for the party after last night's theater performance. I couldn't have done it without you, and the spicy dish you brought was delicious!",
+          "translation": "Anwei! Cảm ơn bạn rất nhiều vì đã giúp chuẩn bị cho bữa tiệc sau buổi biểu diễn tối qua. Mình đã không thể làm được nếu không có bạn, và món cay bạn mang đến rất ngon!"
+        },
+        {
+          "speaker": "W-Am",
+          "text": "You have got to tell me where you found the recipe! Everyone really liked it, and it didn't look too complicated.",
+          "translation": "Bạn nhất định phải nói cho mình biết bạn tìm công thức đó ở đâu! Mọi người đều rất thích, và nó trông cũng không quá phức tạp."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Anyway, I guess I'll see you Monday. I think we have rehearsal together for Elia Grande's new play. I'm really excited to get started.",
+          "translation": "Dù sao thì chắc mình sẽ gặp bạn vào thứ Hai. Mình nghĩ chúng ta có buổi diễn tập cùng nhau cho vở kịch mới của Elia Grande. Mình rất háo hức bắt đầu."
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "Why is the woman calling?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To express her gratitude",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "To ask for a favor",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To discuss an assignment",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "To report some good news",
+              "correct": false
+            }
+          ],
+          "explanation": "She thanks Anwei for helping set up the party."
+        },
+        {
+          "num": 11,
+          "text": "What does the woman imply when she says, \"You have got to tell me where you found the recipe\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "She wonders if some ingredients are local.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "She would like to make the dish herself.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "She needs a restaurant recommendation.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "She cannot find a recipe in a cookbook.",
+              "correct": false
+            }
+          ],
+          "explanation": "She liked the dish and wants to know the recipe so she can make it herself."
+        },
+        {
+          "num": 12,
+          "text": "Why is the woman looking forward to Monday?",
+          "options": [
+            {
+              "label": "A",
+              "text": "She is going to see a play.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "She is taking a friend to lunch.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Some results will be available.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A new project will start.",
+              "correct": true
+            }
+          ],
+          "explanation": "She is excited to begin rehearsal for a new play."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Thank you for calling the offices of Clifton Associates. Our lawyers are committed to providing you with the best legal services in the Belmont area.",
+          "translation": "Cảm ơn quý vị đã gọi đến văn phòng Clifton Associates. Các luật sư của chúng tôi cam kết cung cấp dịch vụ pháp lý tốt nhất trong khu vực Belmont."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Currently, we are closed as we relocate to our new offices at 46 Spencer Street. If your call is urgent, please leave a message after the tone. Our associate Catherine Walsh is checking our voice-mail system regularly and will be able to relay your message.",
+          "translation": "Hiện tại chúng tôi đóng cửa vì đang chuyển đến văn phòng mới tại số 46 đường Spencer. Nếu cuộc gọi của quý vị khẩn cấp, vui lòng để lại lời nhắn sau tiếng bíp. Cộng sự Catherine Walsh đang kiểm tra hệ thống thư thoại thường xuyên và có thể chuyển tiếp lời nhắn của quý vị."
+        },
+        {
+          "speaker": "Auto",
+          "text": "For all other matters, we look forward to speaking with you personally when our office reopens on Tuesday. Thank you.",
+          "translation": "Với các vấn đề khác, chúng tôi mong được trực tiếp trao đổi khi văn phòng mở lại vào thứ Ba. Xin cảm ơn."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "What type of business is Clifton Associates?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A moving company",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A real estate agency",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A delivery service",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A law firm",
+              "correct": true
+            }
+          ],
+          "explanation": "The message mentions lawyers and legal services."
+        },
+        {
+          "num": 14,
+          "text": "Why are employees unable to answer the phone?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They are helping other callers.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "They are moving to a new location.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "The telephone system is being repaired.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It is a national holiday.",
+              "correct": false
+            }
+          ],
+          "explanation": "The office is closed while relocating to new offices."
+        },
+        {
+          "num": 15,
+          "text": "What does the speaker say about Catherine Walsh?",
+          "options": [
+            {
+              "label": "A",
+              "text": "She is on a business trip.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "She is best reached by e-mail.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "She has transferred to a different department.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "She will be checking telephone messages.",
+              "correct": true
+            }
+          ],
+          "explanation": "Catherine Walsh is checking the voice-mail system regularly."
+        }
+      ]
+    },
+    {
+      "id": "lc-16",
+      "range": "16–18",
+      "startQ": 16,
+      "endQ": 18,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hello, this is Sylvia Chen. I recently purchased a camera from your online shop. Unfortunately, when the camera arrived, the lens was scratched.",
+          "translation": "Xin chào, tôi là Sylvia Chen. Gần đây tôi mua một máy ảnh từ cửa hàng trực tuyến của quý công ty. Tiếc là khi máy ảnh đến nơi, ống kính bị trầy."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "I want to bring it to the post office this afternoon to return it for an exchange, but I'd like to speak to someone from your company before I mail it. You see, I'm moving to a new house next week, so the replacement will have to be shipped to my new address.",
+          "translation": "Chiều nay tôi muốn mang nó đến bưu điện để gửi trả đổi hàng, nhưng tôi muốn nói chuyện với ai đó từ công ty trước khi gửi. Tôi sẽ chuyển đến nhà mới vào tuần tới, nên sản phẩm thay thế cần được gửi đến địa chỉ mới của tôi."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Please call me back so I can be sure your shipping department will send the camera to the correct address.",
+          "translation": "Vui lòng gọi lại cho tôi để tôi có thể chắc chắn bộ phận vận chuyển sẽ gửi máy ảnh đến đúng địa chỉ."
+        }
+      ],
+      "questions": [
+        {
+          "num": 16,
+          "text": "What is wrong with the camera?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It is missing a part.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "It is an older model.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It is too heavy.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It is damaged.",
+              "correct": true
+            }
+          ],
+          "explanation": "The lens of the camera was scratched when it arrived."
+        },
+        {
+          "num": 17,
+          "text": "Where does the speaker want to go this afternoon?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To a real estate agency",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To a camera store",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To a post office",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "To a warehouse",
+              "correct": false
+            }
+          ],
+          "explanation": "She wants to bring the camera to the post office to return it."
+        },
+        {
+          "num": 18,
+          "text": "Why does the speaker request a return call?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To change an order",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To arrange a rental",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To confirm an address",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "To get driving directions",
+              "correct": false
+            }
+          ],
+          "explanation": "She wants to confirm that the replacement camera will be shipped to the correct address."
+        }
+      ]
+    },
+    {
+      "id": "lc-19",
+      "range": "19–21",
+      "startQ": 19,
+      "endQ": 21,
+      "transcript": [
+        {
+          "speaker": "M-Cn",
+          "text": "Hi, this message is for Peter in room scheduling. This is Colin O'Donnell. I want to change my room reservation.",
+          "translation": "Xin chào, tin nhắn này gửi cho Peter ở bộ phận sắp xếp phòng. Tôi là Colin O'Donnell. Tôi muốn thay đổi đặt phòng của mình."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "I have the Presidential Library reserved for 9:00 this morning for a meeting with clients. However, I realize that that's not going to work, because I'm serving refreshments to the clients.",
+          "translation": "Tôi đã đặt Presidential Library lúc 9 giờ sáng nay cho cuộc họp với khách hàng. Tuy nhiên, tôi nhận ra phòng đó không phù hợp vì tôi sẽ phục vụ đồ ăn nhẹ cho khách hàng."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "I noticed that my colleague Sylvia has a meeting at the same time, and maybe she could switch rooms with me. Could you check with her, please, and confirm that I can use the room that she signed up for?",
+          "translation": "Tôi thấy đồng nghiệp Sylvia của tôi có cuộc họp cùng thời gian, và có lẽ cô ấy có thể đổi phòng với tôi. Anh có thể kiểm tra với cô ấy và xác nhận rằng tôi có thể dùng phòng cô ấy đã đăng ký không?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "I'm showing a video to the clients, so I need to tell the audiovisual support group where to help me set up the equipment.",
+          "translation": "Tôi sẽ chiếu video cho khách hàng, nên tôi cần báo cho nhóm hỗ trợ nghe nhìn biết nơi hỗ trợ tôi lắp đặt thiết bị."
+        }
+      ],
+      "questions": [
+        {
+          "num": 19,
+          "text": "What does the speaker need a room for?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Computer training",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A client meeting",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "An anniversary celebration",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A seminar for new employees",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker has a room reserved for a meeting with clients."
+        },
+        {
+          "num": 20,
+          "text": "Look at the graphic. Which room does the speaker want to use?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The Presidential Library",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The Board Room",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Conference Room A",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Conference Room B",
+              "correct": false
+            }
+          ],
+          "explanation": "Sylvia reserved Conference Room A, and the speaker asks whether Sylvia can switch rooms with him."
+        },
+        {
+          "num": 21,
+          "text": "What does the speaker say he will receive help with?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Arranging tables and chairs",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Distributing handouts",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Setting up video equipment",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Serving refreshment",
+              "correct": false
+            }
+          ],
+          "explanation": "He needs audiovisual support to help set up equipment for showing a video."
+        }
+      ]
+    }
+  ],
+  "reading": []
+}

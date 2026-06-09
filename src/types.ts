@@ -124,3 +124,12 @@ export interface VocabularyItem {
   lessonId: string;
   lessonTitle: string;
 }
+
+export interface LessonManifest {
+  id: string;
+  title: string;
+  audio: string;
+  youtubeUrl?: string;
+  listeningCount: number;
+  readingCount: number;
+}

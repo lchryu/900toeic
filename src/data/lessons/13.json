@@ -1,0 +1,1058 @@
+{
+  "id": "13",
+  "title": "📘 Lesson 13 – Practice",
+  "audio": "audio/13.mp3",
+  "graphics": {},
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Great news! Last month we sold over 10,000 units of our new C-12 mobile phone model."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "That's wonderful! I guess the consumers like the new features, like the digital camera and Internet access on their phones."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "Actually, our survey indicates that it's the phone's new slim design they like. It's really attractive."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "I heard Sarah Luzon is getting a nice bonus. That whole design was her idea."
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "What are the speakers discussing?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A digital camera",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A laptop computer",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A mobile phone",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A compact stereo",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman explicitly mentions selling \"over 10,000 units of our new **C-12 mobile phone model**.\""
+        },
+        {
+          "num": 2,
+          "text": "According to the survey, what led to an increase in sales?",
+          "options": [
+            {
+              "label": "A",
+              "text": "An attractive design",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "A reduced price",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Good advertising",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "New product capabilities",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman states that \"our survey indicates that it's the phone's **new slim design** they like. It's really attractive.\""
+        },
+        {
+          "num": 3,
+          "text": "What will Sarah Luzon receive?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A pay raise",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "An award",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A promotion",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A bonus",
+              "correct": true
+            }
+          ],
+          "explanation": "The man mentions, \"I heard Sarah Luzon is getting a **nice bonus**.\""
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "M-Cn",
+          "text": "Hi, Julia — could you let all employees know that IT is doing maintenance on our servers the last weekend in March?"
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Sure. Which computer applications will be affected?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "This time the whole system will be affected. So, it's really important to remind everyone that they won't be able to work from Friday night to Sunday morning on that weekend."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "OK, I'll emphasize that point in an e-mail and send it out to all employees right away."
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "What will take place at the end of March?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A holiday closing",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A client visit",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Computer maintenance",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Building construction",
+              "correct": false
+            }
+          ],
+          "explanation": "The man says that \"**IT is doing maintenance on our servers** the last weekend in March.\""
+        },
+        {
+          "num": 5,
+          "text": "What do employees need to be reminded about?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They will not be able to work on a weekend",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "They should power off their computers",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "They have to lock their file drawers",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "They have to participate in a company reception",
+              "correct": false
+            }
+          ],
+          "explanation": "The man emphasizes that \"they **won't be able to work from Friday night to Sunday morning** on that weekend.\""
+        },
+        {
+          "num": 6,
+          "text": "What does the woman say she will do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Restart her computer",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Book a trip",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Review an agenda",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Write an e-mail",
+              "correct": true
+            }
+          ],
+          "explanation": "The woman says, \"I'll emphasize that point in an **e-mail** and send it out.\""
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "M-Au",
+          "text": "Angela, have you had a chance to look at the cost estimate for the repairs on the warehouse roof? There are several leaks, so the project will start as soon as the budget is approved."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Uhm... I've been in meetings all morning... Actually, since you met with the contractor, could you just stop by my office at two o'clock and tell me what he said about the roof?"
+        },
+        {
+          "speaker": "M-Au",
+          "text": "Well, I'm leaving early this afternoon for an appointment at my bank. But Maria also spoke with the contractor. I'll tell her now that you'd like to talk with her at two."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "OK. Thank you."
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "What is the main topic of the conversation?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Building repairs",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Staff assignments",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Safety reports",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Health benefits",
+              "correct": false
+            }
+          ],
+          "explanation": "The speakers are discussing the \"**repairs on the warehouse roof**.\""
+        },
+        {
+          "num": 8,
+          "text": "Why does the woman say, \"I've been in meetings all morning\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "She wants the man to change a deadline",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "She is unhappy about her schedule today",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "She has already been updated about a project",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "She did not have time to look at a document",
+              "correct": true
+            }
+          ],
+          "explanation": "She uses this phrase to explain why she **hasn't looked at the cost estimate** document yet."
+        },
+        {
+          "num": 9,
+          "text": "What does the man say he will do this afternoon?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Meet with a contractor",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Go to the bank",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Join a conference call",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Prepare a budget",
+              "correct": false
+            }
+          ],
+          "explanation": "The man mentions he is \"**leaving early this afternoon for an appointment at my bank**.\""
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "W-Am",
+          "text": "Hi, I'm registered to attend the Technology Innovation Conference for the full five days. Unfortunately, I lost my entry badge. Can I get back into the conference without it?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Unfortunately, no. You'll need to get a new one."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "I thought as much. How do I get a new one? Will it cost me anything?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "No, there's no fee for a new badge. And I can actually issue one for you now, if you'd like."
+        },
+        {
+          "speaker": "W-Am",
+          "text": "That's great! Thanks so much."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "I'll just need to see some photo ID to verify your registration."
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "What event is the woman attending?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A professional conference",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "A bookstore opening",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A fashion show",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A sports competition",
+              "correct": false
+            }
+          ],
+          "explanation": "She mentions attending the \"**Technology Innovation Conference**.\""
+        },
+        {
+          "num": 11,
+          "text": "What does the man offer to do for the woman?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Process a refund",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Give her a tour",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Arrange some transportation",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Replace a lost item",
+              "correct": true
+            }
+          ],
+          "explanation": "The man offers to \"**issue one [a new badge] for you now**\" to replace the lost one."
+        },
+        {
+          "num": 12,
+          "text": "What will the woman most likely do next?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Sign a document",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Show some identification",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Purchase a souvenir",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Reserve some seating",
+              "correct": false
+            }
+          ],
+          "explanation": "The man says he needs to \"**see some photo ID**,\" so she will provide it next."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "W-Br",
+          "text": "Hi Akira, our company's Fitness Week is coming up, so I'm handing out these flyers."
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Thanks. I heard the company's giving away fitness watches this year. When you wear the watch, it monitors how much you exercise. We didn't get any gifts last year."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Yes, they're great. So, which event do you want to attend?"
+        },
+        {
+          "speaker": "M-Cn",
+          "text": "Let's see... I'm interested in meditation, but I'll be out of the office that day. But the event on Thursday also sounds interesting, and I usually have free time on Thursdays."
+        },
+        {
+          "speaker": "W-Br",
+          "text": "Great. Could you distribute these flyers to your colleagues in the accounting department? I'd like all company employees to get a copy, but I need to visit several departments."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "What is being handed out?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Fitness watches",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Health surveys",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Event flyers",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Member IDs",
+              "correct": false
+            }
+          ],
+          "explanation": "The woman says she is \"**handing out these flyers**.\""
+        },
+        {
+          "num": 14,
+          "text": "What gift is mentioned as being new this year?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Meditation classes",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Fitness watches",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Healthy snacks",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Gym memberships",
+              "correct": false
+            }
+          ],
+          "explanation": "The man mentions hearing that \"the company's **giving away fitness watches** this year.\""
+        },
+        {
+          "num": 15,
+          "text": "What does the woman ask the man to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Lead a meditation session",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Attend an event on Thursday",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Visit the accounting department",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Distribute some materials",
+              "correct": true
+            }
+          ],
+          "explanation": "She asks, \"Could you **distribute these flyers** to your colleagues?\""
+        }
+      ]
+    }
+  ],
+  "reading": [
+    {
+      "id": "rc-131",
+      "range": "131–134",
+      "startQ": 131,
+      "endQ": 134,
+      "originalPassage": "**From:** Gold Star Bank\n**Subject:** Gold Star Bank App\n**Date:** 15 July\n\nDear Customer:\n\nHere at Gold Star Bank, we take our customers and their needs **<u>&nbsp;&nbsp;&nbsp;&nbsp;(131)&nbsp;&nbsp;&nbsp;&nbsp;</u>**. As some of you know, we are experiencing technical difficulties with our mobile app. Our engineers **<u>&nbsp;&nbsp;&nbsp;&nbsp;(132)&nbsp;&nbsp;&nbsp;&nbsp;</u>** on this problem now.\n\nThe trouble started on 14 July when our system went down because of a software bug. We expect the app to be up and running **<u>&nbsp;&nbsp;&nbsp;&nbsp;(133)&nbsp;&nbsp;&nbsp;&nbsp;</u>** the next twenty-four hours. In the meantime, banking transactions can be done at **<u>&nbsp;&nbsp;&nbsp;&nbsp;(134)&nbsp;&nbsp;&nbsp;&nbsp;</u>** of our branch locations, and our automated cash machines are also working.\n\nWe apologize for any inconvenience.\n\nSincerely,\nRavi Chadda\nVice President of Customer Relations",
+      "completedPassage": "**From:** Gold Star Bank\n**Subject:** Gold Star Bank App\n\nDear Customer:\n\nHere at Gold Star Bank, we take our customers and their needs **<u>seriously</u>** (131). As some of you know, we are experiencing technical difficulties with our mobile app. Our engineers **<u>are working</u>** (132) on this problem now.\n\nThe app is expected to be up and running **<u>within</u>** (133) the next twenty-four hours. In the meantime, banking transactions can be done at **<u>any</u>** (134) of our branch locations.",
+      "questions": [
+        {
+          "num": 131,
+          "options": [
+            {
+              "label": "A",
+              "text": "serious",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "seriously",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "seriousness",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "more serious",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 132,
+          "options": [
+            {
+              "label": "A",
+              "text": "are working",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "have worked",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "were working",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "to work",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 133,
+          "options": [
+            {
+              "label": "A",
+              "text": "following",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "since",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "at",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "within",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 134,
+          "options": [
+            {
+              "label": "A",
+              "text": "every",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "each",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "any",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "whole",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Take someone/something seriously:** Coi trọng ai đó/vấn đề gì đó.",
+        "**Technical difficulties:** Khó khăn/sự cố kỹ thuật.",
+        "**Experience:** Trải qua/gặp phải (vấn đề).",
+        "**Software bug:** Lỗi phần mềm.",
+        "**Up and running:** Hoạt động trở lại, vận hành bình thường.",
+        "**In the meantime:** Trong lúc chờ đợi.",
+        "**Branch locations:** Các chi nhánh."
+      ],
+      "takeaways": [
+        "The mobile app is **currently down** due to a software bug.",
+        "The bank expects a resolution **within 24 hours**.",
+        "Customers can use **physical branches** or **ATMs** while the app is being repaired."
+      ]
+    },
+    {
+      "id": "rc-135",
+      "range": "135–138",
+      "startQ": 135,
+      "endQ": 138,
+      "originalPassage": "Bethenie Industries guarantees that its products will function as **<u>&nbsp;&nbsp;&nbsp;&nbsp;(135)&nbsp;&nbsp;&nbsp;&nbsp;</u>** for at least one year from date of purchase. For certain products this period may be extended.\n\nThis warranty applies only to products sold at Bethenie Industries stores and other licensed distributors. Products **<u>&nbsp;&nbsp;&nbsp;&nbsp;(136)&nbsp;&nbsp;&nbsp;&nbsp;</u>** are found to be defective may be shipped to our address for repair or exchange. Please note that products that are being returned because of damage should be shipped back to us, whenever **<u>&nbsp;&nbsp;&nbsp;&nbsp;(137)&nbsp;&nbsp;&nbsp;&nbsp;</u>**, **<u>&nbsp;&nbsp;&nbsp;&nbsp;(138)&nbsp;&nbsp;&nbsp;&nbsp;</u>** their original packaging.",
+      "completedPassage": "Bethenie Industries guarantees that its products will function as **<u>advertised</u>** (135) for at least one year from date of purchase. For certain products this period may be extended.\n\nThis warranty applies only to products sold at Bethenie Industries stores and other licensed distributors. Products **<u>that</u>** (136) are found to be defective may be shipped to our address for repair or exchange. Please note that products that are being returned because of damage should be shipped back to us, whenever **<u>possible</u>** (137), **<u>in</u>** (138) their original packaging.",
+      "questions": [
+        {
+          "num": 135,
+          "options": [
+            {
+              "label": "A",
+              "text": "advertise",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "advertising",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "advertised",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "advertisement",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 136,
+          "options": [
+            {
+              "label": "A",
+              "text": "who",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "that",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "whose",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "what",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 137,
+          "options": [
+            {
+              "label": "A",
+              "text": "possible",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "possibly",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "possibility",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "possibilities",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 138,
+          "options": [
+            {
+              "label": "A",
+              "text": "at",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "by",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "to",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "in",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Guarantee:** Bảo đảm, cam kết.",
+        "**Function as advertised:** Hoạt động đúng như quảng cáo.",
+        "**Period may be extended:** Thời gian có thể được gia hạn.",
+        "**Warranty:** Bảo hành.",
+        "**Licensed distributors:** Các nhà phân phối được cấp phép.",
+        "**Defective:** Bị lỗi, hỏng.",
+        "**Repair or exchange:** Sửa chữa hoặc đổi mới.",
+        "**Original packaging:** Bao bì gốc."
+      ],
+      "takeaways": [
+        "Standard warranty is **one year**, but some products have longer periods.",
+        "Warranty only covers items from **official stores** or **licensed distributors**.",
+        "Defective items should be returned in **original packaging** if possible."
+      ]
+    },
+    {
+      "id": "rc-139",
+      "range": "139–142",
+      "startQ": 139,
+      "endQ": 142,
+      "originalPassage": "**Healthy Foods Market** has planned some exciting renovations in the coming weeks.\n\nDuring this time the store will remain open, but certain departments will be temporarily unavailable. Beginning on August 3, the refrigerated and frozen-food sections of the store **<u>&nbsp;&nbsp;&nbsp;&nbsp;(139)&nbsp;&nbsp;&nbsp;&nbsp;</u>** to be under construction. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(140)&nbsp;&nbsp;&nbsp;&nbsp;</u>**, food from these areas will be unavailable while work is being completed. Remodeling should be finished by August 9. Store managers are confident that the **<u>&nbsp;&nbsp;&nbsp;&nbsp;(141)&nbsp;&nbsp;&nbsp;&nbsp;</u>** days of inconvenience will be well worth it. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(142)&nbsp;&nbsp;&nbsp;&nbsp;</u>**. At this event, there will be complimentary samples of some new food choices, including an expanded selection of nutritious, ready-to-eat meals.",
+      "completedPassage": "**Healthy Foods Market** has planned some exciting renovations in the coming weeks.\n\nDuring this time the store will remain open, but certain departments will be temporarily unavailable. Beginning on August 3, the refrigerated and frozen-food sections of the store **<u>are scheduled</u>** (139) to be under construction. **<u>Therefore</u>** (140), food from these areas will be unavailable while work is being completed. Remodeling should be finished by August 9. Store managers are confident that the **<u>few</u>** (141) days of inconvenience will be well worth it. **<u>A special celebration will take place on August 12.</u>** (142). At this event, there will be complimentary samples of some new food choices, including an expanded selection of nutritious, ready-to-eat meals.",
+      "questions": [
+        {
+          "num": 139,
+          "options": [
+            {
+              "label": "A",
+              "text": "schedules",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "to be scheduled",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "scheduling",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "are scheduled",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 140,
+          "options": [
+            {
+              "label": "A",
+              "text": "However",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Therefore",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Besides",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Likewise",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 141,
+          "options": [
+            {
+              "label": "A",
+              "text": "few",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "no",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "many",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "any",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 142,
+          "options": [
+            {
+              "label": "A",
+              "text": "The store must close for three days.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Customers must park in the recently added parking area.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "These products will be available during the remodeling.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A special celebration will take place on August 12.",
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Renovations:** Cải tạo, tân trang.",
+        "**Temporarily unavailable:** Tạm thời không có sẵn.",
+        "**Under construction:** Đang trong quá trình xây dựng/sửa chữa.",
+        "**Remodeling:** Sửa sang, tái cấu trúc.",
+        "**Confident:** Tự tin.",
+        "**Inconvenience:** Sự bất tiện.",
+        "**Well worth it:** Rất xứng đáng.",
+        "**Complimentary samples:** Mẫu thử miễn phí.",
+        "**Ready-to-eat meals:** Các bữa ăn chế biến sẵn."
+      ],
+      "takeaways": [
+        "The store **remains open** during renovations, but some sections are closed.",
+        "The work on refrigerated/frozen sections lasts from **August 3 to August 9**.",
+        "A **special celebration** with free samples will be held on **August 12** to mark the completion."
+      ]
+    },
+    {
+      "id": "rc-143",
+      "range": "143–146",
+      "startQ": 143,
+      "endQ": 146,
+      "originalPassage": "**VANCOUVER (3 February)** — Poalesco unveiled its annual Plant Showcase today. According to Poalesco spokesman Nacio Roja, this **<u>&nbsp;&nbsp;&nbsp;&nbsp;(143)&nbsp;&nbsp;&nbsp;&nbsp;</u>** offering highlights the company's latest efforts in botanical research. Many of these efforts result from customer surveys designed to gain an understanding of common challenges. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(144)&nbsp;&nbsp;&nbsp;&nbsp;</u>**.\n\nThis year, the company's specialized nurseries have turned out drought-hardy breeds, such as the Goldtone Apple Tree. These varietals can withstand extended dry conditions without sustaining damage. \"Gardeners in desert **<u>&nbsp;&nbsp;&nbsp;&nbsp;(145)&nbsp;&nbsp;&nbsp;&nbsp;</u>** will appreciate the Goldtones in particular,\" noted Roja. \"And **<u>&nbsp;&nbsp;&nbsp;&nbsp;(146)&nbsp;&nbsp;&nbsp;&nbsp;</u>** might also be interested in our new Q7 rose bushes, which thrive in a similar climate.\"",
+      "completedPassage": "**VANCOUVER (3 February)** — Poalesco unveiled its annual Plant Showcase today. According to Poalesco spokesman Nacio Roja, this **<u>proud</u>** (143) offering highlights the company's latest efforts in botanical research. Many of these efforts result from customer surveys designed to gain an understanding of common challenges. **<u>Then, the research and development team works to develop variants that address these difficulties.</u>** (144).\n\nThis year, the company's specialized nurseries have turned out drought-hardy breeds, such as the Goldtone Apple Tree. These varietals can withstand extended dry conditions without sustaining damage. \"Gardeners in desert **<u>regions</u>** (145) will appreciate the Goldtones in particular,\" noted Roja. \"And **<u>they</u>** (146) might also be interested in our new Q7 rose bushes, which thrive in a similar climate.\"",
+      "questions": [
+        {
+          "num": 143,
+          "options": [
+            {
+              "label": "A",
+              "text": "prouder",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "proudly",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "pride",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "proud",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 144,
+          "options": [
+            {
+              "label": "A",
+              "text": "Then, the research and development team works to develop variants that address these difficulties.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "The company is looking for the most profitable areas in agriculture.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "The surveys are conducted every three years.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Most customers prefer to shop online.",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 145,
+          "options": [
+            {
+              "label": "A",
+              "text": "region",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "regions",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "regional",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "regionally",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 146,
+          "options": [
+            {
+              "label": "A",
+              "text": "they",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "them",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "their",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "theirs",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Unveil:** Tiết lộ, ra mắt.",
+        "**Annual Showcase:** Triển lãm thường niên.",
+        "**Botanical research:** Nghiên cứu thực vật học.",
+        "**Customer surveys:** Khảo sát khách hàng.",
+        "**Address difficulties:** Giải quyết các khó khăn.",
+        "**Drought-hardy breeds:** Các giống cây chịu hạn tốt.",
+        "**Withstand:** Chịu đựng.",
+        "**Sustaining damage:** Chịu thiệt hại.",
+        "**Thrive:** Phát triển mạnh mẽ."
+      ],
+      "takeaways": [
+        "Poalesco uses **customer feedback** to guide their research and development.",
+        "The focus this year is on **drought-hardy plants** (like Goldtone Apple Trees and Q7 rose bushes).",
+        "These plants are specifically designed for **desert regions** and dry conditions."
+      ]
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { BookOpen, BarChart2, CheckCircle2, Bookmark, Moon, Sun, Radio, ChevronLeft } from 'lucide-react';
-import { LessonData, LessonProgress } from '../types';
+import { LessonManifest, LessonProgress } from '../types';
 
 interface SidebarProps {
-  lessons: LessonData[];
+  lessons: LessonManifest[];
   currentLessonId: string | null;
   activeView: 'dashboard' | 'lesson' | 'vocabulary' | 'audioplayer';
   progress: { [lessonId: string]: LessonProgress };

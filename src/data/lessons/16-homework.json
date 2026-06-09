@@ -1,0 +1,737 @@
+{
+  "id": "16-homework",
+  "title": "16 Homework",
+  "audio": "",
+  "youtubeUrl": "https://www.youtube.com/watch?v=fnOyphQep5g&list=PLlkDYJdqzAu_psKIKMnj1WsOLqi5WvjBA&index=16",
+  "graphics": {
+    "20": "assets/16-homework_20.png"
+  },
+  "listening": [
+    {
+      "id": "lc-1",
+      "range": "1–3",
+      "startQ": 1,
+      "endQ": 3,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Do you have a hard time making informed budget decisions regarding your small business? Is it difficult to track your company's profits and losses?"
+        },
+        {
+          "speaker": "Auto",
+          "text": "FS Tracker Pro is an easy-to-use software program especially designed to help small business owners record income, expenditures, and other important accounting information."
+        },
+        {
+          "speaker": "Auto",
+          "text": "You can then create customized reports to share with your clients or financial advisors. Call us today at 555-0132. One of our experienced representatives will gladly arrange an office visit to show you just how easy the FS Tracker Pro is to use. We're sure you'll be impressed!"
+        }
+      ],
+      "questions": [
+        {
+          "num": 1,
+          "text": "Who is the advertisement intended for?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Financial news reporters",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Small business owners",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Administrative assistants",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Bank tellers",
+              "correct": false
+            }
+          ],
+          "explanation": "The product is designed to help small business owners."
+        },
+        {
+          "num": 2,
+          "text": "What is being described?",
+          "options": [
+            {
+              "label": "A",
+              "text": "An instructional video",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A laptop computer",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A security system",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A software program",
+              "correct": true
+            }
+          ],
+          "explanation": "FS Tracker Pro is described as an easy-to-use software program."
+        },
+        {
+          "num": 3,
+          "text": "What are listeners encouraged to do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Purchase new electronic devices",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Open a savings account",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Make a phone call",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Read some reviews",
+              "correct": false
+            }
+          ],
+          "explanation": "Listeners are told to call the company."
+        }
+      ]
+    },
+    {
+      "id": "lc-4",
+      "range": "4–6",
+      "startQ": 4,
+      "endQ": 6,
+      "transcript": [
+        {
+          "speaker": "M-Au",
+          "text": "Hi, I'm Doctor Rajesh Sharma, chief eye surgeon at the new Meadowbrook Laser Vision Correction Center. Our center has just opened at 4 Lombard Street, next to the Townsend Supermarket."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "You may be asking, \"Why choose one of our doctors?\" Because we've performed thousands of vision correction procedures, many more than any other surgeons in the area. If you have a vision problem, our computerized laser surgery may be able to help."
+        },
+        {
+          "speaker": "M-Au",
+          "text": "We're offering a free consultation to our first one hundred customers, so act now! Come in and see us today!"
+        }
+      ],
+      "questions": [
+        {
+          "num": 4,
+          "text": "What most likely is being advertised?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A vision correction center",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "A computer repair shop",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A medical school",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A shopping center",
+              "correct": false
+            }
+          ],
+          "explanation": "The speaker advertises the Meadowbrook Laser Vision Correction Center."
+        },
+        {
+          "num": 5,
+          "text": "According to the speaker, why should listeners choose this business?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It has an experienced staff.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "It has reasonable rates.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It has a large selection of items.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It is open seven days a week.",
+              "correct": false
+            }
+          ],
+          "explanation": "The doctors have performed thousands of procedures."
+        },
+        {
+          "num": 6,
+          "text": "What special offer is being made?",
+          "options": [
+            {
+              "label": "A",
+              "text": "An extended warranty",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Sample merchandise",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A free consultation",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Next-day delivery",
+              "correct": false
+            }
+          ],
+          "explanation": "The first one hundred customers can receive a free consultation."
+        }
+      ]
+    },
+    {
+      "id": "lc-7",
+      "range": "7–9",
+      "startQ": 7,
+      "endQ": 9,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Tonight, world famous chef Emily Cho will open the doors to her newest venture: Tiara's. Come and enjoy authentic and flavorful Italian dishes in a fun and relaxing atmosphere that overlooks the city skyline."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Unlike some of Ms. Cho's other renowned restaurants, Tiara's has been specifically designed for families and offers a special children's menu."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Join us for our opening tonight, just call 555-0842 to reserve a table for your family, and experience the very best at Tiara's."
+        }
+      ],
+      "questions": [
+        {
+          "num": 7,
+          "text": "What kind of business is Tiara's?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A theater",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A restaurant",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "A hotel",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A store",
+              "correct": false
+            }
+          ],
+          "explanation": "Tiara's serves Italian dishes and takes table reservations."
+        },
+        {
+          "num": 8,
+          "text": "Who is Emily Cho?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A city official",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A famous singer",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A magazine columnist",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A business owner",
+              "correct": true
+            }
+          ],
+          "explanation": "Tiara's is described as Emily Cho's newest business venture."
+        },
+        {
+          "num": 9,
+          "text": "Why should listeners call Tiara's?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To purchase tickets",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "To find a nearby location",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "To make a reservation",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "To learn about upcoming events",
+              "correct": false
+            }
+          ],
+          "explanation": "Listeners should call to reserve a table."
+        }
+      ]
+    },
+    {
+      "id": "lc-10",
+      "range": "10–12",
+      "startQ": 10,
+      "endQ": 12,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "No time to eat? Need a burst of energy? Look no further! The German consumer goods company that brought you Brainy Grains Cereal is now offering a new product."
+        },
+        {
+          "speaker": "Auto",
+          "text": "EZ Yum is a wholesome treat that will help you feel full and satisfied. It is high in fiber, low in fat and packed with protein. This healthy snack is a great alternative to junk food. You won't be able to get enough!"
+        },
+        {
+          "speaker": "Auto",
+          "text": "EZ Yum is available in most grocery stores, so head to the nearest one today!"
+        }
+      ],
+      "questions": [
+        {
+          "num": 10,
+          "text": "What product is being advertised?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A seasoning",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A beverage",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A snack",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A vitamin product",
+              "correct": false
+            }
+          ],
+          "explanation": "EZ Yum is described as a wholesome and healthy snack."
+        },
+        {
+          "num": 11,
+          "text": "According to the speaker, what is the advantage of EZ Yum?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It is nutritious.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "It is inexpensive.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "It is sold in packs of six.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "It appeals to children.",
+              "correct": false
+            }
+          ],
+          "explanation": "The snack is high in fiber, low in fat, and packed with protein."
+        },
+        {
+          "num": 12,
+          "text": "What does the speaker mean when she says: \"You won't be able to get enough\"?",
+          "options": [
+            {
+              "label": "A",
+              "text": "There are not enough items in stock.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "You will want a lot of these products.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "You cannot buy these goods in large amounts",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "There are many flavors available",
+              "correct": false
+            }
+          ],
+          "explanation": "The phrase means customers will like the product and want more of it."
+        }
+      ]
+    },
+    {
+      "id": "lc-13",
+      "range": "13–15",
+      "startQ": 13,
+      "endQ": 15,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Here's a special offer from Lifeline Electronics. Everyone knows that Lifeline Electronics has the lowest prices in the area. But now through Friday, prices are even lower on our complete line of digital cameras."
+        },
+        {
+          "speaker": "Auto",
+          "text": "That's right! All of our digital cameras are fifteen percent off their usual low prices! Remember, this special offer ends Friday, so hurry!"
+        },
+        {
+          "speaker": "Auto",
+          "text": "And when you buy your new camera, don't forget to ask for one of our complimentary camera bags. Come visit Lifeline Electronics today! We're conveniently located in the Springdale Shopping Center, just off Highway 65."
+        }
+      ],
+      "questions": [
+        {
+          "num": 13,
+          "text": "What type of business is being advertised?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A movie theater",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "A fitness center",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "An electronics store",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "A photography studio",
+              "correct": false
+            }
+          ],
+          "explanation": "Lifeline Electronics sells digital cameras."
+        },
+        {
+          "num": 14,
+          "text": "What will happen on Friday?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A special offer will end.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "A product will be introduced.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "A program will change.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A demonstration will be held.",
+              "correct": false
+            }
+          ],
+          "explanation": "The special offer ends Friday."
+        },
+        {
+          "num": 15,
+          "text": "What are available free of charge?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Refreshments",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Digital prints",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Camera bags",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "Program guides",
+              "correct": false
+            }
+          ],
+          "explanation": "Customers can ask for complimentary camera bags."
+        }
+      ]
+    },
+    {
+      "id": "lc-16",
+      "range": "16–18",
+      "startQ": 16,
+      "endQ": 18,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Are you thinking about getting a degree in business? Then Hamson College, the school for business management, is for you. Our specialized courses focus on all aspects of running your own company."
+        },
+        {
+          "speaker": "Auto",
+          "text": "With both on-site and online courses, Hamson College offers courses that can fit into anyone's schedule. In fact, Hamson was ranked by students as having the most scheduling flexibility of any college."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Come to an information session on August seventeenth to find out if Hamson College is right for you. You'll be able to meet with professors and talk with other students. To find out more, visit us at www.hamsoncollege.edu."
+        }
+      ],
+      "questions": [
+        {
+          "num": 16,
+          "text": "What does Hamson College specialize in?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Teacher training",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Industrial design",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Computer programming",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Business management",
+              "correct": true
+            }
+          ],
+          "explanation": "Hamson College is described as the school for business management."
+        },
+        {
+          "num": 17,
+          "text": "According to the advertisement, what do students like about Hamson College?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The quality of the instruction",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The flexible scheduling",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "The low tuition costs",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "The work experience opportunities",
+              "correct": false
+            }
+          ],
+          "explanation": "Students ranked Hamson highly for scheduling flexibility."
+        },
+        {
+          "num": 18,
+          "text": "What will happen on August 17?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A reading group will meet.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Students will graduate.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "An information session will be held.",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "The registration period will end.",
+              "correct": false
+            }
+          ],
+          "explanation": "The advertisement invites listeners to an information session on August 17."
+        }
+      ]
+    },
+    {
+      "id": "lc-19",
+      "range": "19–21",
+      "startQ": 19,
+      "endQ": 21,
+      "transcript": [
+        {
+          "speaker": "Auto",
+          "text": "Come to Katsuo's Tennis Club and perfect your forehand and backhand swings with tennis pro Katsuo Fujimoto."
+        },
+        {
+          "speaker": "Auto",
+          "text": "Mr. Fujimoto has twenty years of instruction experience and is famous for winning multiple tennis championships, so beginning to advanced students can learn something valuable from him."
+        },
+        {
+          "speaker": "Auto",
+          "text": "And with our newly expanded pro shop, with an even larger selection of tennis rackets and clothes, you can find something valuable to play with, too!"
+        },
+        {
+          "speaker": "Auto",
+          "text": "Make sure to look in the Salt City Shopping Magazine to find special discount coupons like buy-one get-one-free lessons for kids, half-priced adult classes, or free guest passes for members on the weekend. So get off the bleachers and onto the courts today!"
+        }
+      ],
+      "questions": [
+        {
+          "num": 19,
+          "text": "What is Mr. Fujimoto known for?",
+          "options": [
+            {
+              "label": "A",
+              "text": "He owns multiple tennis clubs.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "He has won tennis competitions.",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "He sponsors a brand of tennis gear.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "He only teaches beginning students.",
+              "correct": false
+            }
+          ],
+          "explanation": "Mr. Fujimoto is famous for winning multiple tennis championships."
+        },
+        {
+          "num": 20,
+          "text": "Look at the graphic. What classes is the coupon valid for?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Adult classes",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "Child classes",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "Weekend classes",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Advanced classes",
+              "correct": false
+            }
+          ],
+          "explanation": "The audio mentions half-priced adult classes, matching the 50% off coupon."
+        },
+        {
+          "num": 21,
+          "text": "What recently changed at Katsuo's Tennis Club?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The day of a tournament",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "The surface of a court",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "The types of classes",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "The size of a store",
+              "correct": true
+            }
+          ],
+          "explanation": "The speaker says the pro shop has been newly expanded."
+        }
+      ]
+    }
+  ],
+  "reading": []
+}
