@@ -276,6 +276,39 @@ const App: React.FC = () => {
     }
   }, []);
 
+  // Listen to storage changes across multiple tabs
+  useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      if (
+        [
+          LOCAL_STORAGE_KEY,
+          HISTORY_STORAGE_KEY,
+          'toeic_vocabulary_mastered',
+          'toeic_custom_vocabulary'
+        ].includes(e.key || '')
+      ) {
+        try {
+          const storedProgress = localStorage.getItem(LOCAL_STORAGE_KEY);
+          if (storedProgress) setProgress(JSON.parse(storedProgress));
+
+          const storedHistory = localStorage.getItem(HISTORY_STORAGE_KEY);
+          if (storedHistory) setHistory(JSON.parse(storedHistory));
+
+          const storedVocab = localStorage.getItem('toeic_vocabulary_mastered');
+          if (storedVocab) setMasteredVocabIds(JSON.parse(storedVocab));
+
+          const storedCustomVocab = localStorage.getItem('toeic_custom_vocabulary');
+          if (storedCustomVocab) setCustomVocabItems(JSON.parse(storedCustomVocab));
+        } catch (err) {
+          console.error('Failed to sync state from storage event:', err);
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
   // Global keydown handler for keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -367,7 +400,7 @@ const App: React.FC = () => {
         const storedHistory = localStorage.getItem(HISTORY_STORAGE_KEY);
         const localHistory = storedHistory ? JSON.parse(storedHistory) : [];
         const cloudHistory = (await loadCloudHistory(user.uid)) || [];
-        const mergedHistory = mergeHistory(localHistory, cloudHistory);
+        const mergedHistory = mergeHistory(localHistory, cloudHistory).slice(0, MAX_HISTORY_ITEMS);
 
         setHistory(mergedHistory);
         localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(mergedHistory));
@@ -646,6 +679,8 @@ const App: React.FC = () => {
         isCollapsed={isSidebarCollapsed}
         onToggleCollapse={handleToggleSidebar}
         onVersionClick={() => setShowVersionModal(true)}
+        isSyncing={isSyncing}
+        isAuthenticated={!!authUser}
       />
 
       {/* Sidebar Overlay on mobile */}

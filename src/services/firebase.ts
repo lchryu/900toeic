@@ -16,6 +16,7 @@ import {
   getFirestore,
   serverTimestamp,
   setDoc,
+  enableIndexedDbPersistence,
   type Firestore
 } from 'firebase/firestore';
 import { LessonProgress, AudioSegment, VocabularyItem, PracticeHistoryEntry } from '../types';
@@ -51,6 +52,16 @@ if (isFirebaseConfigured) {
   app = initializeApp(firebaseConfig);
   auth = getAuth(app);
   db = getFirestore(app);
+
+  if (typeof window !== 'undefined') {
+    enableIndexedDbPersistence(db).catch((err) => {
+      if (err.code === 'failed-precondition') {
+        console.warn('Firestore persistence failed: Multiple tabs open');
+      } else if (err.code === 'unimplemented') {
+        console.warn('Firestore persistence failed: Browser not supported');
+      }
+    });
+  }
 }
 
 const toAuthUser = (user: User): AuthUser => {

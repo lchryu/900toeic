@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, BarChart2, CheckCircle2, Bookmark, Moon, Sun, Radio, ChevronLeft } from 'lucide-react';
+import { BookOpen, BarChart2, CheckCircle2, Bookmark, Moon, Sun, Radio, ChevronLeft, Cloud, CloudOff, RefreshCw } from 'lucide-react';
 import { LessonManifest, LessonProgress } from '../types';
 
 interface SidebarProps {
@@ -22,6 +22,8 @@ interface SidebarProps {
   isCollapsed?: boolean;
   onToggleCollapse?: () => void;
   onVersionClick?: () => void;
+  isSyncing?: boolean;
+  isAuthenticated?: boolean;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -42,7 +44,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onToggleTheme,
   isCollapsed = false,
   onToggleCollapse,
-  onVersionClick
+  onVersionClick,
+  isSyncing = false,
+  isAuthenticated = false
 }) => {
   const [filterMode, setFilterMode] = React.useState<'all' | 'unanswered' | 'flagged'>('all');
 
@@ -107,6 +111,26 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 {buildDetails}
               </span>
             ) : null}
+            
+            {/* Cloud Sync Status Badge */}
+            <div style={{ marginTop: '4px' }}>
+              {isSyncing ? (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.68rem', fontWeight: 600, color: 'hsl(var(--primary))' }} title="Syncing with cloud">
+                  <RefreshCw size={10} className="animate-spin" />
+                  <span>Syncing...</span>
+                </span>
+              ) : isAuthenticated ? (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.68rem', fontWeight: 600, color: 'hsl(var(--success))' }} title="All data saved to cloud">
+                  <Cloud size={10} />
+                  <span>Saved to cloud</span>
+                </span>
+              ) : (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.68rem', fontWeight: 600, color: 'hsl(var(--text-muted))' }} title="Data saved locally only. Log in to sync.">
+                  <CloudOff size={10} />
+                  <span>Local storage</span>
+                </span>
+              )}
+            </div>
           </div>
         </div>
         <div style={{ display: 'flex', gap: '6px', alignItems: 'center', flexShrink: 0 }}>
