@@ -50,7 +50,11 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   customVocabItems,
   onSaveCustomVocab
 }) => {
-  const [activeTab, setActiveTab] = useState<LessonTab>(progress?.lastTab || 'listening');
+  const [activeTab, setActiveTab] = useState<LessonTab>(() => {
+    if (progress?.lastTab) return progress.lastTab;
+    if (lesson.listening.length === 0) return 'reading';
+    return 'listening';
+  });
   const [mode, setMode] = useState<LessonMode>(
     progress?.mode || (progress?.isSubmitted ? 'review' : 'practice')
   );
@@ -93,7 +97,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   // Sync state when lesson changes
   useEffect(() => {
     setSelectedAnswers(progress?.answers || {});
-    setActiveTab(progress?.lastTab || 'listening');
+    if (lesson.listening.length === 0) {
+      setActiveTab('reading');
+    } else if (lesson.reading.length === 0) {
+      setActiveTab('listening');
+    } else {
+      setActiveTab(progress?.lastTab || 'listening');
+    }
     setMode(progress?.mode || (progress?.isSubmitted ? 'review' : 'practice'));
     setIsGraded(!!(progress?.isSubmitted ?? (progress && progress.answers && Object.keys(progress.answers).length > 0)));
     setElapsedTime(progress?.timeSpent || 0);
@@ -629,12 +639,14 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   return (
     <div className={`lesson-workspace-shell ${isReaderOnlyMode ? 'reading-mode' : ''} ${isPracticeFocusMode ? 'practice-focus-mode' : ''} ${isPracticeActive ? 'practice-mode' : ''}`} style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%' }}>
-      <AudioPlayer
-        src={lesson.audio ? `/${lesson.audio}` : undefined}
-        youtubeUrl={lesson.youtubeUrl}
-        onControlStateChange={setAudioControl}
-        segments={audioSegments}
-      />
+      {(lesson.audio || lesson.youtubeUrl) && (
+        <AudioPlayer
+          src={lesson.audio ? `/${lesson.audio}` : undefined}
+          youtubeUrl={lesson.youtubeUrl}
+          onControlStateChange={setAudioControl}
+          segments={audioSegments}
+        />
+      )}
 
       <button
         className={`reading-mode-fab ${isPracticeActive ? 'practice-focus-fab' : ''}`}
@@ -685,45 +697,49 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
           </div>
 
           {/* Tab switch bar */}
-          <div className="segmented-control">
-            <button
-              className={`segmented-btn ${activeTab === 'listening' ? 'active' : ''}`}
-              onClick={() => handleTabChange('listening')}
-            >
-              <Headphones size={16} />
-              <span>Listening</span>
-            </button>
-            <button
-              className={`segmented-btn ${activeTab === 'reading' ? 'active' : ''}`}
-              onClick={() => handleTabChange('reading')}
-            >
-              <BookOpen size={16} />
-              <span>Reading</span>
-            </button>
-          </div>
+          {lesson.listening.length > 0 && lesson.reading.length > 0 && (
+            <div className="segmented-control">
+              <button
+                className={`segmented-btn ${activeTab === 'listening' ? 'active' : ''}`}
+                onClick={() => handleTabChange('listening')}
+              >
+                <Headphones size={16} />
+                <span>Listening</span>
+              </button>
+              <button
+                className={`segmented-btn ${activeTab === 'reading' ? 'active' : ''}`}
+                onClick={() => handleTabChange('reading')}
+              >
+                <BookOpen size={16} />
+                <span>Reading</span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="mobile-lesson-tabbar" aria-label="Lesson section switcher">
-        <button
-          className={`mobile-lesson-tab ${activeTab === 'listening' ? 'active' : ''}`}
-          type="button"
-          onClick={() => handleTabChange('listening')}
-        >
-          <Headphones size={15} />
-          <span>Listening</span>
-          <small>{listeningQuestionCount}</small>
-        </button>
-        <button
-          className={`mobile-lesson-tab ${activeTab === 'reading' ? 'active' : ''}`}
-          type="button"
-          onClick={() => handleTabChange('reading')}
-        >
-          <BookOpen size={15} />
-          <span>Reading</span>
-          <small>{readingQuestionCount}</small>
-        </button>
-      </div>
+      {lesson.listening.length > 0 && lesson.reading.length > 0 && (
+        <div className="mobile-lesson-tabbar" aria-label="Lesson section switcher">
+          <button
+            className={`mobile-lesson-tab ${activeTab === 'listening' ? 'active' : ''}`}
+            type="button"
+            onClick={() => handleTabChange('listening')}
+          >
+            <Headphones size={15} />
+            <span>Listening</span>
+            <small>{listeningQuestionCount}</small>
+          </button>
+          <button
+            className={`mobile-lesson-tab ${activeTab === 'reading' ? 'active' : ''}`}
+            type="button"
+            onClick={() => handleTabChange('reading')}
+          >
+            <BookOpen size={15} />
+            <span>Reading</span>
+            <small>{readingQuestionCount}</small>
+          </button>
+        </div>
+      )}
 
       {/* Main Workspace content */}
       <div className="lesson-main-scroll" style={{ flex: 1, padding: '24px', overflowY: 'auto' }}>

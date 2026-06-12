@@ -1,0 +1,528 @@
+{
+  "id": "13-reading",
+  "title": "📘 Lesson 13 – Reading",
+  "audio": "",
+  "youtubeUrl": "",
+  "graphics": {},
+  "listening": [],
+  "reading": [
+    {
+      "id": "rc-131",
+      "range": "131–134",
+      "startQ": 131,
+      "endQ": 134,
+      "originalPassage": "**From:** Gold Star Bank\n**Subject:** Gold Star Bank App\n**Date:** 15 July\n\nDear Customer:\n\nHere at Gold Star Bank, we take our customers and their needs **<u>&nbsp;&nbsp;&nbsp;&nbsp;(131)&nbsp;&nbsp;&nbsp;&nbsp;</u>**. As some of you know, we are experiencing technical difficulties with our mobile app. Our engineers **<u>&nbsp;&nbsp;&nbsp;&nbsp;(132)&nbsp;&nbsp;&nbsp;&nbsp;</u>** on this problem now.\n\nThe trouble started on 14 July when our system went down because of a software bug. We expect the app to be up and running **<u>&nbsp;&nbsp;&nbsp;&nbsp;(133)&nbsp;&nbsp;&nbsp;&nbsp;</u>** the next twenty-four hours. In the meantime, banking transactions can be done at **<u>&nbsp;&nbsp;&nbsp;&nbsp;(134)&nbsp;&nbsp;&nbsp;&nbsp;</u>** of our branch locations, and our automated cash machines are also working.\n\nWe apologize for any inconvenience.\n\nSincerely,\nRavi Chadda\nVice President of Customer Relations",
+      "completedPassage": "**From:** Gold Star Bank\n**Subject:** Gold Star Bank App\n\nDear Customer:\n\nHere at Gold Star Bank, we take our customers and their needs **<u>seriously</u>** (131). As some of you know, we are experiencing technical difficulties with our mobile app. Our engineers **<u>are working</u>** (132) on this problem now.\n\nThe app is expected to be up and running **<u>within</u>** (133) the next twenty-four hours. In the meantime, banking transactions can be done at **<u>any</u>** (134) of our branch locations.",
+      "questions": [
+        {
+          "num": 131,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "serious",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "seriously",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "seriousness",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "more serious",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 132,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "are working",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "have worked",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "were working",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "to work",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 133,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "following",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "since",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "at",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "within",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 134,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "every",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "each",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "any",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "whole",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Take someone/something seriously:** Coi trọng ai đó/vấn đề gì đó.",
+        "**Technical difficulties:** Khó khăn/sự cố kỹ thuật.",
+        "**Experience:** Trải qua/gặp phải (vấn đề).",
+        "**Software bug:** Lỗi phần mềm.",
+        "**Up and running:** Hoạt động trở lại, vận hành bình thường.",
+        "**In the meantime:** Trong lúc chờ đợi.",
+        "**Branch locations:** Các chi nhánh."
+      ],
+      "takeaways": [
+        "The mobile app is **currently down** due to a software bug.",
+        "The bank expects a resolution **within 24 hours**.",
+        "Customers can use **physical branches** or **ATMs** while the app is being repaired."
+      ]
+    },
+    {
+      "id": "rc-135",
+      "range": "135–138",
+      "startQ": 135,
+      "endQ": 138,
+      "originalPassage": "Bethenie Industries guarantees that its products will function as **<u>&nbsp;&nbsp;&nbsp;&nbsp;(135)&nbsp;&nbsp;&nbsp;&nbsp;</u>** for at least one year from date of purchase. For certain products this period may be extended.\n\nThis warranty applies only to products sold at Bethenie Industries stores and other licensed distributors. Products **<u>&nbsp;&nbsp;&nbsp;&nbsp;(136)&nbsp;&nbsp;&nbsp;&nbsp;</u>** are found to be defective may be shipped to our address for repair or exchange. Please note that products that are being returned because of damage should be shipped back to us, whenever **<u>&nbsp;&nbsp;&nbsp;&nbsp;(137)&nbsp;&nbsp;&nbsp;&nbsp;</u>**, **<u>&nbsp;&nbsp;&nbsp;&nbsp;(138)&nbsp;&nbsp;&nbsp;&nbsp;</u>** their original packaging.",
+      "completedPassage": "Bethenie Industries guarantees that its products will function as **<u>advertised</u>** (135) for at least one year from date of purchase. For certain products this period may be extended.\n\nThis warranty applies only to products sold at Bethenie Industries stores and other licensed distributors. Products **<u>that</u>** (136) are found to be defective may be shipped to our address for repair or exchange. Please note that products that are being returned because of damage should be shipped back to us, whenever **<u>possible</u>** (137), **<u>in</u>** (138) their original packaging.",
+      "questions": [
+        {
+          "num": 135,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "advertise",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "advertising",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "advertised",
+              "correct": true
+            },
+            {
+              "label": "D",
+              "text": "advertisement",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 136,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "who",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "that",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "whose",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "what",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 137,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "possible",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "possibly",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "possibility",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "possibilities",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 138,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "at",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "by",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "to",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "in",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Guarantee:** Bảo đảm, cam kết.",
+        "**Function as advertised:** Hoạt động đúng như quảng cáo.",
+        "**Period may be extended:** Thời gian có thể được gia hạn.",
+        "**Warranty:** Bảo hành.",
+        "**Licensed distributors:** Các nhà phân phối được cấp phép.",
+        "**Defective:** Bị lỗi, hỏng.",
+        "**Repair or exchange:** Sửa chữa hoặc đổi mới.",
+        "**Original packaging:** Bao bì gốc."
+      ],
+      "takeaways": [
+        "Standard warranty is **one year**, but some products have longer periods.",
+        "Warranty only covers items from **official stores** or **licensed distributors**.",
+        "Defective items should be returned in **original packaging** if possible."
+      ]
+    },
+    {
+      "id": "rc-139",
+      "range": "139–142",
+      "startQ": 139,
+      "endQ": 142,
+      "originalPassage": "**Healthy Foods Market** has planned some exciting renovations in the coming weeks.\n\nDuring this time the store will remain open, but certain departments will be temporarily unavailable. Beginning on August 3, the refrigerated and frozen-food sections of the store **<u>&nbsp;&nbsp;&nbsp;&nbsp;(139)&nbsp;&nbsp;&nbsp;&nbsp;</u>** to be under construction. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(140)&nbsp;&nbsp;&nbsp;&nbsp;</u>**, food from these areas will be unavailable while work is being completed. Remodeling should be finished by August 9. Store managers are confident that the **<u>&nbsp;&nbsp;&nbsp;&nbsp;(141)&nbsp;&nbsp;&nbsp;&nbsp;</u>** days of inconvenience will be well worth it. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(142)&nbsp;&nbsp;&nbsp;&nbsp;</u>**. At this event, there will be complimentary samples of some new food choices, including an expanded selection of nutritious, ready-to-eat meals.",
+      "completedPassage": "**Healthy Foods Market** has planned some exciting renovations in the coming weeks.\n\nDuring this time the store will remain open, but certain departments will be temporarily unavailable. Beginning on August 3, the refrigerated and frozen-food sections of the store **<u>are scheduled</u>** (139) to be under construction. **<u>Therefore</u>** (140), food from these areas will be unavailable while work is being completed. Remodeling should be finished by August 9. Store managers are confident that the **<u>few</u>** (141) days of inconvenience will be well worth it. **<u>A special celebration will take place on August 12.</u>** (142). At this event, there will be complimentary samples of some new food choices, including an expanded selection of nutritious, ready-to-eat meals.",
+      "questions": [
+        {
+          "num": 139,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "schedules",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "to be scheduled",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "scheduling",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "are scheduled",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 140,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "However",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Therefore",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "Besides",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Likewise",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 141,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "few",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "no",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "many",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "any",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 142,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "The store must close for three days.",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "Customers must park in the recently added parking area.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "These products will be available during the remodeling.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "A special celebration will take place on August 12.",
+              "correct": true
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Renovations:** Cải tạo, tân trang.",
+        "**Temporarily unavailable:** Tạm thời không có sẵn.",
+        "**Under construction:** Đang trong quá trình xây dựng/sửa chữa.",
+        "**Remodeling:** Sửa sang, tái cấu trúc.",
+        "**Confident:** Tự tin.",
+        "**Inconvenience:** Sự bất tiện.",
+        "**Well worth it:** Rất xứng đáng.",
+        "**Complimentary samples:** Mẫu thử miễn phí.",
+        "**Ready-to-eat meals:** Các bữa ăn chế biến sẵn."
+      ],
+      "takeaways": [
+        "The store **remains open** during renovations, but some sections are closed.",
+        "The work on refrigerated/frozen sections lasts from **August 3 to August 9**.",
+        "A **special celebration** with free samples will be held on **August 12** to mark the completion."
+      ]
+    },
+    {
+      "id": "rc-143",
+      "range": "143–146",
+      "startQ": 143,
+      "endQ": 146,
+      "originalPassage": "**VANCOUVER (3 February)** — Poalesco unveiled its annual Plant Showcase today. According to Poalesco spokesman Nacio Roja, this **<u>&nbsp;&nbsp;&nbsp;&nbsp;(143)&nbsp;&nbsp;&nbsp;&nbsp;</u>** offering highlights the company's latest efforts in botanical research. Many of these efforts result from customer surveys designed to gain an understanding of common challenges. **<u>&nbsp;&nbsp;&nbsp;&nbsp;(144)&nbsp;&nbsp;&nbsp;&nbsp;</u>**.\n\nThis year, the company's specialized nurseries have turned out drought-hardy breeds, such as the Goldtone Apple Tree. These varietals can withstand extended dry conditions without sustaining damage. \"Gardeners in desert **<u>&nbsp;&nbsp;&nbsp;&nbsp;(145)&nbsp;&nbsp;&nbsp;&nbsp;</u>** will appreciate the Goldtones in particular,\" noted Roja. \"And **<u>&nbsp;&nbsp;&nbsp;&nbsp;(146)&nbsp;&nbsp;&nbsp;&nbsp;</u>** might also be interested in our new Q7 rose bushes, which thrive in a similar climate.\"",
+      "completedPassage": "**VANCOUVER (3 February)** — Poalesco unveiled its annual Plant Showcase today. According to Poalesco spokesman Nacio Roja, this **<u>proud</u>** (143) offering highlights the company's latest efforts in botanical research. Many of these efforts result from customer surveys designed to gain an understanding of common challenges. **<u>Then, the research and development team works to develop variants that address these difficulties.</u>** (144).\n\nThis year, the company's specialized nurseries have turned out drought-hardy breeds, such as the Goldtone Apple Tree. These varietals can withstand extended dry conditions without sustaining damage. \"Gardeners in desert **<u>regions</u>** (145) will appreciate the Goldtones in particular,\" noted Roja. \"And **<u>they</u>** (146) might also be interested in our new Q7 rose bushes, which thrive in a similar climate.\"",
+      "questions": [
+        {
+          "num": 143,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "prouder",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "proudly",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "pride",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "proud",
+              "correct": true
+            }
+          ]
+        },
+        {
+          "num": 144,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "Then, the research and development team works to develop variants that address these difficulties.",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "The company is looking for the most profitable areas in agriculture.",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "The surveys are conducted every three years.",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "Most customers prefer to shop online.",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 145,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "region",
+              "correct": false
+            },
+            {
+              "label": "B",
+              "text": "regions",
+              "correct": true
+            },
+            {
+              "label": "C",
+              "text": "regional",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "regionally",
+              "correct": false
+            }
+          ]
+        },
+        {
+          "num": 146,
+          "text": "",
+          "options": [
+            {
+              "label": "A",
+              "text": "they",
+              "correct": true
+            },
+            {
+              "label": "B",
+              "text": "them",
+              "correct": false
+            },
+            {
+              "label": "C",
+              "text": "their",
+              "correct": false
+            },
+            {
+              "label": "D",
+              "text": "theirs",
+              "correct": false
+            }
+          ]
+        }
+      ],
+      "vocabulary": [
+        "**Unveil:** Tiết lộ, ra mắt.",
+        "**Annual Showcase:** Triển lãm thường niên.",
+        "**Botanical research:** Nghiên cứu thực vật học.",
+        "**Customer surveys:** Khảo sát khách hàng.",
+        "**Address difficulties:** Giải quyết các khó khăn.",
+        "**Drought-hardy breeds:** Các giống cây chịu hạn tốt.",
+        "**Withstand:** Chịu đựng.",
+        "**Sustaining damage:** Chịu thiệt hại.",
+        "**Thrive:** Phát triển mạnh mẽ."
+      ],
+      "takeaways": [
+        "Poalesco uses **customer feedback** to guide their research and development.",
+        "The focus this year is on **drought-hardy plants** (like Goldtone Apple Trees and Q7 rose bushes).",
+        "These plants are specifically designed for **desert regions** and dry conditions."
+      ]
+    }
+  ],
+  "audioSegments": []
+}

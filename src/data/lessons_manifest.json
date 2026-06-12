@@ -17,10 +17,18 @@
   },
   {
     "id": "12",
-    "title": "📘 Lesson 12 – Practice",
+    "title": "📘 Lesson 12 – Listening",
     "audio": "audio/12.mp3",
     "youtubeUrl": "",
     "listeningCount": 15,
+    "readingCount": 0
+  },
+  {
+    "id": "12-reading",
+    "title": "📘 Lesson 12 – Reading",
+    "audio": "",
+    "youtubeUrl": "",
+    "listeningCount": 0,
     "readingCount": 16
   },
   {
@@ -33,10 +41,18 @@
   },
   {
     "id": "13",
-    "title": "📘 Lesson 13 – Practice",
+    "title": "📘 Lesson 13 – Listening",
     "audio": "audio/13.mp3",
     "youtubeUrl": "",
     "listeningCount": 15,
+    "readingCount": 0
+  },
+  {
+    "id": "13-reading",
+    "title": "📘 Lesson 13 – Reading",
+    "audio": "",
+    "youtubeUrl": "",
+    "listeningCount": 0,
     "readingCount": 16
   },
   {
@@ -49,10 +65,18 @@
   },
   {
     "id": "14",
-    "title": "Lesson 14 - Practice",
+    "title": "Lesson 14 – Listening",
     "audio": "audio/14.mp3",
     "youtubeUrl": "",
     "listeningCount": 15,
+    "readingCount": 0
+  },
+  {
+    "id": "14-reading",
+    "title": "Lesson 14 – Reading",
+    "audio": "",
+    "youtubeUrl": "",
+    "listeningCount": 0,
     "readingCount": 8
   },
   {
@@ -65,10 +89,18 @@
   },
   {
     "id": "15",
-    "title": "Lesson 15 - Practice",
+    "title": "Lesson 15 – Listening",
     "audio": "audio/15.mp3",
     "youtubeUrl": "",
     "listeningCount": 15,
+    "readingCount": 0
+  },
+  {
+    "id": "15-reading",
+    "title": "Lesson 15 – Reading",
+    "audio": "",
+    "youtubeUrl": "",
+    "listeningCount": 0,
     "readingCount": 13
   },
   {
@@ -81,10 +113,18 @@
   },
   {
     "id": "16",
-    "title": "Lesson 16 - Practice",
+    "title": "Lesson 16 – Listening",
     "audio": "audio/16.mp3",
     "youtubeUrl": "",
     "listeningCount": 15,
+    "readingCount": 0
+  },
+  {
+    "id": "16-reading",
+    "title": "Lesson 16 – Reading",
+    "audio": "",
+    "youtubeUrl": "",
+    "listeningCount": 0,
     "readingCount": 13
   }
 ]

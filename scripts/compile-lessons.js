@@ -613,7 +613,35 @@ function main() {
         if (validationErrors.length > 0) {
           throw new Error(`Validation failed:\n${validationErrors.map((error) => `  - ${error}`).join('\n')}`);
         }
-        lessons.push(parsed);
+        
+        if (parsed.listening.length > 0 && parsed.reading.length > 0) {
+          const baseTitle = parsed.title.replace(/\s*[–-]\s*Practice/i, '').trim();
+          
+          const listeningLesson = {
+            ...parsed,
+            id: parsed.id,
+            title: `${baseTitle} – Listening`,
+            reading: []
+          };
+          
+          const readingLesson = {
+            ...parsed,
+            id: `${parsed.id}-reading`,
+            title: `${baseTitle} – Reading`,
+            audio: '',
+            youtubeUrl: '',
+            audioSegments: [],
+            graphics: {},
+            listening: [],
+            reading: parsed.reading
+          };
+          
+          lessons.push(listeningLesson);
+          lessons.push(readingLesson);
+          console.log(`  -> Split into "${listeningLesson.title}" (${listeningLesson.id}) and "${readingLesson.title}" (${readingLesson.id})`);
+        } else {
+          lessons.push(parsed);
+        }
       }
     } catch (err) {
       console.error(`Failed to parse ${file}:`, err);
