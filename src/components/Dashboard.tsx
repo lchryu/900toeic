@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, CheckCircle2, Cloud, CloudOff, Clock, GraduationCap, History, LogIn, LogOut, Pencil, Play, RotateCcw, Upload, Download } from 'lucide-react';
+import { BookOpen, CheckCircle2, Cloud, CloudOff, Clock, GraduationCap, History, LogIn, LogOut, Pencil, Play, RotateCcw, Upload, Download, Headphones } from 'lucide-react';
 import { LessonManifest, LessonProgress, PracticeHistoryEntry } from '../types';
 import type { AuthUser } from '../services/firebase';
 import correctAnswersData from '../data/correct_answers.json';
@@ -231,12 +231,16 @@ export const Dashboard: React.FC<DashboardProps> = ({
     if (entry.activity === 'mode_changed') {
       return `${entry.fromMode || 'mode'} -> ${entry.mode}`;
     }
+    if (entry.activity === 'listened') {
+      return `${entry.isLoop ? '🔁 Looped' : '🎧 Listened'} segment ${entry.segmentLabel || ''}`;
+    }
     return entry.mode === 'study' ? 'Opened study mode' : entry.mode === 'review' ? 'Opened review mode' : 'Opened practice mode';
   };
 
   const getHistoryIcon = (entry: PracticeHistoryEntry) => {
     if (entry.activity === 'submitted') return CheckCircle2;
     if (entry.activity === 'reset') return RotateCcw;
+    if (entry.activity === 'listened') return Headphones;
     if (entry.mode === 'study') return GraduationCap;
     if (entry.mode === 'practice') return Pencil;
     return History;

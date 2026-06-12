@@ -748,6 +748,21 @@ const App: React.FC = () => {
             activeTrackId={activeAudioCenterTrackId}
             setActiveTrackId={setActiveAudioCenterTrackId}
             audioControl={audioCenterControl}
+            onPlaySegment={(lessonId, lessonTitle, segmentLabel, isLoop) => {
+              const manifest = lessons.find((l) => l.id === lessonId);
+              const totalQuestions = manifest ? (manifest.listeningCount + manifest.readingCount) : 0;
+              const answeredCount = progress[lessonId] ? Object.keys(progress[lessonId].answers || {}).length : 0;
+              handleRecordHistory({
+                lessonId,
+                lessonTitle,
+                mode: 'practice',
+                activity: 'listened',
+                answeredCount,
+                totalQuestions,
+                segmentLabel,
+                isLoop
+              });
+            }}
           />
         ) : activeLesson ? (
           isLoadingActiveLesson ? (

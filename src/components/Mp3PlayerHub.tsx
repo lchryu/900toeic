@@ -7,13 +7,15 @@ interface Mp3PlayerHubProps {
   activeTrackId: string | null;
   setActiveTrackId: (id: string | null) => void;
   audioControl: AudioControlState | null;
+  onPlaySegment?: (lessonId: string, lessonTitle: string, segmentLabel: string, isLoop: boolean) => void;
 }
 
 export const Mp3PlayerHub: React.FC<Mp3PlayerHubProps> = ({
   lessons,
   activeTrackId,
   setActiveTrackId,
-  audioControl
+  audioControl,
+  onPlaySegment
 }) => {
   // Filter only lessons with audio source (either mp3 or youtube)
   const tracks = React.useMemo(() => {
@@ -131,6 +133,9 @@ export const Mp3PlayerHub: React.FC<Mp3PlayerHubProps> = ({
   const handlePlaySegment = (segment: AudioSegment, loop = false) => {
     if (!audioControl) return;
     audioControl.playSegment(segment, loop);
+    if (activeTrack) {
+      onPlaySegment?.(activeTrack.id, activeTrack.title, segment.label, loop);
+    }
   };
 
   const handleStopSegment = () => {

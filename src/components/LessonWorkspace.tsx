@@ -384,6 +384,10 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     });
   };
 
+  const handlePlaySegment = (segmentLabel: string, isLoop: boolean) => {
+    recordHistory('listened', mode, { segmentLabel, isLoop });
+  };
+
   useEffect(() => {
     if (hasRecordedOpenRef.current || totalQuestions === 0) return;
     hasRecordedOpenRef.current = true;
@@ -741,6 +745,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
             onSaveCustomVocab={onSaveCustomVocab}
             lessonId={lesson.id}
             lessonTitle={lesson.title}
+            onPlaySegment={handlePlaySegment}
           />
         ) : (
           <>

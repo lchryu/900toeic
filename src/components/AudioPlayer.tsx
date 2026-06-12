@@ -350,12 +350,12 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
 
     const lastTime = lastTimeRef.current;
     const diff = nextTime - lastTime;
-    
+
     if (diff > 0 && diff < 2.0) {
       const crossedSegment = segments.find(
         (s) => lastTime < s.end && nextTime >= s.end
       );
-      
+
       if (crossedSegment) {
         if (isYoutubeSource) {
           youtubePlayerRef.current?.pauseVideo?.();
@@ -367,7 +367,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
         setActiveSegmentId(crossedSegment.id);
       }
     }
-    
+
     lastTimeRef.current = nextTime;
   }, [autoPause, isPlaying, segments, isYoutubeSource, seekTo]);
 

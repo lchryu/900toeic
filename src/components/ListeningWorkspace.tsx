@@ -20,6 +20,7 @@ interface ListeningWorkspaceProps {
   onSaveCustomVocab?: (item: VocabularyItem) => void;
   lessonId?: string;
   lessonTitle?: string;
+  onPlaySegment?: (segmentLabel: string, isLoop: boolean) => void;
 }
 
 const formatTime = (seconds: number) => {
@@ -61,13 +62,15 @@ interface AudioSegmentControlsProps {
   audioControl: AudioControlState | null;
   onUpdateAudioSegment: (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => void;
   onResetAudioSegment: (segmentId: string) => void;
+  onPlaySegment?: (segmentLabel: string, isLoop: boolean) => void;
 }
 
 const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
   segment,
   audioControl,
   onUpdateAudioSegment,
-  onResetAudioSegment
+  onResetAudioSegment,
+  onPlaySegment
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [startValue, setStartValue] = useState('0:00');
@@ -89,6 +92,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
   const audioRef = React.useRef(audioControl);
   const activeRef = React.useRef(isActive);
   const loopRef = React.useRef(isLooping);
+  const onPlaySegmentRef = React.useRef(onPlaySegment);
 
   useEffect(() => {
     startRef.current = startValue;
@@ -97,6 +101,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
     audioRef.current = audioControl;
     activeRef.current = isActive;
     loopRef.current = isLooping;
+    onPlaySegmentRef.current = onPlaySegment;
   });
 
   useEffect(() => {
@@ -130,6 +135,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
               audioRef.current.stopSegment();
             } else {
               audioRef.current.playSegment(segmentRef.current, true);
+              onPlaySegmentRef.current?.(segmentRef.current.label, true);
             }
           }
         } else if (e.key === ' ') {
@@ -139,6 +145,7 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
               audioRef.current.stopSegment();
             } else {
               audioRef.current.playSegment(segmentRef.current, false);
+              onPlaySegmentRef.current?.(segmentRef.current.label, false);
             }
           }
         } else if (e.key === 'ArrowLeft') {
@@ -207,7 +214,10 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
             className="audio-segment-btn"
             type="button"
             disabled={!canControlAudio}
-            onClick={() => audioControl?.playSegment(segment)}
+            onClick={() => {
+              audioControl?.playSegment(segment);
+              onPlaySegment?.(segment.label, false);
+            }}
             title={`Play ${segment.label}`}
           >
             <Play size={14} />
@@ -217,7 +227,14 @@ const AudioSegmentControls: React.FC<AudioSegmentControlsProps> = ({
             className={`audio-segment-btn ${isLooping ? 'active' : ''}`}
             type="button"
             disabled={!canControlAudio}
-            onClick={() => isLooping ? audioControl?.stopSegment() : audioControl?.playSegment(segment, true)}
+            onClick={() => {
+              if (isLooping) {
+                audioControl?.stopSegment();
+              } else {
+                audioControl?.playSegment(segment, true);
+                onPlaySegment?.(segment.label, true);
+              }
+            }}
             title={`Loop ${segment.label}`}
           >
             <Repeat size={14} />
@@ -314,13 +331,15 @@ interface AudioSegmentManagerRowProps {
   audioControl: AudioControlState | null;
   onUpdateAudioSegment: (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => void;
   onResetAudioSegment: (segmentId: string) => void;
+  onPlaySegment?: (segmentLabel: string, isLoop: boolean) => void;
 }
 
 const AudioSegmentManagerRow: React.FC<AudioSegmentManagerRowProps> = ({
   segment,
   audioControl,
   onUpdateAudioSegment,
-  onResetAudioSegment
+  onResetAudioSegment,
+  onPlaySegment
 }) => {
   const [startValue, setStartValue] = useState(formatTime(segment.start));
   const [endValue, setEndValue] = useState(formatTime(segment.end));
@@ -381,7 +400,10 @@ const AudioSegmentManagerRow: React.FC<AudioSegmentManagerRowProps> = ({
           className="audio-segment-btn icon-only"
           type="button"
           disabled={!canControlAudio}
-          onClick={() => audioControl?.playSegment(segment)}
+          onClick={() => {
+            audioControl?.playSegment(segment);
+            onPlaySegment?.(segment.label, false);
+          }}
           title={`Play ${segment.label}`}
         >
           <Play size={14} />
@@ -390,7 +412,14 @@ const AudioSegmentManagerRow: React.FC<AudioSegmentManagerRowProps> = ({
           className={`audio-segment-btn icon-only ${isLooping ? 'active' : ''}`}
           type="button"
           disabled={!canControlAudio}
-          onClick={() => isLooping ? audioControl?.stopSegment() : audioControl?.playSegment(segment, true)}
+          onClick={() => {
+            if (isLooping) {
+              audioControl?.stopSegment();
+            } else {
+              audioControl?.playSegment(segment, true);
+              onPlaySegment?.(segment.label, true);
+            }
+          }}
           title={`Loop ${segment.label}`}
         >
           <Repeat size={14} />
@@ -422,13 +451,15 @@ interface AudioSegmentManagerProps {
   audioControl: AudioControlState | null;
   onUpdateAudioSegment: (segmentId: string, updates: Partial<Pick<AudioSegment, 'start' | 'end'>>) => void;
   onResetAudioSegment: (segmentId: string) => void;
+  onPlaySegment?: (segmentLabel: string, isLoop: boolean) => void;
 }
 
 const AudioSegmentManager: React.FC<AudioSegmentManagerProps> = ({
   segments,
   audioControl,
   onUpdateAudioSegment,
-  onResetAudioSegment
+  onResetAudioSegment,
+  onPlaySegment
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -464,6 +495,7 @@ const AudioSegmentManager: React.FC<AudioSegmentManagerProps> = ({
                 audioControl={audioControl}
                 onUpdateAudioSegment={onUpdateAudioSegment}
                 onResetAudioSegment={onResetAudioSegment}
+                onPlaySegment={onPlaySegment}
               />
             ))}
           </div>
@@ -510,7 +542,8 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
   customVocabItems = [],
   onSaveCustomVocab,
   lessonId,
-  lessonTitle
+  lessonTitle,
+  onPlaySegment
 }) => {
   const showTranscript = isGraded || mode === 'study';
   const [showTranslations, setShowTranslations] = useState(true);
@@ -592,6 +625,7 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
         audioControl={audioControl}
         onUpdateAudioSegment={onUpdateAudioSegment}
         onResetAudioSegment={onResetAudioSegment}
+        onPlaySegment={onPlaySegment}
       />
 
       {listeningGroups.map((group) => (
@@ -630,6 +664,7 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
             audioControl={audioControl}
             onUpdateAudioSegment={onUpdateAudioSegment}
             onResetAudioSegment={onResetAudioSegment}
+            onPlaySegment={onPlaySegment}
           />
 
           {/* Transcript Panel: Locked during test, revealed after grading */}

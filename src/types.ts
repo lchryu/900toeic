@@ -75,7 +75,7 @@ export interface LessonProgress {
 }
 
 export type PracticeHistoryMode = 'study' | 'practice' | 'review';
-export type PracticeHistoryActivity = 'opened' | 'mode_changed' | 'submitted' | 'reset';
+export type PracticeHistoryActivity = 'opened' | 'mode_changed' | 'submitted' | 'reset' | 'listened';
 
 export interface PracticeHistoryEntry {
   id: string;
@@ -90,6 +90,8 @@ export interface PracticeHistoryEntry {
   timeSpent?: number;
   studyTimeSpent?: number;
   fromMode?: PracticeHistoryMode;
+  segmentLabel?: string;
+  isLoop?: boolean;
 }
 
 export interface AudioSegment {
