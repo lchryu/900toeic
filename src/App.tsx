@@ -18,6 +18,8 @@ import {
   saveCloudVocabulary,
   loadCloudCustomVocabulary,
   saveCloudCustomVocabulary,
+  loadCloudHistory,
+  saveCloudHistory,
   signInWithGoogle,
   signOutGoogle,
   subscribeToAuth,
@@ -120,6 +122,18 @@ const mergeCustomVocabulary = (
   local.forEach((item) => map.set(item.id || item.term.toLowerCase(), item));
   cloud.forEach((item) => map.set(item.id || item.term.toLowerCase(), item));
   return Array.from(map.values());
+};
+
+const mergeHistory = (
+  local: PracticeHistoryEntry[],
+  cloud: PracticeHistoryEntry[]
+) => {
+  const map = new Map<string, PracticeHistoryEntry>();
+  local.forEach((item) => map.set(item.id, item));
+  cloud.forEach((item) => map.set(item.id, item));
+  return Array.from(map.values()).sort(
+    (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+  );
 };
 
 const App: React.FC = () => {
@@ -349,6 +363,16 @@ const App: React.FC = () => {
         localStorage.setItem('toeic_custom_vocabulary', JSON.stringify(mergedCustomVocab));
         await saveCloudCustomVocabulary(user.uid, mergedCustomVocab);
 
+        // 5. Sync history
+        const storedHistory = localStorage.getItem(HISTORY_STORAGE_KEY);
+        const localHistory = storedHistory ? JSON.parse(storedHistory) : [];
+        const cloudHistory = (await loadCloudHistory(user.uid)) || [];
+        const mergedHistory = mergeHistory(localHistory, cloudHistory);
+
+        setHistory(mergedHistory);
+        localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(mergedHistory));
+        await saveCloudHistory(user.uid, mergedHistory);
+
         setSyncMessage('Synced with Google account');
       } catch (e) {
         console.error('Failed to sync cloud data:', e);
@@ -543,6 +567,13 @@ const App: React.FC = () => {
 
       const nextHistory = [newEntry, ...previousHistory].slice(0, MAX_HISTORY_ITEMS);
       localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(nextHistory));
+
+      if (authUser) {
+        saveCloudHistory(authUser.uid, nextHistory).catch((e) => {
+          console.error('Failed to save cloud history:', e);
+        });
+      }
+
       return nextHistory;
     });
   };

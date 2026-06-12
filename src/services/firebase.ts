@@ -18,7 +18,7 @@ import {
   setDoc,
   type Firestore
 } from 'firebase/firestore';
-import { LessonProgress, AudioSegment, VocabularyItem } from '../types';
+import { LessonProgress, AudioSegment, VocabularyItem, PracticeHistoryEntry } from '../types';
 
 export interface AuthUser {
   uid: string;
@@ -241,6 +241,32 @@ export const saveCloudCustomVocabulary = async (
     doc(db, 'toeicProgress', uid),
     {
       customVocabItems,
+      updatedAt: serverTimestamp()
+    },
+    { merge: true }
+  );
+};
+
+export const loadCloudHistory = async (uid: string) => {
+  if (!db) return null;
+
+  const snapshot = await getDoc(doc(db, 'toeicProgress', uid));
+  if (!snapshot.exists()) return null;
+
+  const data = snapshot.data();
+  return (data.history || null) as PracticeHistoryEntry[] | null;
+};
+
+export const saveCloudHistory = async (
+  uid: string,
+  history: PracticeHistoryEntry[]
+) => {
+  if (!db) return;
+
+  await setDoc(
+    doc(db, 'toeicProgress', uid),
+    {
+      history,
       updatedAt: serverTimestamp()
     },
     { merge: true }
