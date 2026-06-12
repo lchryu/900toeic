@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { Play, Pause, Volume2, FastForward, Youtube, ExternalLink, SkipBack, SkipForward, CirclePause } from 'lucide-react';
+import { Play, Pause, Volume2, FastForward, Youtube, ExternalLink, SkipBack, SkipForward, CirclePause, RotateCcw } from 'lucide-react';
 import { AudioControlState, AudioSegment } from '../types';
 
 interface AudioPlayerProps {
@@ -107,6 +107,30 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
       const next = !prev;
       try {
         localStorage.setItem('toeic_audio_autopause', String(next));
+      } catch (e) {
+        console.error(e);
+      }
+      return next;
+    });
+  };
+
+  const [skipInterval, setSkipInterval] = useState<number>(() => {
+    try {
+      const stored = localStorage.getItem('toeic_audio_skip_interval');
+      return stored ? parseInt(stored, 10) : 5;
+    } catch {
+      return 5;
+    }
+  });
+
+  const toggleSkipInterval = () => {
+    setSkipInterval((prev) => {
+      const intervals = [3, 5, 10];
+      const currentIndex = intervals.indexOf(prev);
+      const nextIndex = currentIndex === -1 ? 1 : (currentIndex + 1) % intervals.length;
+      const next = intervals[nextIndex];
+      try {
+        localStorage.setItem('toeic_audio_skip_interval', String(next));
       } catch (e) {
         console.error(e);
       }
@@ -542,7 +566,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
         )}
 
         <div className="audio-transport-controls">
-          <button className="audio-icon-btn" onClick={() => handleSkip(-5)} disabled={!canUseControls} title="Back 5 seconds">
+          <button className="audio-icon-btn" onClick={() => handleSkip(-skipInterval)} disabled={!canUseControls} title={`Back ${skipInterval} seconds`}>
             <SkipBack size={18} />
           </button>
           <button
@@ -559,7 +583,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
           >
             {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" style={{ marginLeft: '2px' }} />}
           </button>
-          <button className="audio-icon-btn" onClick={() => handleSkip(5)} disabled={!canUseControls} title="Forward 5 seconds">
+          <button className="audio-icon-btn" onClick={() => handleSkip(skipInterval)} disabled={!canUseControls} title={`Forward ${skipInterval} seconds`}>
             <SkipForward size={18} />
           </button>
         </div>
@@ -595,6 +619,26 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
           >
             <CirclePause size={14} />
             <span className="auto-pause-text">Auto-Pause</span>
+          </button>
+
+          <button
+            className="secondary-btn"
+            style={{
+              padding: '6px 12px',
+              fontSize: '0.8rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+              background: skipInterval !== 5 ? 'rgba(14, 165, 233, 0.1)' : 'transparent',
+              borderColor: skipInterval !== 5 ? 'hsl(var(--primary))' : 'hsl(var(--panel-border))',
+              color: skipInterval !== 5 ? 'hsl(var(--primary))' : 'hsl(var(--text-primary))'
+            }}
+            onClick={toggleSkipInterval}
+            disabled={!canUseControls}
+            title="Change skip interval: 3s -> 5s -> 10s"
+          >
+            <RotateCcw size={14} />
+            <span>Skip: {skipInterval}s</span>
           </button>
 
           <button
