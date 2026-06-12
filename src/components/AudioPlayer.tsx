@@ -635,10 +635,10 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
             }}
             onClick={toggleSkipInterval}
             disabled={!canUseControls}
-            title="Change skip interval: 3s -> 5s -> 10s"
+            title="Thay đổi khoảng thời gian tua: 3s -> 5s -> 10s"
           >
             <RotateCcw size={14} />
-            <span>Skip: {skipInterval}s</span>
+            <span>Tua: {skipInterval}s</span>
           </button>
 
           <button
