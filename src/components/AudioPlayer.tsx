@@ -542,7 +542,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
         )}
 
         <div className="audio-transport-controls">
-          <button className="audio-icon-btn" onClick={() => handleSkip(-10)} disabled={!canUseControls} title="Back 10 seconds">
+          <button className="audio-icon-btn" onClick={() => handleSkip(-5)} disabled={!canUseControls} title="Back 5 seconds">
             <SkipBack size={18} />
           </button>
           <button
@@ -559,7 +559,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, youtubeUrl, onCon
           >
             {isPlaying ? <Pause size={20} fill="currentColor" /> : <Play size={20} fill="currentColor" style={{ marginLeft: '2px' }} />}
           </button>
-          <button className="audio-icon-btn" onClick={() => handleSkip(10)} disabled={!canUseControls} title="Forward 10 seconds">
+          <button className="audio-icon-btn" onClick={() => handleSkip(5)} disabled={!canUseControls} title="Forward 5 seconds">
             <SkipForward size={18} />
           </button>
         </div>
