@@ -700,7 +700,7 @@ export const ListeningWorkspace: React.FC<ListeningWorkspaceProps> = ({
                 
                 {group.transcript.map((line, idx) => (
                   <div key={idx} className="dialogue-item">
-                    <span className={`speaker-badge bg-${line.speaker.toLowerCase()}`}>
+                    <span className={`speaker-badge bg-${line.speaker.toLowerCase().replace(/\s+/g, '-')}`}>
                       {line.speaker}
                     </span>
                     <div className="dialogue-copy">

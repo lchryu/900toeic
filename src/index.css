@@ -583,6 +583,7 @@ h1, h2, h3, h4, h5 {
   font-weight: 700;
   letter-spacing: 0.05em;
   color: #fff;
+  background-color: hsl(var(--text-muted));
   margin-right: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   white-space: nowrap;
